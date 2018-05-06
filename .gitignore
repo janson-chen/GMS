@@ -1,22 +1,60 @@
-# Compiled class file
-*.class
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
 
-# Log file
-*.log
+# Users Environment Variables
+.lock-wscript
 
-# BlueJ files
-*.ctxt
+# OS generated files #
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Node Files #
+/node_modules/
+/bower_components/
+npm-debug.log
+/npm-debug.log.*
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# Coverage #
+/coverage/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# Generic Unit Sonar Reports #
+/reports/
+
+# Typing #
+/src/typings/tsd/
+/typings/
+/tsd_typings/
+
+# Dist #
+/dist
+/public/__build__/
+/src/*/__build__/
+/__build__/**
+/public/dist/
+/src/*/dist/
+/dist/**
+/.awcache
+.webpack.json
+/compiled/
+dll/
+temp
+tmp
+webpack-cache
+
+# Doc #
+/doc/
+/documentation/
+
+# IDE #
+.idea/
+*.swp
+
+
+# Angular #
+*.ngfactory.ts
+*.css.shim.ts
+*.ngsummary.json
+*.shim.ngstyle.ts
+

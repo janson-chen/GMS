@@ -1,2 +1,2 @@
 # GMS
-Party Group Management System.
+## Party Group Management System.
