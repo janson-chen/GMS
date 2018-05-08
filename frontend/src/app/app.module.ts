@@ -14,23 +14,24 @@ import { HomeComponent } from "./home/home.component";
 import { NoContentComponent } from "./no-content/no-content.component";
 
 import "../styles/styles.scss";
-import "../styles/headings.css";
+import { HeaderComponent } from './shared/components/header/header.component';
 
 const APP_PROVIDERS = [...APP_RESOLVER_PROVIDERS, AppState];
 
 @NgModule({
-  bootstrap: [AppComponent],
-  declarations: [AppComponent, HomeComponent, NoContentComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot(ROUTES, {
-      useHash: Boolean(history.pushState) === false,
-      preloadingStrategy: PreloadAllModules
-    })
-  ],
-  providers: [environment.ENV_PROVIDERS, APP_PROVIDERS]
+    bootstrap: [AppComponent],
+    declarations: [AppComponent, HomeComponent, NoContentComponent, HeaderComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule.forRoot(ROUTES, {
+            useHash: Boolean(history.pushState) === false,
+            preloadingStrategy: PreloadAllModules
+        })
+    ],
+    providers: [environment.ENV_PROVIDERS, APP_PROVIDERS]
 })
-export class AppModule {}
+export class AppModule {
+}

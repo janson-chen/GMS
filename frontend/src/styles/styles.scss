@@ -2,6 +2,15 @@
 /* This file is for setting global styles  */
 @import 'variables';
 
+body {
+  max-width: $app-width;
+  margin: 0 auto;
+}
+
+*[_nghost]{
+  display: block;
+}
+
 nav {
   margin-top: 16px;
 }

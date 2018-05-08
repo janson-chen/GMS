@@ -1,0 +1,14 @@
+@import "../../../../styles/lib.scss";
+
+:host {
+    background: #ccc;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    flex: 1;
+}
