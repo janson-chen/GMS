@@ -1,0 +1,24 @@
+@import "../../../../styles/lib";
+
+:host {
+    display: flex;
+}
+
+.menu {
+    min-width: 100px;
+    max-width: 150px;
+    background: #2C3E50;
+    color: #fff;
+    font-size: $app-font-small;
+    text-align: center;
+    padding: 10px 0;
+
+    .cell-bar {
+        padding: 5px 0;
+        cursor: pointer;
+
+        &:hover {
+            background: #17232f;
+        }
+    }
+}

@@ -1,0 +1,76 @@
+@import "../../../../styles/lib";
+
+header {
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    background: rgb(153, 16, 16) url("~assets/img/city-line.png") repeat-x;
+    background-size: contain;
+    background-position-y: 30px;
+    border-bottom: 1px solid yellow;
+
+    .content {
+        width: 100%;
+        max-width: $app-width;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        white-space: nowrap;
+
+        .logo {
+            width: 24px;
+            height: 24px;
+            border: 1.5px solid yellow;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 0;
+            border-top: 0;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .caption {
+            flex: 1;
+        }
+
+        .c-li {
+            margin: 0 20px;
+        }
+
+        .msg-bell {
+            position: relative;
+        }
+
+        .msg {
+            width: 20px;
+            height: 20px;
+            background-color: #00A000;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menus {
+            * {
+                font-size: 14px;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+
+
+h1 {
+    flex: 1;
+}

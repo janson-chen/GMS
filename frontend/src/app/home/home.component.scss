@@ -1,1 +1,12 @@
-/*styles for home content only*/
+.main {
+  display: flex;
+}
+
+.left-panel {
+  display: flex;
+}
+
+.right-panel {
+  flex: 1;
+}
+

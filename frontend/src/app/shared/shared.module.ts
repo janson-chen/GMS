@@ -8,16 +8,14 @@ import { COMPONENTS } from "./components";
 import { DIRECTIVES } from "./directives";
 import { PIPES } from "./pipes";
 import { DataService } from "./services/data.service";
+import { MenuComponent } from './components/menu/menu.component';
+import { NewestComponent } from './components/newest/newest.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule
+        CommonModule
     ],
-    declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
+    declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES, MenuComponent, NewestComponent],
     exports: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
     providers: [DataService]
 })

@@ -1,10 +1,19 @@
 /* this file will be extracted to main dist folder and is imported in index.html */
 /* This file is for setting global styles  */
 @import 'lib';
+@import "../assets/css/font-awesome-4.7.0/scss/font-awesome";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: $app-default-black;
+  background: #FEFEFE;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif
+}
 
 body {
-  max-width: $app-width;
-  margin: 0 auto;
+  display: flex;
 }
 
 nav {
