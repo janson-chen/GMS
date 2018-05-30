@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { AppState } from "../app.service";
+import { AppService } from "../app.service";
 
 @Component({
   selector: "gm-home",

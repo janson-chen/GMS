@@ -5,16 +5,14 @@
 }
 
 .menu {
-    min-width: 100px;
-    max-width: 150px;
+    min-width: 160px;
     background: #2C3E50;
     color: #fff;
     font-size: $app-font-small;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
 
     .cell-bar {
-        padding: 5px 0;
         cursor: pointer;
 
         &:hover {

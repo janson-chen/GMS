@@ -4,8 +4,9 @@ header {
     display: flex;
     align-items: center;
     color: #fff;
+    height: 70px;
 
-    background: rgb(153, 16, 16) url("~assets/img/city-line.png") repeat-x;
+    background: rgb(153, 16, 16);
     background-size: contain;
     background-position-y: 30px;
     border-bottom: 1px solid yellow;
@@ -66,6 +67,12 @@ header {
                 font-weight: bolder;
             }
         }
+
+        .fa-user-circle {
+            &:before {
+                margin-right: 5px;
+            }
+        }
     }
 }
 
@@ -73,4 +80,6 @@ header {
 
 h1 {
     flex: 1;
+    font-size: 2rem;
+    margin: 0;
 }

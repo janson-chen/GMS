@@ -4,7 +4,18 @@ import { HeaderComponent } from "./components/header/header.component";
 import { NoContentComponent } from "../no-content/no-content.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { NewestComponent } from "./components/newest/newest.component";
+import { MenuOptionComponent } from "./components/menu/menu-option/option.component";
+import { LoginComponent } from "../login/login.component";
+import { TableComponent } from "./components/table/table.component";
 
 export const COMPONENTS = [
-    NoContentComponent, HeaderComponent, NavigatorComponent, CoreComponent, MenuComponent, NewestComponent
+    NoContentComponent,
+    HeaderComponent,
+    NavigatorComponent,
+    CoreComponent,
+    MenuComponent,
+    NewestComponent,
+    MenuOptionComponent,
+    LoginComponent,
+    TableComponent
 ];

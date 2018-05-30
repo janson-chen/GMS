@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { environment } from "environments/environment";
-import { AppState } from "./app.service";
+import { AppService } from "./app.service";
 
 @Component({
     selector: "app",
@@ -8,7 +8,11 @@ import { AppState } from "./app.service";
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    constructor() {}
+    isLogged: boolean = false;
+
+    constructor(private appService: AppService) {
+        this.isLogged = this.appService.isLogged;
+    }
 
     public ngOnInit() {
         console.log("Initial App State");

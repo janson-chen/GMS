@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn
+  /usr/local/bin/node /usr/local/bin/yarn add @ng-bootstrap/ng-bootstrap
 
 PATH: 
   /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/bin:/Users/chen/maven/apache-maven-3.0.3/bin:/Users/chen/jboss-as-web-7.0.2.Final/bin:MYSQL/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin

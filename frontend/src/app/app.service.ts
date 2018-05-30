@@ -1,45 +1,35 @@
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { UserService } from "./shared/components/core/user.service";
 
 export interface InternalStateType {
   [key: string]: any;
 }
 
 @Injectable()
-export class AppState {
-  public _state: InternalStateType = {};
+export class AppService implements HttpInterceptor {
+    isLogged: boolean = false;
 
-  /**
-   * Already return a clone of the current state.
-   */
-  public get state() {
-    return (this._state = this._clone(this._state));
-  }
-  /**
-   * Never allow mutation
-   */
-  public set state(value) {
-    throw new Error("do not mutate the `.state` directly");
-  }
+    constructor(private userService: UserService) {
 
-  public get(prop?: any) {
-    /**
-     * Use our state getter for the clone.
-     */
-    const state = this.state;
-    return state.hasOwnProperty(prop) ? state[prop] : state;
-  }
+    }
 
-  public set(prop: string, value: any) {
-    /**
-     * Internally mutate our state.
-     */
-    return (this._state[prop] = value);
-  }
+    intercept(req: HttpRequest<any>, next:HttpHandler): Observable<HttpEvent<any>> {
+        req = req.clone(
+            {   setHeaders: {
+                    Authorization: this.userService.token
+                }
+            }
+        );
 
-  private _clone(object: InternalStateType) {
-    /**
-     * Simple object clone.
-     */
-    return JSON.parse(JSON.stringify(object));
-  }
+        return next.handle(req).map(event => {
+            if (event instanceof HttpResponse) {
+                if (event.status === 401) {
+                    // JWT expired, go to login
+                }
+            }
+            return event;
+        });
+    }
 }

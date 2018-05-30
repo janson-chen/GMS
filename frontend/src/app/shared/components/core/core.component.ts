@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: "gm-core",
     template: ""
 })
-export class CoreComponent {
+export abstract class CoreComponent<T> {
+    @Input() data: T;
+
+
 
     constructor() { }
 
