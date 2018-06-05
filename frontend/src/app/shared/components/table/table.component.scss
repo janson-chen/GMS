@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+}
+
+.header {
+  >span {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.body {
+  .data-item {
+    display: flex;
+
+    >span, button {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

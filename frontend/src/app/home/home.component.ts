@@ -8,9 +8,10 @@ import { AppService } from "../app.service";
   templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private appService: AppService) {}
 
   public ngOnInit() {
     console.log("hello `Home` component");
+
   }
 }

@@ -27,17 +27,18 @@ const APP_PROVIDERS = [...APP_RESOLVER_PROVIDERS];
     bootstrap: [AppComponent],
     declarations: [AppComponent, HomeComponent],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule,
-        SharedModule,
-        NgbModule.forRoot(),
-        RouterModule.forRoot(ROUTES, {
-            useHash: Boolean(history.pushState) === false,
-            preloadingStrategy: PreloadAllModules
-        })
-    ],
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    SharedModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot(ROUTES, {
+        useHash: Boolean(history.pushState) === false,
+        preloadingStrategy: PreloadAllModules,
+        enableTracing: false
+    })
+],
     providers: [environment.ENV_PROVIDERS, APP_PROVIDERS, AppService, UserService]
 })
 export class AppModule {
