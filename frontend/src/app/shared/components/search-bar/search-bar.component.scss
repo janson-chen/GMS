@@ -1,0 +1,34 @@
+:host {
+
+}
+
+input {
+    flex: 1;
+    border: 1px solid #ccc;
+    &:focus {
+        outline: none;
+    }
+
+    color: #888;
+    font-size: 14px;
+}
+
+button {
+    background: #2e68aa;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    font-size: 14px;
+    border: 1px;
+    padding: 0 20px;
+}
+
+input, button {
+    height: 30px;
+}
+
+.search-box {
+    width: 270px;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+}

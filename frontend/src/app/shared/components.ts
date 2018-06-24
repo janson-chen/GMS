@@ -7,6 +7,7 @@ import { NewestComponent } from "./components/newest/newest.component";
 import { MenuOptionComponent } from "./components/menu/menu-option/option.component";
 import { LoginComponent } from "../login/login.component";
 import { TableComponent } from "./components/table/table.component";
+import { SearchBarComponent } from "./components/search-bar/search-bar.component";
 
 export const COMPONENTS = [
     NoContentComponent,
@@ -17,5 +18,6 @@ export const COMPONENTS = [
     NewestComponent,
     MenuOptionComponent,
     LoginComponent,
-    TableComponent
+    TableComponent,
+    SearchBarComponent
 ];
