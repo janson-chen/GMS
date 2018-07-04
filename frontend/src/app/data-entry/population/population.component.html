@@ -1,9 +1,16 @@
 <header>
     <h3>人口信息列表</h3>
-    <button>创建信息表</button>
+    <button (click)="open(populationModal)">创建信息表</button>
 </header>
 <div class="search-panel">
     <gm-search-bar></gm-search-bar>
 </div>
 <gm-table></gm-table>
+
+<ng-template #populationModal let-c="close" let-d="dismiss">
+    <gm-modal-container>
+        <gm-population-editor></gm-population-editor>
+    </gm-modal-container>
+</ng-template>
+
 

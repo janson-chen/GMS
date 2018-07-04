@@ -11,6 +11,8 @@ import { DataService } from "./services/data.service";
 import { MenuComponent } from './components/menu/menu.component';
 import { NewestComponent } from './components/newest/newest.component';
 import { OptionComponent } from './components/menu/option/option.component';
+import { FormBaseComponent } from './components/form-base/form-base.component';
+import { ModalContainerComponent } from './components/modal-container/modal-container.component';
 
 @NgModule({
     imports: [

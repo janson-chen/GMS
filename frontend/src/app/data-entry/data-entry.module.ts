@@ -8,6 +8,7 @@ import { PopulationComponent } from './population/population.component';
 import { PartyBuildComponent } from './party-build/party-build.component';
 import { RiskChecklistComponent } from './risk-checklist/risk-checklist.component';
 import { SharedModule } from "../shared/shared.module";
+import { PopulationDataEditorComponent } from "./population/data-editor/data-editor.component";
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { SharedModule } from "../shared/shared.module";
     SharedModule,
     RouterModule.forChild(dataEntryRoutes)
   ],
-  declarations: [DataEntryComponent, PopulationComponent, RiskChecklistComponent, PartyBuildComponent],
+  declarations: [DataEntryComponent, PopulationComponent, RiskChecklistComponent, PartyBuildComponent, PopulationDataEditorComponent, PopulationDataEditorComponent],
   exports: [RouterModule]
 })
 export class DataEntryModule { }

@@ -8,6 +8,8 @@ import { MenuOptionComponent } from "./components/menu/menu-option/option.compon
 import { LoginComponent } from "../login/login.component";
 import { TableComponent } from "./components/table/table.component";
 import { SearchBarComponent } from "./components/search-bar/search-bar.component";
+import { ModalContainerComponent } from "./components/modal-container/modal-container.component";
+import { FormBaseComponent } from "./components/form-base/form-base.component";
 
 export const COMPONENTS = [
     NoContentComponent,
@@ -19,5 +21,7 @@ export const COMPONENTS = [
     MenuOptionComponent,
     LoginComponent,
     TableComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    FormBaseComponent,
+    ModalContainerComponent
 ];
