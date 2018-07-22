@@ -13,10 +13,12 @@ import { NewestComponent } from './components/newest/newest.component';
 import { OptionComponent } from './components/menu/option/option.component';
 import { FormBaseComponent } from './components/form-base/form-base.component';
 import { ModalContainerComponent } from './components/modal-container/modal-container.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule
     ],
     declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
     exports: [...COMPONENTS, ...DIRECTIVES, ...PIPES],

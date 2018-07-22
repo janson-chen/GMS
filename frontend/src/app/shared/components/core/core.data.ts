@@ -6,3 +6,9 @@ export class QueryOption {
         Object.assign(this, options);
     }
 }
+
+
+export interface LoginData {
+  username: string;
+  password: string;
+}

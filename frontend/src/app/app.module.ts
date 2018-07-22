@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, PreloadAllModules } from "@angular/router";
@@ -21,7 +21,7 @@ import { UserService } from "./shared/components/core/user.service";
 
 import "../styles/styles.scss";
 
-const APP_PROVIDERS = [...APP_RESOLVER_PROVIDERS];
+const APP_PROVIDERS = [...APP_RESOLVER_PROVIDERS, FormBuilder];
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -30,6 +30,7 @@ const APP_PROVIDERS = [...APP_RESOLVER_PROVIDERS];
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
         SharedModule,
         NgbModule.forRoot(),

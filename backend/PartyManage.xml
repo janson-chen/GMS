@@ -1,0 +1,926 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PartyManage</name>
+    </assembly>
+    <members>
+        <member name="T:PartyManage.Authorization.UserManagementOperations">
+            <summary>
+            PolicyOperation Policy to allow adding, viewing, updating and deleting general or specific user records.
+            </summary>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetCurrentUser">
+            <summary>
+            获取当前用户信息
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get Account/Users/Me
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetUserById(System.String)">
+            <summary>
+            通过Id获取用户信息
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get Account/Users/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetUserByUserName(System.String)">
+            <summary>
+            通过登陆名获取用户信息
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get Account/Users/UserName=Admin
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetUsers">
+            <summary>
+            获取所有用户信息
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get Account/Users
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetUsers(System.Int32,System.Int32)">
+            <summary>
+            获取所有用户信息（分页）
+            </summary>
+            <param name="page">页数</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get Account/Users/Page=1/PageSize=20
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.Login(PartyManage.ViewModels.Account.LoginViewModel)">
+            <summary>
+            登陆方法
+            </summary>
+            <param name="user">用户模型</param>
+            <remarks>
+            调用例子  
+            
+                POST /Account/Login
+                {
+                   "userName": "Admin",
+                   "passwordHash": "Mima@123456",
+                   "rememberMe":"True"
+                }
+            
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.Register(PartyManage.ViewModels.Account.UserEditViewModel)">
+            <summary>
+            注册用户
+            </summary>
+            <param name="user">用户模型</param>
+            <remarks>
+            调用例子(初始密码Mima@123456)  
+            
+                POST /Account/Register
+                {
+                   {
+                     "userName": "Admin",
+                     "name": "系统管理员",
+                     "communityID": 1,
+                     "isEnabled": true,
+                     "roles": [
+                       "Administrator"
+                      ]
+                   }
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.Logout">
+            <summary>
+            注销用户
+            </summary>
+            <remarks>
+            调用例子  
+            
+                POST /Account/Logout
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.ResetPassword(PartyManage.ViewModels.Account.PasswordViewModel)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="user">用户密码模型</param>
+            <remarks>
+            调用例子  
+            
+                POST /Account/Users/ResetPassword
+                {               
+                   {
+                     "userName": "User",
+                     "newPassword": "Mima@4444"
+                   }
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.UpdatePassword(PartyManage.ViewModels.Account.PasswordViewModel)">
+            <summary>
+            更新密码
+            </summary>
+            <param name="user">用户密码模型</param>
+            <remarks>
+            调用例子  
+            
+                POST /Account/Users/UpdatePassword
+                {               
+                   "userName": "User",
+                   "currentPassword": "Mima@4444",
+                   "newPassword": "Mima@123456"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.UpdateUser(System.String,PartyManage.ViewModels.Account.UserEditViewModel)">
+            <summary>
+            按id更新用户
+            </summary>
+            <param name="user">用户修改模型</param>
+            <param name="Id">用户Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /Account/Users/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+                {          
+                   "id": "55424177-56ea-442b-864c-d6cdaf2a2306",
+                   "userName": "User",
+                   "name": "普通用户",
+                   "email": "123456@qq.com",
+                   "phoneNumber": "12345",
+                   "communityID": 2,
+                   "isEnabled": true,
+                   "roles": [
+                              "User",
+                              "Administrator"
+                            ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.UpdateCurrentUser(Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Account.UserPatchViewModel})">
+            <summary>
+            修改当前用户信息
+            </summary>
+            <param name="patch">用户部分模型</param>
+            <remarks>
+            调用例子  
+            
+                Patch /Account/Users/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Email", "value" : "123456@qq.com" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.UpdateUser(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Account.UserPatchViewModel})">
+            <summary>
+            按用户Id做部分修改
+            </summary>
+            <param name="patch">用户部分模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Patch /Account/Users/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+                {  
+                   [
+                     { "op" : "replace", "path" : "/IsEnabled", "value" : "false" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.DeleteUser(System.String)">
+            <summary>
+            按用户Id删除用户
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Account/Users/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.UnblockUser(System.String)">
+            <summary>
+            按用户Id解锁用户
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /Account/Users/Unblock/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetRoleById(System.String)">
+            <summary>
+            按角色Id获取角色
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Account/Roles/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetRoleByName(System.String)">
+            <summary>
+            按角色名获取角色
+            </summary>
+            <param name="name">角色名</param>
+            <remarks>
+            调用例子  
+            
+                Get /Account/Roles/Name=User
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetRoles">
+            <summary>
+            按全部角色列表
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get /Account/Roles
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetRoles(System.Int32,System.Int32)">
+            <summary>
+            按全部角色列表（分页）
+            </summary>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /Account/Roles/Page=1/PageSize=20
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.UpdateRole(System.String,PartyManage.ViewModels.Account.RoleViewModel)">
+            <summary>
+            按Id更新角色信息
+            </summary>
+            <param name="Id">角色Id</param>
+            <param name="role">角色模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /Account/Roles/Id=fca68848-ff04-4592-a860-8fd2ab073d6d
+                {
+                   {
+                     "id":"fca68848-ff04-4592-a860-8fd2ab073d6d"
+                     "name": "User",
+                     "description": "普通用户",
+                     "uersCount": 0,
+                     "permissions": [
+                             {
+                                 "name": "查看用户",
+                                 "value": "users.view",
+                                 "groupName": "用户权限",
+                                 "description": "查看其他用户信息"
+                              }
+                      ]
+                   }
+                }    
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.CreateRole(PartyManage.ViewModels.Account.RoleViewModel)">
+            <summary>
+            创建角色
+            </summary>
+            <param name="role">角色模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Account/Roles
+                   {
+                     "name": "TestUser",
+                     "description": "测试角色",
+                     "uersCount": 0,
+                     "permissions": [
+                             {
+                                 "name": "查看用户",
+                                 "value": "users.view",
+                                 "groupName": "用户权限",
+                                 "description": "查看其他用户信息"
+                              }
+                      ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.DeleteRole(System.String)">
+            <summary>
+            按Id删除角色信息
+            </summary>
+            <param name="Id">角色Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Account/Roles/Id=55424177-56ea-442b-864c-d6cdaf2a2306
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AccountController.GetAllPermissions">
+            <summary>
+            获取全部角色权限
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get /Account/Permissions
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.LogsController.GetLogs(System.Int32,System.Int32)">
+            <summary>
+            全部日志列表（分页）
+            </summary>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /Logs/Page=1/PageSize=20
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.LogsController.GetLogs(System.Int32,System.Int32,DAL.QueryModels.LogQueryModel)">
+            <summary>
+            按条件查看日志列表（分页）
+            </summary>
+            <param name="logQuery">查询模型</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Logs/Query/Page=1/PageSize=20
+                {
+                   "startDate": "2018-07-11 00:00:00",
+                   "endDate":"2018-07-13 23:59:59",
+                   "orderBy": "LogType"
+                }
+                
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetBasicSetting(System.Int32)">
+            <summary>
+            获取基本系统设置
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get /System/BasicSetting/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateBasicSetting(System.Int32,PartyManage.ViewModels.System.BasicViewModel)">
+            <summary>
+            系统基本设置修改
+            </summary>
+            <param name="basicSetting">系统设置模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/BasicSetting/Id=1
+                {   
+                   "id":1,
+                   "name": "党群管理系统",
+                   "outSoftwarePath":"D:\\aaaa\\",
+                   "filePath": "D:\\PartyFile\\",
+                   "logPath": "D:\\PartyLog\\Log.txt",
+                   "fileMaxSize": 1024
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.PatchBasicSetting(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.System.BasicPatchViewModel})">
+            <summary>
+            系统基本设置外接程序修改
+            </summary>
+            <param name="patch">系统设置部分模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+                可修改｛OutSoftwarePath:"外接程序路径",FileMaxSize:"允许上传的附件最大值",FilePath:"附件上传路径",LogPath:"日志导出路径"}
+                Patch /System/BasicSetting/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/OutSoftwarePath", "value" : "D:\\aaaa\\" },
+                     { "op" : "replace", "path" : "/FileMaxSize", "value" : "1024" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.LoginViewModel.UserName">
+            <summary>
+            登陆名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.LoginViewModel.PasswordHash">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.LoginViewModel.RememberMe">
+            <summary>
+            是否记住用户
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.PasswordViewModel.UserName">
+            <summary>
+            登陆名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.PasswordViewModel.CurrentPassword">
+            <summary>
+            当前密码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.PasswordViewModel.NewPassword">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.RoleViewModel.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.RoleViewModel.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.RoleViewModel.UsersCount">
+            <summary>
+            用户数
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.RoleViewModel.Permissions">
+            <summary>
+            权限许可
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.PhoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.CommunityID">
+            <summary>
+            社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.IsEnabled">
+            <summary>
+            是否可用
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.UserName">
+            <summary>
+            登陆名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.Name">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.PhoneNumber">
+            <summary>
+            电话号码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.CommunityID">
+            <summary>
+            社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.IsEnabled">
+            <summary>
+            是否可用
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.IsLockedOut">
+            <summary>
+            是否锁定
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.Roles">
+            <summary>
+            拥有角色
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.BaseModel.CreatedBy">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.BaseModel.UpdatedBy">
+            <summary>
+            更新者
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.BaseModel.CreatedDate">
+            <summary>
+            创建日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.BaseModel.UpdatedDate">
+            <summary>
+            更新日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.OutSoftwarePath">
+            <summary>
+            外接程序路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.FilePath">
+            <summary>
+            附件上传路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.LogPath">
+            <summary>
+            日志导出路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.FileMaxSize">
+            <summary>
+            允许上传的附件最大值
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicViewModel.Name">
+            <summary>
+            系统名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicViewModel.OutSoftwarePath">
+            <summary>
+            外接程序路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicViewModel.FilePath">
+            <summary>
+            附件上传路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicViewModel.LogPath">
+            <summary>
+            日志导出路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.BasicViewModel.FileMaxSize">
+            <summary>
+            允许上传的附件最大值
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.LogViewModel.ID">
+            <summary>
+            日志ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.LogViewModel.Content">
+            <summary>
+            操作内容
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.LogViewModel.UserName">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.LogViewModel.Date">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.LogViewModel.LogType">
+            <summary>
+            日志类型
+            </summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXJavascript">
+            <summary>Used to denote the encoding necessary for files containing JavaScript source code. The alternative MIME type for this file type is text/javascript.</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioL24">
+            <summary>24bit Linear PCM audio at 8-48kHz, 1-N channels; Defined in RFC 3190</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXShockwaveFlash">
+            <summary>Adobe Flash files for example with the extension .swf</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationOctetStream">
+            <summary>Arbitrary binary data.[5] Generally speaking this type identifies files that are not associated with a specific application. Contrary to past assumptions by software packages such as Apache this is not a type that should be applied to unknown files. In such a case, a server or application should not indicate a content type, as it may be incorrect, but rather, should omit the type in order to allow the recipient to guess the type.[6]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationAtomXml">
+            <summary>Atom feeds</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCss">
+            <summary>Cascading Style Sheets; Defined in RFC 2318</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCmd">
+            <summary>commands; subtype resident in Gecko browsers like Firefox 3.5</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCsv">
+            <summary>Comma-separated values; Defined in RFC 4180</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXDeb">
+            <summary>deb (file format), a software package format used by the Debian project</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartEncrypted">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartSigned">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageHttp">
+            <summary>Defined in RFC 2616</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelExample">
+            <summary>Defined in RFC 4735</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXDvi">
+            <summary>device-independent document in DVI format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXmlDtd">
+            <summary>DTD files; Defined by RFC 3023</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJavascript">
+            <summary>
+            ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/ecmascript but with looser processing rules) It is not accepted in IE 8 or earlier - text/javascript is accepted but it is defined as obsolete in RFC 4329. The "type" attribute of the 
+            script tag in HTML5 is optional and in practice omitting the media type of JavaScript programs is the most interoperable solution since all browsers have always assumed the correct default even before HTML5.
+            </summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEcmascript">
+            <summary>ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/javascript but with stricter processing rules)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEdifact">
+            <summary>EDI EDIFACT data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEdiX12">
+            <summary>EDI X12 data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessagePartial">
+            <summary>Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageRfc822">
+            <summary>Email; EML files, MIME files, MHT files, MHTML files; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXml">
+            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXml">
+            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXFlv">
+            <summary>Flash video (FLV files)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageGif">
+            <summary>GIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXGwtRpc">
+            <summary>GoogleWebToolkit data</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXGzip">
+            <summary>Gzip</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextHtml">
+            <summary>HTML; Defined in RFC 2854</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageVndMicrosoftIcon">
+            <summary>ICO image; Registered[9]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelIges">
+            <summary>IGS files, IGES files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageImdnXml">
+            <summary>IMDN Instant Message Disposition Notification; Defined in RFC 5438</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJson">
+            <summary>JavaScript Object Notation JSON; Defined in RFC 4627</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJsonPatch">
+            <summary>JavaScript Object Notation (JSON) Patch; Defined in RFC 6902</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextJavascript">
+            <summary>JavaScript - Defined in and obsoleted by RFC 4329 in order to discourage its usage in favor of application/javascript. However,text/javascript is allowed in HTML 4 and 5 and, unlike application/javascript, has cross-browser support. The "type" attribute of the script tag in HTML5 is optional and there is no need to use it at all since all browsers have always assumed the correct default (even in HTML 4 where it was required by the specification).</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImagePjpeg">
+            <summary>JPEG JFIF image; Associated with Internet Explorer; Listed in ms775147(v=vs.85) - Progressive JPEG, initiated before global browser support for progressive JPEGs (Microsoft and Firefox).</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageJpeg">
+            <summary>JPEG JFIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXJqueryTmpl">
+            <summary>jQuery template data</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndGoogleEarthKmlXml">
+            <summary>KML files (e.g. for Google Earth)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXLatex">
+            <summary>LaTeX files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXMatroska">
+            <summary>Matroska open media format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet">
+            <summary>Microsoft Excel 2007 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMsExcel">
+            <summary>Microsoft Excel files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation">
+            <summary>Microsoft Powerpoint 2007 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMsPowerpoint">
+            <summary>Microsoft Powerpoint files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument">
+            <summary>Microsoft Word 2007 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationMsword">
+            <summary>Microsoft Word files[15]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartAlternative">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartMixed">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartRelated">
+            <summary>MIME Email; Defined in RFC 2387 and used by MHTML (HTML mail)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartFormData">
+            <summary>MIME Webform; Defined in RFC 2388</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMozillaXulXml">
+            <summary>Mozilla XUL files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioMpeg">
+            <summary>MP3 or other MPEG audio; Defined in RFC 3003</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioMp4">
+            <summary>MP4 audio</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoMp4">
+            <summary>MP4 video; Defined in RFC 4337</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoMpeg">
+            <summary>MPEG-1 video with multiplexed audio; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelMesh">
+            <summary>MSH files, MESH files; Defined in RFC 2077, SILO files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioBasic">
+            <summary>mulaw audio at 8 kHz, 1 channel; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoOgg">
+            <summary>Ogg Theora or other video (with audio); Defined in RFC 5334</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioOgg">
+            <summary>Ogg Vorbis, Speex, Flac and other audio; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationOgg">
+            <summary>Ogg, a multimedia bitstream container format; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXopXml">
+            <summary>OP</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentGraphics">
+            <summary>OpenDocument Graphics; Registered[14]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentPresentation">
+            <summary>OpenDocument Presentation; Registered[13]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentSpreadsheet">
+            <summary>OpenDocument Spreadsheet; Registered[12]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentText">
+            <summary>OpenDocument Text; Registered[11]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs12">
+            <summary>p12 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Certificates">
+            <summary>p7b and spc files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Mime">
+            <summary>p7c files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Certreqresp">
+            <summary>p7r files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Signature">
+            <summary>p7s files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationPdf">
+            <summary>Portable Document Format, PDF has been in use for document exchange on the Internet since 1993; Defined in RFC 3778</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImagePng">
+            <summary>Portable Network Graphics; Registered,[8] Defined in RFC 2083</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationPostscript">
+            <summary>PostScript; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoQuicktime">
+            <summary>QuickTime video; Registered[10]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXRarCompressed">
+            <summary>RAR archive files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVndRnRealaudio">
+            <summary>RealAudio; Documented in RealPlayer Customer Support Answer 2559</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationRdfXml">
+            <summary>Resource Description Framework; Defined by RFC 3870</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationRssXml">
+            <summary>RSS feeds</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationSoapXml">
+            <summary>SOAP; Defined by RFC 3902</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXStuffit">
+            <summary>StuffIt archive files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageSvgXml">
+            <summary>SVG vector image; Defined in SVG Tiny 1.2 Specification Appendix M</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageTiff">
+            <summary>Tag Image File Format (only for Baseline TIFF); Defined in RFC 3302</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXTar">
+            <summary>Tarball files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextPlain">
+            <summary>Textual data; Defined in RFC 2046 and RFC 3676</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXFontTtf">
+            <summary>TrueType Font No registered MIME type, but this is the most commonly used</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextVcard">
+            <summary>vCard (contact information); Defined in RFC 6350</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVorbis">
+            <summary>Vorbis encoded audio; Defined in RFC 5215</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVndWave">
+            <summary>WAV audio; Defined in RFC 2361</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationFontWoff">
+            <summary>Web Open Font Format; (candidate recommendation; use application/x-font-woff until standard is official)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoWebm">
+            <summary>WebM Matroska-based open media format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioWebm">
+            <summary>WebM open media format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioXMsWax">
+            <summary>Windows Media Audio Redirector; Documented in Microsoft help page</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioXMsWma">
+            <summary>Windows Media Audio; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXMsWmv">
+            <summary>Windows Media Video; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelVrml">
+            <summary>WRL files, VRML files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DXml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3D XML files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DBinary">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DB binary files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DVrml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DV VRML files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXhtmlXml">
+            <summary>XHTML; Defined by RFC 3236</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationZip">
+            <summary>ZIP archive files; Registered[7]</summary>
+        </member>
+    </members>
+</doc>

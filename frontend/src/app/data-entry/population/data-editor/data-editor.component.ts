@@ -9,10 +9,6 @@ import { FormBaseComponent } from "../../../shared/components/form-base/form-bas
 })
 export class PopulationDataEditorComponent extends FormBaseComponent implements OnInit {
 
-  constructor() {
-    super();
-  }
-
   ngOnInit() {
 
   }

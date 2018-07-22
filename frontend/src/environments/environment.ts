@@ -11,9 +11,8 @@ require('zone.js/dist/long-stack-trace-zone');
 
 export const environment: Environment = {
   production: false,
-
+  baseUrl: "http://localhost:5000",
   showDevModule: true,
-
   /** Angular debug tools in the dev console
    * https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
    * @param modRef

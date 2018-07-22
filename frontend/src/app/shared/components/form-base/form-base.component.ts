@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { UserService } from "../core/user.service";
 
 @Component({
   selector: 'gm-form-base',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-base.component.css']
 })
 export class FormBaseComponent implements OnInit {
+  formGroup: FormGroup;
 
-  constructor() { }
+  constructor(protected userService: UserService, protected fb: FormBuilder) { }
 
   ngOnInit() {
 

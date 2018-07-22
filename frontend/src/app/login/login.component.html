@@ -1,15 +1,15 @@
 <div class="login-box">
     <div class="login-panel">
-        <form>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
             <div class="form-panel">
                 <div class="title">
                     <h3>党群管理系统</h3>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="account" class="form-control" placeholder="账号">
+                    <input type="text" name="account" class="form-control" formControlName="userName" placeholder="账号">
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="密码">
+                    <input type="password" name="password" class="form-control" formControlName="password" placeholder="密码">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="form-control btn btn-primary">登录</button>
