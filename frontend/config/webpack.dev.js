@@ -152,6 +152,13 @@ module.exports = function (options) {
         // poll: 1000,
         ignored: /node_modules/
       },
+      proxy: {
+        '/api/*': {
+          target: "http://localhost:5000",
+          pathRewrite: {"^/api" : ""},
+          changeOrigin: true
+        }
+      },
       /**
       * Here you can access the Express app object and add your own custom middleware to it.
       *

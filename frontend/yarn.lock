@@ -427,6 +427,10 @@ angular2-template-loader@^0.6.2:
   dependencies:
     loader-utils "^0.2.15"
 
+angular5-toaster@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/angular5-toaster/-/angular5-toaster-1.0.2.tgz#7a112846f2979d8b9bd2e31f05d8bb320155ef76"
+
 ansi-colors@^1.0.1:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/ansi-colors/download/ansi-colors-1.1.0.tgz#6374b4dd5d4718ff3ce27a671a3b1cad077132a9"
@@ -4781,6 +4785,12 @@ ngc-webpack@^4.1.2:
     semver "^5.4.1"
     source-map "^0.5.6"
     ts-node "^3.2.0"
+
+ngx-toastr@^8.10.0:
+  version "8.10.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-8.10.0.tgz#3b5b5c0e766e8f17540e9d6d08d086cb3acaa35a"
+  dependencies:
+    tslib "^1.9.0"
 
 nice-try@^1.0.4:
   version "1.0.4"

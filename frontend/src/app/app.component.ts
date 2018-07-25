@@ -1,20 +1,24 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { environment } from "environments/environment";
+import { Component, OnInit } from "@angular/core";
 import { AppService } from "./app.service";
+import { UserService } from "./shared/components/core/user.service";
 
 @Component({
-    selector: "app",
-    styleUrls: ["./app.component.scss"],
-    templateUrl: "./app.component.html"
+  selector: "app",
+  styleUrls: ["./app.component.scss"],
+  templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    isLogged: boolean = false;
+  get isLoggedIn() {
+    console.log(this.userService.isLoggedIn);
+    return this.userService.isLoggedIn;
+  };
 
-    constructor(private appService: AppService) {
-        this.isLogged = this.appService.isLogged;
-    }
+  constructor(private userService: UserService) {
 
-    public ngOnInit() {
-        console.log("Initial App State");
-    }
+  }
+
+  public ngOnInit() {
+    console.log("Initial App State");
+  }
+
 }

@@ -9,6 +9,7 @@ export class QueryOption {
 
 
 export interface LoginData {
-  username: string;
-  password: string;
+  userName: string;
+  passwordHash: string;
+  rememberMe: boolean;
 }

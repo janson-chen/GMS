@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
-import { AppService } from "../app.service";
+import { UserService } from "../shared/components/core/user.service";
 
 @Component({
   selector: "gm-home",
@@ -8,7 +7,12 @@ import { AppService } from "../app.service";
   templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-  constructor(private appService: AppService) {}
+  constructor (private userService: UserService) {
+
+  }
+  get isLoggedIn() {
+    return this.userService.isLoggedIn;
+  };
 
   public ngOnInit() {
     console.log("hello `Home` component");

@@ -6,13 +6,16 @@ import { environment } from "../../../../environments/environment";
 @Injectable()
 export class UserService {
     token: string;
+    isLoggedIn: boolean = false;
 
     constructor(private http: HttpClient) {
 
     }
 
     async login(data: LoginData): Promise<any> {
-      return this.http.post(`${environment.baseUrl}/account/login`, data).toPromise();
+      const result = await this.http.post(`${environment.baseUrl}/account/login`, data).toPromise();
+      this.isLoggedIn = true;
+      return true;
     }
 
 

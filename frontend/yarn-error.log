@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/10.6.0/bin/node /usr/local/bin/yarn
+  /usr/local/Cellar/node/10.6.0/bin/node /usr/local/bin/yarn add angular5-toaster
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools
@@ -14,17 +14,15 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: http://registry.npm.taobao.org/@angular/common/download/@angular/common-5.2.11.tgz: ESOCKETTIMEDOUT
-      at ClientRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:135306:19)
+  Error: https://registry.yarnpkg.com/angular5-toaster: tunneling socket could not be established, cause=connect EHOSTUNREACH 0.0.1.187:80 - Local (192.168.9.100:51064)
+      at ClientRequest.onError (/usr/local/lib/node_modules/yarn/lib/cli.js:147299:17)
       at Object.onceWrapper (events.js:273:13)
       at ClientRequest.emit (events.js:182:13)
-      at TLSSocket.emitTimeout (_http_client.js:706:34)
-      at Object.onceWrapper (events.js:273:13)
-      at TLSSocket.emit (events.js:182:13)
-      at TLSSocket.Socket._onTimeout (net.js:447:8)
-      at ontimeout (timers.js:427:11)
-      at tryOnTimeout (timers.js:289:5)
-      at listOnTimeout (timers.js:252:5)
+      at Socket.socketErrorListener (_http_client.js:382:9)
+      at Socket.emit (events.js:182:13)
+      at emitErrorNT (internal/streams/destroy.js:82:8)
+      at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
