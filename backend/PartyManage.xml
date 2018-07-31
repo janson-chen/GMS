@@ -340,16 +340,977 @@
                 Get /Account/Permissions
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.LogsController.GetLogs(System.Int32,System.Int32)">
+        <member name="M:PartyManage.Controllers.AlertsController.CreateMenu(System.Int32,PartyManage.ViewModels.System.AlertViewModel)">
             <summary>
-            全部日志列表（分页）
+            创建通知
             </summary>
+            <param name="alert">通知模型</param>
+            <param name="userMemberID">用户组ID</param>
+            <remarks>
+            调用例子  
+            
+                Post /Alert
+                   {
+                     "content": "通知内容XX",
+                     "url": "#"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AlertsController.GetAlertDetail(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            当前用户id获取通知
+            </summary>
+            <param name="UserId">UserId</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <param name="isConsult">是/否已查阅</param>
+            <remarks>
+            调用例子  
+            
+                Get /Alert/AlertDetail/Id=XX/Page=1/PageSize=20?isConsult=true
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AlertsController.UpdateAlertDetail(System.Int32)">
+            <summary>
+            更新用户查阅状态
+            </summary>
+            <param name="Id">消息实际对象Id</param>
+            <remarks>
+            调用例子
+               
+                Post /Alert/AlertDetail/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreateEvent(PartyManage.ViewModels.Business.EventViewModel)">
+            <summary>
+            创建事件表
+            </summary>
+            <param name="Event">事件表模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Event
+                   {
+                     "communityID": 1,
+                     "name": "事件1",
+                     "happenDate":"2018-07-20 00:00:00",
+                     "eventType":"普通",
+                     "area":"XXX",
+                     "content":"XXX",
+                     "isSendMessage":true,
+                     "userMemberID":1
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetEvents(System.Int32,System.Int32,DAL.QueryModels.EventQueryModel)">
+            <summary>
+            按条件筛选事件表列表（分页）
+            </summary>
+            <param name="eventQuery">查询模型</param>
             <param name="page">页码</param>
             <param name="pageSize">每页数量</param>
             <remarks>
             调用例子  
             
-                Get /Logs/Page=1/PageSize=20
+                Post /Business/Event/Query/Page=1/PageSize=20
+                {
+                   "communityName": "XXX",
+                   "name":"XXX",
+                   "happenDate":"2018-07-11 00:00:00",
+                   "startHappenDate": "2018-07-11 00:00:00",
+                   "endHappenDate":"2018-07-13 23:59:59",
+                   "eventType":"普通",
+                   "area":"XXX",
+                   "orderBy": "Name"
+                }
+                
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetEvent(System.Int32)">
+            <summary>
+            按Id获取事件表
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Event/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateEvent(System.Int32,PartyManage.ViewModels.Business.EventViewModel)">
+            <summary>
+            事件表修改
+            </summary>
+            <param name="Event">事件表模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/Event/Id=1
+                {   
+                   "id":1,
+                   "communityID": 1,
+                   "name": "事件1",
+                   "happenDate":"2018-07-20 00:00:00",
+                   "eventType":"普通",
+                   "area":"XXX",
+                   "content":"XXX",
+                   "isSendMessage":true,
+                   "userMemberID":1
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchEvent(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.EventViewModel})">
+            <summary>
+            事件表部分修改
+            </summary>
+            <param name="patch">事件表模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/Event/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Name", "value" : "事件XX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteEvent(System.Int32)">
+            <summary>
+            按Id删除事件表
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Event/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UploadMenuFile(System.Int32)">
+            <summary>
+            创建事件表附件
+            </summary>
+            <param name="Id">事件表Id</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Event/UploadFile/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetEventFilesList(System.Int32)">
+            <summary>
+            按事件表Id获取附件
+            </summary>
+            <param name="EventId">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Event/GetFile/EventId=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteEventFile(System.Int32)">
+            <summary>
+            按事件表附件Id删除附件
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Event/DeleteFile/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreateActivities(PartyManage.ViewModels.Business.PartyActivitiesViewModel)">
+            <summary>
+            创建活动表
+            </summary>
+            <param name="partyActivities">活动表模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/PartyActivities
+                   {
+                     "communityID": 1,
+                     "subject": "主题XX",
+                     "activitiesDate":"2018-07-20 00:00:00",
+                     "activitiesPlace":"XX",
+                     "joinAmount":1,
+                     "realAmount":1,
+                     "leaveAmount":1,
+                     "form":"活动形式XX",
+                     "content":"活动内容XX"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetActivitiesList(System.Int32,System.Int32,DAL.QueryModels.ActivityQueryModel)">
+            <summary>
+            按条件筛选活动表列表（分页）
+            </summary>
+            <param name="activityQuery">查询模型</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/PartyActivities/Query/Page=1/PageSize=20
+                {
+                   "subject": "XXX",
+                   "orderBy": "Name"
+                }
+                
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetActivities(System.Int32)">
+            <summary>
+            按Id获取活动表
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/PartyActivities/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateActivities(System.Int32,PartyManage.ViewModels.Business.PartyActivitiesViewModel)">
+            <summary>
+            活动表修改
+            </summary>
+            <param name="partyActivities">活动表模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/PartyActivities/Id=1
+                {   
+                   "id":1,
+                   "communityID": 1,
+                   "subject": "主题XX",
+                   "activitiesDate":"2018-07-20 00:00:00",
+                   "activitiesPlace":"XX",
+                   "joinAmount":1,
+                   "realAmount":1,
+                   "leaveAmount":1,
+                   "form":"活动形式XX",
+                   "content":"活动内容XX"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchActivities(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.PartyActivitiesViewModel})">
+            <summary>
+            活动表部分修改
+            </summary>
+            <param name="patch">活动表模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/PartyActivities/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Subject", "value" : "主题XX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteActivities(System.Int32)">
+            <summary>
+            按Id删除活动表
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/PartyActivities/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreatePopulation(PartyManage.ViewModels.Business.EventViewModel)">
+            <summary>
+            创建网格登记表
+            </summary>
+            <param name="population">网格表模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population
+                   {
+                     "code":"XXX",
+                     "communityID": 1,
+                     "family_Type": "XX",
+                     "family_Address":"XXX",
+                     "family_Phone":"XX",
+                     "family_Content":"家庭情况XXX"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetPopulationList(System.Int32,System.Int32,DAL.QueryModels.PopulationQueryModel)">
+            <summary>
+            按条件筛选网格登记表列表（分页）
+            </summary>
+            <param name="populationQuery">查询模型</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Query/Page=1/PageSize=20
+                {
+                   "communityName": "XXX",
+                   "code":"XXX",
+                   "family_Type":"XX",
+                   "family_Address":"XX",
+                   "orderBy": "Name"
+                }
+                
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetPopulation(System.Int32)">
+            <summary>
+            按Id获取网格登记表
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Population/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateEvent(System.Int32,PartyManage.ViewModels.Business.PopulationViewModel)">
+            <summary>
+            网格登记表修改
+            </summary>
+            <param name="population">网格登记表模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/Population/Id=1
+                {   
+                   "id":1,
+                   "code":"XXX",
+                   "communityID": 1,
+                   "family_Type": "XX",
+                   "family_Address":"XXX",
+                   "family_Phone":"XX",
+                   "family_Content":"家庭情况XXX"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchEvent(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.PopulationViewModel})">
+            <summary>
+            网格登记表部分修改
+            </summary>
+            <param name="patch">网格登记表模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/Population/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Code", "value" : "XXX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeletePopulation(System.Int32)">
+            <summary>
+            按Id删除网格登记表
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Population/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreateFamilyList(System.Collections.Generic.List{PartyManage.ViewModels.Business.FamilyViewModel})">
+            <summary>
+            创建多个家庭人员信息
+            </summary>
+            <param name="families">家庭人员模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Families
+                   {
+                     [
+                        { "populationID": 1,
+                          "personName": "张三",
+                          "cardNo":"XXXX",
+                          "sex":"男",
+                          "nation":"汉族",
+                          "birthDate":"2018-07-20 00:00:00",
+                          "politicalStatus":"XX",
+                          "relation":"XX",
+                          "registeredResidence":"XX",
+                          "nativePlace":"XX",
+                          "peopleType":"XX",
+                          "culture":"XX",
+                          "marriage":"XX",
+                          "rmks":"XX"
+                        },
+                        { "populationID": 1,
+                          "personName": "李四",
+                          "cardNo":"XXXX",
+                          "sex":"男",
+                          "nation":"汉族",
+                          "birthDate":"2018-07-20 00:00:00",
+                          "politicalStatus":"XX",
+                          "relation":"XX",
+                          "registeredResidence":"XX",
+                          "nativePlace":"XX",
+                          "peopleType":"XX",
+                          "culture":"XX",
+                          "marriage":"XX",
+                          "rmks":"XX"
+                        }            
+                     ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetFamilyList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            按网格登记表id获取家庭人员信息(分页)
+            </summary>
+            <param name="populationId">网格登记表Id</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Families/PopulationId=1/Page=1/PageSize=20          
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetFamilyAsync(System.Int32)">
+            <summary>
+            根据id获取家庭人员成员
+            </summary>
+            <param name="Id">家庭人员Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Population/Families/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateFamilies(System.Collections.Generic.List{PartyManage.ViewModels.Business.FamilyViewModel})">
+            <summary>
+            家庭人员信息修改
+            </summary>
+            <param name="families">家庭人员信息模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/Population/Families
+                {   
+                     [
+                        { "id":1,
+                          "populationID": 1,
+                          "personName": "张三",
+                          "cardNo":"XXXX",
+                          "sex":"男",
+                          "nation":"汉族",
+                          "birthDate":"2018-07-20 00:00:00",
+                          "politicalStatus":"XX",
+                          "relation":"XX",
+                          "registeredResidence":"XX",
+                          "nativePlace":"XX",
+                          "peopleType":"XX",
+                          "culture":"XX",
+                          "marriage":"XX",
+                          "rmks":"XX"
+                        },
+                        { "id":2,
+                          "populationID": 1,
+                          "personName": "李四",
+                          "cardNo":"XXXX",
+                          "sex":"男",
+                          "nation":"汉族",
+                          "birthDate":"2018-07-20 00:00:00",
+                          "politicalStatus":"XX",
+                          "relation":"XX",
+                          "registeredResidence":"XX",
+                          "nativePlace":"XX",
+                          "peopleType":"XX",
+                          "culture":"XX",
+                          "marriage":"XX",
+                          "rmks":"XX"
+                        }            
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchFamily(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.FamilyViewModel})">
+            <summary>
+            家庭人员信息部分修改
+            </summary>
+            <param name="patch">家庭人员部分模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/Population/Family/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/PersonName", "value" : "张三" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteFamilies(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除家庭人员信息
+            </summary>
+            <param name="ids">家庭人员id集合</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Population/Families
+                {   
+                     [
+                        {"id":1 },
+                        {"id":2 }    
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreateArmyList(System.Collections.Generic.List{PartyManage.ViewModels.Business.ArmyViewModel})">
+            <summary>
+            创建多个兵役信息
+            </summary>
+            <param name="armies">兵役模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Armies
+                   {
+                     [
+                        { "familyID": 1,
+                          "armyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "isQuit":false
+                        },
+                        { "familyID": 2,
+                          "armyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "isQuit":true
+                        }            
+                     ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetArmyList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            按网格登记表id获取兵役信息(分页)
+            </summary>
+            <param name="populationId">网格登记表Id</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Armies/PopulationId=1/Page=1/PageSize=20          
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetArmyAsync(System.Int32)">
+            <summary>
+            根据id获取兵役信息
+            </summary>
+            <param name="familyID">家庭人员Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Population/Armies/FamilyID={familyID}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateArmies(System.Collections.Generic.List{PartyManage.ViewModels.Business.ArmyViewModel})">
+            <summary>
+            兵役信息修改
+            </summary>
+            <param name="armies">兵役模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/Population/Armies
+                {   
+                     [
+                        { "familyID": 1,
+                          "armyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "isQuit":false
+                        },
+                        { "familyID": 2,
+                          "armyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "isQuit":true
+                        }          
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchArmy(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.ArmyViewModel})">
+            <summary>
+            兵役信息部分修改
+            </summary>
+            <param name="patch">兵役部分模型</param>
+            <param name="familyID">familyID</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/Population/Army/FamilyID=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/ArmyType", "value" : "XXX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteArmies(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除兵役信息
+            </summary>
+            <param name="familyIds">家庭人员id集合</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Population/Armies
+                {   
+                     [
+                        {"id":1 },
+                        {"id":2 }    
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreateDisabilityList(System.Collections.Generic.List{PartyManage.ViewModels.Business.DisabilityViewModel})">
+            <summary>
+            创建多个残疾信息
+            </summary>
+            <param name="disabilities">残疾模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Disabilities
+                   {
+                     [
+                        { "familyID": 1,
+                          "disabilityType":"XXXX",
+                          "disabilityGrade":"XXX"
+                        },
+                        { "familyID": 2,
+                          "disabilityType":"XXXX",
+                          "disabilityGrade":"XXX"
+                        }            
+                     ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetDisabilityList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            按网格登记表id获取残疾信息(分页)
+            </summary>
+            <param name="populationId">网格登记表Id</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Disabilities/PopulationId=1/Page=1/PageSize=20          
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetDisabilityAsync(System.Int32)">
+            <summary>
+            根据id获取残疾信息
+            </summary>
+            <param name="familyID">家庭人员Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Population/Disabilities/FamilyID={familyID}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateDisabilities(System.Collections.Generic.List{PartyManage.ViewModels.Business.DisabilityViewModel})">
+            <summary>
+            残疾信息修改
+            </summary>
+            <param name="disabilities">残疾模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/Population/Disabilities
+                {   
+                     [
+                        { "familyID": 1,
+                          "disabilityType":"XXXX",
+                          "disabilityGrade":"XXX"
+                        },
+                        { "familyID": 2,
+                          "disabilityType":"XXXX",
+                          "disabilityGrade":"XXX"
+                        }        
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchDisability(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.DisabilityViewModel})">
+            <summary>
+            残疾信息部分修改
+            </summary>
+            <param name="patch">残疾部分模型</param>
+            <param name="familyID">familyID</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/Population/Disability/FamilyID=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/DisabilityType", "value" : "XXX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteDisabilities(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除残疾信息
+            </summary>
+            <param name="familyIds">家庭人员id集合</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Population/Disabilities
+                {   
+                     [
+                        {"id":1 },
+                        {"id":2 }    
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.CreatePartyList(System.Collections.Generic.List{PartyManage.ViewModels.Business.PartyViewModel})">
+            <summary>
+            创建多个党派信息
+            </summary>
+            <param name="parties">党派模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Parties
+                   {
+                     [
+                        { "familyID": 1,
+                          "partyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "partyFrom":"XX",
+                          "duties":"XX",
+                          "isFlow":true
+                        },
+                        { "familyID": 2,
+                          "partyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "partyFrom":"XX",
+                          "duties":"XX",
+                          "isFlow":false
+                        }            
+                     ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetPartyList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            按网格登记表id获取党派信息(分页)
+            </summary>
+            <param name="populationId">网格登记表Id</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Business/Population/Parties/PopulationId=1/Page=1/PageSize=20          
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.GetPartyAsync(System.Int32)">
+            <summary>
+            根据id获取党派信息
+            </summary>
+            <param name="familyID">家庭人员Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Business/Population/Parties/FamilyID={familyID}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.UpdateParties(System.Collections.Generic.List{PartyManage.ViewModels.Business.PartyViewModel})">
+            <summary>
+            党派信息修改
+            </summary>
+            <param name="parties">党派模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /Business/Population/Parties
+                {   
+                     [
+                        { "familyID": 1,
+                          "partyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "partyFrom":"XX",
+                          "duties":"XX",
+                          "isFlow":true
+                        },
+                        { "familyID": 2,
+                          "partyType":"XXXX",
+                          "joinDate":"2018-07-20 00:00:00",
+                          "partyFrom":"XX",
+                          "duties":"XX",
+                          "isFlow":false
+                        }           
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.PatchParty(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.PartyViewModel})">
+            <summary>
+            党派信息部分修改
+            </summary>
+            <param name="patch">党派部分模型</param>
+            <param name="familyID">familyID</param>
+            <remarks>
+            调用例子
+               
+                Patch /Business/Population/Party/FamilyID=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/PartyType", "value" : "XXX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.BusinessController.DeleteParties(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除党派信息
+            </summary>
+            <param name="familyIds">家庭人员id集合</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Business/Population/Parties
+                {   
+                     [
+                        {"id":1 },
+                        {"id":2 }    
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.CreateMenu(PartyManage.ViewModels.System.CommunityViewModel)">
+            <summary>
+            创建社区
+            </summary>
+            <param name="community">社区模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Community
+                   {
+                     "name": "社区XX",
+                     "parentID": 1
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.GetLogs(System.Int32,System.Int32,DAL.QueryModels.CommunityQueryModel)">
+            <summary>
+            按条件筛选社区列表（分页）
+            </summary>
+            <param name="communityQuery">查询模型</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Post /Community/Query/Page=1/PageSize=20
+                {
+                   "name": "XXX",
+                   "orderBy": "Name"
+                }
+                
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.GetCommunity(System.Int32)">
+            <summary>
+            按Id获取社区
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Community/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.GetCommunity(System.String)">
+            <summary>
+            按社区名获取社区
+            </summary>
+            <param name="name">name</param>
+            <remarks>
+            调用例子  
+            
+                Get /Community/Name=社区XX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.GetCommunityListById(System.Int32)">
+            <summary>
+            通过社区ID获取社区下所有社区合集
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Community/ChildList/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.UpdateCommunity(System.Int32,PartyManage.ViewModels.System.CommunityViewModel)">
+            <summary>
+            社区修改
+            </summary>
+            <param name="community">社区模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /Community/Id=1
+                {   
+                   "id":1,
+                   "name": "社区XX",
+                   "parentID": 1
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.PatchCommunity(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.System.CommunityViewModel})">
+            <summary>
+            社区部分修改
+            </summary>
+            <param name="patch">社区模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /Community/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Name", "value" : "社区XX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.CommunityController.DeleteMenu(System.Int32)">
+            <summary>
+            按Id删除社区
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /Community/Id=1
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.LogsController.GetLogs(System.Int32,System.Int32,DAL.QueryModels.LogQueryModel)">
@@ -371,10 +1332,27 @@
                 
             </remarks>
         </member>
+        <member name="M:PartyManage.Controllers.LogsController.ExportLogs(DAL.QueryModels.LogQueryModel)">
+            <summary>
+            按日期导出日志
+            </summary>
+            <param name="logQuery">查询模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /Logs/Export
+                {
+                   "startDate": "2018-07-11 00:00:00",
+                   "endDate":"2018-07-13 23:59:59",
+                }
+                
+            </remarks>
+        </member>
         <member name="M:PartyManage.Controllers.SystemController.GetBasicSetting(System.Int32)">
             <summary>
             获取基本系统设置
             </summary>
+            <param name="Id">Id</param>
             <remarks>
             调用例子  
             
@@ -401,21 +1379,477 @@
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.SystemController.PatchBasicSetting(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.System.BasicPatchViewModel})">
+        <member name="M:PartyManage.Controllers.SystemController.PatchBasicSetting(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.System.BasicViewModel})">
             <summary>
             系统基本设置外接程序修改
             </summary>
             <param name="patch">系统设置部分模型</param>
             <param name="Id">Id</param>
             <remarks>
-            调用例子  
-                可修改｛OutSoftwarePath:"外接程序路径",FileMaxSize:"允许上传的附件最大值",FilePath:"附件上传路径",LogPath:"日志导出路径"}
+            调用例子,可修改｛OutSoftwarePath:"外接程序路径",FileMaxSize:"允许上传的附件最大值",FilePath:"附件上传路径",LogPath:"日志导出路径"}
+               
                 Patch /System/BasicSetting/Id=1
                 {  
                    [
                      { "op" : "replace", "path" : "/OutSoftwarePath", "value" : "D:\\aaaa\\" },
                      { "op" : "replace", "path" : "/FileMaxSize", "value" : "1024" }
                    ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetMenus(System.Int32,System.Boolean)">
+            <summary>
+            附件下载
+            </summary>
+            <param name="Id">Id</param>
+            <param name="isStream">是否数据流</param>
+            <remarks>
+            调用例子（isStream数据流方式）  
+            
+                Get /System/File/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetMenus">
+            <summary>
+            获取菜单树结构
+            </summary>
+            <remarks>
+            调用例子  
+            
+                Get /System/Menus
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetMenuById(System.Int32)">
+            <summary>
+            根据id获取菜单
+            </summary>
+            <param name="Id">菜单Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/Menu/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.CreateMenu(PartyManage.ViewModels.System.MenuViewModel)">
+            <summary>
+            创建菜单
+            </summary>
+            <param name="menu">菜单模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/Menu
+                   {
+                     "name": "菜单XX",
+                     "menuType": "系统菜单",
+                     "parentID": -1,
+                     "icon": "class",
+                     "order_no": 1,
+                     "url": "#"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateMenu(System.Int32,PartyManage.ViewModels.System.MenuViewModel)">
+            <summary>
+            菜单修改
+            </summary>
+            <param name="menu">菜单模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/Menu/Id=1
+                {   
+                   "id":1,
+                   "name": "菜单XX",
+                   "menuType":"系统菜单",
+                   "parentID": 2,
+                   "icon": "class",
+                   "order_no": 1,
+                   "Url":"#"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.PatchMenu(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.System.MenuViewModel})">
+            <summary>
+            菜单部分内容修改
+            </summary>
+            <param name="patch">菜单部分模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /System/Menu/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Name", "value" : "菜单XXX" },
+                     { "op" : "replace", "path" : "/MenuType", "value" : "自定义菜单" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteMenu(System.Int32)">
+            <summary>
+            按菜单Id删除菜单
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/Menu/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UploadMenuFile(System.Int32)">
+            <summary>
+            创建菜单对应附件
+            </summary>
+            <param name="Id">菜单Id</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/Menu/UploadFile/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteMenuFile(System.Int32)">
+            <summary>
+            按菜单Id删除菜单附件
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/Menu/DeleteFile/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetDictionaryByTextListAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            获取字典信息（分页）,可加text查询
+            </summary>
+            <param name="text">字典名称</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/DictionaryList/Page=1/PageSize=20?text=XXX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetDictionaryById(System.Int32)">
+            <summary>
+            根据id获取字典信息
+            </summary>
+            <param name="Id">字典Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/Dictionary/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.CreateDictionary(PartyManage.ViewModels.System.DictionaryViewModel)">
+            <summary>
+            创建字典
+            </summary>
+            <param name="dictionary">字典模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/Dictionary
+                   {
+                     "code": "XXX",
+                     "text": "字典1"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateDictionary(System.Int32,PartyManage.ViewModels.System.DictionaryViewModel)">
+            <summary>
+            字典修改
+            </summary>
+            <param name="dictionary">字典模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/Dictionary/Id=1
+                {   
+                   "id":1,
+                   "code": "XXX",
+                   "text": "字典1"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.PatchDictionary(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.System.DictionaryViewModel})">
+            <summary>
+            字典部分内容修改
+            </summary>
+            <param name="patch">字典部分模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子
+               
+                Patch /System/Dictionary/Id=1
+                {  
+                   [
+                     { "op" : "replace", "path" : "/Code", "value" : "XXX" }
+                   ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteDictionary(System.Int32)">
+            <summary>
+            按字典Id删除字典
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/Dictionary/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DictionaryDetailList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据字典id获取字典实际值（分页）
+            </summary>
+            <param name="dictionaryId">字典编号</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/DictionaryDetailList/DictionaryId=1/Page=1/PageSize=20?code=XXX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DictionaryDetailList(System.String,System.Int32,System.Int32)">
+            <summary>
+            根据字典code获取字典实际值（分页）
+            </summary>
+            <param name="code">字典编号</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/DictionaryDetailList/Page=1/PageSize=20?code=XXX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetDictionaryDetailById(System.Int32)">
+            <summary>
+            根据id获取字典实际值信息
+            </summary>
+            <param name="Id">字典实际值Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/DictionaryDetail/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.CreateDictionaryDetail(System.Collections.Generic.List{PartyManage.ViewModels.System.DictionaryDetailViewModel})">
+            <summary>
+            创建字典实际值信息
+            </summary>
+            <param name="dictionaryDetails">字典实际值模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/DictionaryDetail
+                   {
+                     [
+                        { "dictionaryID": 1,
+                         "value": "字典实际值1"
+                        },
+                        { "dictionaryID": 2,
+                         "value": "字典实际值2"
+                        }            
+                     ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateDictionaryDetail(System.Collections.Generic.List{PartyManage.ViewModels.System.DictionaryDetailViewModel})">
+            <summary>
+            字典实际值修改
+            </summary>
+            <param name="dictionaryDetails">字典实际值模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/DictionaryDetail
+                {   
+                     [
+                        {"id":1, 
+                         "dictionaryID": 1,
+                         "value": "字典实际值1"
+                        },
+                        {"id":2,
+                         "dictionaryID": 1,
+                         "value": "字典实际值2"
+                        }            
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteDictionaryDetail(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除字典实际值
+            </summary>
+            <param name="ids">字典实际值id集合</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/DictionaryDetail
+                {   
+                     [
+                        {"id":1 },
+                        {"id":2 }    
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetUserMemberByNameListAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            获取用户组信息（分页）,可加name查询
+            </summary>
+            <param name="name">用户组名称</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/UserMemberList/Page=1/PageSize=20?name=XXX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetUserMemberById(System.Int32)">
+            <summary>
+            根据id获取用户组信息
+            </summary>
+            <param name="Id">用户组Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/UserMember/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.CreateUserMember(PartyManage.ViewModels.System.UserMemberViewModel)">
+            <summary>
+            创建用户组
+            </summary>
+            <param name="userMember">用户组模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/UserMember
+                   {
+                     "name": "XXX"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateUserMember(System.Int32,PartyManage.ViewModels.System.UserMemberViewModel)">
+            <summary>
+            用户组修改
+            </summary>
+            <param name="userMember">用户组模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/UserMember/Id=1
+                {   
+                   "id":1,
+                   "name": "XXX"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteUserMember(System.Int32)">
+            <summary>
+            按用户组Id删除用户组
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/UserMember/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UserMemberDetailList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据用户组Id获取用户组成员（分页）
+            </summary>
+            <param name="userMemberId">用户组名称</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/UserMemberDetailList/UserMemberId=1/Page=1/PageSize=20?name=XXX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetUserMemberDetailById(System.Int32)">
+            <summary>
+            根据id获取用户组成员
+            </summary>
+            <param name="Id">用户组成员Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/UserMemberDetail/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.CreateUserMemberDetail(System.Collections.Generic.List{PartyManage.ViewModels.System.UserMemberDetailViewModel})">
+            <summary>
+            创建用户组成员
+            </summary>
+            <param name="userMemberDetails">用户组成员模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/UserMemberDetail
+                   {
+                     [
+                        { "UserMemberID": 1,
+                         "UserID": "XXX"
+                        },
+                        { "UserMemberID": 1,
+                         "value": "XXXX"
+                        }            
+                     ]
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateUserMemberDetail(System.Collections.Generic.List{PartyManage.ViewModels.System.UserMemberDetailViewModel})">
+            <summary>
+            用户组成员修改
+            </summary>
+            <param name="userMemberDetails">用户组成员模型</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/UserMemberDetail
+                {   
+                     [
+                        {"id":1, 
+                         "userMemberID": 1,
+                         "userID": "XXX"
+                        },
+                        {"id":2,
+                         "userMemberID": 1,
+                         "userID": "XXXX"
+                        }            
+                     ]
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteUserMemberDetail(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            删除用户组成员
+            </summary>
+            <param name="ids">用户组成员id集合</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/UserMemberDetail
+                {   
+                     [
+                        {"id":1 },
+                        {"id":2 }    
+                     ]
                 }
             </remarks>
         </member>
@@ -549,24 +1983,399 @@
             更新日期
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.OutSoftwarePath">
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.FamilyID">
             <summary>
-            外接程序路径
+            家庭人员ID
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.FilePath">
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.PersonName">
             <summary>
-            附件上传路径
+            姓名
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.LogPath">
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.CardNo">
             <summary>
-            日志导出路径
+            身份证号
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.BasicPatchViewModel.FileMaxSize">
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.ArmyType">
             <summary>
-            允许上传的附件最大值
+            参军类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.JoinDate">
+            <summary>
+            入伍日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.IsQuit">
+            <summary>
+            是否退伍
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.FamilyID">
+            <summary>
+            家庭人员ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.PersonName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.CardNo">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.DisabilityType">
+            <summary>
+            残疾类别
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.DisabilityGrade">
+            <summary>
+            残疾等级
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.EventID">
+            <summary>
+            事件ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.Name">
+            <summary>
+            事件名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.EventType">
+            <summary>
+            事件类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.ID">
+            <summary>
+            事件ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.CommunityID">
+            <summary>
+            社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.CommunityName">
+            <summary>
+            社区名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.Name">
+            <summary>
+            事件名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.HappenDate">
+            <summary>
+            发生日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.EventType">
+            <summary>
+            事件类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.Area">
+            <summary>
+            事件地点
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.Content">
+            <summary>
+            事件内容
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.IsSendMessage">
+            <summary>
+            是否发送短信
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.UserMemberID">
+            <summary>
+            短信通知用户组ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.UserMemberName">
+            <summary>
+            用户组名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.ID">
+            <summary>
+            家庭人员ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PopulationID">
+            <summary>
+            网格登记表ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PopulationCode">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PersonName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.CardNo">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Nation">
+            <summary>
+            民族
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.BirthDate">
+            <summary>
+            出生日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PoliticalStatus">
+            <summary>
+            政治面貌
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Relation">
+            <summary>
+            关系
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.RegisteredResidence">
+            <summary>
+            户口类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.NativePlace">
+            <summary>
+            籍贯
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PeopleType">
+            <summary>
+            民生类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Culture">
+            <summary>
+            文化程度
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Marriage">
+            <summary>
+            婚姻状况
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Rmks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.ID">
+            <summary>
+            活动ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.CommunityID">
+            <summary>
+            社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.CommunityName">
+            <summary>
+            社区名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.Subject">
+            <summary>
+            活动主题
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.ActivitiesDate">
+            <summary>
+            活动时间 
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.ActivitiesPlace">
+            <summary>
+            活动地点
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.JoinAmount">
+            <summary>
+            应参加人数
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.RealAmount">
+            <summary>
+            实际参加人数
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.LeaveAmount">
+            <summary>
+            请假人数
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.Form">
+            <summary>
+            活动形式
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.Content">
+            <summary>
+            活动内容
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.FamilyID">
+            <summary>
+            家庭人员ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.PersonName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.CardNo">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.PartyType">
+            <summary>
+            党员类别
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.JoinDate">
+            <summary>
+            入党时间 
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.PartyFrom">
+            <summary>
+            所属党支部 
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.Duties">
+            <summary>
+            职务
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.IsFlow">
+            <summary>
+            是否流动党员
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.ID">
+            <summary>
+            网格登记表ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Code">
+            <summary>
+            社区编号
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.CommunityID">
+            <summary>
+            社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.CommunityName">
+            <summary>
+            社区名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Type">
+            <summary>
+            家庭类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Address">
+            <summary>
+            家庭地址
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Phone">
+            <summary>
+            家庭电话
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Content">
+            <summary>
+            家庭情况
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.ID">
+            <summary>
+            消息ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.AlertID">
+            <summary>
+            所属通知ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.Content">
+            <summary>
+            通知内容
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.Url">
+            <summary>
+            通知转向URL
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.NoticeUserID">
+            <summary>
+            接收消息人ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.NoticeUserName">
+            <summary>
+            接收人
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.IsConsult">
+            <summary>
+            是否查阅
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.ConsultDate">
+            <summary>
+            查阅日期
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertViewModel.ID">
+            <summary>
+            通知ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertViewModel.Content">
+            <summary>
+            通知内容
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.AlertViewModel.Url">
+            <summary>
+            通知转向URL
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.BasicViewModel.Name">
@@ -594,6 +2403,91 @@
             允许上传的附件最大值
             </summary>
         </member>
+        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.ID">
+            <summary>
+            社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.Name">
+            <summary>
+            社区名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.ParentId">
+            <summary>
+            父社区ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.ID">
+            <summary>
+            字典详细值ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryID">
+            <summary>
+            字典ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryCode">
+            <summary>
+            字典代码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryText">
+            <summary>
+            字典名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.Value">
+            <summary>
+            字典实际值
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.ID">
+            <summary>
+            字典ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.Code">
+            <summary>
+            字典代码
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.Text">
+            <summary>
+            字典名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileID">
+            <summary>
+            文件ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.FilePath">
+            <summary>
+            附件路径
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileSize">
+            <summary>
+            附件大小
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.UploadPerson">
+            <summary>
+            上传人名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.UploadDate">
+            <summary>
+            日期
+            </summary>
+        </member>
         <member name="P:PartyManage.ViewModels.System.LogViewModel.ID">
             <summary>
             日志ID
@@ -617,6 +2511,81 @@
         <member name="P:PartyManage.ViewModels.System.LogViewModel.LogType">
             <summary>
             日志类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.ID">
+            <summary>
+            菜单ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.MenuType">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.ParentID">
+            <summary>
+            父菜单ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.Icon">
+            <summary>
+            菜单图标
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.order_no">
+            <summary>
+            排序编号
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.Url">
+            <summary>
+            菜单对应URL
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.FileID">
+            <summary>
+            菜单对应的附件id
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberID">
+            <summary>
+            用户组ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberName">
+            <summary>
+            用户组名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberViewModel.ID">
+            <summary>
+            用户组ID
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.UserMemberViewModel.Name">
+            <summary>
+            用户组名称
             </summary>
         </member>
         <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXJavascript">

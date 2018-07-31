@@ -1,0 +1,26 @@
+<div *ngIf="state === 'waiting'" class="waiting">
+    <div class="circle">
+        <div class="dot" [style.background-color]="dotColor"></div>
+    </div>
+    <div class="circle">
+        <div class="dot" [style.background-color]="dotColor"></div>
+    </div>
+    <div class="circle">
+        <div class="dot" [style.background-color]="dotColor"></div>
+    </div>
+    <div class="circle">
+        <div class="dot" [style.background-color]="dotColor"></div>
+    </div>
+    <div class="circle">
+        <div class="dot" [style.background-color]="dotColor"></div>
+    </div>
+</div>
+<svg *ngIf="state === 'failed'" class="fail" viewBox="0 0 12 12">
+    <polygon points="12,1.2 10.8,0 6,4.8 1.2,0 0,1.2 4.8,6 0,10.8 1.2,12 6,7.2 10.8,12 12,10.8 7.2,6 "></polygon>
+</svg>
+<svg *ngIf="state === 'success'" class="success" viewBox="130 130 774 774">
+    <path d="M384 690l452-452 60 60-512 512-238-238 60-60z"></path>
+</svg>
+<div class="text" *ngIf="state !== 'hidden'">
+    <ng-content></ng-content>
+</div>

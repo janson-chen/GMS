@@ -1,5 +1,5 @@
 import { ErrorHandler, NgModule } from "@angular/core";
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, PreloadAllModules } from "@angular/router";
@@ -13,9 +13,10 @@ import { HomeComponent } from "./home/home.component";
 import { environment } from "environments/environment";
 import { APP_RESOLVER_PROVIDERS } from "./app.resolver";
 import { AppService } from "./app.service";
-import { UserService } from "./shared/components/core/user.service";
+import { UserService } from "./shared/services/user.service";
 import { ErrorsHandler } from "./shared/services/errors-handler";
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { AuthGuard } from "./shared/services/auth-guard.service";
 import "../styles/styles.scss";
 
 const APP_PROVIDERS = [
@@ -31,7 +32,8 @@ const APP_PROVIDERS = [
     useClass: ErrorsHandler
   },
   UserService,
-  ToastrService
+  ToastrService,
+  AuthGuard
 ];
 
 @NgModule({
@@ -42,7 +44,6 @@ const APP_PROVIDERS = [
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
     SharedModule,
     NgbModule.forRoot(),
     ToastrModule.forRoot(),

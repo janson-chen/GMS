@@ -1,0 +1,70 @@
+@import "functions";
+@import "mixins";
+@import "variables";
+
+%title-controls {
+    h1, h4 {
+        font: 30px "zeiss";
+        width: $content-width;
+        margin: 0 auto;
+        padding: 90px 0 50px 0;
+        color: $ca-black;
+    }
+}
+
+%menu-icon {
+    @include size(30px);
+    display: inline-block;
+    background: no-repeat center;
+    background-size: 23px;
+    margin: 0 5px;
+}
+
+%item-container {
+    display: block;
+    padding-bottom: 20px;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        width: 100%;
+        justify-content: left;
+
+        .item {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .create {
+        display: flex;
+        border: 0;
+        overflow: hidden;
+        background-color: #efefef;
+        background-clip: padding-box;
+        transition: background-color $transition-effect;
+
+        &:hover {
+            background-color: $gray-background;
+        }
+
+        .cross {
+            @include size(66px);
+            border-radius: 58px;
+            background: #dddddd url(asset("images/iconfont/add.svg")) center no-repeat;
+            background-size: 40%;
+            transform: rotate(45deg);
+        }
+
+        .text {
+            font-family: zeissbold;
+            font-size: 16px;
+        }
+    }
+
+    ca-paginator {
+        margin-top: 20px;
+    }
+}

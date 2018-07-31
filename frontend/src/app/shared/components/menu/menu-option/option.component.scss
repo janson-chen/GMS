@@ -1,11 +1,21 @@
 :host {
-    display: block;
-    padding: 20px 0;
+  display: block;
+  padding: 20px 0;
+  position: relative;
 }
 
 .sub-menu-options {
+  display: block;
 
-    gm-menu-option {
-        padding: 10px 0;
+  gm-menu-option {
+    padding: 20px 0;
+    width: 160px;
+
+    &:hover {
+      background: #17232f;
     }
+  }
+
+  position: absolute;
+  background: #2C3E50;
 }

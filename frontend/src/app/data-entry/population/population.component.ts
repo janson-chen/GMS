@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 
 @Component({
-  selector: 'gm--population',
+  selector: 'gm-population',
   templateUrl: './population.component.html',
   styleUrls: ['./population.component.scss']
 })

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/failed</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10,-5.68434189e-14 C4.46666667,-5.68434189e-14 0,4.46666667 0,10 C0,15.5333333 4.46666667,20 10,20 C15.5333333,20 20,15.5333333 20,10 C20,4.46666667 15.5333333,-5.68434189e-14 10,-5.68434189e-14 Z M11.1555556,14.5777778 L8.84444444,14.5777778 L8.84444444,8.88888889 L11.1333333,8.88888889 L11.1333333,14.5777778 L11.1555556,14.5777778 Z M10,7.93333333 C9.31111111,7.93333333 8.73333333,7.37777778 8.73333333,6.66666667 C8.73333333,5.97777778 9.28888889,5.4 10,5.4 C10.6888889,5.4 11.2666667,5.95555556 11.2666667,6.66666667 C11.2666667,7.37777778 10.6888889,7.93333333 10,7.93333333 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Build-Status-failed-Copy" transform="translate(-116.000000, -1011.000000)">
+            <g id="build-status" transform="translate(0.000000, 973.000000)">
+                <g id="Icon/Alert" transform="translate(116.000000, 38.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Shape" fill-rule="nonzero" transform="translate(10.000000, 10.000000) scale(-1, 1) rotate(180.000000) translate(-10.000000, -10.000000) "></g>
+                    <g id="color/red-error" mask="url(#mask-2)" fill="#FF1A00" fill-rule="evenodd">
+                        <rect x="0" y="0" width="20" height="20"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

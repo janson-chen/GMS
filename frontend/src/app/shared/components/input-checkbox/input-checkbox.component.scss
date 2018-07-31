@@ -1,0 +1,69 @@
+@import "../../../../styles/shared-styles";
+
+:host.is-invalid {
+    // TODO: Make label also red when invalid.
+
+    rect.border {
+        fill: $form-feedback-invalid-color !important;
+    }
+}
+
+:host.is-valid {
+    // TODO: Make label also green when valid.
+
+    rect.border {
+        fill: $form-feedback-valid-color !important;
+    }
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+svg {
+    cursor: pointer;
+
+    g {
+        transition: opacity $transition-effect;
+
+        > * {
+            fill: $ca-blue;
+        }
+    }
+}
+
+label {
+    margin: 0 0 0 4px;
+    line-height: $radio-diameter;
+    font-size: 0.9rem;
+}
+
+.tick {
+    svg {
+        .border,
+        .background {
+            fill: $ca-black;
+        }
+    }
+
+    label {
+        color: $ca-blue;
+    }
+}
+
+.rect {
+    svg {
+        .border {
+            fill: $app-font-color;
+        }
+
+        .background {
+            fill: white;
+        }
+    }
+
+    label {
+        color: $ca-black;
+    }
+}

@@ -1,0 +1,8 @@
+<div [class]="'wrapper ' + theme">
+    <button type="button" #dropdownButton [id]="uuid" [ngClass]="{'select': true, 'show': optionListOpened, 'select-disabled': !value }" (click)="toggleOptionList($event)" [disabled]="disabled">
+        {{ selectedOptionText }}
+    </button>
+</div>
+<div #optionList [class]="'options ' + theme" *ngIf="optionListOpened">
+    <ng-content></ng-content>
+</div>

@@ -10,51 +10,39 @@ export interface MenuData {
 export const MENUS = {
   data: [
       {
-          key: "菜单一",
-          value: "",
+          key: "数据录入",
+          value: "/entry",
           children: [
               {
-                  key: "菜单一/子菜单一",
-                  value: "",
+                  key: "人口信息表",
+                  value: "/population",
                   children: []
               },
               {
-                  key: "菜单一/子菜单二",
-                  value: "",
+                  key: "安全隐患排查表",
+                  value: "/risk",
                   children: []
-              }
+              },
+             {
+                  key: "党建活动表",
+                  value: "/party",
+                  children: []
+              },
+
           ]
       },
       {
-          key: "菜单二",
+          key: "数据统计",
           value: "",
           children: [
-              {
-                  key: "菜单二/子菜单一",
-                  value: "",
-                  children: []
-              },
-              {
-                  key: "菜单二/子菜单二",
-                  value: "",
-                  children: []
-              }
+
           ]
       },
       {
-          key: "菜单三",
-          value: "",
+          key: "系统设置",
+          value: "/settings",
           children: [
-              {
-                  key: "菜单三/子菜单一",
-                  value: "",
-                  children: []
-              },
-              {
-                  key: "菜单三/子菜单二",
-                  value: "",
-                  children: []
-              }
+
           ]
       }
   ]

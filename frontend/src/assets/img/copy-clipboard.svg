@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="17px" viewBox="0 0 14 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/ copy@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M13.989611,15.53564 L13.989611,14.2450692 L15.4227385,14.2450692 L15.4227385,3.92050312 L7.85096079,3.92050312 L7.85096079,5.39985986 L6.613803,5.39985986 L6.613803,3.52993236 C6.613803,3.03287609 7.01674673,2.62993236 7.513803,2.62993236 L15.7598963,2.62993236 C16.2569526,2.62993236 16.6598963,3.03287609 16.6598963,3.52993236 L16.6598963,14.63564 C16.6598963,15.1326963 16.2569526,15.53564 15.7598963,15.53564 L13.989611,15.53564 Z" id="path-1"></path>
+        <path d="M3.9,6.09429238 L12.1460933,6.09429238 C12.6431496,6.09429238 13.0460933,6.49723611 13.0460933,6.99429238 L13.0460933,18.1 C13.0460933,18.5970563 12.6431496,19 12.1460933,19 L3.9,19 C3.40294373,19 3,18.5970563 3,18.1 L3,6.99429238 C3,6.49723611 3.40294373,6.09429238 3.9,6.09429238 Z M4.23715778,7.38486315 L4.23715778,17.7094292 L11.8089355,17.7094292 L11.8089355,7.38486315 L4.23715778,7.38486315 Z" id="path-3"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Module-Code-+-git" transform="translate(-363.000000, -143.000000)">
+            <g id="Group-7" transform="translate(183.000000, 132.000000)">
+                <g id="Icon/-copy" transform="translate(177.000000, 9.000000)">
+                    <g id="Group">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Combined-Shape-Copy" fill="#FFFFFF" xlink:href="#path-1"></use>
+                        <g id="color/black" mask="url(#mask-2)" fill="#000000">
+                            <g id="Rectangle">
+                                <rect x="0" y="0" width="20" height="20"></rect>
+                            </g>
+                        </g>
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="Combined-Shape-Copy" fill="#FFFFFF" xlink:href="#path-3"></use>
+                        <g id="color/black" mask="url(#mask-4)" fill="#000000">
+                            <g id="Rectangle">
+                                <rect x="0" y="0" width="20" height="20"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

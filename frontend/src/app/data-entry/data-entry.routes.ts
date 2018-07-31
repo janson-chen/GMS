@@ -2,7 +2,6 @@ import { Routes } from "@angular/router";
 import { PopulationComponent } from "./population/population.component";
 import { RiskChecklistComponent } from "./risk-checklist/risk-checklist.component";
 import { PartyBuildComponent } from "./party-build/party-build.component";
-import { NoContentComponent } from "../no-content/no-content.component";
 import { DataEntryComponent } from "./data-entry.component";
 
 export const dataEntryRoutes:Routes = [

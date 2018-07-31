@@ -9,7 +9,9 @@ import { LoginComponent } from "../login/login.component";
 import { TableComponent } from "./components/table/table.component";
 import { SearchBarComponent } from "./components/search-bar/search-bar.component";
 import { ModalContainerComponent } from "./components/modal-container/modal-container.component";
-import { FormBaseComponent } from "./components/form-base/form-base.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
+import { OptionComponent } from "./components/ca-select/option.component";
+import { SelectComponent } from "./components/ca-select/select.component";
 
 export const COMPONENTS = [
     NoContentComponent,
@@ -22,6 +24,8 @@ export const COMPONENTS = [
     LoginComponent,
     TableComponent,
     SearchBarComponent,
-    FormBaseComponent,
-    ModalContainerComponent
+    ModalContainerComponent,
+    SpinnerComponent,
+    OptionComponent,
+    SelectComponent
 ];

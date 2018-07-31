@@ -5,13 +5,16 @@ import { DIRECTIVES } from "./directives";
 import { PIPES } from "./pipes";
 import { DataService } from "./services/data.service";
 import { OptionComponent } from './components/menu/option/option.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppService } from "../app.service";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        NgbModule
     ],
     declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
     exports: [...COMPONENTS, ...DIRECTIVES, ...PIPES],

@@ -1,0 +1,26 @@
+@import "../../../../styles/shared-styles";
+
+:host {
+    display: flex;
+}
+
+.radio {
+    display: inline-block;
+    border-radius: 50%;
+    width: $radio-diameter;
+    height: $radio-diameter;
+    background-color: $ca-black;
+    cursor: pointer;
+
+    svg {
+        display: block;
+        fill: $ca-blue;
+        transition: opacity $transition-effect;
+    }
+}
+
+label {
+    margin-left: 4px;
+    line-height: $radio-diameter;
+    font-size: 0.9rem;
+}

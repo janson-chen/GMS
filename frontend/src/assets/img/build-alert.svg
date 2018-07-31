@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Alert</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10,-5.68434189e-14 C4.46666667,-5.68434189e-14 0,4.46666667 0,10 C0,15.5333333 4.46666667,20 10,20 C15.5333333,20 20,15.5333333 20,10 C20,4.46666667 15.5333333,-5.68434189e-14 10,-5.68434189e-14 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Build-Status-not-runnable-Copy" transform="translate(-116.000000, -1011.000000)">
+            <g id="build-status" transform="translate(0.000000, 973.000000)">
+                <g id="Icon/Infonumber" transform="translate(116.000000, 38.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Shape" fill-rule="nonzero" transform="translate(10.000000, 10.000000) scale(-1, 1) rotate(180.000000) translate(-10.000000, -10.000000) "></g>
+                    <g id="color/arivis/orange" mask="url(#mask-2)" fill="#FFB500" fill-rule="evenodd">
+                        <rect x="0" y="0" width="20" height="20"></rect>
+                    </g>
+                    <g id="Group" stroke-width="1" fill-rule="evenodd" mask="url(#mask-2)" fill="#2B2E30">
+                        <g transform="translate(8.000000, 5.000000)" id="Path">
+                            <polygon points="3.15555556 9.8 0.844444444 9.8 0.844444444 4.11111111 3.13333333 4.11111111 3.13333333 9.8"></polygon>
+                            <path d="M2,3.13333333 C1.31111111,3.13333333 0.733333333,2.57777778 0.733333333,1.86666667 C0.733333333,1.17777778 1.28888889,0.6 2,0.6 C2.68888889,0.6 3.26666667,1.15555556 3.26666667,1.86666667 C3.26666667,2.57777778 2.68888889,3.13333333 2,3.13333333 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

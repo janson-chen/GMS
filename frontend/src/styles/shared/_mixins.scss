@@ -1,0 +1,89 @@
+@import "~bootstrap/scss/mixins";
+@import "functions";
+@import "variables";
+@import "~fs-minipass";
+
+@mixin btn-close-modal($size: 32px, $padding: 0) {
+    @include size($size);
+    line-height: $size - $padding * 2;
+    padding: $padding;
+    font-family: "zeiss";
+    font-size: 26px;
+    color: #fff;
+    top: 30px;
+    right: 30px;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: none;
+    z-index: 100;
+
+    &:before {
+        content: "✕";
+        display: block;
+    }
+}
+
+@mixin success-tick($width: 18px, $color: #00cc52, $round: false, $border: false) {
+    position: relative;
+    margin: 40px auto;
+
+    &:before,
+    &:after {
+        content: "";
+        width: $width;
+        background: $color;
+        display: block;
+        position: absolute;
+    }
+
+    &:before {
+        height: 41px;
+        transform: Rotate(135deg);
+        left: $width / 3 * 2;
+        top: 31px;
+
+        @if $round {
+            border-radius: 0 0 $width / 2 $width / 2;
+        }
+    }
+
+    &:after {
+        height: 88px;
+        transform: Rotate(45deg);
+        left: 50px;
+        top: -4px;
+
+        @if $round {
+            border-radius: $width / 2;
+        }
+    }
+}
+
+@mixin center-background($color: null, $url: null) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @if ($color) {
+        background-color: $color;
+    }
+    @if ($url) {
+        background-image: url(asset($url));
+    }
+}
+
+@mixin material-text() {
+    padding: 0;
+    height: 40px;
+    box-shadow: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    &:focus {
+        box-shadow: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+}

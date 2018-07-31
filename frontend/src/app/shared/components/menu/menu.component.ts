@@ -18,4 +18,6 @@ export class MenuComponent extends CoreComponent<MenuData[]> implements OnInit {
     this.data = MENUS.data;
   }
 
+
+
 }

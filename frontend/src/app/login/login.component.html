@@ -1,6 +1,6 @@
 <div class="login-box">
     <div class="login-panel">
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <form [formGroup]="formGroup" (ngSubmit)="submitData()" novalidate>
             <div class="form-panel">
                 <div class="title">
                     <h3>党群管理系统</h3>
@@ -12,7 +12,7 @@
                     <input type="password" name="password" class="form-control" formControlName="password" placeholder="密码">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="form-control btn btn-primary">登录</button>
+                    <button class="form-control btn btn-primary">登录</button>
                 </div>
             </div>
         </form>

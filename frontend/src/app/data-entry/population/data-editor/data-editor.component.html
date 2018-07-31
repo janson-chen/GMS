@@ -1,3 +1,22 @@
-<p>
-  data-editor works!
-</p>
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <input type="text" class="form-control" id="title" placeholder="Title" formControlName="title" caValidityClass required/>
+    <small *ngIf="formGroup.get('title').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('title').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('title').dirty && formGroup.get('title').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="modal-buttons">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">Failed to save your changes.</ng-container>
+</ca-spinner>

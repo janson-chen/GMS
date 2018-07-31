@@ -27,6 +27,7 @@ export class ErrorsHandler implements ErrorHandler {
       router.navigate(['/error'], { queryParams: {error: error} });
     }*/
     // Log the error anyway
+    console.error(error);
     this.toastService = <ToastrService>this.injector.get(ToastrService);
 
     this.toastService.error(error.message, "Error massage");

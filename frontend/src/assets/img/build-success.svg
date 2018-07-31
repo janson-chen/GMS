@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="15px" viewBox="0 0 20 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Success</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M16.8938911,2.9868252 C17.4534521,2.37593814 18.4022877,2.33433014 19.0131748,2.89389113 C19.6240619,3.45345212 19.6656699,4.40228774 19.1061089,5.0131748 L8.66670419,16.4101402 C8.13260733,16.9932274 7.23759342,17.0615734 6.62115303,16.5663448 L1.06055771,12.0991391 C0.414727302,11.5802994 0.311780948,10.6361478 0.830620597,9.99031738 C1.34946025,9.34448697 2.29361188,9.24154061 2.93944229,9.76038026 L7.40406236,13.3471143 L16.8938911,2.9868252 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Build-Status-success-Copy" transform="translate(-116.000000, -1013.000000)">
+            <g id="build-status" transform="translate(0.000000, 973.000000)">
+                <g id="Icon/Success" transform="translate(116.000000, 38.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Path-13" fill-rule="nonzero"></g>
+                    <g id="color/green" mask="url(#mask-2)" fill="#1FD08C" fill-rule="evenodd">
+                        <rect id="color/arivis/green" x="0" y="0" width="20" height="20"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

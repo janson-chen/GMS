@@ -1,4 +1,4 @@
 <div class="cell-bar">{{ data?.key }}</div>
 <div class="sub-menu-options" *ngIf="showChildren">
-    <gm-menu-option *ngFor="let option of children" [data]="option" [@menuState]="state"></gm-menu-option>
+    <gm-menu-option *ngFor="let option of children" (subClickedTrigger)="closeSubmenus()" [parentValue]="data?.value" [data]="option" [@menuState]="state"></gm-menu-option>
 </div>

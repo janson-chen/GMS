@@ -1,0 +1,17 @@
+@import "./select-lib";
+
+:host {
+    display: block;
+    height: 36px;
+
+    &[disabled] .option {
+        background-color: #c8c8c8;
+        color: $placeholder-color;
+        cursor: not-allowed;
+    }
+}
+
+.option {
+    @include select-button;
+    display: block;
+}

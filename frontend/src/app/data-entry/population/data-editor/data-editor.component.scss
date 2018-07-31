@@ -1,0 +1,43 @@
+.form-control {
+  margin: 0;
+}
+
+.btn-group {
+  position: relative;
+  display: flex;
+
+  .upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    transform: scale(calc(33 / 36));
+  }
+}
+
+label {
+  margin-bottom: 0;
+}
+
+ca-select {
+  padding: 0;
+}
+
+.exist-item {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+

@@ -1,0 +1,123 @@
+@import "./select-lib";
+
+:host {
+    display: block;
+    height: 36px;
+    border: solid 1px $filter-border;
+}
+
+.wrapper {
+    position: relative;
+    padding: 0;
+
+    .select {
+        @include select-button;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &.select-disabled {
+            color: #a3a4a5;
+        }
+
+        span {
+            display: block;
+
+            &.disabled-selected {
+                color: $placeholder-color;
+            }
+        }
+
+        background: url(("~assets/img/select_arrow_down.svg")) no-repeat calc(100% - 10px);
+
+        &.show {
+            background: url(("~assets/img/select_arrow_up.svg")) no-repeat calc(100% - 10px);
+        }
+
+        background-size: 20px !important;
+    }
+}
+
+.options {
+    box-sizing: content-box;
+    border: 1px $filter-border solid;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    max-height: 216px;
+}
+
+::ng-deep {
+    .option-container {
+        ngb-modal-window {
+            z-index: 1501;
+        }
+    }
+
+    .ca-select-modal {
+        overflow: visible !important;
+
+        .modal-dialog {
+            margin: 0;
+        }
+
+        .modal-content {
+            border: none;
+            background-color: transparent;
+        }
+
+        .options {
+            position: fixed;
+            background-color: white;
+        }
+    }
+}
+
+/* theme */
+.wrapper {
+    &.light .select {
+        background-color: #fff;
+    }
+
+    &.cadetblue .select {
+        background-color: #e7f0f3;
+    }
+}
+
+.options {
+    &.light ::ng-deep ca-option {
+        .option {
+            background-color: white;
+
+            &:hover {
+                background-color: #e6e6e6;
+            }
+
+            &.selected {
+                background-color: #d6d6d6;
+            }
+        }
+
+        &[disabled] .option:hover:not(.selected) {
+            background-color: white;
+        }
+    }
+
+    &.cadetblue ::ng-deep ca-option {
+        .option {
+            background-color: #d3e0e3;
+
+            &:hover {
+                background-color: #29c4f4;
+            }
+
+            &.selected {
+                background-color: #e7f0f3;
+            }
+        }
+
+        &[disabled] .option:hover:not(.selected) {
+            background-color: #d3e0e3;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="32px" viewBox="0 0 19 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow left_modules</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Teaser_Landing_ScreenDesign_LoggedIn-" transform="translate(-137.000000, -939.000000)" fill="#BCBDBC" fill-rule="nonzero">
+            <g id="newest-modules" transform="translate(0.000000, 613.000000)">
+                <g id="arrows" transform="translate(137.000000, 326.000000)">
+                    <g id="arrow-left_modules" transform="translate(9.500000, 16.000000) rotate(-360.000000) translate(-9.500000, -16.000000) ">
+                        <path d="M17.6207068,16.7317882 C17.534765,16.9222125 17.4135556,17.1006018 17.2570787,17.2570787 L3.0348565,31.4793009 C2.34059109,32.1735664 1.21496446,32.1735664 0.520699056,31.4793009 C-0.173566352,30.7850355 -0.173566352,29.6594089 0.520699056,28.9651435 L14.2937098,15.1921327 L0.601582991,3.11084431 C-0.134637475,2.46123802 -0.204852135,1.33780346 0.444754159,0.601582991 C1.09436045,-0.134637475 2.21779501,-0.204852135 2.95401548,0.444754159 L18.0651266,13.7780875 C18.8013471,14.4276938 18.8715617,15.5511283 18.2219554,16.2873488 C18.0495491,16.4827426 17.8437674,16.6312244 17.6207068,16.7317882 Z" id="Combined-Shape" transform="translate(9.333355, 16.000000) scale(-1, 1) translate(-9.333355, -16.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

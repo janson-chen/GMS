@@ -1,8 +1,10 @@
-@import "variables";
-@import "theme";
+@import "shared/variables";
 
 a {
   text-decoration: none;
   color: #007DCC;
 }
 
+app-login {
+  margin: 0 auto;
+}

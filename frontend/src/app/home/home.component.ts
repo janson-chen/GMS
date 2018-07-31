@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { UserService } from "../shared/components/core/user.service";
+import { UserService } from "../shared/services/user.service";
 
 @Component({
   selector: "gm-home",
@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   constructor (private userService: UserService) {
 
   }
+
   get isLoggedIn() {
     return this.userService.isLoggedIn;
   };
