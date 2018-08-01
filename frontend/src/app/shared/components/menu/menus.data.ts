@@ -58,17 +58,17 @@ export const MENUS = {
       children: [
         {
           key: "社区管理",
-          value: "/population",
+          value: "/community",
           children: []
         },
         {
           key: "用户管理",
-          value: "/risk",
+          value: "/users",
           children: []
         },
         {
           key: "菜单管理",
-          value: "/party",
+          value: "/menus",
           children: []
         },
         {

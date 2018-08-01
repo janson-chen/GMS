@@ -4,7 +4,7 @@ import { ToastrService } from "ngx-toastr";
 import { UserService } from "../shared/services/user.service";
 import { FormBuilder } from "@angular/forms";
 import { FormComponent } from "../shared/components/core/form-component";
-import { UserInfo } from "../shared/components/core/core.data";
+import { UserInfo } from "../settings/user-manager/user.data";
 
 @Component({
   selector: 'app-login',

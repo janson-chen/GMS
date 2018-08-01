@@ -36,7 +36,6 @@ export class MenuOptionComponent extends CoreComponent<MenuData> implements OnIn
   @HostListener("mouseover")
   onMouseOver() {
     this.showChildren = true;
-    // this.render.setStyle(this.elementRef.nativeElement, "background", "#ccc");
   }
 
 
@@ -56,7 +55,7 @@ export class MenuOptionComponent extends CoreComponent<MenuData> implements OnIn
     this.children = this.data.children;
     const hostMenu = this.elementRef.nativeElement;
     const subMenuPanel = document.querySelector(".sub-menu-options");
-    console.log("width", hostMenu.getBoundingClientRect());
+
     if (subMenuPanel) {
       this.render.setStyle(subMenuPanel, "left", "160px");
       this.render.setStyle(subMenuPanel, "top", "0px");

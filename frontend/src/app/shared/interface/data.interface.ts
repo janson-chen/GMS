@@ -1,7 +1,7 @@
 export interface DataInterface<T> {
     getById: (id: string) => Promise<T>;
     getList: (queryOptions: QueryOptions) => Promise<T[]>;
-    update: (args: T) => Promise<T>;
+    update: (args: T) => void;
     add: (args: T) => Promise<T>;
 }
 

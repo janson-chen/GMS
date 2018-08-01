@@ -12,6 +12,7 @@ import { ModalContainerComponent } from "./components/modal-container/modal-cont
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { OptionComponent } from "./components/ca-select/option.component";
 import { SelectComponent } from "./components/ca-select/select.component";
+import { TableHeaderComponent } from "./components/table/table-header/table-header.component";
 
 export const COMPONENTS = [
     NoContentComponent,
@@ -27,5 +28,6 @@ export const COMPONENTS = [
     ModalContainerComponent,
     SpinnerComponent,
     OptionComponent,
-    SelectComponent
+    SelectComponent,
+    TableHeaderComponent
 ];

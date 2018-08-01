@@ -1,13 +1,14 @@
 <header>
   <h3>用户列表</h3>
-  <button (click)="openModal(populationModal)">创建用户</button>
+  <button (click)="openModal(userManagerModal)">创建用户</button>
 </header>
 <div class="search-panel">
   <gm-search-bar></gm-search-bar>
 </div>
-<gm-table></gm-table>
+<gm-table [columns]="columns"></gm-table>
 
-<ng-template #populationModal let-close="close" let-dismiss="dismiss">
+<ng-template #userManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss">
+    <gm-user-create></gm-user-create>
   </gm-modal-container>
 </ng-template>

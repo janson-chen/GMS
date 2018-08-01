@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { LoginData, UserInfo } from "../components/core/core.data";
+import { LoginData } from "../components/core/core.data";
 import { environment } from "../../../environments/environment";
 import { Router } from "@angular/router";
+import { UserInfo } from "../../settings/user-manager/user.data";
 
 @Injectable()
 export class UserService {

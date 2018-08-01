@@ -3,6 +3,7 @@ import { FormComponent } from "../../../shared/components/core/form-component";
 import { FormBuilder } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "../../../shared/services/user.service";
+import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.data";
 
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from "../../../shared/services/user.service";
   styleUrls: ["./data-editor.component.scss"]
 })
 export class PopulationDataEditorComponent extends FormComponent<any> implements OnInit {
-  @Input() close: (result: any) => void;
+  columns = POPULATION_TABLE_COLUMES;
 
   constructor(protected userService: UserService, protected fb: FormBuilder, protected toastService: ToastrService) {
     super(userService, fb, toastService);

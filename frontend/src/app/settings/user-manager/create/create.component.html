@@ -1,0 +1,46 @@
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <input type="text" class="form-control" id="userName" placeholder="user name" formControlName="userName" caValidityClass required/>
+    <small *ngIf="formGroup.get('userName').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('userName').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('userName').dirty && formGroup.get('userName').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="password" placeholder="password" formControlName="password" caValidityClass required/>
+    <small *ngIf="formGroup.get('password').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('password').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('password').dirty && formGroup.get('password').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" placeholder="name" formControlName="name" caValidityClass required/>
+    <small *ngIf="formGroup.get('name').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('name').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="modal-buttons">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">Failed to save your changes.</ng-container>
+</ca-spinner>

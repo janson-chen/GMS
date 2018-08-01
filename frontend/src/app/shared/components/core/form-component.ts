@@ -1,4 +1,4 @@
-import { EventEmitter, Output } from "@angular/core";
+import { EventEmitter, Input, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { SpinnerState } from "../../components/spinner/spinner.component";
@@ -7,39 +7,42 @@ import { ToastrService } from "ngx-toastr";
 import { UserService } from "../../services/user.service";
 
 export class FormComponent<UserInfo> extends CoreComponent<UserInfo> {
-    @Output() submitting: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output() submitted: EventEmitter<any> = new EventEmitter<any>();
-    successMessageTimeoutInSeconds: number = 3;
-    formGroup: FormGroup;
-    spinnerState: SpinnerState = "waiting";
-    private isSubmitted_: boolean = false;
-    private isSubmitting_: boolean = false;
+  @Input() close: (result: any) => void;
+  @Output() submitting: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() submitted: EventEmitter<any> = new EventEmitter<any>();
+  successMessageTimeoutInSeconds: number = 3;
+  formGroup: FormGroup;
+  spinnerState: SpinnerState = "waiting";
+  private isSubmitted_: boolean = false;
+  private isSubmitting_: boolean = false;
 
-    constructor(protected userService: UserService, protected fb: FormBuilder, protected toastService: ToastrService) {
-      super();
-    }
+  constructor(protected userService: UserService, protected fb: FormBuilder, protected toastService: ToastrService) {
+    super();
+  }
 
-    get isSubmitting(): boolean {
-        return this.isSubmitting_;
-    }
-    set isSubmitting(value: boolean) {
-        this.isSubmitting_ = value;
-        this.submitting.emit(value);
-    }
+  get isSubmitting(): boolean {
+    return this.isSubmitting_;
+  }
 
-    get isSubmitted(): boolean {
-        return this.isSubmitted_;
-    }
-    set isSubmitted(value: boolean) {
-        this.isSubmitted_ = value;
-        this.submitted.emit(this.data);
+  set isSubmitting(value: boolean) {
+    this.isSubmitting_ = value;
+    this.submitting.emit(value);
+  }
 
-        if (value) {
-            this.spinnerState = "success";
-        }
-    }
+  get isSubmitted(): boolean {
+    return this.isSubmitted_;
+  }
 
-    getControl(name: string) {
-        return name && this.formGroup ? this.formGroup.get(name) : null;
+  set isSubmitted(value: boolean) {
+    this.isSubmitted_ = value;
+    this.submitted.emit(this.data);
+
+    if (value) {
+      this.spinnerState = "success";
     }
+  }
+
+  getControl(name: string) {
+    return name && this.formGroup ? this.formGroup.get(name) : null;
+  }
 }

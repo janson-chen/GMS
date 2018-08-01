@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreComponent } from "../core/core.component";
-import { UserInfo } from "../core/core.data";
 import { UserService } from "../../services/user.service";
+import { UserInfo } from "../../../settings/user-manager/user.data";
 
 @Component({
   selector: 'gm-header',
