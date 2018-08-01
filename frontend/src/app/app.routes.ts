@@ -19,6 +19,10 @@ export const ROUTES: Routes = [
     path: "entry",
     loadChildren: "./data-entry/data-entry.module#DataEntryModule"
   },
+  {
+    path: "settings",
+    loadChildren: "./settings/settings.module#SettingsModule"
+  },
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**", component: NoContentComponent}
 ];
