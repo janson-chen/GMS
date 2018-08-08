@@ -13,6 +13,7 @@ export class FormComponent<UserInfo> extends CoreComponent<UserInfo> {
   successMessageTimeoutInSeconds: number = 3;
   formGroup: FormGroup;
   spinnerState: SpinnerState = "waiting";
+
   private isSubmitted_: boolean = false;
   private isSubmitting_: boolean = false;
 

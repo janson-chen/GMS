@@ -13,15 +13,7 @@ export interface LoginData {
   rememberMe: boolean;
 }
 
-export const USER_MANAGER_TABLE_COLUMES = [
-  "用户名",
-  "登录名",
-  "所属社区",
-  "是否启用",
-  "登记人",
-  "登记时间",
-  "操作"
-];
+
 
 export const POPULATION_TABLE_COLUMES = [
   "姓名",

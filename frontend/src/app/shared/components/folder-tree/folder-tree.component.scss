@@ -1,0 +1,70 @@
+@import "../../../../../styles/shared-styles";
+
+ul {
+    padding-left: 20px;
+}
+
+:host {
+    text-align: left;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    &:before {
+        color: #f6dc74;
+        font-size: 1rem;
+        padding: 5px 5px 5px 0;
+        display: inline-block;
+        margin-right: -8px;
+    }
+}
+
+.icon-folded,
+.icon-expanded {
+    &:before {
+        color: #000;
+        font-size: 12px;
+        vertical-align: middle;
+        transform: scale(0.7);
+        padding: 6px 3px;
+        float: left;
+        margin-right: 0;
+    }
+}
+
+.icon-empty {
+    &:before {
+        visibility: hidden;
+    }
+}
+
+.icon- {
+    &folder {
+        vertical-align: middle;
+        margin-right: 4px;
+    }
+
+    label {
+        vertical-align: middle;
+    }
+
+    &file {
+        &:before {
+            color: #000;
+        }
+    }
+}
+
+.folder-title {
+    display: inline-block;
+    width: 100%;
+    border-radius: 3px;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &.selected {
+        border: 1px solid $ca-blue;
+        background: rgba(0, 120, 200, 0.2);
+    }
+}

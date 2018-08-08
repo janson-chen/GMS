@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { DataInterface } from "../interface/data.interface";
 import { QueryOptions } from "../interface/data.interface";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 
+export interface QueryOptions {
+
+}
+
 @Injectable()
-export class DataService<T> implements DataInterface<T> {
+export class DataService<T> {
     modelType: string = "";
 
     get endpoint() {
@@ -20,8 +23,9 @@ export class DataService<T> implements DataInterface<T> {
         return <Promise<T>>this.http.get(`${this.endpoint}/${id}`).toPromise();
     };
 
-    getList (queryOptions?:QueryOptions): Promise<T[]> {
-        return <Promise<T[]>>this.http.get(`${environment.baseUrl}${this.modelType}`).toPromise();
+    getList (url?: string, queryOptions?: QueryOptions): Promise<T[]> {
+        url = url ? url : "";
+        return <Promise<T[]>>this.http.get(`${environment.baseUrl}${this.modelType}${url}`, {}).toPromise();
     };
 
     update (model: T): void {

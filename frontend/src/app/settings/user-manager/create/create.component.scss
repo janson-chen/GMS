@@ -1,0 +1,20 @@
+:host {
+
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  label {
+    margin-right: 10px;
+  }
+
+  .form-control {
+    flex: 1;
+  }
+}
+
+.modal-buttons {
+  text-align: right;
+}

@@ -9,6 +9,8 @@ import { Injectable, Injector } from "@angular/core";
 import { Observable } from "rxjs";
 import { map, filter, tap } from 'rxjs/operators';
 import { ToastrService } from "ngx-toastr";
+import { UserService } from "./shared/services/user.service";
+import { Router } from "@angular/router";
 
 export interface InternalStateType {
   [key: string]: any;
@@ -18,7 +20,9 @@ export interface InternalStateType {
 export class AppService implements HttpInterceptor {
   isLogged: boolean = false;
   constructor(
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private userService: UserService,
+    private router: Router
   ) {
 
   }
@@ -31,11 +35,10 @@ export class AppService implements HttpInterceptor {
         }
       }, error => {
         console.log('NICE ERROR', error);
-        this.toastService.error(error.error);
-        if (error.status === 400) {
-          console.log(error.error[0]);
+        if (!document.cookie.includes("Identity.Application")) {
+          localStorage.clear();
+          this.router.navigate(["/login"]);
         }
-
         return false;
       })
     )

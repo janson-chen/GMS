@@ -1,0 +1,42 @@
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>社区名称</label>
+      <input type="text" class="form-control" id="name" placeholder="user name" formControlName="name" caValidityClass required/>
+    </div>
+    <small *ngIf="formGroup.get('name').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('name').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>父社区ID</label>
+      <ca-select formControlName="parentId">
+          <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
+      </ca-select>
+    </div>
+    <small *ngIf="formGroup.get('parentId').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('parentId').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('parentId').dirty && formGroup.get('parentId').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="modal-buttons">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">社区...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">社区创建成功! {{successMessageTimeoutInSeconds}} 秒后自动关闭窗口.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">社区创建失败！</ng-container>
+</ca-spinner>

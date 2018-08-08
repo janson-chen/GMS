@@ -1,20 +1,4 @@
-@import "../../../../styles/shared-styles";
-
-:host.is-invalid {
-    // TODO: Make label also red when invalid.
-
-    rect.border {
-        fill: $form-feedback-invalid-color !important;
-    }
-}
-
-:host.is-valid {
-    // TODO: Make label also green when valid.
-
-    rect.border {
-        fill: $form-feedback-valid-color !important;
-    }
-}
+@import "../../../../styles/lib";
 
 .wrapper {
     display: flex;
@@ -41,9 +25,13 @@ label {
 
 .tick {
     svg {
-        .border,
+        .border {
+          border: 1px solid #ccc;
+          fill: #fff;
+        }
+
         .background {
-            fill: $ca-black;
+            fill: #fff;
         }
     }
 
@@ -53,13 +41,15 @@ label {
 }
 
 .rect {
+    fill: #fff;
+
     svg {
         .border {
-            fill: $app-font-color;
+            fill: #fff;
         }
 
         .background {
-            fill: white;
+            fill: #fff;
         }
     }
 

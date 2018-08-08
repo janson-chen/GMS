@@ -13,6 +13,7 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { OptionComponent } from "./components/ca-select/option.component";
 import { SelectComponent } from "./components/ca-select/select.component";
 import { TableHeaderComponent } from "./components/table/table-header/table-header.component";
+import { InputCheckboxComponent } from "./components/input-checkbox/input-checkbox.component";
 
 export const COMPONENTS = [
     NoContentComponent,
@@ -29,5 +30,6 @@ export const COMPONENTS = [
     SpinnerComponent,
     OptionComponent,
     SelectComponent,
-    TableHeaderComponent
+    TableHeaderComponent,
+    InputCheckboxComponent
 ];

@@ -62,6 +62,11 @@ export const MENUS = {
           children: []
         },
         {
+          key: "角色管理",
+          value: "/roles",
+          children: []
+        },
+        {
           key: "用户管理",
           value: "/users",
           children: []

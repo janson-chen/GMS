@@ -1,17 +1,8 @@
 <div class="data-panel">
     <gm-table-header [columns]="columns"></gm-table-header>
     <div class="body">
-        <div class="data-item">
-            <span>张三</span>
-            <span>回民社区</span>
-            <span>是</span>
-            <span>常住</span>
-            <span>男</span>
-            <span>30</span>
-            <span>汉</span>
-            <span>
-                <button>删除</button>
-            </span>
+        <div class="data-item" *ngFor="let item of data">
+            <span *ngFor="let key of getCollectionFromItem(item)">{{ key }}</span>
         </div>
     </div>
 </div>

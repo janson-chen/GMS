@@ -8,8 +8,10 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalContainerComponent implements OnInit {
   @Input() dismiss: (reason: any) => void;
+  @Input() title: string = "";
 
-  constructor(private modalService: NgbModal) {
+  constructor(protected modalService: NgbModal) {
+
   }
 
   private modalContainerOptions: NgbModalOptions = {

@@ -17,4 +17,8 @@ export class TableComponent<T> extends CoreComponent<T> implements OnInit {
 
   }
 
+  getCollectionFromItem(item): any[] {
+    return Object.values(item);
+  }
+
 }

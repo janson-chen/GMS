@@ -1,0 +1,14 @@
+<header>
+  <h3>角色列表</h3>
+  <button (click)="openModal(roleManagerModal)">创建用户</button>
+</header>
+<div class="search-panel">
+  <gm-search-bar></gm-search-bar>
+</div>
+<gm-role-table [columns]="columns" [data]="roles"></gm-role-table>
+
+<ng-template #roleManagerModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container title="创建角色" [dismiss]="dismiss">
+    <gm-role-create [permissions]="permissions" [close]="close"></gm-role-create>
+  </gm-modal-container>
+</ng-template>

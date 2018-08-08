@@ -35,23 +35,29 @@ export class UserService {
   }
 
   async login(data: LoginData): Promise<any> {
-    const result = await this.http.post(`${environment.baseUrl}/account/login`, data).toPromise();
-    if (result) {
-      this.isLoggedIn = "true";
-      this.myAccount = await this.getUserInfo();
-      this.router.navigate(["/home"]);
-      return true;
+    try {
+      const result = await this.http.post(`${environment.baseUrl}/account/login`, data).toPromise();
+
+    } catch (error) {
+      return false;
     }
-    return false;
+
+    this.isLoggedIn = "true";
+    this.myAccount = await this.getUserInfo();
+    this.router.navigate(["/home"]);
+    return true;
   }
 
   async logout(): Promise<void> {
-    const result = await this.http.post(`${environment.baseUrl}/account/logout`, {}).toPromise();
-    console.log("logout result", result);
-    if(result) {
+    try {
+      this.myAccount = null;
+      const result = await this.http.post(`${environment.baseUrl}/account/logout`, {}).toPromise();
+      console.log("logout result", result);
+    } catch (error) {
       this.myAccount = null;
       localStorage.clear();
     }
+
 
   }
 

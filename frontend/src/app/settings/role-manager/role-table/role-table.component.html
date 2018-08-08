@@ -1,0 +1,14 @@
+<div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+        <div class="data-item" *ngFor="let item of data">
+            <span>{{ item?.Name }}</span>
+            <span>{{ item?.Description }}</span>
+            <span>{{ item?.UsersCount }}</span>
+            <span>{{ item?.Permissions }}</span>
+            <span>
+              <a>删除</a>
+            </span>
+        </div>
+    </div>
+</div>
