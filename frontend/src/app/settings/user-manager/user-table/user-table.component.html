@@ -1,0 +1,16 @@
+<div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+        <div class="data-item" *ngFor="let item of data">
+            <span>{{ item?.UserName }}</span>
+            <span>{{ item?.Name }}</span>
+            <span>{{ getCommunityNameById(item?.CommunityID) }}</span>
+            <span>{{ item?.IsEnabled }}</span>
+            <span>{{ item?.CreatedBy }}</span>
+            <span>{{ item?.CreatedDate | date }}</span>
+            <span>
+              <a>删除</a>
+            </span>
+        </div>
+    </div>
+</div>

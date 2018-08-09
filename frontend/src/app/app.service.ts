@@ -35,6 +35,7 @@ export class AppService implements HttpInterceptor {
         }
       }, error => {
         console.log('NICE ERROR', error);
+        console.log("is loggindin", document.cookie, document.cookie.includes("Identity.Application"));
         if (!document.cookie.includes("Identity.Application")) {
           localStorage.clear();
           this.router.navigate(["/login"]);

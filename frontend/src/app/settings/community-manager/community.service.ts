@@ -7,11 +7,17 @@ import { Community } from "./community.data";
 export class CommunityService extends DataService<Community> {
   modelType: string = "/community";
 
-  getCommunities(): Promise<Community[]> {
-    return this.getList();
-  }
+  communitiesMap: {
+    [key: string]: string;
+  } = {};
 
   addCommunity(payload) {
     return this.http.post(`${this.endpoint}`, payload).toPromise();
+  }
+
+  saveCommunities(communities: Community[]): void {
+    communities.forEach(community => {
+      this.communitiesMap[community.id] = community.name;
+    });
   }
 }

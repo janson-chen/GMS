@@ -1,17 +1,17 @@
 export interface UserInfo {
-  id: string;
-  userName: string;
-  name: string;
-  email: string;
-  phoneNumber: string;
-  communityID: string;
-  isEnabled: boolean;
-  isLockedOut: boolean;
-  roles: string[];
-  createdBy: string;
-  updatedBy: string;
-  createdDate: string;
-  updatedDate: string;
+  Id: string;
+  UserName: string;
+  Name: string;
+  Email: string;
+  PhoneNumber: string;
+  CommunityID: string;
+  IsEnabled: boolean;
+  IsLockedOut: boolean;
+  Roles: string[];
+  CreatedBy: string;
+  UpdatedBy: string;
+  CreatedDate: string;
+  UpdatedDate: string;
 }
 
 export const USER_MANAGER_TABLE_COLUMES = [

@@ -14,10 +14,6 @@ export class ErrorsHandler implements ErrorHandler {
   }
 
   handleError(error: Error) {
-    if (!document.cookie.includes("Identity.Application")) {
-      localStorage.clear();
-      // this.router.navigate(["/login"]);
-    }
     console.error(error);
     // this.toastService = <ToastrService>this.injector.get(ToastrService);
 

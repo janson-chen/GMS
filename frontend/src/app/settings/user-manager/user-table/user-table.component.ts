@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreComponent } from "../core/core.component";
 import { TableComponent } from "../../../shared/components/table/table.component";
-import { CommunityService } from "../community.service";
+import { CommunityService } from "../../community-manager/community.service";
 
 @Component({
-  selector: 'gm-community-table',
-  templateUrl: './community-table.component.html',
-  styleUrls: ['./community-table.component.scss']
+  selector: 'gm-user-table',
+  templateUrl: './user-table.component.html',
+  styleUrls: ['./user-table.component.scss']
 })
-export class CommunityListComponent<T> extends TableComponent<T> implements OnInit {
+export class UserListComponent<T> extends TableComponent<T> implements OnInit {
   constructor(private communityService: CommunityService) {
     super();
   }

@@ -11,7 +11,7 @@ import { Permission } from "../role.data";
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateRoleComponent<UserInfo> extends FormComponent<UserInfo> implements OnInit {
+export class CreateRoleComponent<Role> extends FormComponent<Role> implements OnInit {
   @Input() communities: string[] = [];
   @Input() permissions: Permission[] = [];
 

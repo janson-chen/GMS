@@ -7,6 +7,7 @@ import { MenusManagerComponent } from "./menus-manager/menus-manager.component";
 import { RoleManagerComponent } from "./role-manager/role-manager.component";
 import { RoleResolver } from "./role-manager/role-resolver";
 import { CommunityResolver } from "./community-manager/community-resolver";
+import { UserResolver } from "./user-manager/user-resolver";
 
 export const settingsRroutes: Routes = [
     {
@@ -24,7 +25,13 @@ export const settingsRroutes: Routes = [
                 roles: RoleResolver
               }
             },
-            {path: "users", component: UserManagerComponent},
+            {
+              path: "users",
+              component: UserManagerComponent,
+              resolve: {
+                users: UserResolver
+              }
+            },
             {path: "menus", component: MenusManagerComponent}
         ]
     }

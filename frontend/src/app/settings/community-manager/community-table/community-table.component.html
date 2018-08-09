@@ -3,7 +3,7 @@
     <div class="body">
         <div class="data-item" *ngFor="let item of data">
             <span>{{ item?.name }}</span>
-            <span>{{ item?.parentId }}</span>
+            <span>{{ getCommunityNameById(item?.parentId) }}</span>
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate }}</span>
             <span>

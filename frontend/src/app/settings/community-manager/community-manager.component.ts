@@ -21,7 +21,8 @@ export class CommunityManagerComponent extends ModalContainerComponent implement
 
     route.data.subscribe((data: {communities: Community[]}) => {
       this.communities = data["0"];
-      console.log("communities", data);
+      this.communityService.saveCommunities(this.communities);
+      console.log("communities", this.communityService.communitiesMap);
     });
   }
 
