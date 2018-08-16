@@ -6,8 +6,8 @@ import { UserInfo } from "./user.data";
 export class UserManagerService extends DataService<UserInfo> {
   modelType: string = "/account/users";
 
-  private addUser() {
-
+  addUser(payload: UserInfo): Promise<UserInfo> {
+    return <Promise<UserInfo>>this.http.post(`${this.endpoint}/register`, payload).toPromise();
   }
 
 }

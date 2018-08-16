@@ -129,6 +129,7 @@ export class SelectComponent extends BaseFormControl<string> implements OnInit, 
 
     this.selectedOption = option;
     this.selectedOption.selected = true;
+
     if (this.isFirstTime) {
       this.value_ = option.value;
       this.isFirstTime = false;

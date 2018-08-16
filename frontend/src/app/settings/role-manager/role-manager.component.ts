@@ -26,8 +26,8 @@ export class RoleManagerComponent extends ModalContainerComponent implements OnI
   ) {
     super(modalService);
 
-    route.data.subscribe((data: { roles: {Detail: Role[]}}) => {
-      this.roles = data.roles.Detail;
+    route.data.subscribe((data: { roles: {detail: Role[]}}) => {
+      this.roles = data.roles.detail;
       console.log("roles", this.roles);
     });
   }

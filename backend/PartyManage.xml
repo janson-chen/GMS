@@ -39,16 +39,6 @@
                 Get Account/Users/UserName=Admin
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.AccountController.GetUsers">
-            <summary>
-            获取所有用户信息
-            </summary>
-            <remarks>
-            调用例子  
-            
-                Get Account/Users
-            </remarks>
-        </member>
         <member name="M:PartyManage.Controllers.AccountController.GetUsers(System.Int32,System.Int32)">
             <summary>
             获取所有用户信息（分页）
@@ -245,16 +235,6 @@
                 Get /Account/Roles/Name=User
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.AccountController.GetRoles">
-            <summary>
-            按全部角色列表
-            </summary>
-            <remarks>
-            调用例子  
-            
-                Get /Account/Roles
-            </remarks>
-        </member>
         <member name="M:PartyManage.Controllers.AccountController.GetRoles(System.Int32,System.Int32)">
             <summary>
             按全部角色列表（分页）
@@ -345,7 +325,7 @@
             创建通知
             </summary>
             <param name="alert">通知模型</param>
-            <param name="userMemberID">用户组ID</param>
+            <param name="userMemberID">用户组Id</param>
             <remarks>
             调用例子  
             
@@ -374,11 +354,11 @@
             <summary>
             更新用户查阅状态
             </summary>
-            <param name="ID">消息实际对象Id</param>
+            <param name="Id">消息实际对象Id</param>
             <remarks>
             调用例子
                
-                Post /Alert/AlertDetail/ID=1
+                Post /Alert/AlertDetail/Id=1
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.BusinessController.CreateEvent(PartyManage.ViewModels.Business.EventViewModel)">
@@ -893,11 +873,11 @@
             <summary>
             根据id获取兵役信息
             </summary>
-            <param name="ID">家庭人员Id</param>
+            <param name="Id">家庭人员Id</param>
             <remarks>
             调用例子  
             
-                Get /Business/Population/Armies/ID=1
+                Get /Business/Population/Armies/Id=1
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.BusinessController.UpdateArmies(System.Collections.Generic.List{PartyManage.ViewModels.Business.ArmyViewModel})">
@@ -930,11 +910,11 @@
             兵役信息部分修改
             </summary>
             <param name="patch">兵役部分模型</param>
-            <param name="ID">ID</param>
+            <param name="Id">Id</param>
             <remarks>
             调用例子
                
-                Patch /Business/Population/Army/ID=1
+                Patch /Business/Population/Army/Id=1
                 {  
                    [
                      { "op" : "replace", "path" : "/ArmyType", "value" : "XXX" }
@@ -976,11 +956,11 @@
             <summary>
             根据id获取残疾信息
             </summary>
-            <param name="ID">家庭人员Id</param>
+            <param name="Id">家庭人员Id</param>
             <remarks>
             调用例子  
             
-                Get /Business/Population/Disabilities/ID={ID}
+                Get /Business/Population/Disabilities/Id={Id}
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.BusinessController.UpdateDisabilities(System.Collections.Generic.List{PartyManage.ViewModels.Business.DisabilityViewModel})">
@@ -1011,11 +991,11 @@
             残疾信息部分修改
             </summary>
             <param name="patch">残疾部分模型</param>
-            <param name="ID">ID</param>
+            <param name="Id">Id</param>
             <remarks>
             调用例子
                
-                Patch /Business/Population/Disability/ID=1
+                Patch /Business/Population/Disability/Id=1
                 {  
                    [
                      { "op" : "replace", "path" : "/DisabilityType", "value" : "XXX" }
@@ -1057,11 +1037,11 @@
             <summary>
             根据id获取党派信息
             </summary>
-            <param name="ID">家庭人员Id</param>
+            <param name="Id">家庭人员Id</param>
             <remarks>
             调用例子  
             
-                Get /Business/Population/Parties/ID={ID}
+                Get /Business/Population/Parties/Id={Id}
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.BusinessController.UpdateParties(System.Collections.Generic.List{PartyManage.ViewModels.Business.PartyViewModel})">
@@ -1098,11 +1078,11 @@
             党派信息部分修改
             </summary>
             <param name="patch">党派部分模型</param>
-            <param name="ID">ID</param>
+            <param name="Id">Id</param>
             <remarks>
             调用例子
                
-                Patch /Business/Population/Party/ID=1
+                Patch /Business/Population/Party/Id=1
                 {  
                    [
                      { "op" : "replace", "path" : "/PartyType", "value" : "XXX" }
@@ -1184,7 +1164,7 @@
         </member>
         <member name="M:PartyManage.Controllers.CommunityController.GetCommunityListById(System.Int32)">
             <summary>
-            通过社区ID获取社区下所有社区合集
+            通过社区Id获取社区下所有社区合集
             </summary>
             <param name="Id">Id</param>
             <remarks>
@@ -1514,7 +1494,7 @@
             <summary>
             根据菜单Id获取对应角色权限（分页）
             </summary>
-            <param name="menuID">菜单ID</param>
+            <param name="menuID">菜单Id</param>
             <param name="page">页码</param>
             <param name="pageSize">每页数量</param>
             <remarks>
@@ -1919,7 +1899,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.CommunityID">
             <summary>
-            社区ID
+            社区Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.IsEnabled">
@@ -1949,7 +1929,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.Account.UserViewModel.CommunityID">
             <summary>
-            社区ID
+            社区Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Account.UserViewModel.IsEnabled">
@@ -1987,9 +1967,9 @@
             更新日期
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.Id">
             <summary>
-            家庭人员ID
+            家庭人员Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.ArmyViewModel.PersonName">
@@ -2012,9 +1992,9 @@
             是否退伍
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.Id">
             <summary>
-            家庭人员ID
+            家庭人员Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.DisabilityViewModel.PersonName">
@@ -2039,7 +2019,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.EventID">
             <summary>
-            事件ID
+            事件Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.Name">
@@ -2052,14 +2032,14 @@
             事件类型
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.EventViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.Id">
             <summary>
-            事件ID
+            事件Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.EventViewModel.CommunityID">
             <summary>
-            社区ID
+            社区Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.EventViewModel.CommunityName">
@@ -2099,7 +2079,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.Business.EventViewModel.UserMemberID">
             <summary>
-            短信通知用户组ID
+            短信通知用户组Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.EventViewModel.UserMemberName">
@@ -2107,14 +2087,14 @@
             用户组名
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.Id">
             <summary>
-            家庭人员ID
+            家庭人员Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PopulationID">
             <summary>
-            网格登记表ID
+            网格登记表Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PopulationCode">
@@ -2187,14 +2167,14 @@
             备注
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.Id">
             <summary>
-            活动ID
+            活动Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.CommunityID">
             <summary>
-            社区ID
+            社区Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.CommunityName">
@@ -2242,9 +2222,9 @@
             活动内容
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.PartyViewModel.Id">
             <summary>
-            家庭人员ID
+            家庭人员Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.PartyViewModel.PersonName">
@@ -2282,9 +2262,9 @@
             是否流动党员
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.ID">
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Id">
             <summary>
-            网格登记表ID
+            网格登记表Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Code">
@@ -2294,7 +2274,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.CommunityID">
             <summary>
-            社区ID
+            社区Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.CommunityName">
@@ -2324,7 +2304,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.AlertID">
             <summary>
-            所属通知ID
+            所属通知Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.Content">
@@ -2339,7 +2319,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.NoticeUserID">
             <summary>
-            接收消息人ID
+            接收消息人Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.NoticeUserName">
@@ -2357,9 +2337,9 @@
             查阅日期
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.AlertViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.AlertViewModel.Id">
             <summary>
-            通知ID
+            通知Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.AlertViewModel.Content">
@@ -2397,9 +2377,9 @@
             允许上传的附件最大值
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.Id">
             <summary>
-            社区ID
+            社区Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.CommunityViewModel.Name">
@@ -2409,17 +2389,17 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.CommunityViewModel.ParentId">
             <summary>
-            父社区ID
+            父社区Id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.Id">
             <summary>
-            字典详细值ID
+            字典详细值Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryID">
             <summary>
-            字典ID
+            字典Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryCode">
@@ -2437,9 +2417,9 @@
             字典实际值
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.Id">
             <summary>
-            字典ID
+            字典Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.Code">
@@ -2454,7 +2434,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.FileViewModel.FileID">
             <summary>
-            文件ID
+            文件Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.FileViewModel.FileName">
@@ -2482,9 +2462,9 @@
             日期
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.LogViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.LogViewModel.Id">
             <summary>
-            日志ID
+            日志Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.LogViewModel.Content">
@@ -2509,7 +2489,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuPermissionViewModel.MenuID">
             <summary>
-            菜单ID
+            菜单Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuPermissionViewModel.MenuName">
@@ -2519,7 +2499,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuPermissionViewModel.RoleId">
             <summary>
-            角色ID
+            角色Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuPermissionViewModel.RoleName">
@@ -2527,9 +2507,9 @@
             角色名称
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.MenuViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.Id">
             <summary>
-            菜单ID
+            菜单Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuViewModel.Name">
@@ -2544,7 +2524,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuViewModel.ParentID">
             <summary>
-            父菜单ID
+            父菜单Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.MenuViewModel.Icon">
@@ -2569,7 +2549,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberID">
             <summary>
-            用户组ID
+            用户组Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberName">
@@ -2579,7 +2559,7 @@
         </member>
         <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserID">
             <summary>
-            用户ID
+            用户Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserName">
@@ -2587,9 +2567,9 @@
             用户名
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.UserMemberViewModel.ID">
+        <member name="P:PartyManage.ViewModels.System.UserMemberViewModel.Id">
             <summary>
-            用户组ID
+            用户组Id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.UserMemberViewModel.Name">

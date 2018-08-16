@@ -1,0 +1,16 @@
+<div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+        <div class="data-item" *ngFor="let item of data">
+            <span>{{ item?.name }}</span>
+            <span>{{ item?.parentID }}</span>
+            <span>{{ item?.menuType }}</span>
+            <span>{{ item?.createdBy }}</span>
+            <span>{{ item?.createdDate | date }}</span>
+            <span class="menus-panel">
+              <button type="button" class="btn icon-delete" (click)="removeMenu(item?.id)"></button>
+              <button type="button" class="btn icon-edit" (click)="editMenu(item?.id)"></button>
+            </span>
+        </div>
+    </div>
+</div>

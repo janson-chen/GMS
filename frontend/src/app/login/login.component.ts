@@ -30,9 +30,9 @@ export class LoginComponent extends FormComponent<UserInfo> implements OnInit {
       passwordHash: this.formGroup.value.password,
       rememberMe: true
     };
-    const loginResult = await this.userService.login(payload);
-    this.router.navigate(["/home"]);
-    console.log("loginResult", loginResult);
+    // const loginResult = await this.userService.login(payload);
+     await this.userService.login(payload);
+    // this.router.navigate(["/home"]);
   }
 
 }

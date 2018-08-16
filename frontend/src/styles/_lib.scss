@@ -27,7 +27,6 @@ app-login {
       }
 
       button {
-        background-color: #aa4a24;
         border: 0;
         border-radius: 5px;
         color: #FFF;
@@ -36,5 +35,24 @@ app-login {
         padding: 0 10px;
       }
     }
+  }
+}
+
+.icon- {
+  &delete {
+    background: url("~assets/img/iconfont/trash-dark.svg") no-repeat;
+    background-size: contain;
+  }
+
+  &edit {
+    background: url("~assets/img/iconfont/edit.svg") no-repeat;
+    background-size: contain;
+  }
+}
+
+.menus-panel {
+  .btn {
+    width: 30px;
+    height: 20px;
   }
 }

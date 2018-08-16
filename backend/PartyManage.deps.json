@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "8548c5842a72d8ce51ad21c5055f90c5fc7df0cc"
+    "signature": "5b1ebce05486b9c7553ec16727c1b1f425508eab"
   },
   "compilationOptions": {
     "defines": [
@@ -26,14 +26,14 @@
         "dependencies": {
           "DAL": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.2",
-          "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "2.1.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
-          "MiniProfiler.AspNetCore": "4.0.119",
-          "MiniProfiler.AspNetCore.Mvc": "4.0.119",
-          "MiniProfiler.EntityFrameworkCore": "4.0.119",
-          "MySql.Data.EntityFrameworkCore": "8.0.11",
+          "MiniProfiler.AspNetCore": "4.0.133",
+          "MiniProfiler.AspNetCore.Mvc": "4.0.133",
+          "MiniProfiler.EntityFrameworkCore": "4.0.133",
+          "MySql.Data.EntityFrameworkCore": "8.0.12",
           "Newtonsoft.Json": "11.0.2",
           "Pomelo.EntityFrameworkCore.MySql": "2.1.1",
           "Swashbuckle.AspNetCore": "3.0.0"
@@ -394,57 +394,57 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
-      "MiniProfiler.AspNetCore/4.0.119": {
+      "MiniProfiler.AspNetCore/4.0.133": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
           "Microsoft.AspNetCore.Html.Abstractions": "2.1.1",
           "Microsoft.AspNetCore.Routing.Abstractions": "2.1.1",
           "Microsoft.Extensions.Caching.Abstractions": "2.1.1",
           "Microsoft.Extensions.Options": "2.1.1",
-          "MiniProfiler.Shared": "4.0.119"
+          "MiniProfiler.Shared": "4.0.133"
         },
         "runtime": {
           "lib/netstandard2.0/MiniProfiler.AspNetCore.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.119.166"
+            "fileVersion": "4.0.133.48766"
           }
         },
         "compile": {
           "lib/netstandard2.0/MiniProfiler.AspNetCore.dll": {}
         }
       },
-      "MiniProfiler.AspNetCore.Mvc/4.0.119": {
+      "MiniProfiler.AspNetCore.Mvc/4.0.133": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.1.1",
           "Microsoft.AspNetCore.Mvc.Razor": "2.1.1",
-          "MiniProfiler.AspNetCore": "4.0.119"
+          "MiniProfiler.AspNetCore": "4.0.133"
         },
         "runtime": {
           "lib/netstandard2.0/MiniProfiler.AspNetCore.Mvc.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.119.166"
+            "fileVersion": "4.0.133.48766"
           }
         },
         "compile": {
           "lib/netstandard2.0/MiniProfiler.AspNetCore.Mvc.dll": {}
         }
       },
-      "MiniProfiler.EntityFrameworkCore/4.0.119": {
+      "MiniProfiler.EntityFrameworkCore/4.0.133": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "2.1.1",
-          "MiniProfiler.Shared": "4.0.119"
+          "MiniProfiler.Shared": "4.0.133"
         },
         "runtime": {
           "lib/netstandard2.0/MiniProfiler.EntityFrameworkCore.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.119.166"
+            "fileVersion": "4.0.133.48766"
           }
         },
         "compile": {
           "lib/netstandard2.0/MiniProfiler.EntityFrameworkCore.dll": {}
         }
       },
-      "MiniProfiler.Shared/4.0.119": {
+      "MiniProfiler.Shared/4.0.133": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Newtonsoft.Json": "11.0.2",
@@ -461,39 +461,39 @@
         "runtime": {
           "lib/netstandard2.0/MiniProfiler.Shared.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.0.119.166"
+            "fileVersion": "4.0.133.48766"
           }
         },
         "compile": {
           "lib/netstandard2.0/MiniProfiler.Shared.dll": {}
         }
       },
-      "MySql.Data/8.0.11": {
+      "MySql.Data/8.0.12": {
         "dependencies": {
           "Google.Protobuf": "3.5.1",
-          "System.Configuration.ConfigurationManager": "4.4.0",
+          "System.Configuration.ConfigurationManager": "4.4.1",
           "System.Security.Permissions": "4.5.0",
           "System.Text.Encoding.CodePages": "4.5.0"
         },
         "runtime": {
           "lib/netcoreapp2.0/MySql.Data.dll": {
-            "assemblyVersion": "8.0.11.0",
-            "fileVersion": "8.0.11.0"
+            "assemblyVersion": "8.0.12.0",
+            "fileVersion": "8.0.12.0"
           }
         },
         "compile": {
           "lib/netcoreapp2.0/MySql.Data.dll": {}
         }
       },
-      "MySql.Data.EntityFrameworkCore/8.0.11": {
+      "MySql.Data.EntityFrameworkCore/8.0.12": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "2.1.1",
-          "MySql.Data": "8.0.11"
+          "MySql.Data": "8.0.12"
         },
         "runtime": {
           "lib/netstandard2.0/MySql.Data.EntityFrameworkCore.dll": {
-            "assemblyVersion": "8.0.11.0",
-            "fileVersion": "8.0.11.0"
+            "assemblyVersion": "8.0.12.0",
+            "fileVersion": "8.0.12.0"
           }
         },
         "compile": {
@@ -768,14 +768,14 @@
           "lib/netstandard1.0/System.Composition.TypedParts.dll": {}
         }
       },
-      "System.Configuration.ConfigurationManager/4.4.0": {
+      "System.Configuration.ConfigurationManager/4.4.1": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "4.4.0"
         },
         "runtime": {
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
             "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.25519.3"
+            "fileVersion": "4.6.25921.2"
           }
         },
         "compile": {
@@ -828,7 +828,7 @@
         "dependencies": {
           "AutoMapper": "7.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.1.2",
-          "MySql.Data.EntityFrameworkCore": "8.0.11",
+          "MySql.Data.EntityFrameworkCore": "8.0.12",
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
@@ -4470,47 +4470,47 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.1",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.1.nupkg.sha512"
     },
-    "MiniProfiler.AspNetCore/4.0.119": {
+    "MiniProfiler.AspNetCore/4.0.133": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OBuXGevHPTP+C/8G1skMrg6BHjAF130GkHBVUviB6b/AocVhAq0o0B14iNF32FChcSVE+odl5GnB/Kou53dYvA==",
-      "path": "miniprofiler.aspnetcore/4.0.119",
-      "hashPath": "miniprofiler.aspnetcore.4.0.119.nupkg.sha512"
+      "sha512": "sha512-eV3WjIdRoGTBXtfYSGb3ZvP2GPb3lG1k4Pv150ZLMw/VWFKZm82LWfdF9JY4lcf/4ZkiEKPp4izxF7extzqnCg==",
+      "path": "miniprofiler.aspnetcore/4.0.133",
+      "hashPath": "miniprofiler.aspnetcore.4.0.133.nupkg.sha512"
     },
-    "MiniProfiler.AspNetCore.Mvc/4.0.119": {
+    "MiniProfiler.AspNetCore.Mvc/4.0.133": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3z3wDXbED/FgM5yT2IH8s56b/xH3adoaxB8TcA5yHflJi/+lOTouGD5o/pHVZEXm1l/gH4UGZofTQO+sSZbYQA==",
-      "path": "miniprofiler.aspnetcore.mvc/4.0.119",
-      "hashPath": "miniprofiler.aspnetcore.mvc.4.0.119.nupkg.sha512"
+      "sha512": "sha512-8ygba0VTbFXxs9lfHtPxDg3YunFXGRsQZ1tJNRzpczVo05yc4xYEJ5rslqjfK8Oee3j+vvYe5/2E2cFf6odpBw==",
+      "path": "miniprofiler.aspnetcore.mvc/4.0.133",
+      "hashPath": "miniprofiler.aspnetcore.mvc.4.0.133.nupkg.sha512"
     },
-    "MiniProfiler.EntityFrameworkCore/4.0.119": {
+    "MiniProfiler.EntityFrameworkCore/4.0.133": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6RC8lRQ1x0kOdhpIJVVU+S2wrF3u9lJ3NIrDAEJH3bQwbgb9Hy0uQNrcYZJWEHyhwHBqPs5v+PljY/Vlf52ucQ==",
-      "path": "miniprofiler.entityframeworkcore/4.0.119",
-      "hashPath": "miniprofiler.entityframeworkcore.4.0.119.nupkg.sha512"
+      "sha512": "sha512-nQTH/gIrCHOOQL9ulGL1XrwAzZyiWWhDbwwxCPH/PoAfF3e9ieZHx5qjVhWb2qx19PPZjjq1uKThFev0RVyysQ==",
+      "path": "miniprofiler.entityframeworkcore/4.0.133",
+      "hashPath": "miniprofiler.entityframeworkcore.4.0.133.nupkg.sha512"
     },
-    "MiniProfiler.Shared/4.0.119": {
+    "MiniProfiler.Shared/4.0.133": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nAh0gm2TTw7y2qrxLj0Mrht3NDPCXiJay+Fdzvb8FCgRjSu4kpEuOpYSbbC1G9wiY9dW+6S9kqe20dHRoZtGLw==",
-      "path": "miniprofiler.shared/4.0.119",
-      "hashPath": "miniprofiler.shared.4.0.119.nupkg.sha512"
+      "sha512": "sha512-d3Xo1Iia3aYCBsFHxiWQTNz0tApfcn8kdw1MnN8CHGu3Roizq9ypOMmobSsz6060gGoSbB9Y1zMOouFLQtMpkA==",
+      "path": "miniprofiler.shared/4.0.133",
+      "hashPath": "miniprofiler.shared.4.0.133.nupkg.sha512"
     },
-    "MySql.Data/8.0.11": {
+    "MySql.Data/8.0.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-P5zKcnM2SVtdHD6gfReymJguIYLhNL5Og8Qm5TC9MEsSupsAYrRu4AB4nsbalrjqqv8VHBqVREWsXg9lY+q03A==",
-      "path": "mysql.data/8.0.11",
-      "hashPath": "mysql.data.8.0.11.nupkg.sha512"
+      "sha512": "sha512-I2jGfuyeomrGJ+N9O+vuV2ucyeayf/tMFREKPdjUcs1/wUF0t+WgUnnzJmJl4sNePNR1fEvAGaGbVAo4uLSF2A==",
+      "path": "mysql.data/8.0.12",
+      "hashPath": "mysql.data.8.0.12.nupkg.sha512"
     },
-    "MySql.Data.EntityFrameworkCore/8.0.11": {
+    "MySql.Data.EntityFrameworkCore/8.0.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5YHuc4dli0/D8glw9M+IXZpeEBpnybYLkz6JNxzsVFGJKfuhWlOwa4E7SWQs0lhmyheVGEpx02BgGYVBFaXs2A==",
-      "path": "mysql.data.entityframeworkcore/8.0.11",
-      "hashPath": "mysql.data.entityframeworkcore.8.0.11.nupkg.sha512"
+      "sha512": "sha512-EE/fPV+tmBW/GCb/Mmm9a+90AlBCKo3IQiw5DecWs84yWOBIeADO9vV71pEzglr25TxE3/99td+Gd+UpoLwL5g==",
+      "path": "mysql.data.entityframeworkcore/8.0.12",
+      "hashPath": "mysql.data.entityframeworkcore.8.0.12.nupkg.sha512"
     },
     "MySqlConnector/0.42.1": {
       "type": "package",
@@ -4631,12 +4631,12 @@
       "path": "system.composition.typedparts/1.0.31",
       "hashPath": "system.composition.typedparts.1.0.31.nupkg.sha512"
     },
-    "System.Configuration.ConfigurationManager/4.4.0": {
+    "System.Configuration.ConfigurationManager/4.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gWwQv/Ug1qWJmHCmN17nAbxJYmQBM/E94QxKLksvUiiKB1Ld3Sc/eK1lgmbSjDFxkQhVuayI/cGFZhpBSodLrg==",
-      "path": "system.configuration.configurationmanager/4.4.0",
-      "hashPath": "system.configuration.configurationmanager.4.4.0.nupkg.sha512"
+      "sha512": "sha512-jz3TWKMAeuDEyrPCK5Jyt4bzQcmzUIMcY9Ud6PkElFxTfnsihV+9N/UCqvxe1z5gc7jMYAnj7V1COMS9QKIuHQ==",
+      "path": "system.configuration.configurationmanager/4.4.1",
+      "hashPath": "system.configuration.configurationmanager.4.4.1.nupkg.sha512"
     },
     "System.Data.Common/4.3.0": {
       "type": "package",

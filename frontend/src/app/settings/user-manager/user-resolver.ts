@@ -15,7 +15,7 @@ export class UserResolver extends DataService<UserInfo[]> implements Resolve<Use
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UserInfo[]> | Promise<UserInfo[]> | UserInfo[] {
-    return this.userManagerService.getList("?page=-1&size=-1");
+    return this.userManagerService.getList("/page=-1/pageSize=-1");
   }
 
 }

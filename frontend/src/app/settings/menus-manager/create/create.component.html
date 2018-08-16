@@ -1,0 +1,64 @@
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>菜单名称</label>
+      <input type="text" class="form-control" id="name" placeholder="user name" formControlName="name" caValidityClass required/>
+    </div>
+    <small *ngIf="formGroup.get('name').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('name').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>所属菜单</label>
+      <ca-select formControlName="parentID">
+          <ca-option [value]="-1">根菜单</ca-option>
+          <ca-option *ngFor="let menu of menus" [value]="menu?.id">{{ menu?.name }}</ca-option>
+      </ca-select>
+    </div>
+    <small *ngIf="formGroup.get('parentID').dirty && formGroup.get('parentID').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>菜单类型</label>
+      <div class="radio-box-panel">
+        <ca-input-radio [value]="'系统菜单'" formControlName="menuType"><span>系统菜单</span></ca-input-radio>
+        <ca-input-radio [value]="'自定义菜单'" formControlName="menuType"><span>自定义菜单</span></ca-input-radio>
+      </div>
+    </div>
+    <small *ngIf="formGroup.get('menuType').dirty && formGroup.get('menuType').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>菜单跳转</label>
+      <input type="text" class="form-control" id="url" placeholder="url" formControlName="url" caValidityClass required/>
+    </div>
+    <small *ngIf="formGroup.get('url').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('url').hasError('maxlength')" class="invalid-feedback">
+      Title cannot exceed {{ titleLengthLimit }} characters.
+    </small>
+    <small *ngIf="formGroup.get('url').dirty && formGroup.get('url').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="modal-buttons">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">菜单生成中...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">菜单创建成功! {{successMessageTimeoutInSeconds}} 秒后自动关闭.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">菜单创建失败.</ng-container>
+</ca-spinner>

@@ -4,8 +4,10 @@ import { CommunityService } from "../community-manager/community.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Community } from "../community-manager/community.data";
 import { USER_MANAGER_TABLE_COLUMES, UserInfo } from "./user.data";
-import { Role } from "../role-manager/role.data";
 import { ActivatedRoute } from "@angular/router";
+import { Role } from "../role-manager/role.data";
+import { RoleManagerService } from "../role-manager/role-manager.service";
+import { UserManagerService } from "./user-manager.service";
 
 @Component({
   selector: 'gm-user-manager',
@@ -15,29 +17,36 @@ import { ActivatedRoute } from "@angular/router";
 export class UserManagerComponent extends ModalContainerComponent implements OnInit {
   columns = USER_MANAGER_TABLE_COLUMES;
   communities: Community[] = [];
+  roles: Role[] = [];
   userList: UserInfo[];
 
   constructor(
     private communityService: CommunityService,
+    private roleManageService: RoleManagerService,
+    private userManageService: UserManagerService,
     protected modalService: NgbModal,
     private route: ActivatedRoute
   ) {
     super(modalService);
 
-    route.data.subscribe((data: { users: { Detail: UserInfo[]} }) => {
-      this.userList = data.users.Detail;
-      console.log("users", data);
+    route.data.subscribe((data: { users: { detail: UserInfo[]} }) => {
+      this.userList = data.users.detail;
     });
   }
 
   async ngOnInit() {
     this.communities = await this.getCommunities();
+    this.roles = (await this.getRoles())['detail'];
     this.communityService.saveCommunities(this.communities);
-    console.log("communities", this.communityService.communitiesMap);
   }
 
   async getCommunities(): Promise<Community[]> {
     return this.communityService.getList("/childList/id=1");
   }
+
+  async getRoles(): Promise<Role[]> {
+    return this.roleManageService.getList("/roles/page=-1/pageSize=-1");
+  }
+
 
 }

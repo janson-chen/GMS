@@ -14,7 +14,7 @@ export class RoleResolver extends DataService<Role[]> implements Resolve<Role[]>
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Role[]> | Promise<Role[]> | Role[] {
-    return this.roleManagerService.getList("/roles");
+    return this.roleManagerService.getList("/roles/page=-1/pageSize=-1");
   }
 
 }

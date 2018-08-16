@@ -78,12 +78,12 @@ export const MENUS = {
         },
         {
           key: "日志管理",
-          value: "/risk",
+          value: "/logs",
           children: []
         },
         {
           key: "外界软件",
-          value: "/party",
+          value: "/external",
           children: []
         }
       ]

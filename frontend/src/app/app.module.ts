@@ -18,11 +18,9 @@ import { ErrorsHandler } from "./shared/services/errors-handler";
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AuthGuard } from "./shared/services/auth-guard.service";
 import "../styles/styles.scss";
-import { UserManagerComponent } from './settings/user-manager/user-manager.component';
-import { CommunityManagerComponent } from './settings/community-manager/community-manager.component';
-import { MenusManagerComponent } from './settings/menus-manager/menus-manager.component';
-import { LogsManagerComponent } from './settings/logs-manager/logs-manager.component';
-import { ExternalManagerComponent } from './settings/external-manager/external-manager.component';
+import { CookieService } from "ngx-cookie-service";
+import { CoreModule } from "./core/core.module";
+import { MenuManagerService } from "./settings/menus-manager/menu-manager.service";
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -38,7 +36,9 @@ const APP_PROVIDERS = [
   },
   UserService,
   ToastrService,
-  AuthGuard
+  AuthGuard,
+  CookieService,
+  MenuManagerService
 ];
 
 @NgModule({
@@ -50,6 +50,7 @@ const APP_PROVIDERS = [
     FormsModule,
     HttpClientModule,
     SharedModule,
+    CoreModule,
     NgbModule.forRoot(),
     ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES, {

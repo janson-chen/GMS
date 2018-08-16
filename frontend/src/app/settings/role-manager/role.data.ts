@@ -23,12 +23,8 @@ export interface Permission {
 
 export interface Role {
   name?: string;
-  Name?: string;
-  Description?: string;
   description?: string;
-  UersCount?: number | string;
   uersCount?: number | string;
-  Permissions?: Permission[];
   permissions?: Permission[];
 }
 

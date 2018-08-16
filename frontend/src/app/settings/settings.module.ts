@@ -25,6 +25,10 @@ import { CommunityListComponent } from "./community-manager/community-table/comm
 import { RoleListComponent } from "./role-manager/role-table/role-table.component";
 import { UserListComponent } from "./user-manager/user-table/user-table.component";
 import { UserResolver } from "./user-manager/user-resolver";
+import { MenuManagerService } from "./menus-manager/menu-manager.service";
+import { MenuResolver } from "./menus-manager/menu-resolver";
+import { CreateMenuComponent } from "./menus-manager/create/create.component";
+import { MenuListComponent } from "./menus-manager/menu-table/menu-table.component";
 
 @NgModule({
   imports: [
@@ -44,11 +48,13 @@ import { UserResolver } from "./user-manager/user-resolver";
     SettingsComponent,
     CreateRoleComponent,
     CreateUserComponent,
+    CreateMenuComponent,
     CreateCommunityComponent,
     RoleManagerComponent,
     CommunityListComponent,
     RoleListComponent,
-    UserListComponent
+    UserListComponent,
+    MenuListComponent
   ],
   providers: [
     CommunityService,
@@ -56,7 +62,9 @@ import { UserResolver } from "./user-manager/user-resolver";
     RoleManagerService,
     RoleResolver,
     CommunityResolver,
-    UserResolver
+    MenuResolver,
+    UserResolver,
+    MenuManagerService
   ]
 })
 export class SettingsModule { }

@@ -15,8 +15,8 @@ export class ErrorsHandler implements ErrorHandler {
 
   handleError(error: Error) {
     console.error(error);
-    // this.toastService = <ToastrService>this.injector.get(ToastrService);
+    this.toastService = <ToastrService>this.injector.get(ToastrService);
 
-    // this.toastService.error(error.message, "Error massage");
+    this.toastService.error(error.message, "Error massage");
   }
 }

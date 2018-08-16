@@ -36,4 +36,8 @@ export class DataService<T> {
         return <Promise<T>>this.http.post(`${environment.baseUrl}${this.modelType}`, model).toPromise();
     };
 
+    removeItem (urlSegment: string, id: string): Promise<void> {
+       return <Promise<any>>this.http.delete(`${this.endpoint}/${urlSegment}/id=${id}`).toPromise();
+    }
+
 }

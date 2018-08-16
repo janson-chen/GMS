@@ -2,10 +2,10 @@
     <gm-table-header [columns]="columns"></gm-table-header>
     <div class="body">
         <div class="data-item" *ngFor="let item of data">
-            <span>{{ item?.Name }}</span>
-            <span>{{ item?.Description }}</span>
-            <span>{{ item?.UsersCount }}</span>
-            <span>{{ item?.Permissions }}</span>
+            <span>{{ item?.name }}</span>
+            <span>{{ item?.description }}</span>
+            <span>{{ item?.usersCount }}</span>
+            <span>{{ item?.permissions }}</span>
             <span>
               <a>删除</a>
             </span>

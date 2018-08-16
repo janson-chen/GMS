@@ -7,7 +7,7 @@ import { BaseFormControl } from "../core/base-form-control";
     selector: "ca-input-radio",
     template: `
         <div class="radio" (click)="checked=true">
-            <svg width="16" height="16" [style.opacity]="checked?1:0">
+            <svg width="16" height="16" [style.opacity]="checked ? 1 : 0">
                 <circle cx="8" cy="8" r="5"></circle>
             </svg>
         </div>

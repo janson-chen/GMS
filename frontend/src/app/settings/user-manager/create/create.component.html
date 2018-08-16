@@ -33,12 +33,34 @@
     <div class="wrapper">
       <label>所属社区</label>
       <ca-select formControlName="communityID">
-        <ng-container *ngFor="let community of communities">
-          <ca-option [value]="community.id">{{ community.name }}</ca-option>
-        </ng-container>
+          <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
       </ca-select>
     </div>
     <small *ngIf="formGroup.get('communityID').dirty && formGroup.get('communityID').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <div class="wrapper permission-panel">
+      <label>选择角色</label>
+      <div class="check-box-panel">
+        <ca-input-checkbox *ngFor="let item of roleArray" [formControl]="item.control" [value]="item.role.name">{{ item.role.name }}</ca-input-checkbox>
+      </div>
+    </div>
+    <small *ngIf="formGroup.get('roles').dirty && formGroup.get('roles').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>是否启用</label>
+      <div class="radio-box-panel">
+        <ca-input-radio [value]="true" formControlName="isEnabled"><span>是</span></ca-input-radio>
+        <ca-input-radio [value]="false" formControlName="isEnabled"><span>否</span></ca-input-radio>
+      </div>
+    </div>
+    <small *ngIf="formGroup.get('isEnabled').dirty && formGroup.get('isEnabled').hasError('required')" class="invalid-feedback">
       Required field.
     </small>
   </div>

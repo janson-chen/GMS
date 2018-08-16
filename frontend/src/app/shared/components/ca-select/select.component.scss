@@ -34,10 +34,10 @@
       }
     }
 
-    background: url(("~assets/img/select_arrow_down.svg")) no-repeat calc(100% - 10px);
+    background: url(("~assets/img/iconfont/select_arrow_down.svg")) no-repeat calc(100% - 10px);
 
     &.show {
-      background: url(("~assets/img/select_arrow_up.svg")) no-repeat calc(100% - 10px);
+      background: url(("~assets/img/iconfont/select_arrow_up.svg")) no-repeat calc(100% - 10px);
     }
 
     background-size: 20px !important;

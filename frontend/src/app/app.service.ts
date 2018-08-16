@@ -11,6 +11,7 @@ import { map, filter, tap } from 'rxjs/operators';
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "./shared/services/user.service";
 import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
 
 export interface InternalStateType {
   [key: string]: any;
@@ -22,7 +23,8 @@ export class AppService implements HttpInterceptor {
   constructor(
     private toastService: ToastrService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {
 
   }
@@ -31,16 +33,15 @@ export class AppService implements HttpInterceptor {
     return next.handle(req).pipe(
       tap(event => {
         if (event instanceof HttpResponse) {
-          console.log(`Request for ${req}`);
+          console.log("cookie", event.headers);
+
         }
       }, error => {
-        console.log('NICE ERROR', error);
-        console.log("is loggindin", document.cookie, document.cookie.includes("Identity.Application"));
-        if (!document.cookie.includes("Identity.Application")) {
+        console.log('NICE ERROR', error.status == "401");
+        if (error.status == "401") {
           localStorage.clear();
           this.router.navigate(["/login"]);
         }
-        return false;
       })
     )
 

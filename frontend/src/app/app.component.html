@@ -1,4 +1,4 @@
 <gm-header *ngIf="isLoggedIn" [data]="userInfo"></gm-header>
-<main>
-    <router-outlet></router-outlet>
+<main [class.login-panel]="!isLoggedIn">
+  <router-outlet></router-outlet>
 </main>

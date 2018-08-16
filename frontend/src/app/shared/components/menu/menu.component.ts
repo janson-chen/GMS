@@ -15,7 +15,7 @@ export class MenuComponent extends CoreComponent<MenuData[]> implements OnInit {
   }
 
   ngOnInit() {
-    this.data = MENUS.data;
+    // this.data = MENUS.data;
   }
 
 

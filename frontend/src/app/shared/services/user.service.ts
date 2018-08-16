@@ -36,8 +36,7 @@ export class UserService {
 
   async login(data: LoginData): Promise<any> {
     try {
-      const result = await this.http.post(`${environment.baseUrl}/account/login`, data).toPromise();
-
+        await this.http.post(`${environment.baseUrl}/account/login`, data, {observe: 'response', withCredentials: true}).toPromise();
     } catch (error) {
       return false;
     }
@@ -50,20 +49,17 @@ export class UserService {
 
   async logout(): Promise<void> {
     try {
-      this.myAccount = null;
-      const result = await this.http.post(`${environment.baseUrl}/account/logout`, {}).toPromise();
-      console.log("logout result", result);
+      await this.http.post(`${environment.baseUrl}/account/logout`, {}).toPromise();
+      localStorage.clear();
+      this.router.navigate(["/login"]);
     } catch (error) {
       this.myAccount = null;
       localStorage.clear();
     }
-
-
   }
 
   async getUserInfo(): Promise<any> {
     return this.http.get(`${environment.baseUrl}/account/users/me`).toPromise();
   }
-
 
 }

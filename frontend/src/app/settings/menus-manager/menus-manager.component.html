@@ -1,3 +1,14 @@
-<p>
-  menus-manager works!
-</p>
+<header>
+  <span>菜单列表</span>
+  <button (click)="openModal(menuManagerModal)">创建菜单</button>
+</header>
+<div class="search-panel">
+  <gm-search-bar></gm-search-bar>
+</div>
+<gm-menu-table [columns]="columns" [data]="menus"></gm-menu-table>
+
+<ng-template #menuManagerModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container title="创建菜单" [dismiss]="dismiss">
+    <gm-menu-create [menus]="menus" [close]="close"></gm-menu-create>
+  </gm-modal-container>
+</ng-template>

@@ -10,4 +10,10 @@ a.active {
 main {
   height: 100%;
   display: block;
+
+  &.login-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

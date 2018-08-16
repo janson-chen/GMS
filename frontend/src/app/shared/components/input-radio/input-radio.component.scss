@@ -1,26 +1,28 @@
-@import "../../../../styles/shared-styles";
+@import "../../../../styles/lib";
 
 :host {
-    display: flex;
+  display: flex;
 }
 
 .radio {
-    display: inline-block;
-    border-radius: 50%;
-    width: $radio-diameter;
-    height: $radio-diameter;
-    background-color: $ca-black;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: $radio-diameter;
+  height: $radio-diameter;
+  cursor: pointer;
+  border: 1px solid #aaa;
 
-    svg {
-        display: block;
-        fill: $ca-blue;
-        transition: opacity $transition-effect;
-    }
+  svg {
+    display: block;
+    fill: $ca-blue;
+    transition: opacity $transition-effect;
+  }
 }
 
 label {
-    margin-left: 4px;
-    line-height: $radio-diameter;
-    font-size: 0.9rem;
+  margin-left: 4px;
+  line-height: $radio-diameter;
+  font-size: 0.9rem;
 }

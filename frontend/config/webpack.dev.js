@@ -146,6 +146,7 @@ module.exports = function (options) {
       hot: METADATA.HMR,
       public: METADATA.PUBLIC,
       historyApiFallback: true,
+      https: true,
       watchOptions: {
         // if you're using Docker you may need this
         // aggregateTimeout: 300,
@@ -154,9 +155,12 @@ module.exports = function (options) {
       },
       proxy: {
         '/api/*': {
-          target: "http://localhost:5000",
+          target: "https://localhost:5001",
           pathRewrite: {"^/api" : ""},
-          changeOrigin: true
+          changeOrigin: true,
+          secure: false,
+          debug: true,
+          ws: true
         }
       },
       /**

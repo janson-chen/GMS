@@ -1,17 +1,19 @@
+import { Role } from "../role-manager/role.data";
+
 export interface UserInfo {
-  Id: string;
-  UserName: string;
-  Name: string;
-  Email: string;
-  PhoneNumber: string;
-  CommunityID: string;
-  IsEnabled: boolean;
-  IsLockedOut: boolean;
-  Roles: string[];
-  CreatedBy: string;
-  UpdatedBy: string;
-  CreatedDate: string;
-  UpdatedDate: string;
+  Id?: string;
+  userName?: string;
+  name?: string;
+  email?: string;
+  phoneNumber?: string;
+  communityID?: string;
+  isEnabled?: boolean;
+  isLockedOut?: boolean;
+  roles?: Role[] | string[];
+  createdBy?: string;
+  updatedBy?: string;
+  createdDate?: string;
+  updatedDate?: string;
 }
 
 export const USER_MANAGER_TABLE_COLUMES = [

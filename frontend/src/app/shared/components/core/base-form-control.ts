@@ -1,7 +1,6 @@
 import { Input, OnDestroy, OnInit } from "@angular/core";
 import { ControlContainer, ControlValueAccessor } from "@angular/forms";
 import { Subscription } from "rxjs/Subscription";
-import { CoreComponent } from "./core.component";
 
 export abstract class BaseFormControl<T>  implements ControlValueAccessor, OnInit, OnDestroy {
   @Input() name = "";

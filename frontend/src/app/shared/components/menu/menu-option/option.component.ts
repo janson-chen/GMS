@@ -3,6 +3,7 @@ import { CoreComponent } from "../../core/core.component";
 import { MenuData } from "../menus.data";
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from "@angular/router";
+import { Menu } from "../../../../core/models/menu.data";
 
 @Component({
   selector: 'gm-menu-option',
@@ -21,11 +22,11 @@ import { Router } from "@angular/router";
     ])
   ]
 })
-export class MenuOptionComponent extends CoreComponent<MenuData> implements OnInit {
+export class MenuOptionComponent extends CoreComponent<Menu> implements OnInit {
   @Input() parentValue: string = "";
   @Output() subClickedTrigger: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  children: MenuData[] = [];
+  children: Menu[] = [];
   showChildren: boolean = false;
   state: "in" | "out" = "in";
 
@@ -48,11 +49,11 @@ export class MenuOptionComponent extends CoreComponent<MenuData> implements OnIn
   onClick(event: MouseEvent) {
     event.stopPropagation();
     this.subClickedTrigger.emit(true);
-    this.router.navigate([`${this.parentValue}${this.data.value}`]);
+    this.router.navigate([`${this.parentValue}${this.data.url}`]);
   }
 
   ngOnInit() {
-    this.children = this.data.children;
+    this.children = this.data.childMenu;
     const hostMenu = this.elementRef.nativeElement;
     const subMenuPanel = document.querySelector(".sub-menu-options");
 
