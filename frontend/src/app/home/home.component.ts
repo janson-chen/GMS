@@ -9,22 +9,18 @@ import { Menu } from "../core/models/menu.data";
   templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-  menus: Menu[];
+  menus: Menu[] = <Menu[]>[];
 
   constructor(
     private userService: UserService,
-    private menesService: MenusService
+    private menusService: MenusService
   ) {
 
   }
 
-  get isLoggedIn() {
-    return this.userService.isLoggedIn;
-  };
-
   public ngOnInit() {
-    console.log("hello `Home` component");
-    this.menus = this.menesService.menus;
-
+    this.menusService.behavierSubject.subscribe((data: Menu[]) => {
+      this.menus = data;
+    });
   }
 }

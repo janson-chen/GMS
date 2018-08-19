@@ -39,5 +39,4 @@ export class DataService<T> {
     removeItem (urlSegment: string, id: string): Promise<void> {
        return <Promise<any>>this.http.delete(`${this.endpoint}/${urlSegment}/id=${id}`).toPromise();
     }
-
 }

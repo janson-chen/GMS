@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreComponent } from "../core/core.component";
-import { MENUS } from "./menus.data";
 import { MenuData } from "./menus.data";
 
 @Component({
@@ -15,9 +14,6 @@ export class MenuComponent extends CoreComponent<MenuData[]> implements OnInit {
   }
 
   ngOnInit() {
-    // this.data = MENUS.data;
+
   }
-
-
-
 }

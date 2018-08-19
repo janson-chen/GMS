@@ -28,6 +28,17 @@
   </div>
   <div class="form-group">
     <div class="wrapper">
+      <label>所属菜单</label>
+      <div class="menu-folder-tree">
+        <ca-folder-tree *ngFor="let menu of menus" [folder]="menu"></ca-folder-tree>
+      </div>
+    </div>
+    <small *ngIf="formGroup.get('parentID').dirty && formGroup.get('parentID').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="wrapper">
       <label>菜单类型</label>
       <div class="radio-box-panel">
         <ca-input-radio [value]="'系统菜单'" formControlName="menuType"><span>系统菜单</span></ca-input-radio>

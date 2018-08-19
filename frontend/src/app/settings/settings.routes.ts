@@ -35,10 +35,7 @@ export const settingsRroutes: Routes = [
             },
             {
               path: "menus",
-              component: MenusManagerComponent,
-              resolve: {
-                menus: MenuResolver
-              }
+              component: MenusManagerComponent
             }
         ]
     }

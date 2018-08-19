@@ -3,24 +3,27 @@ import { MenusService } from "../core/service/menus.service";
 import { Menu } from "../core/models/menu.data";
 
 @Component({
-    selector: 'gm-settings',
-    template: `
+  selector: 'gm-settings',
+  template: `
     <div class="data-entry-panel">
-     <gm-menu [data]="menus"></gm-menu>
-        <div class="data-set">
-            <router-outlet></router-outlet>
-        </div>
+      <gm-menu [data]="menus"></gm-menu>
+      <div class="data-set">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    `,
-    styleUrls: ["./settings.component.scss"]
+  `,
+  styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent implements OnInit {
-    menus: Menu[];
+  menus: Menu[];
 
-    constructor(private menesService: MenusService) { }
+  constructor(private menusService: MenusService) {
+  }
 
-    ngOnInit() {
-      this.menus = this.menesService.menus;
-    }
-
+  ngOnInit() {
+    this.menusService.behavierSubject.subscribe((data: Menu[]) => {
+      this.menus = data;
+      console.log("update menus", data);
+    });
+  }
 }

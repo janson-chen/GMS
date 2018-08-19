@@ -1,18 +1,20 @@
-export class FolderTree {
-     id: string;
-     name?: string;
-     fullpath?: string;
-     files?: FilesItem[];
-     directories?: FolderTree[];
-}
+import { FileData } from "../../../core/models/menu.data";
 
-export class FilesItem {
-     name?: string;
-     fullpath?: string;
-     size?: number;
-     type?: string;
-     metadata?: object;
-     token?: string;
+export class FolderTree {
+  id?: string;
+  name?: string;
+  menuType?: string;
+  parentID?: string;
+  icon?: string;
+  order_no?: string | number;
+  url?: string;
+  fileID?: string | number;
+  file?: FileData;
+  childMenu?: FolderTree[];
+  createdBy?: string;
+  updatedBy?: string;
+  createdDate?: string;
+  updatedDate?: string;
 }
 
 export enum FolderState {
@@ -36,6 +38,5 @@ export class FolderTreeStorage {
 
 export class FolderTreeWrap {
     folder: FolderTree;
-    directories: FolderTree[] = [];
-    files: FilesItem[] = [];
+    childMenu: FolderTree[] = [];
 }

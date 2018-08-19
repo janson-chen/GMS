@@ -14,6 +14,7 @@ export class FolderTreeComponent implements OnInit {
   selected: boolean = false;
   FolderState = FolderState;
   folderState: FolderState = FolderState.Folded;
+
   @Input() folder: FolderTree;
   @Output() folderChange: EventEmitter<FolderTree> = new EventEmitter<FolderTree>();
 
@@ -43,13 +44,10 @@ export class FolderTreeComponent implements OnInit {
   }
 
   async getSubFolderTress(): Promise<void> {
-    const folderTree = await this.getSubFolderTreeById(this.folder.id);
+    const folderTree = this.folder.childMenu;
     if (folderTree) {
       this.folder = folderTree;
     }
   }
 
-  async getSubFolderTreeById(id: string): Promise<FolderTree> {
-    return null;
-  }
 }

@@ -26,6 +26,7 @@ export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements On
   }
 
   async ngOnInit(): Promise<void> {
+    console.log("menus list", this.menus);
     this.formGroup = this.fb.group({
       name: "",
       menuType: "",

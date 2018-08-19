@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener, Input, EventEmitter, Output, Renderer2, ElementRef } from '@angular/core';
 import { CoreComponent } from "../../core/core.component";
-import { MenuData } from "../menus.data";
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from "@angular/router";
 import { Menu } from "../../../../core/models/menu.data";
@@ -34,11 +33,19 @@ export class MenuOptionComponent extends CoreComponent<Menu> implements OnInit {
     super();
   }
 
-  @HostListener("mouseover")
-  onMouseOver() {
+  @HostListener("mouseover", ["$event"])
+  onMouseOver(event: MouseEvent) {
     this.showChildren = true;
+    setTimeout(() => {
+      const subMenuPanel = this.elementRef.nativeElement.querySelector(".sub-menu-options");
+      if (subMenuPanel) {
+        if (subMenuPanel) {
+          this.render.setStyle(subMenuPanel, "left", "160px");
+          this.render.setStyle(subMenuPanel, "top", "0px");
+        }
+      }
+    });
   }
-
 
   @HostListener("mouseleave")
   onMouseLeave() {
@@ -54,13 +61,6 @@ export class MenuOptionComponent extends CoreComponent<Menu> implements OnInit {
 
   ngOnInit() {
     this.children = this.data.childMenu;
-    const hostMenu = this.elementRef.nativeElement;
-    const subMenuPanel = document.querySelector(".sub-menu-options");
-
-    if (subMenuPanel) {
-      this.render.setStyle(subMenuPanel, "left", "160px");
-      this.render.setStyle(subMenuPanel, "top", "0px");
-    }
   }
 
   closeSubmenus() {

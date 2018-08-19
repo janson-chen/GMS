@@ -26,7 +26,6 @@ import { RoleListComponent } from "./role-manager/role-table/role-table.componen
 import { UserListComponent } from "./user-manager/user-table/user-table.component";
 import { UserResolver } from "./user-manager/user-resolver";
 import { MenuManagerService } from "./menus-manager/menu-manager.service";
-import { MenuResolver } from "./menus-manager/menu-resolver";
 import { CreateMenuComponent } from "./menus-manager/create/create.component";
 import { MenuListComponent } from "./menus-manager/menu-table/menu-table.component";
 
@@ -62,7 +61,6 @@ import { MenuListComponent } from "./menus-manager/menu-table/menu-table.compone
     RoleManagerService,
     RoleResolver,
     CommunityResolver,
-    MenuResolver,
     UserResolver,
     MenuManagerService
   ]

@@ -1,12 +1,12 @@
 <div class="folder" (click)="folderClick($event, folder)" [id]="folder.id">
     <div #currentFolder class="folder-title" (click)="selectedFolder(currentFolder); toggleFolderState()">
-        <span [ngClass]="{'icon-folded': folderState === FolderState.Folded, 'icon-expanded': folderState === FolderState.Expanded, 'icon-empty': folder?.directories?.length <= 0}"></span>
+        <span [ngClass]="{'icon-folded': folderState === FolderState.Folded, 'icon-expanded': folderState === FolderState.Expanded, 'icon-empty': folder?.childMenu?.length <= 0}"></span>
         <span class="icon-folder"></span>
-        <label>{{ folder?.fullpath === '/' ? 'My Files' : folder?.name }}</label>
+        <label>{{ folder?.name }}</label>
     </div>
     <ul *ngIf="folderState === FolderState.Expanded">
-        <li *ngFor="let subfolder of folder?.directories">
-            <ca-folder-tree [folder]="subfolder" (folderChange)="showIncludedFiles($event)"></ca-folder-tree>
+        <li *ngFor="let subMenu of folder?.childMenu">
+            <ca-folder-tree [folder]="subMenu"></ca-folder-tree>
         </li>
     </ul>
 </div>
