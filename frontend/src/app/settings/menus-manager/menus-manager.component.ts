@@ -15,6 +15,7 @@ import { MenusService } from "../../core/service/menus.service";
 export class MenusManagerComponent extends ModalContainerComponent implements OnInit {
   columns = MENU_MANAGER_TABLE_COLUMES;
   menus: Menu[] = [];
+  rootMenus: Menu[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class MenusManagerComponent extends ModalContainerComponent implements On
 
   ngOnInit() {
     this.menusService.behavierSubject.subscribe((data: Menu[]) => {
+      this.rootMenus = data;
       this.menus = this.menusService.getMenusCollection(data);
     });
   }

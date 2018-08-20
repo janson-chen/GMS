@@ -23,6 +23,7 @@ export class MenuListComponent extends TableComponent<Menu[]> implements OnInit 
 
   async removeMenu(id: string): Promise<void> {
     await this.menuManagerService.removeMenu(id);
+    void this.updateMenuList();
   }
 
   editMenu(id: string) {
@@ -33,9 +34,12 @@ export class MenuListComponent extends TableComponent<Menu[]> implements OnInit 
     if (id == "-1") {
       return "无";
     }
-
     const parentMenu = this.data.find(menu => menu.id == id);
     return parentMenu ? parentMenu.name : "";
+  }
+
+  async updateMenuList(): Promise<void> {
+    this.menusService.menus = await this.menuManagerService.getList("/menus");
   }
 
 }

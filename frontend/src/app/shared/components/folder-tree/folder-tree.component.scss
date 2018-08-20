@@ -2,6 +2,11 @@
 
 ul {
     padding-left: 20px;
+
+    li {
+      list-style: none;
+      font-size: 12px;
+    }
 }
 
 :host {
@@ -66,5 +71,10 @@ ul {
     &.selected {
         border: 1px solid $ca-blue;
         background: rgba(0, 120, 200, 0.2);
+    }
+
+    label {
+      margin: 0;
+      user-select: none;
     }
 }

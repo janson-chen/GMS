@@ -15,6 +15,7 @@ import { SelectComponent } from "./components/ca-select/select.component";
 import { TableHeaderComponent } from "./components/table/table-header/table-header.component";
 import { InputCheckboxComponent } from "./components/input-checkbox/input-checkbox.component";
 import { InputRadioComponent } from "./components/input-radio/input-radio.component";
+import { FolderTreeComponent } from "./components/folder-tree/folder-tree.component";
 
 export const COMPONENTS = [
     NoContentComponent,
@@ -33,5 +34,6 @@ export const COMPONENTS = [
     SelectComponent,
     TableHeaderComponent,
     InputCheckboxComponent,
-    InputRadioComponent
+    InputRadioComponent,
+    FolderTreeComponent
 ];

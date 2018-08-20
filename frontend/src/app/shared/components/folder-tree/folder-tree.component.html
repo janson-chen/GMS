@@ -1,12 +1,12 @@
 <div class="folder" (click)="folderClick($event, folder)" [id]="folder.id">
-    <div #currentFolder class="folder-title" (click)="selectedFolder(currentFolder); toggleFolderState()">
-        <span [ngClass]="{'icon-folded': folderState === FolderState.Folded, 'icon-expanded': folderState === FolderState.Expanded, 'icon-empty': folder?.childMenu?.length <= 0}"></span>
-        <span class="icon-folder"></span>
+  <div #currentFolder class="folder-title" (click)="selectedFolder(currentFolder); toggleFolderState()">
+    <input type="radio" name="parentId" [value]="folder?.id" [ngModel]="value">
+    <span [ngClass]="{'fa': true, 'fa-folder-o': folderState === FolderState.Folded, 'fa-folder-open-o': folderState === FolderState.Expanded, 'fa-folder': folder?.childMenu?.length <= 0}"></span>
         <label>{{ folder?.name }}</label>
     </div>
     <ul *ngIf="folderState === FolderState.Expanded">
         <li *ngFor="let subMenu of folder?.childMenu">
-            <ca-folder-tree [folder]="subMenu"></ca-folder-tree>
+            <ca-folder-tree [folder]="subMenu" (folderChange)="getSelectedMenu($event)"></ca-folder-tree>
         </li>
     </ul>
 </div>

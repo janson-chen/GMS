@@ -17,21 +17,10 @@
   <div class="form-group">
     <div class="wrapper">
       <label>所属菜单</label>
-      <ca-select formControlName="parentID">
-          <ca-option [value]="-1">根菜单</ca-option>
-          <ca-option *ngFor="let menu of menus" [value]="menu?.id">{{ menu?.name }}</ca-option>
-      </ca-select>
-    </div>
-    <small *ngIf="formGroup.get('parentID').dirty && formGroup.get('parentID').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
-  </div>
-  <div class="form-group">
-    <div class="wrapper">
-      <label>所属菜单</label>
       <div class="menu-folder-tree">
-        <ca-folder-tree *ngFor="let menu of menus" [folder]="menu"></ca-folder-tree>
+        <ca-folder-tree *ngFor="let menu of rootMenus" [folder]="menu" (folderChange)="getSelectedMenu($event)"></ca-folder-tree>
       </div>
+      <input type="text" name="parentID" formControlName="parentID" hidden>
     </div>
     <small *ngIf="formGroup.get('parentID').dirty && formGroup.get('parentID').hasError('required')" class="invalid-feedback">
       Required field.

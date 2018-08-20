@@ -15,6 +15,7 @@ import { UserService } from "../../../shared/services/user.service";
 export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements OnInit {
   @Input() communities: Community[] = [];
   @Input() menus: Menu[] = [];
+  @Input() rootMenus: Menu[] = [];
 
   constructor(
               protected userService: UserService,
@@ -26,7 +27,6 @@ export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements On
   }
 
   async ngOnInit(): Promise<void> {
-    console.log("menus list", this.menus);
     this.formGroup = this.fb.group({
       name: "",
       menuType: "",
@@ -37,7 +37,6 @@ export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements On
   }
 
   async submit() {
-    console.log(this.formGroup.value);
     this.isSubmitting = true;
     const payload = {
       name: this.formGroup.value.name,
@@ -55,6 +54,11 @@ export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements On
       this.isSubmitting = false;
       this.spinnerState = "failed";
     }
+  }
+
+  getSelectedMenu(menu) {
+    console.log("select menu", menu);
+    this.getControl("parentID").setValue(menu.id);
   }
 
 }

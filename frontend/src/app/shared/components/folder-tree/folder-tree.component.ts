@@ -7,14 +7,19 @@ import { FolderState, FolderTree } from "./folder-tree.data";
   selector: "ca-folder-tree",
   templateUrl: "./folder-tree.component.html",
   styleUrls: ["./folder-tree.component.scss"],
-  providers: [FolderTreeService]
+  providers: [
+    FolderTreeService
+  ]
 })
 export class FolderTreeComponent implements OnInit {
+  private checked_ = false;
+
   type: string;
   selected: boolean = false;
   FolderState = FolderState;
   folderState: FolderState = FolderState.Folded;
 
+  @Input() value = "";
   @Input() folder: FolderTree;
   @Output() folderChange: EventEmitter<FolderTree> = new EventEmitter<FolderTree>();
 
@@ -22,7 +27,6 @@ export class FolderTreeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getSubFolderTress();
   }
 
   toggleFolderState(): void {
@@ -40,14 +44,11 @@ export class FolderTreeComponent implements OnInit {
 
   folderClick(event: MouseEvent, data: FolderTree): void {
     event.stopPropagation();
+    this.checked_ = true;
     this.folderChange.emit(data);
   }
 
-  async getSubFolderTress(): Promise<void> {
-    const folderTree = this.folder.childMenu;
-    if (folderTree) {
-      this.folder = folderTree;
-    }
+  getSelectedMenu(menu) {
+    this.folderChange.emit(menu);
   }
-
 }

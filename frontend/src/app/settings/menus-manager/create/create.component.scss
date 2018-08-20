@@ -46,3 +46,13 @@ ca-input-radio {
 .permission-panel {
   align-items: baseline;
 }
+
+.menu-folder-tree {
+  background: #f1f1f1;
+  width: 100%;
+  height: 240px;
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

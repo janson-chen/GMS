@@ -7,9 +7,6 @@ export class MenusService {
   private menus_: Menu[];
   menuCollections: Menu[] = <Menu[]>[];
   behavierSubject: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
-  menusMap: {
-    [key: string]: string;
-  } = {};
 
   get menus() {
     return this.menus_;
@@ -18,10 +15,6 @@ export class MenusService {
   set menus(value) {
     if (Array.isArray(value)) {
       this.menus_ = value;
-      this.menusMap["-1"] = "无";
-      this.menus_.forEach(menu => {
-        this.menusMap[menu.id] = menu.name;
-      });
 
       this.behavierSubject.next(this.menus_);
     }
@@ -37,14 +30,12 @@ export class MenusService {
   }
 
   getChildMenusCollection(menu: Menu): void {
-      if (menu.childMenu && menu.childMenu.length > 0) {
-        menu.childMenu.forEach(theMenu => {
-          this.getChildMenusCollection(theMenu);
-        });
-      } else {
-        this.menuCollections.push(menu);
-        this.menusMap[menu.id] = menu.name;
-      }
+    if (menu.childMenu && menu.childMenu.length > 0) {
+      menu.childMenu.forEach(theMenu => {
+        this.getChildMenusCollection(theMenu);
+      });
+    }
+    this.menuCollections.push(menu);
   }
 }
 

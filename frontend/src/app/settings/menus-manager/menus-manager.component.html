@@ -9,6 +9,6 @@
 
 <ng-template #menuManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container title="创建菜单" [dismiss]="dismiss">
-    <gm-menu-create [menus]="menus" [close]="close" (submitted)="updateMenuList()"></gm-menu-create>
+    <gm-menu-create [menus]="menus" [rootMenus]="rootMenus" [close]="close" (submitted)="updateMenuList()"></gm-menu-create>
   </gm-modal-container>
 </ng-template>
