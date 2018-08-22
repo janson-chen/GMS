@@ -1,15 +1,41 @@
 <form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
   <div class="form-group">
-    <input type="text" class="form-control" id="title" placeholder="Title" formControlName="title" caValidityClass required/>
-    <small *ngIf="formGroup.get('title').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('title').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('title').dirty && formGroup.get('title').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
+    <input type="text" class="form-control" placeholder="家庭住址"  caValidityClass/>
+  </div>
+  <div class="form-group">
+    <div class="wrap">
+      <label>
+        流动人口
+      </label>
+      <input type="radio" name="family_type">
+    </div>
+    <div class="wrap">
+      <label>常住人口</label>
+      <input type="radio" name="family_type">
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="姓名"  caValidityClass/>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="年龄"  caValidityClass/>
+  </div>
+  <div class="form-group">
+    <ca-select formControlName="sex">
+      <ca-option value="0">男</ca-option>
+      <ca-option value="1">女</ca-option>
+    </ca-select>
+  </div>
+  <div class="form-group">
+    <ca-select formControlName="nationality">
+      <ca-option value="0">汉</ca-option>
+      <ca-option value="1">蒙</ca-option>
+    </ca-select>  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="职业"  caValidityClass/>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="联系电话"  caValidityClass/>
   </div>
   <div class="modal-buttons">
     <button type="submit" class="btn btn-primary">Save</button>

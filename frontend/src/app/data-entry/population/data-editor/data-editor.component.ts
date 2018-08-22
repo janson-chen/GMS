@@ -20,7 +20,10 @@ export class PopulationDataEditorComponent extends FormComponent<any> implements
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      title: ""
+      family_Address: "",
+      family_Type: "",
+      sex: "",
+      nationality: ""
     });
   }
 

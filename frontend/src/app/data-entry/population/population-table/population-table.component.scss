@@ -1,0 +1,5 @@
+@import "../../../../styles/lib";
+
+.data-panel {
+  @extend %table-base;
+}

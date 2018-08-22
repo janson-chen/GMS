@@ -1,0 +1,11 @@
+<div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+        <div class="data-item" *ngFor="let item of data">
+            <span>{{ item?.logType }}</span>
+            <span>{{ item?.userName }}</span>
+            <span>{{ item?.content }}</span>
+            <span>{{ item?.date }}</span>
+        </div>
+    </div>
+</div>

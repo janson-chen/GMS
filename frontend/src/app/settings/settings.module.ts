@@ -28,6 +28,8 @@ import { UserResolver } from "./user-manager/user-resolver";
 import { MenuManagerService } from "./menus-manager/menu-manager.service";
 import { CreateMenuComponent } from "./menus-manager/create/create.component";
 import { MenuListComponent } from "./menus-manager/menu-table/menu-table.component";
+import { LogManagerService } from "./logs-manager/log-manager.service";
+import { LogResolver } from "./logs-manager/log-resolver";
 
 @NgModule({
   imports: [
@@ -62,7 +64,9 @@ import { MenuListComponent } from "./menus-manager/menu-table/menu-table.compone
     RoleResolver,
     CommunityResolver,
     UserResolver,
-    MenuManagerService
+    MenuManagerService,
+    LogManagerService,
+    LogResolver
   ]
 })
 export class SettingsModule { }
