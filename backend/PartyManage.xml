@@ -392,7 +392,7 @@
             <remarks>
             调用例子  
             
-                Get /Business/Event/Query/Page=1/PageSize=20
+                Post /Business/Event/Query/Page=1/PageSize=20
                 {
                    "communityName": "XXX",
                    "name":"XXX",
@@ -533,7 +533,7 @@
             <remarks>
             调用例子  
             
-                Get /Business/PartyActivities/Query/Page=1/PageSize=20
+                Post /Business/PartyActivities/Query/Page=1/PageSize=20
                 {
                    "subject": "XXX",
                    "orderBy": "Name"
@@ -633,7 +633,7 @@
             <remarks>
             调用例子  
             
-                Get /Business/Population/Query/Page=1/PageSize=20
+                Post /Business/Population/Query/Page=1/PageSize=20
                 {
                    "communityName": "XXX",
                    "code":"XXX",
@@ -1118,7 +1118,8 @@
                 Post /Community
                    {
                      "name": "社区XX",
-                     "parentID": 1
+                     "parentID": 1,
+                     "is_Sign":false
                    }
             </remarks>
         </member>
@@ -1135,6 +1136,7 @@
                 Post /Community/Query/Page=1/PageSize=20
                 {
                    "name": "XXX",
+                   "is_Sign":false,
                    "orderBy": "Name"
                 }
                 
@@ -1186,6 +1188,7 @@
                 {   
                    "id":1,
                    "name": "社区XX",
+                   "is_Sign":false,
                    "parentID": 1
                 }
             </remarks>
@@ -1228,7 +1231,7 @@
             <remarks>
             调用例子  
             
-                Get /Logs/Query/Page=1/PageSize=20
+                Post /Logs/Query/Page=1/PageSize=20
                 {
                    "startDate": "2018-07-11 00:00:00",
                    "endDate":"2018-07-13 23:59:59",
@@ -1346,7 +1349,6 @@
                 Post /System/Menu
                    {
                      "name": "菜单XX",
-                     "menuType": "系统菜单",
                      "parentID": -1,
                      "icon": "class",
                      "order_no": 1,
@@ -1402,28 +1404,6 @@
             调用例子  
             
                 Delete /System/Menu/Id=1
-            </remarks>
-        </member>
-        <member name="M:PartyManage.Controllers.SystemController.UploadMenuFile(System.Int32)">
-            <summary>
-            创建菜单对应附件
-            </summary>
-            <param name="Id">菜单Id</param>
-            <remarks>
-            调用例子  
-            
-                Post /System/Menu/UploadFile/Id=1
-            </remarks>
-        </member>
-        <member name="M:PartyManage.Controllers.SystemController.DeleteMenuFile(System.Int32)">
-            <summary>
-            按菜单Id删除菜单附件
-            </summary>
-            <param name="Id">Id</param>
-            <remarks>
-            调用例子  
-            
-                Delete /System/Menu/DeleteFile/Id=1
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.SystemController.GetMenuPermission">
@@ -1513,6 +1493,93 @@
             调用例子  
             
                 Get /System/MenuPermission/MenuID={menuID}/RoleId={roleId}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetNewsByTitleList(System.String,System.Int32,System.Int32)">
+            <summary>
+            获取新闻信息（分页）,可加title查询
+            </summary>
+            <param name="title">新闻名称</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/NewsList/Page=1/PageSize=20?text=XXX
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetNewsById(System.Int32)">
+            <summary>
+            根据id获取新闻信息
+            </summary>
+            <param name="Id">新闻Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/News/Id={Id}
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.CreateNews(PartyManage.ViewModels.System.NewsViewModel)">
+            <summary>
+            创建新闻
+            </summary>
+            <param name="news">新闻模型</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/News
+                   {
+                     "title": "XXX"
+                   }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UpdateNews(System.Int32,PartyManage.ViewModels.System.NewsViewModel)">
+            <summary>
+            新闻修改
+            </summary>
+            <param name="news">新闻模型</param>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Put /System/News/Id=1
+                {   
+                   "id":1,
+                   "title": "XXX"
+                }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteNews(System.Int32)">
+            <summary>
+            按新闻Id删除新闻
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/News/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.UploadNewsFile(System.Int32)">
+            <summary>
+            创建新闻对应附件
+            </summary>
+            <param name="Id">新闻Id</param>
+            <remarks>
+            调用例子  
+            
+                Post /System/News/UploadFile/Id=1
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.DeleteNewsFile(System.Int32)">
+            <summary>
+            按新闻Id删除新闻附件
+            </summary>
+            <param name="Id">Id</param>
+            <remarks>
+            调用例子  
+            
+                Delete /System/News/DeleteFile/Id=1
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.SystemController.GetDictionaryByTextList(System.String,System.Int32,System.Int32)">
@@ -2392,6 +2459,11 @@
             父社区Id
             </summary>
         </member>
+        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.Is_Sign">
+            <summary>
+            标记，用于控件筛选
+            </summary>
+        </member>
         <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.Id">
             <summary>
             字典详细值Id
@@ -2542,9 +2614,19 @@
             菜单对应URL
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.MenuViewModel.FileID">
+        <member name="P:PartyManage.ViewModels.System.NewsViewModel.Id">
             <summary>
-            菜单对应的附件id
+            新闻Id
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.NewsViewModel.Title">
+            <summary>
+            新闻名称
+            </summary>
+        </member>
+        <member name="P:PartyManage.ViewModels.System.NewsViewModel.FileID">
+            <summary>
+            新闻对应的附件id
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberID">

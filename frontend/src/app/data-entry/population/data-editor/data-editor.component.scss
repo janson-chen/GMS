@@ -2,6 +2,12 @@
   margin: 0;
 }
 
+.form-group {
+  > .wrap {
+    flex: 1;
+  }
+}
+
 .btn-group {
   position: relative;
   display: flex;
@@ -40,4 +46,38 @@ ca-select {
   }
 }
 
+.family-type {
+  display: flex;
+
+  .wrap {
+    margin-right: 30px;
+  }
+}
+
+.form-info {
+  dl {
+    display: flex;
+
+    dt {
+      margin-right: 10px;
+    }
+
+    dl {
+      margin-right: 20px;
+    }
+  }
+}
+
+.wrap {
+  display: flex;
+
+  label {
+    flex: 100px;
+  }
+}
+
+.inner-wrap {
+  display: flex;
+  flex: 100;
+}
 

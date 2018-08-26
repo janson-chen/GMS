@@ -1,0 +1,8 @@
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">Failed to save your changes.</ng-container>
+</ca-spinner>

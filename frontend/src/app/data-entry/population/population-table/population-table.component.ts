@@ -16,7 +16,7 @@ export class PopulationListComponent extends TableComponent<Population[]> implem
   }
 
   ngOnInit() {
-
+    console.log("data", this.data);
   }
 
 

@@ -28,9 +28,10 @@ export class AppComponent extends CoreComponent<UserInfo> implements OnInit {
   };
 
   async ngOnInit() {
-    this.data = this.userInfo;
-    // get menus
-    this.menusService.menus = await this.menuManagerService.getList("/menus");
+    if (this.isLoggedIn) {
+      this.data = this.userInfo;
+      // get menus
+      this.menusService.menus = await this.menuManagerService.getList("/menus");
+    }
   }
-
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { QueryOptions } from "../interface/data.interface";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { Population } from "../../data-entry/population/population.data";
 
 export interface QueryOptions {
 
@@ -38,5 +39,9 @@ export class DataService<T> {
 
     removeItem (urlSegment: string, id: string): Promise<void> {
        return <Promise<any>>this.http.delete(`${this.endpoint}/${urlSegment}/id=${id}`).toPromise();
+    }
+
+    query(urlSegment?: string, queryOptions?: any): Promise<Population[]> {
+      return <Promise<Population[]>>this.http.post(`${this.endpoint}/${urlSegment}`, queryOptions).toPromise();
     }
 }

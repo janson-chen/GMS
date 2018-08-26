@@ -13,6 +13,11 @@ export interface Population {
   updatedDate?: string;
 }
 
+export class Insurance {
+  name: string;
+  value: string;
+}
+
 export const POPULATION_MANAGER_TABLE_COLUMES = [
   "姓名",
   "社区",

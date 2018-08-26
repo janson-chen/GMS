@@ -14,10 +14,7 @@ export class PopulationResolver extends DataService<Population> implements Resol
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Population[]> | Promise<Population[]> | Population[] {
-    // return this.populationService.getList("/query/page=1/pageSize=20");
-    return new Promise((resolve, reject)=> {
-      resolve([]);
-    });
+    return this.populationService.query("query/page=-1/pageSize=-1", {});
   }
 
 }
