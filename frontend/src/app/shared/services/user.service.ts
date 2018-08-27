@@ -37,6 +37,7 @@ export class UserService {
   async login(data: LoginData): Promise<any> {
     try {
         await this.http.post(`${environment.baseUrl}/account/login`, data, {observe: 'response', withCredentials: true}).toPromise();
+
     } catch (error) {
       return false;
     }

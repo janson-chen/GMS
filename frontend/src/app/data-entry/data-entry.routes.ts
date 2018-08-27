@@ -4,6 +4,7 @@ import { RiskChecklistComponent } from "./risk-checklist/risk-checklist.componen
 import { PartyBuildComponent } from "./party-build/party-build.component";
 import { DataEntryComponent } from "./data-entry.component";
 import { PopulationResolver } from "./population/population-resolver";
+import { PartyResolver } from "./party-build/party-resolver";
 
 export const dataEntryRoutes:Routes = [
     {
@@ -17,7 +18,13 @@ export const dataEntryRoutes:Routes = [
               }
             },
             {path: "risk", component: RiskChecklistComponent},
-            {path: "party", component: PartyBuildComponent}
+            {
+              path: "party",
+              component: PartyBuildComponent,
+              resolve: {
+                partyActivities: PartyResolver
+              }
+            }
         ]
     }
 ];

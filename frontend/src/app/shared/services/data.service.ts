@@ -41,7 +41,7 @@ export class DataService<T> {
        return <Promise<any>>this.http.delete(`${this.endpoint}/${urlSegment}/id=${id}`).toPromise();
     }
 
-    query(urlSegment?: string, queryOptions?: any): Promise<Population[]> {
-      return <Promise<Population[]>>this.http.post(`${this.endpoint}/${urlSegment}`, queryOptions).toPromise();
+    query(urlSegment?: string, queryOptions?: any): Promise<T[]> {
+      return <Promise<T[]>>this.http.post(`${this.endpoint}/${urlSegment}`, queryOptions).toPromise();
     }
 }

@@ -1,84 +1,106 @@
-<div class="form-info">
-  <dl>
-    <dt>社区</dt>
-    <dd>回民社区</dd>
-    <dt>登记人</dt>
-    <dd>张三</dd>
-    <dt>登记日期</dt>
-    <dd>2018/05/01</dd>
-  </dl>
-</div>
-<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
-  <div class="form-group">
-    <div class="wrapper">
-      <label>所属社区</label>
-      <ca-select formControlName="communityID">
-        <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
-      </ca-select>
-    </div>
-    <small *ngIf="formGroup.get('communityID').dirty && formGroup.get('communityID').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
+<div class="form-panel" *ngIf="!isSubmitting">
+  <div class="form-info">
+    <dl>
+      <dt>社区</dt>
+      <dd>回民社区</dd>
+      <dt>登记人</dt>
+      <dd>张三</dd>
+      <dt>登记日期</dt>
+      <dd>2018/05/01</dd>
+    </dl>
   </div>
-  <div class="form-group">
-    <div class="wrap">
-      <label>家庭住址</label>
-      <input type="text" class="form-control" placeholder="家庭住址"  caValidityClass/>
+  <form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+    <div class="form-group">
+      <div class="wrap">
+        <label>所属社区</label>
+        <ca-select formControlName="communityID">
+          <ca-option [value]="''">请选择所属社区</ca-option>
+          <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
+        </ca-select>
+      </div>
+      <small *ngIf="formGroup.get('communityID').dirty && formGroup.get('communityID').hasError('required')" class="invalid-feedback">
+        Required field.
+      </small>
     </div>
-  </div>
-  <div class="form-group family-type">
-    <div class="wrap">
-      <label>住户性质</label>
-      <div class="inner-wrap">
-        <div class="wrap">
-          <input type="radio" name="family_type">
-          <label>流动人口</label>
-        </div>
-        <div class="wrap">
-          <input type="radio" name="family_type">
-          <label>常住人口</label>
+    <div class="form-group">
+      <div class="wrap">
+        <label>家庭住址</label>
+        <input type="text" class="form-control" formControlName="family_Address" placeholder="家庭住址"  caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group family-type">
+      <div class="wrap">
+        <label>住户性质</label>
+        <div class="inner-wrap">
+          <div class="wrap">
+            <ca-input-radio [value]="'流动人口'" formControlName="family_Type"></ca-input-radio>
+            <label>流动人口</label>
+          </div>
+          <div class="wrap">
+            <ca-input-radio [value]="'常住人口'" [checked]="true" formControlName="family_Type"></ca-input-radio>
+            <label>常住人口</label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="wrap">
-      <label>姓名</label>
-      <input type="text" class="form-control" placeholder="姓名"  caValidityClass/>
+    <div class="form-group">
+      <div class="wrap">
+        <label>姓名</label>
+        <input type="text" class="form-control" placeholder="姓名"  caValidityClass/>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="wrap">
-      <label>年龄</label>
-      <input type="text" class="form-control" placeholder="年龄"  caValidityClass/>
+    <div class="form-group">
+      <div class="wrap">
+        <label>年龄</label>
+        <input type="text" class="form-control" placeholder="年龄"  caValidityClass/>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <ca-select formControlName="sex">
-      <ca-option value="0">男</ca-option>
-      <ca-option value="1">女</ca-option>
-    </ca-select>
-  </div>
-  <div class="form-group">
-    <ca-select formControlName="nationality">
-      <ca-option value="0">汉</ca-option>
-      <ca-option value="1">蒙</ca-option>
-    </ca-select>  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="职业"  caValidityClass/>
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="联系电话"  caValidityClass/>
-  </div>
-  <div class="form-group">
-    <div class="wrap">
-      <ca-input-checkbox *ngFor="let item of insurancesFormArray" [formControl]="item.control" [value]="item.insurance.value">{{ item.insurance.name }}</ca-input-checkbox>
+    <div class="form-group">
+      <div class="wrap">
+        <label>性别</label>
+        <ca-select formControlName="sex">
+          <ca-option value="0">男</ca-option>
+          <ca-option value="1">女</ca-option>
+        </ca-select>
+      </div>
     </div>
-  </div>
-  <div class="modal-buttons">
-    <button type="submit" class="btn btn-primary">Save</button>
-  </div>
-</form>
+    <div class="form-group">
+      <div class="wrap">
+        <label>民族</label>
+        <ca-select formControlName="nationality">
+          <ca-option value="0">汉</ca-option>
+          <ca-option value="1">蒙</ca-option>
+        </ca-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>职业</label>
+        <input type="text" class="form-control" placeholder="职业"  caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>联系电话</label>
+        <input type="text" class="form-control" formControlName="family_Phone" placeholder="联系电话"  caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <ca-input-checkbox *ngFor="let item of insurancesFormArray" [formControl]="item.control" [value]="item.insurance.value">{{ item.insurance.name }}</ca-input-checkbox>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>家庭情况</label>
+        <textarea type="text" class="form-control" formControlName="family_Content" placeholder="" caValidityClass></textarea>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
 <ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
   <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
   <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>

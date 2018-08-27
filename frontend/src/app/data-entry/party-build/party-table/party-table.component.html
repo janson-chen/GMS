@@ -1,0 +1,19 @@
+<div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+        <div class="data-item" *ngFor="let item of data">
+            <span>{{ item?.subject }}</span>
+            <span>{{ item?.activitiesDate }}</span>
+            <span>{{ item?.activitiesPlace }}</span>
+            <span>{{ item?.joinAmount }}</span>
+            <span>{{ item?.realAmount }}</span>
+            <span>{{ item?.leaveAmount }}</span>
+            <span>{{ item?.form }}</span>
+            <span>{{ item?.content }}</span>
+            <span>{{ item?.leaveAmount }}</span>
+            <span>
+              <a>删除</a>
+            </span>
+        </div>
+    </div>
+</div>

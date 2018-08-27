@@ -81,7 +81,7 @@
                    {
                      "userName": "Admin",
                      "name": "系统管理员",
-                     "communityID": 1,
+                     "communityId": 1,
                      "isEnabled": true,
                      "roles": [
                        "Administrator"
@@ -149,7 +149,7 @@
                    "name": "普通用户",
                    "email": "123456@qq.com",
                    "phoneNumber": "12345",
-                   "communityID": 2,
+                   "communityId": 2,
                    "isEnabled": true,
                    "roles": [
                               "User",
@@ -325,7 +325,7 @@
             创建通知
             </summary>
             <param name="alert">通知模型</param>
-            <param name="userMemberID">用户组Id</param>
+            <param name="userMemberId">用户组Id</param>
             <remarks>
             调用例子  
             
@@ -371,14 +371,14 @@
             
                 Post /Business/Event
                    {
-                     "communityID": 1,
+                     "communityId": 1,
                      "name": "事件1",
                      "happenDate":"2018-07-20 00:00:00",
                      "eventType":"普通",
                      "area":"XXX",
                      "content":"XXX",
                      "isSendMessage":true,
-                     "userMemberID":1
+                     "userMemberId":1
                    }
             </remarks>
         </member>
@@ -429,14 +429,14 @@
                 Put /Business/Event/Id=1
                 {   
                    "id":1,
-                   "communityID": 1,
+                   "communityId": 1,
                    "name": "事件1",
                    "happenDate":"2018-07-20 00:00:00",
                    "eventType":"普通",
                    "area":"XXX",
                    "content":"XXX",
                    "isSendMessage":true,
-                   "userMemberID":1
+                   "userMemberId":1
                 }
             </remarks>
         </member>
@@ -511,7 +511,7 @@
             
                 Post /Business/PartyActivities
                    {
-                     "communityID": 1,
+                     "communityId": 1,
                      "subject": "主题XX",
                      "activitiesDate":"2018-07-20 00:00:00",
                      "activitiesPlace":"XX",
@@ -564,7 +564,7 @@
                 Put /Business/PartyActivities/Id=1
                 {   
                    "id":1,
-                   "communityID": 1,
+                   "communityId": 1,
                    "subject": "主题XX",
                    "activitiesDate":"2018-07-20 00:00:00",
                    "activitiesPlace":"XX",
@@ -604,7 +604,7 @@
                 Delete /Business/PartyActivities/Id=1
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.CreatePopulation(PartyManage.ViewModels.Business.EventViewModel)">
+        <member name="M:PartyManage.Controllers.BusinessController.CreatePopulation(PartyManage.ViewModels.Business.PopulationViewModel)">
             <summary>
             创建网格登记表
             </summary>
@@ -615,7 +615,7 @@
                 Post /Business/Population
                    {
                      "code":"XXX",
-                     "communityID": 1,
+                     "communityId": 1,
                      "family_Type": "XX",
                      "family_Address":"XXX",
                      "family_Phone":"XX",
@@ -668,7 +668,7 @@
                 {   
                    "id":1,
                    "code":"XXX",
-                   "communityID": 1,
+                   "communityId": 1,
                    "family_Type": "XX",
                    "family_Address":"XXX",
                    "family_Phone":"XX",
@@ -716,7 +716,7 @@
                 Post /Business/Population/Families/code=XXX
                    {
                      [
-                        { "populationID": 1,
+                        { "populationId": 1,
                           "personName": "张三",
                           "cardNo":"XXXX",
                           "sex":"男",
@@ -731,7 +731,7 @@
                           "marriage":"XX",
                           "rmks":"XX"
                         },
-                        { "populationID": 1,
+                        { "populationId": 1,
                           "personName": "李四",
                           "cardNo":"XXXX",
                           "sex":"男",
@@ -787,7 +787,7 @@
                 {   
                      [
                         { "id":1,
-                          "populationID": 1,
+                          "populationId": 1,
                           "personName": "张三",
                           "cardNo":"XXXX",
                           "sex":"男",
@@ -803,7 +803,7 @@
                           "rmks":"XX"
                         },
                         { "id":2,
-                          "populationID": 1,
+                          "populationId": 1,
                           "personName": "李四",
                           "cardNo":"XXXX",
                           "sex":"男",
@@ -1118,7 +1118,7 @@
                 Post /Community
                    {
                      "name": "社区XX",
-                     "parentID": 1,
+                     "parentId": 1,
                      "is_Sign":false
                    }
             </remarks>
@@ -1189,7 +1189,7 @@
                    "id":1,
                    "name": "社区XX",
                    "is_Sign":false,
-                   "parentID": 1
+                   "parentId": 1
                 }
             </remarks>
         </member>
@@ -1349,7 +1349,7 @@
                 Post /System/Menu
                    {
                      "name": "菜单XX",
-                     "parentID": -1,
+                     "parentId": -1,
                      "icon": "class",
                      "order_no": 1,
                      "url": "#"
@@ -1369,8 +1369,7 @@
                 {   
                    "id":1,
                    "name": "菜单XX",
-                   "menuType":"系统菜单",
-                   "parentID": 2,
+                   "parentId": 2,
                    "icon": "class",
                    "order_no": 1,
                    "Url":"#"
@@ -1389,8 +1388,7 @@
                 Patch /System/Menu/Id=1
                 {  
                    [
-                     { "op" : "replace", "path" : "/Name", "value" : "菜单XXX" },
-                     { "op" : "replace", "path" : "/MenuType", "value" : "自定义菜单" }
+                     { "op" : "replace", "path" : "/Name", "value" : "菜单XXX" }
                    ]
                 }
             </remarks>
@@ -1428,13 +1426,13 @@
                 {
                    [
                      {
-                       "menuID": 1,
+                       "menuId": 1,
                        "menuName": "菜单一",
                        "roleId": "XXXXX",
                        "roleName": "角色一"
                      },    
                     {
-                       "menuID": 2,
+                       "menuId": 2,
                        "menuName": "菜单二",
                        "roleId": "XXXXX",
                        "roleName": "角色二"
@@ -1455,13 +1453,13 @@
                 {
                    [
                      {
-                       "menuID": 1,
+                       "menuId": 1,
                        "menuName": "菜单一",
                        "roleId": "XXXXX",
                        "roleName": "角色一"
                      },    
                     {
-                       "menuID": 2,
+                       "menuId": 2,
                        "menuName": "菜单二",
                        "roleId": "XXXXX",
                        "roleName": "角色二"
@@ -1474,25 +1472,25 @@
             <summary>
             根据菜单Id获取对应角色权限（分页）
             </summary>
-            <param name="menuID">菜单Id</param>
+            <param name="menuId">菜单Id</param>
             <param name="page">页码</param>
             <param name="pageSize">每页数量</param>
             <remarks>
             调用例子  
             
-                Get /System/MenuPermission/MenuID=1/Page=1/PageSize=20
+                Get /System/MenuPermission/MenuId=1/Page=1/PageSize=20
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.SystemController.GetMenuPermissionById(System.Int32,System.String)">
             <summary>
-            用menuID,roleId获取对应角色权限
+            用menuId,roleId获取对应角色权限
             </summary>
-            <param name="menuID">菜单Id</param>
+            <param name="menuId">菜单Id</param>
             <param name="roleId">角色Id</param>
             <remarks>
             调用例子  
             
-                Get /System/MenuPermission/MenuID={menuID}/RoleId={roleId}
+                Get /System/MenuPermission/MenuId={menuId}/RoleId={roleId}
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.SystemController.GetNewsByTitleList(System.String,System.Int32,System.Int32)">
@@ -1714,10 +1712,10 @@
                 Post /System/DictionaryDetail
                    {
                      [
-                        { "dictionaryID": 1,
+                        { "dictionaryId": 1,
                          "value": "字典实际值1"
                         },
-                        { "dictionaryID": 2,
+                        { "dictionaryId": 2,
                          "value": "字典实际值2"
                         }            
                      ]
@@ -1736,11 +1734,11 @@
                 {   
                      [
                         {"id":1, 
-                         "dictionaryID": 1,
+                         "dictionaryId": 1,
                          "value": "字典实际值1"
                         },
                         {"id":2,
-                         "dictionaryID": 1,
+                         "dictionaryId": 1,
                          "value": "字典实际值2"
                         }            
                      ]
@@ -1865,14 +1863,14 @@
                 Post /System/UserMemberDetail
                 {
                   [
-                    { "UserMemberID": 1,
+                    { "UserMemberId": 1,
                       "UserMemberName":"用户组1",
-                      "UserID": "XXX",
+                      "UserId": "XXX",
                       "UserName":"XXX"
                     },
-                    { "UserMemberID": 1,
+                    { "UserMemberId": 1,
                       "UserMemberName":"用户组1",
-                      "UserID": "XXX",
+                      "UserId": "XXX",
                       "UserName":"XXX"
                     },       
                   ]
@@ -1890,14 +1888,14 @@
                 Delete /System/UserMemberDetail
                 {   
                      [
-                        { "UserMemberID": 1,
+                        { "UserMemberId": 1,
                           "UserMemberName":"用户组1",
-                          "UserID": "XXX",
+                          "UserId": "XXX",
                           "UserName":"XXX"
                         },
-                        { "UserMemberID": 1,
+                        { "UserMemberId": 1,
                           "UserMemberName":"用户组1",
-                          "UserID": "XXX",
+                          "UserId": "XXX",
                           "UserName":"XXX"
                         },       
                      ]
@@ -1964,7 +1962,7 @@
             电话号码
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.CommunityID">
+        <member name="P:PartyManage.ViewModels.Account.UserPatchViewModel.CommunityId">
             <summary>
             社区Id
             </summary>
@@ -1994,7 +1992,7 @@
             电话号码
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Account.UserViewModel.CommunityID">
+        <member name="P:PartyManage.ViewModels.Account.UserViewModel.CommunityId">
             <summary>
             社区Id
             </summary>
@@ -2084,7 +2082,7 @@
             残疾等级
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.EventID">
+        <member name="P:PartyManage.ViewModels.Business.EventFileViewModel.EventId">
             <summary>
             事件Id
             </summary>
@@ -2104,7 +2102,7 @@
             事件Id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.EventViewModel.CommunityID">
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.CommunityId">
             <summary>
             社区Id
             </summary>
@@ -2144,7 +2142,7 @@
             是否发送短信
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.EventViewModel.UserMemberID">
+        <member name="P:PartyManage.ViewModels.Business.EventViewModel.UserMemberId">
             <summary>
             短信通知用户组Id
             </summary>
@@ -2159,7 +2157,7 @@
             家庭人员Id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PopulationID">
+        <member name="P:PartyManage.ViewModels.Business.FamilyViewModel.PopulationId">
             <summary>
             网格登记表Id
             </summary>
@@ -2239,7 +2237,7 @@
             活动Id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.CommunityID">
+        <member name="P:PartyManage.ViewModels.Business.PartyActivitiesViewModel.CommunityId">
             <summary>
             社区Id
             </summary>
@@ -2339,7 +2337,7 @@
             社区编号
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.CommunityID">
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.CommunityId">
             <summary>
             社区Id
             </summary>
@@ -2369,7 +2367,7 @@
             家庭情况
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.AlertID">
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.AlertId">
             <summary>
             所属通知Id
             </summary>
@@ -2384,7 +2382,7 @@
             通知转向URL
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.NoticeUserID">
+        <member name="P:PartyManage.ViewModels.System.AlertDetailViewModel.NoticeUserId">
             <summary>
             接收消息人Id
             </summary>
@@ -2469,7 +2467,7 @@
             字典详细值Id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryID">
+        <member name="P:PartyManage.ViewModels.System.DictionaryDetailViewModel.DictionaryId">
             <summary>
             字典Id
             </summary>
@@ -2504,7 +2502,7 @@
             字典名称
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileID">
+        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileId">
             <summary>
             文件Id
             </summary>
@@ -2559,7 +2557,7 @@
             日志类型
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.MenuPermissionViewModel.MenuID">
+        <member name="P:PartyManage.ViewModels.System.MenuPermissionViewModel.MenuId">
             <summary>
             菜单Id
             </summary>
@@ -2589,12 +2587,7 @@
             菜单名称
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.MenuViewModel.MenuType">
-            <summary>
-            菜单类型
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.MenuViewModel.ParentID">
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.ParentId">
             <summary>
             父菜单Id
             </summary>
@@ -2624,12 +2617,12 @@
             新闻名称
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.NewsViewModel.FileID">
+        <member name="P:PartyManage.ViewModels.System.NewsViewModel.FileId">
             <summary>
             新闻对应的附件id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberID">
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserMemberId">
             <summary>
             用户组Id
             </summary>
@@ -2639,7 +2632,7 @@
             用户组名
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserID">
+        <member name="P:PartyManage.ViewModels.System.UserMemberDetailViewModel.UserId">
             <summary>
             用户Id
             </summary>

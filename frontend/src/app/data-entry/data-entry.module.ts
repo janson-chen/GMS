@@ -12,6 +12,12 @@ import { PopulationDataEditorComponent } from "./population/data-editor/data-edi
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PopulationService } from "./population/population.service";
 import { PopulationResolver } from "./population/population-resolver";
+import { CommunityService } from "../settings/community-manager/community.service";
+import { PartyService } from "./party-build/party.service";
+import { PartyDataEditorComponent } from "./party-build/data-editor/data-editor.component";
+import { RiskService } from "./risk-checklist/risk.service";
+import { RiskDataEditorComponent } from "./risk-checklist/data-editor/data-editor.component";
+import { PartyResolver } from "./party-build/party-resolver";
 
 @NgModule({
   imports: [
@@ -26,12 +32,18 @@ import { PopulationResolver } from "./population/population-resolver";
     PopulationComponent,
     RiskChecklistComponent,
     PartyBuildComponent,
-    PopulationDataEditorComponent
+    PopulationDataEditorComponent,
+    PartyDataEditorComponent,
+    RiskDataEditorComponent
   ],
   exports: [RouterModule],
   providers: [
     PopulationService,
-    PopulationResolver
+    PopulationResolver,
+    PartyResolver,
+    CommunityService,
+    PartyService,
+    RiskService
   ]
 })
 export class DataEntryModule {

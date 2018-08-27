@@ -6,6 +6,7 @@ import { ModalContainerComponent } from "../../shared/components/modal-container
 import { Insurance, Population, POPULATION_MANAGER_TABLE_COLUMES } from "./population.data";
 import { PopulationService } from "./population.service";
 import { Community } from "../../settings/community-manager/community.data";
+import { CommunityService } from "../../settings/community-manager/community.service";
 
 @Component({
   selector: 'gm-population',

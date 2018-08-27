@@ -1,0 +1,56 @@
+<div class="form-info">
+  <dl>
+    <dt>社区</dt>
+    <dd>回民社区</dd>
+    <dt>登记人</dt>
+    <dd>张三</dd>
+    <dt>登记日期</dt>
+    <dd>2018/05/01</dd>
+  </dl>
+</div>
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <div class="wrap">
+      <label>活动名称</label>
+      <input type="text" class="form-control" formControlName="subject" placeholder=""  caValidityClass/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="wrap">
+      <label>活动场所名称</label>
+      <input type="text" class="form-control" formControlName="subject" placeholder=""  caValidityClass/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="wrap">
+      <label>参与人数</label>
+      <input type="text" class="form-control" formjoinAmount="joinAmount" placeholder=""  caValidityClass/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="wrap">
+      <label>活动时间</label>
+      <input type="text" class="form-control" formControlName="activitiesDate" placeholder=""  caValidityClass/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="wrap">
+      <label>活动地点</label>
+      <input type="text" class="form-control" formControlName="activitiesDate" placeholder=""  caValidityClass/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="wrap">
+      <label>活动内容</label>
+      <textarea type="text" class="form-control" formControlName="content" placeholder="" caValidityClass></textarea>
+    </div>
+  </div>
+  <div class="modal-buttons">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">Failed to save your changes.</ng-container>
+</ca-spinner>
