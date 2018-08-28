@@ -6,7 +6,7 @@ import { GroupManagerService } from "./group-manager.service";
 import { GROUP_MANAGER_TABLE_COLUMES, UserGroup } from "./group.data";
 
 @Component({
-  selector: 'gm-user-manager',
+  selector: 'gm-group-manager',
   templateUrl: './group-manager.component.html',
   styleUrls: ['./group-manager.component.scss']
 })

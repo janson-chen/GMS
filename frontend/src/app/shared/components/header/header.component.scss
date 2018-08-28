@@ -3,13 +3,13 @@
 header {
     display: flex;
     align-items: center;
-    color: #fff;
+    color: $ca-black;
     height: 70px;
 
-    background: rgb(153, 16, 16);
+    background: #fff;
     background-size: contain;
     background-position-y: 30px;
-    border-bottom: 1px solid yellow;
+    border-bottom: 2px solid #000;
 
     .content {
         width: 100%;
@@ -23,7 +23,7 @@ header {
         .logo {
             width: 24px;
             height: 24px;
-            border: 1.5px solid yellow;
+            border: 1.5px solid red;
             border-radius: 24px;
             display: flex;
             align-items: center;
@@ -38,6 +38,7 @@ header {
 
         .caption {
             flex: 1;
+            margin-left: 20px;
         }
 
         .c-li {
@@ -80,6 +81,6 @@ header {
 
 h1 {
     flex: 1;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 0;
 }

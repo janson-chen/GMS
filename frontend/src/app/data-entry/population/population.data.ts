@@ -13,6 +13,23 @@ export interface Population {
   updatedDate?: string;
 }
 
+export interface Member {
+  populationId?: string;
+  personName?: string;
+  cardNo?: string;
+  sex?: string;
+  nation?: string;
+  birthDate?: string;
+  politicalStatus?: string;
+  relation?: string;
+  registeredResidence?: string;
+  nativePlace?: string;
+  peopleType?: string;
+  culture?: string;
+  marriage?: string;
+  rmks?: string;
+}
+
 export class Insurance {
   name: string;
   value: string;

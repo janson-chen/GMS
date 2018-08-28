@@ -10,13 +10,15 @@ import { CommunityResolver } from "./community-manager/community-resolver";
 import { UserResolver } from "./user-manager/user-resolver";
 import { LogsManagerComponent } from "./logs-manager/logs-manager.component";
 import { LogResolver } from "./logs-manager/log-resolver";
+import { GroupManagerComponent } from "./group-manager/group-manager.component";
+import { GroupResolver } from "./group-manager/group-resolver";
 
 export const settingsRroutes: Routes = [
   {
     path: "", component: SettingsComponent,
     children: [
       {
-        path: "community",
+        path: "communites",
         component:
         CommunityManagerComponent,
         resolve: [CommunityResolver]
@@ -33,6 +35,13 @@ export const settingsRroutes: Routes = [
         component: UserManagerComponent,
         resolve: {
           users: UserResolver
+        }
+      },
+      {
+        path: "groups",
+        component: GroupManagerComponent,
+        resolve: {
+          groups: GroupResolver
         }
       },
       {

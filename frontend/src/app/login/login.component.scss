@@ -1,7 +1,14 @@
+@import "../../styles/lib";
+
 .login-box {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 50px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: rgba(100,100,100,0.3);
+  box-shadow: 0 0 20px 1px #fff;
 }
 
 .login-panel {
@@ -11,8 +18,13 @@
     width: 100%;
   }
 
+  button {
+    background-color: $ca-blue;
+  }
+
   .title {
     text-align: center;
     margin-bottom: 30px;
+    color: #fff;
   }
 }

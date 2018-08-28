@@ -18,6 +18,7 @@ import { PartyDataEditorComponent } from "./party-build/data-editor/data-editor.
 import { RiskService } from "./risk-checklist/risk.service";
 import { RiskDataEditorComponent } from "./risk-checklist/data-editor/data-editor.component";
 import { PartyResolver } from "./party-build/party-resolver";
+import { PopulationListComponent } from "./population/population-table/population-table.component";
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { PartyResolver } from "./party-build/party-resolver";
     PartyBuildComponent,
     PopulationDataEditorComponent,
     PartyDataEditorComponent,
-    RiskDataEditorComponent
+    RiskDataEditorComponent,
+    PopulationListComponent
   ],
   exports: [RouterModule],
   providers: [

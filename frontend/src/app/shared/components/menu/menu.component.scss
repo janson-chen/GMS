@@ -5,7 +5,7 @@
 }
 
 .menu {
-  min-width: 160px;
+  min-width: $menu-width;
   background: rgba(44, 62, 80, 0.9);
   color: #fff;
   font-size: $app-font-small;

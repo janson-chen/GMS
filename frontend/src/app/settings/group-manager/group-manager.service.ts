@@ -4,7 +4,7 @@ import { UserGroup } from "./group.data";
 
 @Injectable()
 export class GroupManagerService extends DataService<UserGroup> {
-  modelType: string = "/account/groups";
+  modelType: string = "/system/usermemberlist";
 
   addGroup(payload: UserGroup): Promise<UserGroup> {
     return <Promise<UserGroup>>this.http.post(`${this.endpoint}`, payload).toPromise();

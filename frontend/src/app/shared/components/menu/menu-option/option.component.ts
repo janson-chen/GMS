@@ -40,7 +40,7 @@ export class MenuOptionComponent extends CoreComponent<Menu> implements OnInit {
       const subMenuPanel = this.elementRef.nativeElement.querySelector(".sub-menu-options");
       if (subMenuPanel) {
         if (subMenuPanel) {
-          this.render.setStyle(subMenuPanel, "left", "160px");
+          this.render.setStyle(subMenuPanel, "left", "120px");
           this.render.setStyle(subMenuPanel, "top", "0px");
         }
       }

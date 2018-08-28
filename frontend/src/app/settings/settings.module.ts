@@ -30,6 +30,9 @@ import { CreateMenuComponent } from "./menus-manager/create/create.component";
 import { MenuListComponent } from "./menus-manager/menu-table/menu-table.component";
 import { LogManagerService } from "./logs-manager/log-manager.service";
 import { LogResolver } from "./logs-manager/log-resolver";
+import { GroupManagerComponent } from "./group-manager/group-manager.component";
+import { GroupResolver } from "./group-manager/group-resolver";
+import { GroupManagerService } from "./group-manager/group-manager.service";
 
 @NgModule({
   imports: [
@@ -41,6 +44,7 @@ import { LogResolver } from "./logs-manager/log-resolver";
     RouterModule.forChild(settingsRroutes)
   ],
   declarations: [
+    GroupManagerComponent,
     UserManagerComponent,
     MenusManagerComponent,
     LogsManagerComponent,
@@ -62,11 +66,14 @@ import { LogResolver } from "./logs-manager/log-resolver";
     UserManagerService,
     RoleManagerService,
     RoleResolver,
+    GroupResolver,
     CommunityResolver,
     UserResolver,
     MenuManagerService,
     LogManagerService,
-    LogResolver
+    LogResolver,
+    GroupManagerService
   ]
 })
-export class SettingsModule { }
+export class SettingsModule {
+}

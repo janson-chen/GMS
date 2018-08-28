@@ -10,13 +10,17 @@ import { PartyService } from "../party.service";
   templateUrl: './party-table.component.html',
   styleUrls: ['./party-table.component.scss']
 })
-export class PartyListComponent extends TableComponent<Party[]> implements OnInit {
-  constructor(private partyService: PartyService) {
-    super();
+export class PartyListComponent extends TableComponent<Party> implements OnInit {
+  constructor(private partyService: PartyService, private communityService: CommunityService) {
+    super(communityService);
   }
 
   ngOnInit() {
     console.log("data", this.data);
+  }
+
+  getCommunityNameById(id: string): string {
+    return this.communityService.communitiesMap[id];
   }
 
 
