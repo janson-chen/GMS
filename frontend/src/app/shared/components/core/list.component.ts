@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CoreComponent } from "./core.component";
 import { QueryOption } from "./core.data";
-import { CoreService } from "./core.service";
+import { DataService } from "../../services/data.service";
 
 @Component({
     selector: "gm-core",
@@ -11,25 +11,23 @@ export abstract class ListComponent<T> extends CoreComponent<T>{
     @Input() dataList: T[];
     endpoint: string = "";
 
-    constructor(private coreService: CoreService<T>){
+    constructor(private dataService: DataService<T>){
         super();
     }
 
     async getDataList(query: QueryOption): Promise<T[]> {
-        return await this.coreService.getDataList(this.endpoint, query);
+        return await this.dataService.getList(this.endpoint, query);
     };
 
     async addData(data: T): Promise<void> {
-        await this.coreService.addData(this.endpoint, data);
+        await this.dataService.add(data);
     };
 
     async updateData(T): Promise<void> {
-        await this.coreService.updateData(this.endpoint, T);
+        await this.dataService.update(T);
     };
 
     async deleteDataById(id: string): Promise<void> {
-        await this.coreService.deleteDataById(this.endpoint, id);
+        await this.dataService.removeItem(id, this.endpoint);
     };
-
-
 }

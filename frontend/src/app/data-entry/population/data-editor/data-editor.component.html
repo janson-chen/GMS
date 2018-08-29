@@ -1,14 +1,4 @@
 <div class="form-panel" *ngIf="!isSubmitting">
-  <div class="form-info">
-    <dl>
-      <dt>社区</dt>
-      <dd>回民社区</dd>
-      <dt>登记人</dt>
-      <dd>张三</dd>
-      <dt>登记日期</dt>
-      <dd>2018/05/01</dd>
-    </dl>
-  </div>
   <form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
       <div class="wrap">
@@ -18,7 +8,7 @@
           <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
         </ca-select>
       </div>
-      <small *ngIf="formGroup.get('communityID').dirty && formGroup.get('communityID').hasError('required')" class="invalid-feedback">
+      <small *ngIf="formGroup.get('communityId').dirty && formGroup.get('communityId').hasError('required')" class="invalid-feedback">
         Required field.
       </small>
     </div>
@@ -45,44 +35,8 @@
     </div>
     <div class="form-group">
       <div class="wrap">
-        <label>姓名</label>
-        <input type="text" class="form-control" placeholder="姓名"  caValidityClass/>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="wrap">
-        <label>年龄</label>
-        <input type="text" class="form-control" placeholder="年龄"  caValidityClass/>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="wrap">
-        <label>性别</label>
-        <ca-select formControlName="sex">
-          <ca-option value="0">男</ca-option>
-          <ca-option value="1">女</ca-option>
-        </ca-select>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="wrap">
-        <label>民族</label>
-        <ca-select formControlName="nationality">
-          <ca-option value="0">汉</ca-option>
-          <ca-option value="1">蒙</ca-option>
-        </ca-select>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="wrap">
-        <label>职业</label>
-        <input type="text" class="form-control" placeholder="职业"  caValidityClass/>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="wrap">
-        <label>联系电话</label>
-        <input type="text" class="form-control" formControlName="family_Phone" placeholder="联系电话"  caValidityClass/>
+        <label>联系方式</label>
+        <input type="text" class="form-control" formControlName="family_Phone" placeholder="联系方式"  caValidityClass/>
       </div>
     </div>
     <div class="form-group">
@@ -102,7 +56,7 @@
   </form>
 </div>
 <ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
-  <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
-  <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>
-  <ng-container *ngIf="spinnerState === 'failed'">Failed to save your changes.</ng-container>
+  <ng-container *ngIf="spinnerState === 'waiting'">创建成功</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">{{successMessageTimeoutInSeconds}} 秒后关闭.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">创建失败.</ng-container>
 </ca-spinner>

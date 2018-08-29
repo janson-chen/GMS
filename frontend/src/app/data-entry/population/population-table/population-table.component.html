@@ -2,14 +2,20 @@
     <gm-table-header [columns]="columns"></gm-table-header>
     <div class="body">
         <div class="data-item" *ngFor="let item of data">
-            <span>{{ item?.userName }}</span>
-            <span>{{ item?.name }}</span>
-            <span>{{ getCommunityNameById(item?.communityID) }}</span>
-            <span>{{ item?.isEnabled }}</span>
+          <span>{{ getCommunityNameById(item?.communityId) }}</span>
+          <span>{{ item?.family_Address }}</span>
+          <span>{{ item?.family_Content }}</span>
+            <span>{{ item?.family_Phone }}</span>
+            <span>{{ item?.family_Type }}</span>
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>
             <span>
-              <a>删除</a>
+              <a (click)="removeItem(item?.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
+              <a>
+                  <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
             </span>
         </div>
     </div>

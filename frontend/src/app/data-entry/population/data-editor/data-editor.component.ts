@@ -37,11 +37,9 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      communityID: "",
+      communityId: "",
       family_Address: "",
       family_Type: "",
-      sex: "",
-      nationality: "",
       insurances: this.selectedInsurances,
       family_Content: "",
       family_Phone: ""
@@ -54,11 +52,9 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
     this.isSubmitting = true;
     const payload = {
       code: "Code" + timestamp(),
-      communityID: this.formGroup.value.communityID,
+      communityID: this.formGroup.value.communityId,
       family_Address: this.formGroup.value.family_Address,
       family_Type: this.formGroup.value.family_Type,
-      sex: this.formGroup.value.sex,
-      nationality: this.formGroup.value.nationality,
       family_Content: this.formGroup.value.family_Content,
       family_Phone: this.formGroup.value.family_Phone
     };
@@ -87,6 +83,5 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
       console.log("selected permissions", this.selectedInsurances);
     });
   }
-
 }
 

@@ -5,6 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, PreloadAllModules } from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 import { ROUTES } from "./app.routes";
 import { AppComponent } from "./app.component";
@@ -18,9 +22,10 @@ import { ErrorsHandler } from "./shared/services/errors-handler";
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AuthGuard } from "./shared/services/auth-guard.service";
 import "../styles/styles.scss";
-import { CookieService } from "ngx-cookie-service";
 import { CoreModule } from "./core/core.module";
 import { MenuManagerService } from "./settings/menus-manager/menu-manager.service";
+
+library.add(fas, far);
 
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -37,7 +42,6 @@ const APP_PROVIDERS = [
   UserService,
   ToastrService,
   AuthGuard,
-  CookieService,
   MenuManagerService
 ];
 
@@ -49,6 +53,7 @@ const APP_PROVIDERS = [
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     SharedModule,
     CoreModule,
     NgbModule.forRoot(),

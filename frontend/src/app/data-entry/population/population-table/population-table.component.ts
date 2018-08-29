@@ -4,6 +4,7 @@ import { TableComponent } from "../../../shared/components/table/table.component
 import { Population } from "../population.data";
 import { PopulationService } from "../population.service";
 import { CommunityService } from "../../../settings/community-manager/community.service";
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'gm-population-table',
@@ -11,7 +12,13 @@ import { CommunityService } from "../../../settings/community-manager/community.
   styleUrls: ['./population-table.component.scss']
 })
 export class PopulationListComponent extends TableComponent<Population> implements OnInit {
-  constructor(private populationService: PopulationService, private communityService: CommunityService) {
+  faEdit = faEdit;
+  faTrash = faTrash;
+
+  constructor(
+    private populationService: PopulationService,
+    private communityService: CommunityService
+  ) {
     super();
   }
 
@@ -20,7 +27,12 @@ export class PopulationListComponent extends TableComponent<Population> implemen
   }
 
   getCommunityNameById(id: string): string {
+    console.log(this.communityService.communitiesMap);
     return this.communityService.communitiesMap[id];
+  }
+
+  async removeItem(id: string): Promise<void> {
+    await this.populationService.removeItem(id);
   }
 
 

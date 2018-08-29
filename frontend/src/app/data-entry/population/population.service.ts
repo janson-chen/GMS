@@ -12,37 +12,37 @@ export class PopulationService extends DataService<Population> {
   }
 
   // 家庭成员信息修改(/Business/Population/Family/Id={Id})
-  updateMember(id: string, payload: Member): Promise<void> {
+  updateMember(id: string, payload: Member): Promise<any> {
     return this.http.patch(`${this.endpoint}/family/id=${id}`, payload).toPromise();
   }
 
   // 删除家庭成员信息 /Business/Population/Families
-  deleteMember(id: string): Promise<void> {
+  deleteMember(id: string): Promise<any> {
     return this.http.delete(`${this.endpoint}/families/id=${id}`).toPromise();
   }
 
   // 兵役信息修改 /Business/Population/Armies
-  updateArmies(armies: any[]): Promise<void> {
+  updateArmies(payload: any[]): Promise<any> {
     return this.http.put(`${this.endpoint}/armies`, payload).toPromise();
   }
 
   // 残疾信息修改 /Business/Population/Disabilities
-  updateDisableInfo(disables: any[]): Promise<void> {
+  updateDisableInfo(payload: any[]): Promise<any> {
     return this.http.put(`${this.endpoint}/disabilities`, payload).toPromise();
   }
 
   // 网格登记表修改(/Business/Population/Id={Id})
-  updatePopulation(id: string, payload: Population): Promise<void> {
+  updatePopulation(id: string, payload: Population): Promise<any> {
     return this.http.put(`${this.endpoint}/id=${id}`, payload).toPromise();
   }
 
   // 删除网格登记表 /Business/Population/Id={Id}
-  deletePopulation(id: string): Promise<void> {
+  deletePopulation(id: string): Promise<any> {
     return this.http.delete(`${this.endpoint}/id=${id}`).toPromise();
   }
 
   // 党派信息修改 /Business/Population/Parties
-  updateParty(parties: any[]): Promise<void> {
+  updateParty(payload: any[]): Promise<any> {
     return this.http.put(`${this.endpoint}/parties`, payload).toPromise();
   }
 }

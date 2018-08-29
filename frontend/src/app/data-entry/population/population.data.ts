@@ -1,7 +1,7 @@
 export interface Population {
   id?: string,
   code?: string;
-  communityID?: string;
+  communityId?: string;
   communityName?: string;
   family_Type?: string;
   family_Address?: string;
@@ -36,12 +36,12 @@ export class Insurance {
 }
 
 export const POPULATION_MANAGER_TABLE_COLUMES = [
-  "姓名",
   "社区",
-  "是否户主",
+  "家庭住址",
+  "家庭情况",
+  "联系方式",
   "住户性质",
-  "性别",
-  "年龄",
-  "民族",
+  "创建人",
+  "创建日期",
   "操作"
 ];

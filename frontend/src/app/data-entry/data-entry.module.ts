@@ -19,9 +19,11 @@ import { RiskService } from "./risk-checklist/risk.service";
 import { RiskDataEditorComponent } from "./risk-checklist/data-editor/data-editor.component";
 import { PartyResolver } from "./party-build/party-resolver";
 import { PopulationListComponent } from "./population/population-table/population-table.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   imports: [
+    FontAwesomeModule,
     CommonModule,
     SharedModule,
     FormsModule,
