@@ -258,21 +258,19 @@
             
                 Put /Account/Roles/Id=fca68848-ff04-4592-a860-8fd2ab073d6d
                 {
-                   {
-                     "id":"fca68848-ff04-4592-a860-8fd2ab073d6d"
-                     "name": "User",
-                     "description": "普通用户",
-                     "uersCount": 0,
-                     "permissions": [
-                             {
-                                 "name": "查看用户",
-                                 "value": "users.view",
-                                 "groupName": "用户权限",
-                                 "description": "查看其他用户信息"
-                              }
-                      ]
-                   }
-                }    
+                   "id":"fca68848-ff04-4592-a860-8fd2ab073d6d",
+                   "name": "User",
+                   "description": "普通用户",
+                   "uersCount": 0,
+                   "permissions": [
+                           {
+                               "name": "查看用户",
+                               "value": "users.view",
+                               "groupName": "用户权限",
+                               "description": "查看其他用户信息"
+                            }
+                    ]
+                 }   
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.AccountController.CreateRole(PartyManage.ViewModels.Account.RoleViewModel)">
@@ -329,11 +327,22 @@
             <remarks>
             调用例子  
             
-                Post /Alert
+                Post /Alert/UserMemberId={userMemberId}
                    {
                      "content": "通知内容XX",
                      "url": "#"
                    }
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.AlertsController.GetAlertById(System.Int32)">
+            <summary>
+            根据id获取通知信息
+            </summary>
+            <param name="Id">通知Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /Alert/Id={Id}
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.AlertsController.GetAlertDetail(System.String,System.Int32,System.Int32,System.Boolean)">
@@ -406,7 +415,7 @@
                 
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetEvent(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetEventById(System.Int32)">
             <summary>
             按Id获取事件表
             </summary>
@@ -541,7 +550,7 @@
                 
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetActivities(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetActivityById(System.Int32)">
             <summary>
             按Id获取活动表
             </summary>
@@ -644,7 +653,7 @@
                 
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetPopulation(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetPopulationById(System.Int32)">
             <summary>
             按Id获取网格登记表
             </summary>
@@ -1142,7 +1151,7 @@
                 
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.CommunityController.GetCommunity(System.Int32)">
+        <member name="M:PartyManage.Controllers.CommunityController.GetCommunityById(System.Int32)">
             <summary>
             按Id获取社区
             </summary>
@@ -1414,6 +1423,31 @@
                 Get /System/MenuPermissions
             </remarks>
         </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetMenuPermissionList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据菜单Id获取对应角色权限（分页）
+            </summary>
+            <param name="menuId">菜单Id</param>
+            <param name="page">页码</param>
+            <param name="pageSize">每页数量</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/MenuPermissions/MenuId=1/Page=1/PageSize=20
+            </remarks>
+        </member>
+        <member name="M:PartyManage.Controllers.SystemController.GetMenuPermissionById(System.Int32,System.String)">
+            <summary>
+            用menuId,roleId获取对应角色权限
+            </summary>
+            <param name="menuId">菜单Id</param>
+            <param name="roleId">角色Id</param>
+            <remarks>
+            调用例子  
+            
+                Get /System/MenuPermission/MenuId={menuId}/RoleId={roleId}
+            </remarks>
+        </member>
         <member name="M:PartyManage.Controllers.SystemController.CreateMenuPermission(System.Collections.Generic.List{PartyManage.ViewModels.System.MenuPermissionViewModel})">
             <summary>
             创建菜单对应角色权限
@@ -1427,21 +1461,17 @@
                    [
                      {
                        "menuId": 1,
-                       "menuName": "菜单一",
-                       "roleId": "XXXXX",
-                       "roleName": "角色一"
+                       "roleId": "XXXXX"
                      },    
                     {
                        "menuId": 2,
-                       "menuName": "菜单二",
-                       "roleId": "XXXXX",
-                       "roleName": "角色二"
+                       "roleId": "XXXXX"
                      }
                    ]
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.SystemController.DeleteUserMemberDetail(System.Collections.Generic.List{PartyManage.ViewModels.System.MenuPermissionViewModel})">
+        <member name="M:PartyManage.Controllers.SystemController.DeleteMenuPermission(System.Collections.Generic.List{PartyManage.ViewModels.System.MenuPermissionViewModel})">
             <summary>
             删除菜单对应角色权限
             </summary>
@@ -1454,43 +1484,14 @@
                    [
                      {
                        "menuId": 1,
-                       "menuName": "菜单一",
-                       "roleId": "XXXXX",
-                       "roleName": "角色一"
+                       "roleId": "XXXXX"
                      },    
                     {
                        "menuId": 2,
-                       "menuName": "菜单二",
-                       "roleId": "XXXXX",
-                       "roleName": "角色二"
+                       "roleId": "XXXXX"
                      }
                    ]
                 }
-            </remarks>
-        </member>
-        <member name="M:PartyManage.Controllers.SystemController.GetMenuPermissionList(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            根据菜单Id获取对应角色权限（分页）
-            </summary>
-            <param name="menuId">菜单Id</param>
-            <param name="page">页码</param>
-            <param name="pageSize">每页数量</param>
-            <remarks>
-            调用例子  
-            
-                Get /System/MenuPermission/MenuId=1/Page=1/PageSize=20
-            </remarks>
-        </member>
-        <member name="M:PartyManage.Controllers.SystemController.GetMenuPermissionById(System.Int32,System.String)">
-            <summary>
-            用menuId,roleId获取对应角色权限
-            </summary>
-            <param name="menuId">菜单Id</param>
-            <param name="roleId">角色Id</param>
-            <remarks>
-            调用例子  
-            
-                Get /System/MenuPermission/MenuId={menuId}/RoleId={roleId}
             </remarks>
         </member>
         <member name="M:PartyManage.Controllers.SystemController.GetNewsByTitleList(System.String,System.Int32,System.Int32)">
@@ -1831,7 +1832,7 @@
             <summary>
             根据用户组Id获取用户组成员（分页）
             </summary>
-            <param name="userMemberId">用户组名称</param>
+            <param name="userMemberId">用户组id</param>
             <param name="page">页码</param>
             <param name="pageSize">每页数量</param>
             <remarks>
@@ -1864,15 +1865,11 @@
                 {
                   [
                     { "UserMemberId": 1,
-                      "UserMemberName":"用户组1",
-                      "UserId": "XXX",
-                      "UserName":"XXX"
+                      "UserId": "XXX"
                     },
                     { "UserMemberId": 1,
-                      "UserMemberName":"用户组1",
-                      "UserId": "XXX",
-                      "UserName":"XXX"
-                    },       
+                      "UserId": "XXX"
+                    }     
                   ]
                  }
             </remarks>
@@ -1889,14 +1886,10 @@
                 {   
                      [
                         { "UserMemberId": 1,
-                          "UserMemberName":"用户组1",
-                          "UserId": "XXX",
-                          "UserName":"XXX"
+                          "UserId": "XXX"
                         },
                         { "UserMemberId": 1,
-                          "UserMemberName":"用户组1",
-                          "UserId": "XXX",
-                          "UserName":"XXX"
+                          "UserId": "XXX"
                         },       
                      ]
                 }
@@ -2500,36 +2493,6 @@
         <member name="P:PartyManage.ViewModels.System.DictionaryViewModel.Text">
             <summary>
             字典名称
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileId">
-            <summary>
-            文件Id
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileName">
-            <summary>
-            文件名
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.FilePath">
-            <summary>
-            附件路径
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.FileSize">
-            <summary>
-            附件大小
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.UploadPerson">
-            <summary>
-            上传人名
-            </summary>
-        </member>
-        <member name="P:PartyManage.ViewModels.System.FileViewModel.UploadDate">
-            <summary>
-            日期
             </summary>
         </member>
         <member name="P:PartyManage.ViewModels.System.LogViewModel.Id">

@@ -19,8 +19,8 @@ export class DataService<T> {
 
     }
 
-    getById (id: string): Promise<T> {
-        return <Promise<T>>this.http.get(`${this.endpoint}/${id}`).toPromise();
+    getById (id: string, urlSegment: string = ""): Promise<T> {
+        return <Promise<T>>this.http.get(`${this.endpoint}${urlSegment}${id}`).toPromise();
     };
 
     getList (url?: string, queryOptions?: QueryOptions): Promise<T[]> {

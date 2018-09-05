@@ -4,16 +4,21 @@ import { DataService } from "../../shared/services/data.service";
 import { Member, Population } from "./population.data";
 
 @Injectable()
-export class PopulationService extends DataService<Population> {
+export class PopulationService extends DataService<any> {
   modelType: string = "/business/population";
 
   addPopulation(payload: Population): Promise<Population> {
     return <Promise<Population>>this.http.post(`${this.endpoint}`, payload).toPromise();
   }
 
+  // 添加家庭成员
+  addMembers(code: string, payload: Member[]): Promise<any> {
+    return this.http.post(`${this.endpoint}/families/code=${code}`, payload).toPromise();
+  }
+
   // 家庭成员信息修改(/Business/Population/Family/Id={Id})
-  updateMember(id: string, payload: Member): Promise<any> {
-    return this.http.patch(`${this.endpoint}/family/id=${id}`, payload).toPromise();
+  updateMembers(code: string, payload: Member[]): Promise<any> {
+    return this.http.put(`${this.endpoint}/families/code=${code}`, payload).toPromise();
   }
 
   // 删除家庭成员信息 /Business/Population/Families

@@ -1,0 +1,76 @@
+<div class="family-panel">
+  <h3 class="title">
+    <span>家庭基本信息</span>
+    <a href="javascript:void(0);">
+      <fa-icon [icon]="faEdit"></fa-icon>
+    </a>
+  </h3>
+  <div class="data-panel">
+    <div class="box">
+      <div class="wrap">
+        <label>社区</label>
+        <span>{{ getCommunityNameById(data?.communityId) }}</span>
+      </div>
+      <div class="wrap">
+        <label>家庭住址</label>
+        <span>{{ data?.family_Address }}</span>
+      </div>
+      <div class="wrap">
+        <label>家庭情况</label>
+        <span>{{ data?.family_Content }}</span>
+      </div>
+      <div class="wrap">
+        <label>联系方式</label>
+        <span>{{ data?.family_Phone }}</span>
+      </div>
+      <div class="wrap">
+        <label>住户性质</label>
+        <span>{{ data?.family_Type }}</span>
+      </div>
+      <div class="wrap">
+        <label>创建人</label>
+        <span>{{ data?.createdBy }}</span>
+      </div>
+      <div class="wrap">
+        <label>创建日期</label>
+        <span>{{ data?.createdDate | date }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="family-group">
+  <h3 class="title">
+    <span>家庭成员</span>
+    <a href="javascript:void(0);" (click)="currentEditMember=null; openModal(memberManagerModal)">
+          <fa-icon [icon]="faEdit"></fa-icon>
+    </a>
+  </h3>
+  <div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+      <div class="data-item" *ngFor="let item of families">
+        <span [caTextEllipsis]="item?.personName" [title]="item?.personName"></span>
+        <span [caTextEllipsis]="item?.cardNo" [title]="item?.cardNo"></span>
+        <span>{{ item?.sex }}</span>
+        <span>{{ item?.nation }}</span>
+        <span [caTextEllipsis]="item?.birthDate | date" [title]="item?.birthDate | date"></span>
+        <span>{{ item?.politicalStatus }}</span>
+        <span>{{ item?.relation }}</span>
+        <span [caTextEllipsis]="item?.registeredResidence" [title]="item?.registeredResidence"></span>
+        <span [caTextEllipsis]="item?.nativePlace" [title]="item?.nativePlace"></span>
+        <span>{{ item?.culture }}</span>
+        <span>{{ item?.marriage }}</span>
+        <span [caTextEllipsis]="item?.rmks" [title]="item?.rmks"></span>
+        <a href="javascript:void(0);" (click)="currentEditMember = item;openModal(memberManagerModal)">
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #memberManagerModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container title="编辑家庭成员" [dismiss]="dismiss">
+    <gm-member-editor [data]="currentEditMember" [code]="data?.code" [populationId]="data?.id" [close]="close" (submitted)="submit()"></gm-member-editor>
+  </gm-modal-container>
+</ng-template>

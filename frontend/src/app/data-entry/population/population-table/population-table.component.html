@@ -13,7 +13,7 @@
               <a (click)="removeItem(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>
-              <a>
+              <a [routerLink]="['.', item?.id]">
                   <fa-icon [icon]="faEdit"></fa-icon>
               </a>
             </span>

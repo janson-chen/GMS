@@ -37,7 +37,7 @@ export class TextEllipsisDirective implements OnChanges, AfterViewInit {
         }
 
         if (this.breakWord && !this.singleWordReg.test(this.caTextEllipsis)) {
-            this.renderer.setStyle(this.element, "word-break", "break-word");
+            this.renderer.setStyle(this.element, "word-wrap", "break-word");
             splitKey = " ";
         } else {
             this.renderer.setStyle(this.element, "word-break", "break-all");
@@ -48,7 +48,7 @@ export class TextEllipsisDirective implements OnChanges, AfterViewInit {
 
         const checkOverflow = (): boolean => {
             return this.element.scrollHeight - this.element.offsetHeight > 0;
-        }
+        };
 
         const loop = (start: number, mid: number, end: number): void => {
             mid = Math.ceil((start + end) / 2);
@@ -61,17 +61,17 @@ export class TextEllipsisDirective implements OnChanges, AfterViewInit {
                     nextTry(start, mid, end);
                 }
             }
-        }
+        };
 
         const preTry = (start: number, mid: number, end: number): void => {
             end = mid - 1;
             loop(start, mid, end);
-        }
+        };
 
         const nextTry = (start: number, mid: number, end: number): void => {
             start = mid;
             loop(start, mid, end);
-        }
+        };
 
         let text = rawContent.split(splitKey),
             textCopy = rawContent.split(splitKey);

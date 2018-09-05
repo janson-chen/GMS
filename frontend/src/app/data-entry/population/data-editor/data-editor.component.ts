@@ -14,7 +14,8 @@ import { timestamp } from "../../../shared/utils/timestamp";
 @Component({
   selector: "gm-population-editor",
   templateUrl: "./data-editor.component.html",
-  styleUrls: ["./data-editor.component.scss"]
+  styleUrls: ["./data-editor.component.scss"],
+  providers: [FormComponent.provide(PopulationDataEditorComponent)]
 })
 export class PopulationDataEditorComponent extends FormComponent<Insurance> implements OnInit {
   @Input() insurances: Insurance[] = [];

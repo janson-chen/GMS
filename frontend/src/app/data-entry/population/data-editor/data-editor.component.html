@@ -3,7 +3,7 @@
     <div class="form-group">
       <div class="wrap">
         <label>所属社区</label>
-        <ca-select formControlName="communityID">
+        <ca-select formControlName="communityId">
           <ca-option [value]="''">请选择所属社区</ca-option>
           <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
         </ca-select>

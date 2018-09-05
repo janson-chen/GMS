@@ -1,0 +1,109 @@
+.form-control {
+  margin: 0;
+}
+
+.form-group {
+  > .wrap {
+    flex: 1;
+  }
+}
+
+.btn-group {
+  position: relative;
+  display: flex;
+
+  .upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    transform: scale(calc(33 / 36));
+  }
+}
+
+label {
+  margin-bottom: 0;
+}
+
+ca-select {
+  padding: 0;
+}
+
+.exist-item {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.family-type {
+  display: flex;
+
+  .wrap {
+    margin-right: 30px;
+  }
+}
+
+.form-info {
+  dl {
+    display: flex;
+
+    dt {
+      margin-right: 10px;
+    }
+
+    dl {
+      margin-right: 20px;
+    }
+  }
+}
+
+.wrap {
+  display: flex;
+
+  margin: 10px 0;
+
+  label {
+    width: 120px;
+  }
+
+  input, ca-select, textarea, .input-group, .calendar {
+    flex: 1;
+  }
+
+  input {
+    padding: 5px;
+  }
+}
+
+.inner-wrap {
+  display: flex;
+  flex: 100;
+}
+
+ca-input-checkbox {
+  margin-right: 20px;
+}
+
+ca-input-radio {
+  margin-right: 30px;
+}
+
+.input-group-append {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  font-size: 1.5rem;
+  position: absolute;
+  right: -10px;
+}

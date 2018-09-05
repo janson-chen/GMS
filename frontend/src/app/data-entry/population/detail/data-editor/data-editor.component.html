@@ -1,0 +1,101 @@
+<div class="form-panel" *ngIf="!isSubmitting">
+  <form [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+    <div class="form-group">
+      <div class="wrap">
+        <label>姓名</label>
+        <input type="text" formControlName="personName"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>身份证号</label>
+        <input type="text" formControlName="cardNo"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>性别</label>
+        <ca-input-radio formControlName="sex" [value]="'男'" [checked]="sex === '男'">男</ca-input-radio>
+        <ca-input-radio formControlName="sex" [value]="'女'" [checked]="sex === '女'">女</ca-input-radio>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>民族</label>
+        <ca-select formControlName="nation">
+          <ca-option [value]="''">请选择--</ca-option>
+          <ca-option [value]="'蒙族'">蒙族</ca-option>
+          <ca-option [value]="'汉族'">汉族</ca-option>
+        </ca-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>出生日期</label>
+          <div class="input-group calendar">
+            <input class="form-control" placeholder="yyyy-mm-dd" formControlName="birthDate" ngbDatepicker #d2="ngbDatepicker">
+            <div class="input-group-append">
+              <fa-icon [icon]="faCalendar" (click)="d2.toggle()"></fa-icon>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>政治面貌</label>
+        <input type="text" formControlName="politicalStatus"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>民生类型</label>
+        <input type="text" formControlName="peopleType"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>与户主关系</label>
+        <input type="text" formControlName="relation">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>户口</label>
+        <input type="text" formControlName="registeredResidence"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>户口所在地</label>
+        <input type="text" formControlName="nativePlace"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>文化程度</label>
+        <input type="text" formControlName="culture"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>婚姻状况</label>
+        <ca-input-radio formControlName="marriage" [value]="'已婚'" [checked]="marriage === '已婚'">已婚</ca-input-radio>
+        <ca-input-radio formControlName="marriage" [value]="'未婚'" [checked]="marriage === '未婚'">未婚</ca-input-radio>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>备注</label>
+        <textarea type="text" cols="20" formControlName="rmks"></textarea>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">创建成功</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">{{successMessageTimeoutInSeconds}} 秒后关闭.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">创建失败.</ng-container>
+</ca-spinner>

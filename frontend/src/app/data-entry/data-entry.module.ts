@@ -20,6 +20,11 @@ import { RiskDataEditorComponent } from "./risk-checklist/data-editor/data-edito
 import { PartyResolver } from "./party-build/party-resolver";
 import { PopulationListComponent } from "./population/population-table/population-table.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { PopulationDetailComponent } from "./population/detail/population-detail.component";
+import { PopulationDetailResolver } from "./population/population-detail-resolver";
+import { PopulationFamilyResolver } from "./population/population-detail-family-group-resolver";
+import { MemberEditorComponent } from "./population/detail/data-editor/data-editor.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   imports: [
@@ -27,6 +32,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     CommonModule,
     SharedModule,
     FormsModule,
+    NgbModule,
     ReactiveFormsModule,
     RouterModule.forChild(dataEntryRoutes)
   ],
@@ -38,12 +44,16 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     PopulationDataEditorComponent,
     PartyDataEditorComponent,
     RiskDataEditorComponent,
-    PopulationListComponent
+    PopulationListComponent,
+    PopulationDetailComponent,
+    MemberEditorComponent
   ],
   exports: [RouterModule],
   providers: [
     PopulationService,
     PopulationResolver,
+    PopulationDetailResolver,
+    PopulationFamilyResolver,
     PartyResolver,
     CommunityService,
     PartyService,

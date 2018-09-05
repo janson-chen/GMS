@@ -1,4 +1,4 @@
-import { EventEmitter, Input, Output } from "@angular/core";
+import { EventEmitter, Input, Output, Provider, Type } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { SpinnerState } from "../../components/spinner/spinner.component";
@@ -10,6 +10,8 @@ export class FormComponent<UserInfo> extends CoreComponent<UserInfo> {
   @Input() close: (result: any) => void;
   @Output() submitting: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() submitted: EventEmitter<any> = new EventEmitter<any>();
+  @Output() submitError: EventEmitter<any> = new EventEmitter<any>();
+
   successMessageTimeoutInSeconds: number = 3;
   formGroup: FormGroup;
   spinnerState: SpinnerState = "waiting";
@@ -45,5 +47,9 @@ export class FormComponent<UserInfo> extends CoreComponent<UserInfo> {
 
   getControl(name: string) {
     return name && this.formGroup ? this.formGroup.get(name) : null;
+  }
+
+  static provide<TComponent extends FormComponent<any>>(type: Type<TComponent>): Provider {
+    return { provide: FormComponent, useExisting: type, multi: true };
   }
 }
