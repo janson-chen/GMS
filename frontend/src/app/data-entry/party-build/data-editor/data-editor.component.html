@@ -1,24 +1,14 @@
 <div class="form-panel" *ngIf="!isSubmitting">
-  <div class="form-info">
-    <dl>
-      <dt>社区</dt>
-      <dd>回民社区</dd>
-      <dt>登记人</dt>
-      <dd>张三</dd>
-      <dt>登记日期</dt>
-      <dd>2018/05/01</dd>
-    </dl>
-  </div>
   <form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
       <div class="wrap">
         <label>所属社区</label>
-        <ca-select formControlName="communityID">
+        <ca-select formControlName="communityId">
           <ca-option [value]="''">请选择所属社区</ca-option>
           <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
         </ca-select>
       </div>
-      <small *ngIf="formGroup.get('communityID').dirty && formGroup.get('communityID').hasError('required')" class="invalid-feedback">
+      <small *ngIf="formGroup.get('communityId').dirty && formGroup.get('communityId').hasError('required')" class="invalid-feedback">
         Required field.
       </small>
     </div>
@@ -37,13 +27,30 @@
     <div class="form-group">
       <div class="wrap">
         <label>参与人数</label>
-        <input type="text" class="form-control" formjoinAmount="joinAmount" placeholder=""  caValidityClass/>
+        <input type="number" class="form-control" formControlName="joinAmount" placeholder=""  caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>真实人数</label>
+        <input type="number" class="form-control" formControlName="realAmount" placeholder=""  caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>离开人数</label>
+        <input type="number" class="form-control" formControlName="leaveAmount" placeholder=""  caValidityClass/>
       </div>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>活动时间</label>
-        <input type="text" class="form-control" formControlName="activitiesDate" placeholder=""  caValidityClass/>
+        <div class="input-group calendar">
+          <input class="form-control" placeholder="yyyy-mm-dd" bsDatepicker formControlName="activitiesDate" #d2="bsDatepicker" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" caValidityClass>
+          <div class="input-group-append">
+            <fa-icon [icon]="faCalendar" (click)="d2.toggle()"></fa-icon>
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-group">

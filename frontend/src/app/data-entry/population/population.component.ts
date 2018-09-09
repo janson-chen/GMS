@@ -27,9 +27,9 @@ export class PopulationComponent extends ModalContainerComponent implements OnIn
   ) {
     super(modalService);
 
-    route.data.subscribe((data: { populations: { detail: Population[] } }) => {
-      console.log("route data", data.populations.detail);
+    route.data.subscribe((data: { populations: { detail: Population[] }, communities: Community[] }) => {
       this.populationList = data.populations.detail;
+      this.communities = data.communities;
     });
   }
 
@@ -56,12 +56,7 @@ export class PopulationComponent extends ModalContainerComponent implements OnIn
 
   async ngOnInit() {
     this.insurances = await this.getInsurances();
-    this.communities = await this.getCommunities();
     this.communityService.saveCommunities(this.communities);
+    console.log("communities", this.communities);
   }
-
-  async getCommunities(): Promise<Community[]> {
-    return this.communityService.getList("/childList/id=1");
-  }
-
 }

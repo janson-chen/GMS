@@ -8,6 +8,7 @@ import { PartyResolver } from "./party-build/party-resolver";
 import { PopulationDetailComponent } from "./population/detail/population-detail.component";
 import { PopulationDetailResolver } from "./population/population-detail-resolver";
 import { PopulationFamilyResolver } from "./population/population-detail-family-group-resolver";
+import { CommunityResolver } from "../settings/community-manager/community-resolver";
 
 export const dataEntryRoutes:Routes = [
     {
@@ -17,7 +18,8 @@ export const dataEntryRoutes:Routes = [
               path: "population",
               component: PopulationComponent,
               resolve: {
-                populations: PopulationResolver
+                populations: PopulationResolver,
+                communities: CommunityResolver
               }
             },
           {
@@ -25,7 +27,8 @@ export const dataEntryRoutes:Routes = [
             component: PopulationDetailComponent,
             resolve: {
               detail: PopulationDetailResolver,
-              families: PopulationFamilyResolver
+              families: PopulationFamilyResolver,
+              communities: CommunityResolver
             }
           },
             {path: "risk", component: RiskChecklistComponent},
@@ -33,7 +36,8 @@ export const dataEntryRoutes:Routes = [
               path: "party",
               component: PartyBuildComponent,
               resolve: {
-                partyActivities: PartyResolver
+                partyActivities: PartyResolver,
+                communities: CommunityResolver
               }
             }
         ]

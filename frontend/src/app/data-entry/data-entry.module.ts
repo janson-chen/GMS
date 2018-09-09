@@ -25,6 +25,9 @@ import { PopulationDetailResolver } from "./population/population-detail-resolve
 import { PopulationFamilyResolver } from "./population/population-detail-family-group-resolver";
 import { MemberEditorComponent } from "./population/detail/data-editor/data-editor.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { CommunityResolver } from "../settings/community-manager/community-resolver";
+import { PartyListComponent } from "./party-build/party-table/party-table.component";
+import { BsDatepickerModule } from "ngx-bootstrap";
 
 @NgModule({
   imports: [
@@ -34,6 +37,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
     RouterModule.forChild(dataEntryRoutes)
   ],
   declarations: [
@@ -46,7 +50,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     RiskDataEditorComponent,
     PopulationListComponent,
     PopulationDetailComponent,
-    MemberEditorComponent
+    MemberEditorComponent,
+    PartyListComponent
   ],
   exports: [RouterModule],
   providers: [
@@ -54,6 +59,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     PopulationResolver,
     PopulationDetailResolver,
     PopulationFamilyResolver,
+    CommunityResolver,
     PartyResolver,
     CommunityService,
     PartyService,

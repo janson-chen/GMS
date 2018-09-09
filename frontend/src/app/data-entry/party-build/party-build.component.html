@@ -5,11 +5,11 @@
 <div class="search-panel">
   <gm-search-bar></gm-search-bar>
 </div>
-<gm-table [columns]="columns" [data]="partyActivitiesList"></gm-table>
+<gm-party-table [columns]="columns" [communities]="communities" [data]="partyActivitiesList"></gm-party-table>
 
 <ng-template #partyBuildModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'党建活动信息表'">
-    <gm-party-editor [communities]="communities" [close]="close"></gm-party-editor>
+    <gm-party-editor [communities]="communities" [close]="close" (submitted)="updateParties()"></gm-party-editor>
   </gm-modal-container>
 </ng-template>
 

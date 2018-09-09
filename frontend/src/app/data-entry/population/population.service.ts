@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { DataService } from "../../shared/services/data.service";
 import { Member, Population } from "./population.data";
+import { RequestOptions } from "@angular/http";
 
 @Injectable()
 export class PopulationService extends DataService<any> {
@@ -22,8 +23,8 @@ export class PopulationService extends DataService<any> {
   }
 
   // 删除家庭成员信息 /Business/Population/Families
-  deleteMember(id: string): Promise<any> {
-    return this.http.delete(`${this.endpoint}/families/id=${id}`).toPromise();
+  deleteMembers(ids: any[]): Promise<any> {
+    return this.nHttp.delete(`${this.endpoint}/families`, new RequestOptions({ body: ids })).toPromise();
   }
 
   // 兵役信息修改 /Business/Population/Armies

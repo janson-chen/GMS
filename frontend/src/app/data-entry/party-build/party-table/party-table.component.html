@@ -1,19 +1,27 @@
 <div class="data-panel">
-    <gm-table-header [columns]="columns"></gm-table-header>
-    <div class="body">
-        <div class="data-item" *ngFor="let item of data">
-            <span>{{ item?.subject }}</span>
-            <span>{{ item?.activitiesDate }}</span>
-            <span>{{ item?.activitiesPlace }}</span>
-            <span>{{ item?.joinAmount }}</span>
-            <span>{{ item?.realAmount }}</span>
-            <span>{{ item?.leaveAmount }}</span>
-            <span>{{ item?.form }}</span>
-            <span>{{ item?.content }}</span>
-            <span>{{ item?.leaveAmount }}</span>
-            <span>
-              <a>删除</a>
+  <gm-table-header [columns]="columns"></gm-table-header>
+  <div class="body">
+    <div class="data-item" *ngFor="let item of data">
+      <span>{{ getCommunityNameById(item?.communityId ) }}</span>
+      <span>{{ item?.subject }}</span>
+      <span>{{ item?.form }}</span>
+      <span>{{ item?.joinAmount }}</span>
+      <span>{{ item?.activitiesDate | date }}</span>
+      <span>{{ item?.activitiesPlace }}</span>
+      <span>{{ item?.content }}</span>
+      <span>
+              <a href="javascript:void(0);" (click)="removeItem(item?.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
+              <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(partyEditModal)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
             </span>
-        </div>
     </div>
+  </div>
 </div>
+<ng-template #partyEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'党建活动编辑'">
+    <gm-party-editor [communities]="communities" [data]="currentEditItem" [close]="close"></gm-party-editor>
+  </gm-modal-container>
+</ng-template>

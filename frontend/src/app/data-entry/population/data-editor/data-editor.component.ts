@@ -17,7 +17,7 @@ import { timestamp } from "../../../shared/utils/timestamp";
   styleUrls: ["./data-editor.component.scss"],
   providers: [FormComponent.provide(PopulationDataEditorComponent)]
 })
-export class PopulationDataEditorComponent extends FormComponent<Insurance> implements OnInit {
+export class PopulationDataEditorComponent extends FormComponent<any> implements OnInit {
   @Input() insurances: Insurance[] = [];
   @Input() communities: Community[] = [];
 
@@ -38,12 +38,12 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      communityId: "",
-      family_Address: "",
-      family_Type: "",
+      communityId: this.data.communityId,
+      family_Address: this.data.family_Address,
+      family_Type: this.data.family_Type,
       insurances: this.selectedInsurances,
-      family_Content: "",
-      family_Phone: ""
+      family_Content: this.data.family_Content,
+      family_Phone: this.data.family_Phone
     });
 
     this.catchSelectedInsurances();
@@ -52,6 +52,7 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
   async submit() {
     this.isSubmitting = true;
     const payload = {
+      id: this.data.id,
       code: "Code" + timestamp(),
       communityID: this.formGroup.value.communityId,
       family_Address: this.formGroup.value.family_Address,
@@ -61,9 +62,9 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
     };
 
     try {
-      await this.populationService.addPopulation(payload);
+      await this.populationService.updatePopulation(this.data.id, payload);
       this.isSubmitted = true;
-      setTimeout(() => this.close("创建网格成功."), this.successMessageTimeoutInSeconds * 1000);
+      setTimeout(() => this.close("修改成功."), this.successMessageTimeoutInSeconds * 1000);
     } catch (e) {
       this.isSubmitting = false;
       this.spinnerState = "failed";
@@ -81,7 +82,6 @@ export class PopulationDataEditorComponent extends FormComponent<Insurance> impl
 
     insurancesSelection.valueChanges.subscribe((selectedInsurance: Insurance) => {
       this.selectedInsurances = (<any[]>this.insurances).filter((insurance, i) => selectedInsurance[i]).map(insurance => insurance);
-      console.log("selected permissions", this.selectedInsurances);
     });
   }
 }

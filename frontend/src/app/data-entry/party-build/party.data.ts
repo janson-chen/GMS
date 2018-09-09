@@ -1,5 +1,5 @@
 export interface Party {
-  communityID: string;
+  communityId: string;
   subject: string;
   activitiesDate: string;
   activitiesPlace: string;
@@ -11,12 +11,18 @@ export interface Party {
 }
 
 export const PARTY_MANAGER_TABLE_COLUMES = [
-  "姓名",
   "社区",
-  "是否户主",
-  "住户性质",
-  "性别",
-  "年龄",
-  "民族",
+  "活动名称",
+  "活动形式",
+  "参与人数",
+  "活动时间",
+  "活动地点",
+  "活动内容",
   "操作"
 ];
+
+
+export interface PartyResponse {
+  detail: Party[];
+  totalCount: number;
+}

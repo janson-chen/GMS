@@ -5,7 +5,7 @@
 <div class="search-panel">
     <gm-search-bar></gm-search-bar>
 </div>
-<gm-population-table [columns]="columns" [data]="populationList"></gm-population-table>
+<gm-population-table [columns]="columns" [communities]="communities" [data]="populationList"></gm-population-table>
 
 <ng-template #populationModal let-close="close" let-dismiss="dismiss">
     <gm-modal-container [dismiss]="dismiss" [title]="'人口信息登记表'">

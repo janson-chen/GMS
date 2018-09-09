@@ -9,14 +9,18 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppService } from "../app.service";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { HttpModule } from "@angular/http";
+import { BsDatepickerModule } from "ngx-bootstrap";
 
 @NgModule({
     imports: [
         FontAwesomeModule,
         CommonModule,
         FormsModule,
+        HttpModule,
         ReactiveFormsModule,
-        NgbModule
+        NgbModule,
+        BsDatepickerModule
     ],
     declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
     exports: [...COMPONENTS, ...DIRECTIVES, ...PIPES],

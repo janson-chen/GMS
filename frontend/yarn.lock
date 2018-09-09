@@ -81,6 +81,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/http@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-6.1.7.tgz#21fbfaa1bd40b157c3df12a058678823b97df5ee"
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/language-service@^5.2.10":
   version "5.2.11"
   resolved "http://registry.npm.taobao.org/@angular/language-service/download/@angular/language-service-5.2.11.tgz#6e119ada2c0271a65d9b8fae61fcdd5f1938766b"
@@ -4809,6 +4815,10 @@ ngc-webpack@^4.1.2:
     semver "^5.4.1"
     source-map "^0.5.6"
     ts-node "^3.2.0"
+
+ngx-bootstrap@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.5.tgz#83aab39d1e4fe811fad2b34f7927f9ce19d68daa"
 
 ngx-cookie-service@^1.0.10:
   version "1.0.10"

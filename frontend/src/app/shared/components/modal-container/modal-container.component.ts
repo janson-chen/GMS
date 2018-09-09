@@ -3,13 +3,14 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { CoreComponent } from "../core/core.component";
 import { FormComponent } from "../core/form-component";
 import { Subscription } from "rxjs/Subscription";
+import { TableComponent } from "../table/table.component";
 
 @Component({
   selector: 'gm-modal-container',
   templateUrl: './modal-container.component.html',
   styleUrls: ['./modal-container.component.scss']
 })
-export class ModalContainerComponent extends CoreComponent<any> implements AfterContentInit {
+export class ModalContainerComponent extends TableComponent<any> implements AfterContentInit {
   @Input() dismiss: (reason: any) => void;
   @Input() title: string = "";
   @Input() showClose: boolean = true;

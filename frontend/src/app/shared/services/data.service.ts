@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { QueryOptions } from "../interface/data.interface";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { Http } from "@angular/http";
 
 export interface QueryOptions {
 
@@ -15,7 +16,7 @@ export class DataService<T> {
       return `${environment.baseUrl}${this.modelType}`
     }
 
-    constructor(protected http: HttpClient) {
+    constructor(protected http: HttpClient, protected nHttp?: Http) {
 
     }
 
@@ -37,10 +38,10 @@ export class DataService<T> {
     };
 
     removeItem (id: string, urlSegment?: string): Promise<void> {
-       return <Promise<any>>this.http.delete(`${this.endpoint}/${urlSegment ? urlSegment : ''}/id=${id}`).toPromise();
+       return <Promise<any>>this.http.delete(`${this.endpoint}${urlSegment ? urlSegment : ''}/id=${id}`).toPromise();
     }
 
-    query(urlSegment?: string, queryOptions?: any): Promise<T[]> {
-      return <Promise<T[]>>this.http.post(`${this.endpoint}/${urlSegment}`, queryOptions).toPromise();
+    query(urlSegment?: string, queryOptions?: any): Promise<any> {
+      return <Promise<any>>this.http.post(`${this.endpoint}/${urlSegment}`, queryOptions).toPromise();
     }
 }

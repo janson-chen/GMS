@@ -7,6 +7,7 @@ import { faEdit, faTrash, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from "@angular/router";
 import { ModalContainerComponent } from "../../../shared/components/modal-container/modal-container.component";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Community } from "../../../settings/community-manager/community.data";
 
 @Component({
   selector: 'gm-detail-table',
@@ -18,6 +19,7 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
   faTrash = faTrash;
   faCalendar = faCalendar;
   families: Member[] = [];
+  communities: Community[] = [];
   columns = POPULATION_FAMILY_MANAGER_TABLE_COLUMES;
 
   constructor(
@@ -27,9 +29,11 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
     protected modalService: NgbModal
   ) {
     super(modalService);
-    route.data.subscribe((data: { detail: Population, families: {detail: Member[]} }) => {
+    route.data.subscribe((data: { detail: Population, families: {detail: Member[]}, communities: Community[] }) => {
       this.data = data.detail;
       this.families = data.families.detail;
+      this.communities = data.communities;
+      this.communityService.saveCommunities(this.communities);
     });
   }
 
@@ -41,12 +45,22 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
     return this.communityService.communitiesMap[id];
   }
 
-  async removeItem(id: string): Promise<void> {
-    await this.populationService.removeItem(id);
+  async removeMember(id: string): Promise<void> {
+    await this.populationService.deleteMembers([id]);
+    void this.updateMembers();
   }
 
   async submit(): Promise<void> {
 
+  }
+
+  async updateMembers(): Promise<void> {
+    const result = await this.populationService.getById("", `/families/populationid=${this.data.id}/page=-1/pagesize=-1`);
+    this.families = result && result.detail;
+  }
+
+  async updatePolation(): Promise<void> {
+    this.data = await this.populationService.getById(this.data.id, "/id=");
   }
 
 }

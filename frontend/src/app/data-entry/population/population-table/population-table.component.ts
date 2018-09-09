@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CoreComponent } from "../core/core.component";
 import { TableComponent } from "../../../shared/components/table/table.component";
 import { Population } from "../population.data";
 import { PopulationService } from "../population.service";
 import { CommunityService } from "../../../settings/community-manager/community.service";
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Community } from "../../../settings/community-manager/community.data";
 
 @Component({
   selector: 'gm-population-table',
@@ -12,6 +13,8 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./population-table.component.scss']
 })
 export class PopulationListComponent extends TableComponent<Population> implements OnInit {
+  @Input() communities: Community[] = [];
+
   faEdit = faEdit;
   faTrash = faTrash;
 
@@ -27,7 +30,6 @@ export class PopulationListComponent extends TableComponent<Population> implemen
   }
 
   getCommunityNameById(id: string): string {
-    console.log(this.communityService.communitiesMap);
     return this.communityService.communitiesMap[id];
   }
 

@@ -26,7 +26,6 @@ export class AppService implements HttpInterceptor {
     return next.handle(req).pipe(
       tap(event => {
         if (event instanceof HttpResponse) {
-          console.log("cookie", event.headers);
 
         }
       }, error => {

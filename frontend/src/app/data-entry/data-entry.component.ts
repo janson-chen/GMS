@@ -23,7 +23,6 @@ export class DataEntryComponent implements OnInit {
   ngOnInit() {
     this.menusService.behavierSubject.subscribe((data: Menu[]) => {
       this.menus = data;
-      console.log("update menus", data);
     });
   }
 

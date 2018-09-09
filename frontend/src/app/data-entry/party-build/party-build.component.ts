@@ -6,6 +6,7 @@ import { Community } from "../../settings/community-manager/community.data";
 import { CommunityService } from "../../settings/community-manager/community.service";
 import { Role } from "../../settings/role-manager/role.data";
 import { ActivatedRoute } from "@angular/router";
+import { PartyService } from "./party.service";
 
 @Component({
   selector: 'gm-party-build',
@@ -20,21 +21,28 @@ export class PartyBuildComponent extends ModalContainerComponent implements OnIn
   constructor(
     protected modalService: NgbModal,
     private communityService: CommunityService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private partyService: PartyService
   ) {
     super(modalService);
-    route.data.subscribe((data: { partyActivities: { detail: Party[] } }) => {
+    route.data.subscribe((data: { partyActivities: { detail: Party[] }, communities: Community[] }) => {
       this.partyActivitiesList = data.partyActivities.detail;
-      console.log("partyActivities", this.partyActivitiesList);
+      this.communities = data.communities;
+      this.communityService.saveCommunities(this.communities);
     });
   }
 
   async ngOnInit() {
-    this.communities = await this.getCommunities();
+
   }
 
   async getCommunities(): Promise<Community[]> {
     return this.communityService.getList("/childList/id=1");
+  }
+
+  async updateParties(): Promise<void> {
+    const result = await this.partyService.query("query/page=-1/pageSize=-1", {});
+    this.partyActivitiesList = result && result.detail;
   }
 
 }

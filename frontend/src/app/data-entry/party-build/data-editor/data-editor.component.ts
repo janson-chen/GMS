@@ -8,7 +8,7 @@ import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.d
 import { Party } from "../party.data";
 import { PartyService } from "../party.service";
 import { Community } from "../../../settings/community-manager/community.data";
-
+import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "gm-party-editor",
@@ -18,7 +18,7 @@ import { Community } from "../../../settings/community-manager/community.data";
 export class PartyDataEditorComponent extends FormComponent<Party> implements OnInit {
   @Input() communities: Community[] = [];
 
-  columns = POPULATION_TABLE_COLUMES;
+  faCalendar = faCalendarPlus;
 
   constructor(
               protected userService: UserService,
@@ -30,23 +30,25 @@ export class PartyDataEditorComponent extends FormComponent<Party> implements On
   }
 
   async ngOnInit(): Promise<void> {
+    console.log(this.data);
     this.formGroup = this.fb.group({
-      communityID: "",
-      subject: "",
-      activitiesDate: "",
-      activitiesPlace: "",
-      joinAmount: 0,
-      realAmount: 0,
-      leaveAmount: 0,
-      form: "",
-      content: ""
+      communityId: this.data && this.data.communityId,
+      subject: this.data && this.data.subject,
+      activitiesDate: this.data && this.data.activitiesDate,
+      activitiesPlace: this.data && this.data.activitiesPlace,
+      joinAmount: this.data && this.data.joinAmount,
+      realAmount: this.data && this.data.realAmount,
+      leaveAmount: this.data && this.data.leaveAmount,
+      form: this.data && this.data.form,
+      content: this.data && this.data.content
     });
   }
 
   async submit() {
     this.isSubmitting = true;
+    console.log("data", this.formGroup.value.activitiesDate);
     const payload = {
-      communityID: this.formGroup.value.communityID,
+      communityId: this.formGroup.value.communityId,
       subject: this.formGroup.value.subject,
       activitiesDate: this.formGroup.value.activitiesDate,
       activitiesPlace: this.formGroup.value.activitiesPlace,
