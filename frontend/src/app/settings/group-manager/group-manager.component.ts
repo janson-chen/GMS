@@ -4,6 +4,9 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute } from "@angular/router";
 import { GroupManagerService } from "./group-manager.service";
 import { GROUP_MANAGER_TABLE_COLUMES, UserGroup } from "./group.data";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'gm-group-manager',
@@ -16,10 +19,13 @@ export class GroupManagerComponent extends ModalContainerComponent implements On
 
   constructor(
     private groupManageService: GroupManagerService,
-    protected modalService: NgbModal,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastService: ToastrService,
+    protected modalService: NgbModal
   ) {
-    super(modalService);
+    super();
 
     route.data.subscribe((data: { groups: { detail: UserGroup[]} }) => {
       this.groups = data.groups.detail;

@@ -6,11 +6,15 @@ import { CoreComponent } from "./core.component";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "../../services/user.service";
 
-export class FormComponent<UserInfo> extends CoreComponent<UserInfo> {
+export class FormComponent<T> extends CoreComponent<T> {
   @Input() close: (result: any) => void;
   @Output() submitting: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() submitted: EventEmitter<any> = new EventEmitter<any>();
   @Output() submitError: EventEmitter<any> = new EventEmitter<any>();
+
+  protected fb: FormBuilder;
+  protected userService: UserService;
+  protected ToastrService: ToastrService;
 
   successMessageTimeoutInSeconds: number = 3;
   formGroup: FormGroup;
@@ -18,10 +22,6 @@ export class FormComponent<UserInfo> extends CoreComponent<UserInfo> {
 
   private isSubmitted_: boolean = false;
   private isSubmitting_: boolean = false;
-
-  constructor(protected userService: UserService, protected fb: FormBuilder, protected toastService: ToastrService) {
-    super();
-  }
 
   get isSubmitting(): boolean {
     return this.isSubmitting_;

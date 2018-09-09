@@ -6,6 +6,9 @@ import { Community } from "../community-manager/community.data";
 import { RoleManagerService } from "./role-manager.service";
 import { Permission, Role, USER_MANAGER_TABLE_COLUMES } from "./role.data";
 import { ActivatedRoute } from "@angular/router";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'gm-role-manager',
@@ -20,11 +23,14 @@ export class RoleManagerComponent extends ModalContainerComponent implements OnI
 
   constructor(
     private communityService: CommunityService,
-    protected modalService: NgbModal,
     private roleManagerService: RoleManagerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastService: ToastrService,
+    protected modalService: NgbModal
   ) {
-    super(modalService);
+    super();
 
     route.data.subscribe((data: { roles: {detail: Role[]}}) => {
       this.roles = data.roles.detail;

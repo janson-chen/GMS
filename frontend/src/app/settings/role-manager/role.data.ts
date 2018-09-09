@@ -4,7 +4,7 @@ export interface UserInfo {
   name?: string;
   email?: string;
   phoneNumber?: string;
-  communityID?: string;
+  communityId?: string;
   isEnabled?: boolean;
   isLockedOut?: boolean;
   roles?: string[];

@@ -7,6 +7,7 @@ import { FormComponent } from "../shared/components/core/form-component";
 import { UserInfo } from "../settings/user-manager/user.data";
 import { MenusService } from "../core/service/menus.service";
 import { MenuManagerService } from "../settings/menus-manager/menu-manager.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,16 @@ import { MenuManagerService } from "../settings/menus-manager/menu-manager.servi
 })
 export class LoginComponent extends FormComponent<UserInfo> implements OnInit {
 
-  constructor(private router: Router,
+  constructor(
+              private router: Router,
               protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
               private menusService: MenusService,
-              private menuManagerService: MenuManagerService) {
-    super(userService, fb, toastService);
+              private menuManagerService: MenuManagerService,
+              protected modalService: NgbModal
+  ) {
+    super();
   }
 
   ngOnInit() {

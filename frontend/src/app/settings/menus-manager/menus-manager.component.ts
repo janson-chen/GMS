@@ -6,6 +6,9 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { MENU_MANAGER_TABLE_COLUMES } from "./menu-manager.data";
 import { MenuManagerService } from "./menu-manager.service";
 import { MenusService } from "../../core/service/menus.service";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'gm-menus-manager',
@@ -19,12 +22,15 @@ export class MenusManagerComponent extends ModalContainerComponent implements On
 
   constructor(
     private route: ActivatedRoute,
-    protected modalService: NgbModal,
     protected menuManagerService: MenuManagerService,
-    private menusService: MenusService
+    private menusService: MenusService,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastService: ToastrService,
+    protected modalService: NgbModal
 
   ) {
-    super(modalService);
+    super();
 
   }
 

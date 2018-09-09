@@ -5,6 +5,7 @@ import { UserService } from "../../../shared/services/user.service";
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { RoleManagerService } from "../role-manager.service";
 import { Permission } from "../role.data";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'gm-role-create',
@@ -22,9 +23,10 @@ export class CreateRoleComponent<Role> extends FormComponent<Role> implements On
   constructor(protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
-              private roleManagerService: RoleManagerService
+              private roleManagerService: RoleManagerService,
+              protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {

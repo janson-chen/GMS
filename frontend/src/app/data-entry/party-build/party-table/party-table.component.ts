@@ -7,6 +7,9 @@ import { Community } from "../../../settings/community-manager/community.data";
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ModalContainerComponent } from "../../../shared/components/modal-container/modal-container.component";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { UserService } from "../../../shared/services/user.service";
+import { FormBuilder } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'gm-party-table',
@@ -24,9 +27,12 @@ export class PartyListComponent extends ModalContainerComponent implements OnIni
   constructor(
     private partyService: PartyService,
     private communityService: CommunityService,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastService: ToastrService,
     protected modalService: NgbModal
   ) {
-    super(modalService);
+    super();
   }
 
   ngOnInit() {

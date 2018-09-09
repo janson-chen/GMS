@@ -4,7 +4,7 @@
         <div class="data-item" *ngFor="let item of data">
             <span>{{ item?.userName }}</span>
             <span>{{ item?.name }}</span>
-            <span>{{ getCommunityNameById(item?.communityID) }}</span>
+            <span>{{ getCommunityNameById(item?.communityId) }}</span>
             <span>{{ item?.isEnabled }}</span>
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>

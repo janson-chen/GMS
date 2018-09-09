@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="40px" viewBox="0 0 31 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Category Icon/File Converter white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Runner-Overlay---Define-Workflow-Input-Test-Files" transform="translate(-83.000000, -281.000000)" fill="#FFFFFF">
+            <g id="Category-Icon/file" transform="translate(78.000000, 280.000000)">
+                <g id="Category-Icon/File-Converter-grey" transform="translate(6.080000, 1.600000)">
+                    <path d="M1.28,1.28 L1.28,35.84 L26.88,35.84 L26.88,7.28159944 L20.6042146,1.28 L1.28,1.28 Z M1.28,8.52651283e-16 L20.6042146,0 C20.9337986,0 21.2506811,0.127131134 21.4888775,0.354920814 L27.7646629,6.35652026 C28.017175,6.59800017 28.16,6.93220728 28.16,7.28159944 L28.16,35.84 C28.16,36.5469245 27.5869245,37.12 26.88,37.12 L1.28,37.12 C0.57307552,37.12 7.10542736e-17,36.5469245 0,35.84 L0,1.28 C-1.42108547e-16,0.57307552 0.57307552,9.9475983e-16 1.28,8.52651283e-16 Z" id="Rectangle-21" fill-rule="nonzero"></path>
+                    <polygon id="Path-15" fill-rule="nonzero" points="21.76 6.4 27.52 6.4 27.52 7.68 20.48 7.68 20.48 0.64 21.76 0.64"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

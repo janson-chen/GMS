@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="67px" viewBox="0 0 64 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>noun_1551235</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-6.9%" y="-4.9%" width="113.8%" height="113.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Zeichenfläche" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Runner-Overlay---Define-Workflow-Input---input-B" transform="translate(-275.000000, -427.000000)" stroke="#FFFFFF" stroke-width="4">
+            <g id="Group" transform="translate(191.000000, 296.000000)">
+                <g id="noun_1551235" filter="url(#filter-1)" transform="translate(87.000000, 133.000000)">
+                    <polyline id="Shape" points="51.1052632 35.3157895 29 13.2105263 6.89473684 35.3157895"></polyline>
+                    <polyline id="Shape" points="57.4210526 13.2105263 57.4210526 0.578947368 0.578947368 0.578947368 0.578947368 13.2105263"></polyline>
+                    <path d="M29,13.2105263 L29,60.5789474" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

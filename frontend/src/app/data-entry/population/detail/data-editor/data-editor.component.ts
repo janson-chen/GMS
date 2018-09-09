@@ -8,6 +8,7 @@ import { FormComponent } from "../../../../shared/components/core/form-component
 import { UserService } from "../../../../shared/services/user.service";
 import { PopulationService } from "../../population.service";
 import { faEdit, faTrash, faCalendar, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "gm-member-editor",
@@ -31,9 +32,10 @@ export class MemberEditorComponent extends FormComponent<Member> implements OnIn
     protected userService: UserService,
     protected fb: FormBuilder,
     protected toastService: ToastrService,
-    private populationService: PopulationService
+    private populationService: PopulationService,
+    protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {

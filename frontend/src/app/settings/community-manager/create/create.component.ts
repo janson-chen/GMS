@@ -6,6 +6,7 @@ import { UserService } from "../../../shared/services/user.service";
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { RoleManagerService } from "../role-manager.service";
 import { CommunityService } from "../community.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'gm-community-create',
@@ -18,9 +19,10 @@ export class CreateCommunityComponent<Community> extends FormComponent<Community
   constructor(protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
-              private communityService: CommunityService
+              private communityService: CommunityService,
+              protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {

@@ -7,6 +7,7 @@ import { UserService } from "../../../shared/services/user.service";
 import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.data";
 import { RiskService } from "../risk.service";
 import { Risk } from "../risk.data";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -22,14 +23,15 @@ export class RiskDataEditorComponent extends FormComponent<Risk> implements OnIn
               protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
-              private partyService: RiskService
+              private partyService: RiskService,
+              protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      communityID: "",
+      communityId: "",
       subject: "",
       activitiesDate: "",
       activitiesPlace: "",
@@ -44,7 +46,7 @@ export class RiskDataEditorComponent extends FormComponent<Risk> implements OnIn
   async submit() {
     this.isSubmitting = true;
     const payload = {
-      communityID: this.formGroup.value.communityID,
+      communityId: this.formGroup.value.communityId,
       subject: this.formGroup.value.subject,
       activitiesDate: this.formGroup.value.activitiesDate,
       activitiesPlace: this.formGroup.value.activitiesPlace,

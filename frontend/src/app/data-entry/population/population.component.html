@@ -9,7 +9,7 @@
 
 <ng-template #populationModal let-close="close" let-dismiss="dismiss">
     <gm-modal-container [dismiss]="dismiss" [title]="'人口信息登记表'">
-        <gm-population-editor [communities]="communities" [close]="close" [insurances]="insurances"></gm-population-editor>
+        <gm-population-editor [communities]="communities" [close]="close" (submitted)="updatePopulation()" [insurances]="insurances"></gm-population-editor>
     </gm-modal-container>
 </ng-template>
 

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Role } from "./role.data";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { RoleManagerService } from "./role-manager.service";
 import { DataService } from "../../shared/services/data.service";
 import { HttpClient } from "@angular/common/http";

@@ -6,6 +6,7 @@ import { FormComponent } from "../../../shared/components/core/form-component";
 import { UserManagerService } from "../user-manager.service";
 import { Permission, Role } from "../../role-manager/role.data";
 import { Community } from "../../community-manager/community.data";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'gm-user-create',
@@ -22,16 +23,17 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
   constructor(protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
-              private userManagerService: UserManagerService
+              private userManagerService: UserManagerService,
+              protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
       userName: "",
       name: "",
-      communityID: "",
+      communityId: "",
       isEnabled: false,
       roles: []
     });
@@ -45,7 +47,7 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
     const payload = {
       userName: this.formGroup.value.userName,
       name: this.formGroup.value.name,
-      communityID: this.formGroup.value.communityID,
+      communityId: this.formGroup.value.communityId,
       isEnabled: false,
       roles: this.selectedRoles.map(role => role.name)
     };

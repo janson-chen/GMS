@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ToastrService } from "ngx-toastr";
 
 import { FormComponent } from "../../../shared/components/core/form-component";
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { UserService } from "../../../shared/services/user.service";
 import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.data";
-import { Insurance } from "../population.data";
+import { Insurance, Population } from "../population.data";
 import { Community } from "../../../settings/community-manager/community.data";
 import { PopulationService } from "../population.service";
 import { timestamp } from "../../../shared/utils/timestamp";
-
 
 @Component({
   selector: "gm-population-editor",
@@ -17,7 +17,7 @@ import { timestamp } from "../../../shared/utils/timestamp";
   styleUrls: ["./data-editor.component.scss"],
   providers: [FormComponent.provide(PopulationDataEditorComponent)]
 })
-export class PopulationDataEditorComponent extends FormComponent<any> implements OnInit {
+export class PopulationDataEditorComponent extends FormComponent<Population> implements OnInit {
   @Input() insurances: Insurance[] = [];
   @Input() communities: Community[] = [];
 
@@ -31,38 +31,50 @@ export class PopulationDataEditorComponent extends FormComponent<any> implements
     protected userService: UserService,
     protected fb: FormBuilder,
     protected toastService: ToastrService,
-    private populationService: PopulationService
+    private populationService: PopulationService,
+    protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {
+    // console.log("data", this.data);
     this.formGroup = this.fb.group({
-      communityId: this.data.communityId,
-      family_Address: this.data.family_Address,
-      family_Type: this.data.family_Type,
-      insurances: this.selectedInsurances,
-      family_Content: this.data.family_Content,
-      family_Phone: this.data.family_Phone
+      communityId: this.data && this.data.communityId || "",
+      family_Address: this.data && this.data.family_Address || "",
+      family_Type: this.data && this.data.family_Type || "",
+      insurances: this.data && this.selectedInsurances || "",
+      family_Content: this.data && this.data.family_Content || "",
+      family_Phone: this.data && this.data.family_Phone || ""
     });
+
+    console.log("formgroupd", this.formGroup);
 
     this.catchSelectedInsurances();
   }
 
   async submit() {
     this.isSubmitting = true;
-    const payload = {
-      id: this.data.id,
+    let payload = {
       code: "Code" + timestamp(),
-      communityID: this.formGroup.value.communityId,
+      communityId: this.formGroup.value.communityId,
       family_Address: this.formGroup.value.family_Address,
       family_Type: this.formGroup.value.family_Type,
       family_Content: this.formGroup.value.family_Content,
       family_Phone: this.formGroup.value.family_Phone
     };
 
+    if (this.data) {
+      payload['id'] = this.data.id;
+    }
+
     try {
-      await this.populationService.updatePopulation(this.data.id, payload);
+      if (this.data) {
+        await this.populationService.updatePopulation(this.data.id, payload);
+      } else {
+        await this.populationService.addPopulation(payload);
+      }
+
       this.isSubmitted = true;
       setTimeout(() => this.close("修改成功."), this.successMessageTimeoutInSeconds * 1000);
     } catch (e) {

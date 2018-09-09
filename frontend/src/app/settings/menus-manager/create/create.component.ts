@@ -6,6 +6,7 @@ import { UserManagerService } from "../user-manager.service";
 import { Community } from "../../community-manager/community.data";
 import { MenuManagerService } from "../menu-manager.service";
 import { UserService } from "../../../shared/services/user.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'gm-menu-create',
@@ -21,9 +22,10 @@ export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements On
               protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
-              private menuService: MenuManagerService
+              private menuService: MenuManagerService,
+              protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {

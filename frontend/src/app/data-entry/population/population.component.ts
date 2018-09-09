@@ -7,13 +7,17 @@ import { Insurance, Population, POPULATION_MANAGER_TABLE_COLUMES } from "./popul
 import { PopulationService } from "./population.service";
 import { Community } from "../../settings/community-manager/community.data";
 import { CommunityService } from "../../settings/community-manager/community.service";
+import { FormComponent } from "../../shared/components/core/form-component";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'gm-population',
   templateUrl: './population.component.html',
   styleUrls: ['./population.component.scss']
 })
-export class PopulationComponent extends ModalContainerComponent implements OnInit {
+export class PopulationComponent extends FormComponent<Population> implements OnInit {
   communities: Community[] = [];
   columns = POPULATION_MANAGER_TABLE_COLUMES;
   populationList: Population[];
@@ -23,10 +27,12 @@ export class PopulationComponent extends ModalContainerComponent implements OnIn
     private populationService: PopulationService,
     protected modalService: NgbModal,
     private route: ActivatedRoute,
-    private communityService: CommunityService
+    private communityService: CommunityService,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastService: ToastrService
   ) {
-    super(modalService);
-
+    super();
     route.data.subscribe((data: { populations: { detail: Population[] }, communities: Community[] }) => {
       this.populationList = data.populations.detail;
       this.communities = data.communities;
@@ -58,5 +64,10 @@ export class PopulationComponent extends ModalContainerComponent implements OnIn
     this.insurances = await this.getInsurances();
     this.communityService.saveCommunities(this.communities);
     console.log("communities", this.communities);
+  }
+
+  async updatePopulation(): Promise<void> {
+    const result = await  this.populationService.query("query/page=-1/pageSize=-1", {});
+    this.populationList = result.detail;
   }
 }

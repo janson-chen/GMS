@@ -4,6 +4,9 @@ import { ModalContainerComponent } from "../../shared/components/modal-container
 import { CommunityService } from "./community.service";
 import { ActivatedRoute } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'gm-community-manager',
@@ -14,10 +17,15 @@ export class CommunityManagerComponent extends ModalContainerComponent implement
   columns = COMMUNITY_TABLE_COLUMES;
   communities: Community[] = [];
 
-  constructor(private communityService: CommunityService,
-              protected modalService: NgbModal,
-              private route: ActivatedRoute) {
-    super(modalService);
+  constructor(
+              private communityService: CommunityService,
+              private route: ActivatedRoute,
+              protected userService: UserService,
+              protected fb: FormBuilder,
+              protected toastService: ToastrService,
+              protected modalService: NgbModal
+  ) {
+    super();
 
     route.data.subscribe((data: { communities: Community[] }) => {
       this.communities = data["0"];

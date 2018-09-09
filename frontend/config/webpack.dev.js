@@ -3,17 +3,11 @@
  */
 
 const helpers = require('./helpers');
+const webpack = require('webpack');
 const buildUtils = require('./build-utils');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
-
-/**
- * Webpack Plugins
- */
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
-const EvalSourceMapDevToolPlugin = require('webpack/lib/EvalSourceMapDevToolPlugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack configuration
@@ -21,7 +15,7 @@ const EvalSourceMapDevToolPlugin = require('webpack/lib/EvalSourceMapDevToolPlug
  * See: https://webpack.js.org/configuration/
  */
 module.exports = function (options) {
-  const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+  const ENV = (process.env.ENV = process.env.NODE_ENV = 'development');
   const HOST = process.env.HOST || 'localhost';
   const PORT = process.env.PORT || 3000;
 
@@ -33,14 +27,16 @@ module.exports = function (options) {
     PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
   });
 
-  return webpackMerge(commonConfig({ env: ENV, metadata: METADATA  }), {
+  return webpackMerge(commonConfig({env: ENV, metadata: METADATA}), {
+    mode: 'development',
+    devtool: 'inline-source-map',
+
     /**
      * Options affecting the output of the compilation.
      *
      * See: https://webpack.js.org/configuration/output/
      */
     output: {
-
       /**
        * The output directory as absolute path (required).
        *
@@ -72,13 +68,11 @@ module.exports = function (options) {
       chunkFilename: '[id].chunk.js',
 
       library: 'ac_[name]',
-      libraryTarget: 'var',
+      libraryTarget: 'var'
     },
 
     module: {
-
       rules: [
-
         /**
          * Css loader support for *.css files (styles directory only)
          * Loads external css styles into the DOM, supports HMR
@@ -99,37 +93,23 @@ module.exports = function (options) {
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
           include: [helpers.root('src', 'styles')]
-        },
-
+        }
       ]
-
     },
 
     plugins: [
-      new EvalSourceMapDevToolPlugin({
-        moduleFilenameTemplate: '[resource-path]',
-        sourceRoot: 'webpack:///'
-      }),
-
-      /**
-       * Plugin: NamedModulesPlugin (experimental)
-       * Description: Uses file names as module name.
-       *
-       * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
-       */
-      new NamedModulesPlugin(),
-
       /**
        * Plugin LoaderOptionsPlugin (experimental)
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-      new LoaderOptionsPlugin({
-        debug: true,
-        options: { }
+      new webpack.LoaderOptionsPlugin({
+        minimize: false
       }),
-
-      // TODO: HMR
+      new ExtractTextPlugin({
+        filename: 'build.min.css',
+        allChunks: true,
+      }),
     ],
 
     /**
@@ -141,12 +121,12 @@ module.exports = function (options) {
      * See: https://webpack.js.org/configuration/dev-server/
      */
     devServer: {
+      https: true,
       port: METADATA.port,
       host: METADATA.host,
       hot: METADATA.HMR,
       public: METADATA.PUBLIC,
       historyApiFallback: true,
-      https: true,
       watchOptions: {
         // if you're using Docker you may need this
         // aggregateTimeout: 300,
@@ -164,11 +144,11 @@ module.exports = function (options) {
         }
       },
       /**
-      * Here you can access the Express app object and add your own custom middleware to it.
-      *
-      * See: https://webpack.js.org/configuration/dev-server/
-      */
-      setup: function(app) {
+       * Here you can access the Express app object and add your own custom middleware to it.
+       *
+       * See: https://webpack.js.org/configuration/dev-server/
+       */
+      setup: function (app) {
         // For example, to define custom handlers for some paths:
         // app.get('/some/path', function(req, res) {
         //   res.json({ custom: 'response' });
@@ -191,6 +171,5 @@ module.exports = function (options) {
       setImmediate: false,
       fs: 'empty'
     }
-
   });
 };

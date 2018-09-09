@@ -7,10 +7,10 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { tap } from 'rxjs/operators';
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "./shared/services/user.service";
 import { Router } from "@angular/router";
+import { tap } from "rxjs/operators";
 
 @Injectable()
 export class AppService implements HttpInterceptor {

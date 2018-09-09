@@ -4,9 +4,11 @@ import { ModalContainerComponent } from "../../shared/components/modal-container
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Community } from "../../settings/community-manager/community.data";
 import { CommunityService } from "../../settings/community-manager/community.service";
-import { Role } from "../../settings/role-manager/role.data";
 import { ActivatedRoute } from "@angular/router";
 import { PartyService } from "./party.service";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'gm-party-build',
@@ -19,12 +21,15 @@ export class PartyBuildComponent extends ModalContainerComponent implements OnIn
   partyActivitiesList: Party[];
 
   constructor(
-    protected modalService: NgbModal,
     private communityService: CommunityService,
     private route: ActivatedRoute,
-    private partyService: PartyService
+    private partyService: PartyService,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastService: ToastrService,
+    protected modalService: NgbModal
   ) {
-    super(modalService);
+    super();
     route.data.subscribe((data: { partyActivities: { detail: Party[] }, communities: Community[] }) => {
       this.partyActivitiesList = data.partyActivities.detail;
       this.communities = data.communities;

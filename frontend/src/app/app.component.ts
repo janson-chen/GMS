@@ -4,9 +4,11 @@ import { CoreComponent } from "./shared/components/core/core.component";
 import { UserInfo } from "./settings/user-manager/user.data";
 import { MenuManagerService } from "./settings/menus-manager/menu-manager.service";
 import { MenusService } from "./core/service/menus.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+export const ROOT_SELECTOR = "app";
 
 @Component({
-  selector: "app",
+  selector: ROOT_SELECTOR,
   styleUrls: ["./app.component.scss"],
   templateUrl: "./app.component.html"
 })
@@ -14,7 +16,8 @@ export class AppComponent extends CoreComponent<UserInfo> implements OnInit {
   constructor(
     private userService: UserService,
     private menuManagerService: MenuManagerService,
-    private menusService: MenusService
+    private menusService: MenusService,
+    protected modalService: NgbModal
   ) {
     super();
   }

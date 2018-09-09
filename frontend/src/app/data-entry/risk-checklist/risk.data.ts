@@ -1,5 +1,5 @@
 export interface Risk {
-  communityID: string;
+  communityId: string;
   subject: string;
   activitiesDate: string;
   activitiesPlace: string;

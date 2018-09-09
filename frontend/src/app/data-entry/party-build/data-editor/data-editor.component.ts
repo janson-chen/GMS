@@ -4,11 +4,11 @@ import { ToastrService } from "ngx-toastr";
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { FormBuilder } from "@angular/forms";
 import { UserService } from "../../../shared/services/user.service";
-import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.data";
 import { Party } from "../party.data";
 import { PartyService } from "../party.service";
 import { Community } from "../../../settings/community-manager/community.data";
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "gm-party-editor",
@@ -24,9 +24,10 @@ export class PartyDataEditorComponent extends FormComponent<Party> implements On
               protected userService: UserService,
               protected fb: FormBuilder,
               protected toastService: ToastrService,
-              private partyService: PartyService
+              private partyService: PartyService,
+              protected modalService: NgbModal
   ) {
-    super(userService, fb, toastService);
+    super();
   }
 
   async ngOnInit(): Promise<void> {

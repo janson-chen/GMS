@@ -8,6 +8,9 @@ import { ActivatedRoute } from "@angular/router";
 import { ModalContainerComponent } from "../../../shared/components/modal-container/modal-container.component";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Community } from "../../../settings/community-manager/community.data";
+import { UserService } from "../../../shared/services/user.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'gm-detail-table',
@@ -26,9 +29,12 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
     private populationService: PopulationService,
     private communityService: CommunityService,
     private route: ActivatedRoute,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected userService: UserService,
+    protected fb: FormBuilder,
+    protected toastrService: ToastrService
   ) {
-    super(modalService);
+    super();
     route.data.subscribe((data: { detail: Population, families: {detail: Member[]}, communities: Community[] }) => {
       this.data = data.detail;
       this.families = data.families.detail;
@@ -59,8 +65,9 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
     this.families = result && result.detail;
   }
 
-  async updatePolation(): Promise<void> {
-    this.data = await this.populationService.getById(this.data.id, "/id=");
+  async updatePopulation(): Promise<void> {
+    const result = await this.populationService.getById(this.data.id, "/id=");
+    this.data = result;
   }
 
 }

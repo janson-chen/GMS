@@ -8,6 +8,9 @@ import { ActivatedRoute } from "@angular/router";
 import { Role } from "../role-manager/role.data";
 import { RoleManagerService } from "../role-manager/role-manager.service";
 import { UserManagerService } from "./user-manager.service";
+import { FormBuilder } from "@angular/forms";
+import { UserService } from "../../shared/services/user.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'gm-user-manager',
@@ -25,9 +28,12 @@ export class UserManagerComponent extends ModalContainerComponent implements OnI
     private roleManageService: RoleManagerService,
     private userManageService: UserManagerService,
     protected modalService: NgbModal,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    protected fb: FormBuilder,
+    protected userService: UserService,
+    protected toastrService: ToastrService
   ) {
-    super(modalService);
+    super();
 
     route.data.subscribe((data: { users: { detail: UserInfo[]} }) => {
       this.userList = data.users.detail;
