@@ -33,9 +33,13 @@ import { LogResolver } from "./logs-manager/log-resolver";
 import { GroupManagerComponent } from "./group-manager/group-manager.component";
 import { GroupResolver } from "./group-manager/group-resolver";
 import { GroupManagerService } from "./group-manager/group-manager.service";
+import { CreateGroupComponent } from "./group-manager/create/create.component";
+import { GroupListComponent } from "./group-manager/group-table/group-table.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   imports: [
+    FontAwesomeModule,
     CommonModule,
     SharedModule,
     FormsModule,
@@ -59,7 +63,9 @@ import { GroupManagerService } from "./group-manager/group-manager.service";
     CommunityListComponent,
     RoleListComponent,
     UserListComponent,
-    MenuListComponent
+    MenuListComponent,
+    CreateGroupComponent,
+    GroupListComponent
   ],
   providers: [
     CommunityService,

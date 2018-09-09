@@ -3,7 +3,7 @@ import { ModalContainerComponent } from "../../shared/components/modal-container
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ActivatedRoute } from "@angular/router";
 import { GroupManagerService } from "./group-manager.service";
-import { GROUP_MANAGER_TABLE_COLUMES, UserGroup } from "./group.data";
+import { GROUP_MANAGER_TABLE_COLUMES, GroupResponse, UserGroup } from "./group.data";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
@@ -36,5 +36,8 @@ export class GroupManagerComponent extends ModalContainerComponent implements On
 
   }
 
-
+  async updateGroupList(): Promise<void> {
+    const result = await <GroupResponse>this.groupManageService.getList("/usermemberlist/page=-1/pageSize=-1");
+    this.groups = result.detail;
+  }
 }

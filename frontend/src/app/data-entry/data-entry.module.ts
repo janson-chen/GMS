@@ -28,6 +28,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CommunityResolver } from "../settings/community-manager/community-resolver";
 import { PartyListComponent } from "./party-build/party-table/party-table.component";
 import { BsDatepickerModule } from "ngx-bootstrap";
+import { RiskListComponent } from "./risk-checklist/risk-table/risk-table.component";
+import { RiskResolver } from "./risk-checklist/risk-resolver";
 
 @NgModule({
   imports: [
@@ -51,7 +53,8 @@ import { BsDatepickerModule } from "ngx-bootstrap";
     PopulationListComponent,
     PopulationDetailComponent,
     MemberEditorComponent,
-    PartyListComponent
+    PartyListComponent,
+    RiskListComponent
   ],
   exports: [RouterModule],
   providers: [
@@ -63,7 +66,8 @@ import { BsDatepickerModule } from "ngx-bootstrap";
     PartyResolver,
     CommunityService,
     PartyService,
-    RiskService
+    RiskService,
+    RiskResolver
   ]
 })
 export class DataEntryModule {

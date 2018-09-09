@@ -1,13 +1,14 @@
 <header>
-  <span>用户列表</span>
-  <button (click)="openModal(groupManagerModal)">创建用户</button>
+  <span>用户组列表</span>
+  <button (click)="openModal(groupManagerModal)">创建用户组</button>
 </header>
 <div class="search-panel">
   <gm-search-bar></gm-search-bar>
 </div>
-<gm-user-table [columns]="columns" [data]="groups"></gm-user-table>
+<gm-group-table [columns]="columns" [data]="groups"></gm-group-table>
 
 <ng-template #groupManagerModal let-close="close" let-dismiss="dismiss">
-  <gm-modal-container [dismiss]="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'用户组'">
+    <gm-group-create [close]="close" (submitted)="updateGroupList()"></gm-group-create>
   </gm-modal-container>
 </ng-template>

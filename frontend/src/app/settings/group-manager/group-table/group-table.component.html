@@ -2,15 +2,16 @@
     <gm-table-header [columns]="columns"></gm-table-header>
     <div class="body">
         <div class="data-item" *ngFor="let item of data">
-            <span>{{ "name" }}</span>
-            <span>{{ "name" }}</span>
-            <span>{{ "name" }}</span>
-            <span>{{ "name" }}</span>
-            <span>{{ "name" }}</span>
-            <span>{{ "name" }}</span>
-            <span>
-              <a>删除</a>
-            </span>
+            <span>{{ item?.id }}</span>
+            <span>{{ item?.name }}</span>
+          <span>
+              <a href="javascript:void(0);" (click)="removeItem(item?.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
+              <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(riskEditModal)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
+      </span>
         </div>
     </div>
 </div>

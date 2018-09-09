@@ -9,6 +9,7 @@ import { PopulationDetailComponent } from "./population/detail/population-detail
 import { PopulationDetailResolver } from "./population/population-detail-resolver";
 import { PopulationFamilyResolver } from "./population/population-detail-family-group-resolver";
 import { CommunityResolver } from "../settings/community-manager/community-resolver";
+import { RiskResolver } from "./risk-checklist/risk-resolver";
 
 export const dataEntryRoutes:Routes = [
     {
@@ -31,7 +32,13 @@ export const dataEntryRoutes:Routes = [
               communities: CommunityResolver
             }
           },
-            {path: "risk", component: RiskChecklistComponent},
+            { path: "risk",
+              component: RiskChecklistComponent,
+              resolve: {
+                riskEvents: RiskResolver,
+                communities: CommunityResolver
+              }
+            },
             {
               path: "party",
               component: PartyBuildComponent,

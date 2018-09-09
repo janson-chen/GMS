@@ -10,7 +10,4 @@ export class PartyService extends DataService<Party> {
   addParty(payload: Party): Promise<Party> {
     return <Promise<Party>>this.http.post(`${this.endpoint}`, payload).toPromise();
   }
-
-
-
 }

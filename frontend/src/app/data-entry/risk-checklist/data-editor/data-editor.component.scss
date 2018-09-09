@@ -71,8 +71,18 @@ ca-select {
 .wrap {
   display: flex;
 
+  margin: 10px 0;
+
   label {
-    flex: 100px;
+    width: 120px;
+  }
+
+  input, ca-select, textarea, .input-group, .calendar {
+    flex: 1;
+  }
+
+  input {
+    padding: 5px;
   }
 }
 
@@ -85,3 +95,15 @@ ca-input-checkbox {
   margin-right: 20px;
 }
 
+ca-input-radio {
+  margin-right: 30px;
+}
+
+.input-group-append {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  font-size: 1.5rem;
+  position: absolute;
+  right: -10px;
+}

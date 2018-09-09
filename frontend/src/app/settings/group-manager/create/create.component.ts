@@ -1,24 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "../../../shared/services/user.service";
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { GroupManagerService } from "../group-manager.service";
-import { Permission, Role } from "../../role-manager/role.data";
-import { Community } from "../../community-manager/community.data";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'gm-user-create',
+  selector: 'gm-group-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> implements OnInit {
-  @Input() communities: Community[] = [];
-  @Input() roles: Role[] = [];
-  roleArray: Array<{ role: Role; control: FormControl }> = [];
-  selectedRoles: Permission[] = [];
-  roleForm: FormGroup = this.fb.group({});
+export class CreateGroupComponent<UserGroup> extends FormComponent<UserGroup> implements OnInit {
 
   constructor(protected userService: UserService,
               protected fb: FormBuilder,
@@ -31,11 +24,7 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      userName: "",
       name: "",
-      communityId: "",
-      isEnabled: false,
-      roles: []
     });
   }
 
@@ -43,7 +32,7 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
     console.log(this.formGroup.value);
     this.isSubmitting = true;
     const payload = {
-
+      name: this.formGroup.value.name
     };
 
     try {
@@ -56,7 +45,6 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
     }
 
   }
-
 
 
 }

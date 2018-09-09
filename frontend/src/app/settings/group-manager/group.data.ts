@@ -1,25 +1,17 @@
 export interface UserGroup {
-  userMemberID?: 0;
-  userMemberName?: string;
-  userID?: string;
-  userName?: string;
-  userMember?: UserMember;
+  id?: string;
+  name?: string;
+}
+
+export interface GroupResponse {
+  detail?: UserGroup[];
 }
 
 export class UserMember {
   id?: 0;
   name?: string;
   events?: any[];
-  userMemberDetails?: [
-    {
-      userMemberID?: 0;
-      userID?: string;
-      createdBy?: string;
-      updatedBy?: string;
-      createdDate?: string;
-      updatedDate: string
-    }
-    ];
+  userMemberDetails?: any[];
   createdBy?: string;
   updatedBy?: string;
   createdDate?: string;
@@ -31,11 +23,11 @@ export class UserEvent {
 }
 
 export const GROUP_MANAGER_TABLE_COLUMES = [
-  "用户名",
-  "登录名",
-  "所属社区",
-  "是否启用",
-  "登记人",
-  "登记时间",
+  "用户组ID",
+  "用户组名",
+  // "创建日期",
+  // "更新时间",
+  // "更新人员",
+  // "创建人员",
   "操作"
 ];
