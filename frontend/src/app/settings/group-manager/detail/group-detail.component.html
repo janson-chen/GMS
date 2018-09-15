@@ -1,0 +1,27 @@
+<div class="family-group">
+  <header class="title">
+    <span>用户组成员</span>
+    <button (click)="openModal(groupMemberManagerModal)">创建用户组成员</button>
+  </header>
+  <div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+      <div class="data-item" *ngFor="let item of data">
+        <span>{{ item?.userMemberId }}</span>
+        <span>{{ item?.userMemberName }}</span>
+        <span [caTextEllipsis]="item?.userId" [title]="item?.userId"></span>
+        <span>{{ item?.userName }}</span>
+        <span>
+              <a href="javascript:void(0);" (click)="removeGroupMember(item?.userId, item?.userMemberId)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #groupMemberManagerModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container title="编辑用户组成员" [dismiss]="dismiss">
+    <gm-group-member-editor [data]="data" [groups]="groups" [users]="users" [close]="close" (submitted)="updateGroupMembers()"></gm-group-member-editor>
+  </gm-modal-container>
+</ng-template>

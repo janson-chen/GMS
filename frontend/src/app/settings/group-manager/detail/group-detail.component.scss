@@ -1,0 +1,74 @@
+@import "../../../../styles/lib";
+
+.family-panel, .family-group {
+  padding: 0 20px;
+}
+
+.title {
+  display: flex;
+  font-size: 1rem;
+  color: $ca-black;
+  margin: 10px auto;
+  background: #eee;
+  padding: 5px;
+
+  >span {
+    flex: 1;
+  }
+}
+
+.data-panel {
+  @extend %table-base;
+
+  .box {
+    border: 1px solid #ccc;
+  }
+
+  .wrap {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+
+    &:nth-last-child(1) {
+      border: none !important;
+    }
+
+    label {
+      width: 100px;
+      margin: 0;
+      border-right: 1px solid #ccc;
+    }
+
+    >span {
+      flex: 1;
+      padding-left: 20px;
+    }
+  }
+
+  .data-item {
+    >span {
+      height: 30px;
+    }
+  }
+}
+
+header {
+  display: flex;
+  padding: 5px 10px;
+  border-bottom: 1px solid #888;
+
+  span {
+    flex: 1;
+    color: #555;
+    margin: 0;
+  }
+
+  button {
+    background: #2e68aa;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 0 20px;
+  }
+}

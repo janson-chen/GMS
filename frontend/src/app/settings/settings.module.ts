@@ -36,6 +36,9 @@ import { GroupManagerService } from "./group-manager/group-manager.service";
 import { CreateGroupComponent } from "./group-manager/create/create.component";
 import { GroupListComponent } from "./group-manager/group-table/group-table.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { GroupDetailComponent } from "./group-manager/detail/group-detail.component";
+import { GroupMemberEditorComponent } from "./group-manager/detail/data-editor/data-editor.component";
+import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolver";
 
 @NgModule({
   imports: [
@@ -65,7 +68,9 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     UserListComponent,
     MenuListComponent,
     CreateGroupComponent,
-    GroupListComponent
+    GroupListComponent,
+    GroupDetailComponent,
+    GroupMemberEditorComponent
   ],
   providers: [
     CommunityService,
@@ -78,7 +83,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     MenuManagerService,
     LogManagerService,
     LogResolver,
-    GroupManagerService
+    GroupManagerService,
+    GroupDetailResolver
   ]
 })
 export class SettingsModule {

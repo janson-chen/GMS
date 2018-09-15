@@ -1,7 +1,7 @@
 import { Role } from "../role-manager/role.data";
 
 export interface UserInfo {
-  Id?: string;
+  id?: string;
   userName?: string;
   name?: string;
   email?: string;

@@ -68,7 +68,7 @@
             
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.AccountController.Register(PartyManage.ViewModels.Account.UserEditViewModel)">
+        <member name="M:PartyManage.Controllers.AccountController.Register(PartyManage.ViewModels.Account.UserViewModel)">
             <summary>
             注册用户
             </summary>
@@ -133,12 +133,12 @@
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.AccountController.UpdateUser(System.String,PartyManage.ViewModels.Account.UserEditViewModel)">
+        <member name="M:PartyManage.Controllers.AccountController.UpdateUser(System.String,PartyManage.ViewModels.Account.UserViewModel)">
             <summary>
             按id更新用户
             </summary>
             <param name="user">用户修改模型</param>
-            <param name="Id">用户Id</param>
+            <param name="id">用户Id</param>
             <remarks>
             调用例子  
             
@@ -179,7 +179,7 @@
             按用户Id做部分修改
             </summary>
             <param name="patch">用户部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -195,7 +195,7 @@
             <summary>
             按用户Id删除用户
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -206,7 +206,7 @@
             <summary>
             按用户Id解锁用户
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -217,7 +217,7 @@
             <summary>
             按角色Id获取角色
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -228,7 +228,7 @@
             <summary>
             按角色名获取角色
             </summary>
-            <param name="Name">角色名</param>
+            <param name="name">角色名</param>
             <remarks>
             调用例子  
             
@@ -251,7 +251,7 @@
             <summary>
             按Id更新角色信息
             </summary>
-            <param name="Id">角色Id</param>
+            <param name="id">角色Id</param>
             <param name="role">角色模型</param>
             <remarks>
             调用例子  
@@ -301,7 +301,7 @@
             <summary>
             按Id删除角色信息
             </summary>
-            <param name="Id">角色Id</param>
+            <param name="id">角色Id</param>
             <remarks>
             调用例子  
             
@@ -338,7 +338,7 @@
             <summary>
             根据id获取通知信息
             </summary>
-            <param name="Id">通知Id</param>
+            <param name="id">通知Id</param>
             <remarks>
             调用例子  
             
@@ -349,7 +349,7 @@
             <summary>
             当前用户id获取通知
             </summary>
-            <param name="UserId">UserId</param>
+            <param name="userId">UserId</param>
             <param name="page">页码</param>
             <param name="pageSize">每页数量</param>
             <param name="isConsult">是/否已查阅</param>
@@ -363,7 +363,7 @@
             <summary>
             更新用户查阅状态
             </summary>
-            <param name="Id">消息实际对象Id</param>
+            <param name="id">消息实际对象Id</param>
             <remarks>
             调用例子
                
@@ -419,7 +419,7 @@
             <summary>
             按Id获取事件表
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -431,7 +431,7 @@
             事件表修改
             </summary>
             <param name="Event">事件表模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -454,7 +454,7 @@
             事件表部分修改
             </summary>
             <param name="patch">事件表模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -470,18 +470,18 @@
             <summary>
             按Id删除事件表
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
                 Delete /Business/Event/Id=1
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.UploadMenuFile(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.UploadEventFile(System.Int32)">
             <summary>
             创建事件表附件
             </summary>
-            <param name="Id">事件表Id</param>
+            <param name="id">事件表Id</param>
             <remarks>
             调用例子  
             
@@ -492,7 +492,7 @@
             <summary>
             按事件表Id获取附件
             </summary>
-            <param name="EventId">Id</param>
+            <param name="eventId">Id</param>
             <remarks>
             调用例子  
             
@@ -503,7 +503,7 @@
             <summary>
             按事件表附件Id删除附件
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -554,7 +554,7 @@
             <summary>
             按Id获取活动表
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -566,7 +566,7 @@
             活动表修改
             </summary>
             <param name="partyActivities">活动表模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -590,7 +590,7 @@
             活动表部分修改
             </summary>
             <param name="patch">活动表模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -606,7 +606,7 @@
             <summary>
             按Id删除活动表
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -657,19 +657,19 @@
             <summary>
             按Id获取网格登记表
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
                 Get /Business/Population/Id=1
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.UpdateEvent(System.Int32,PartyManage.ViewModels.Business.PopulationViewModel)">
+        <member name="M:PartyManage.Controllers.BusinessController.UpdatePopulation(System.Int32,PartyManage.ViewModels.Business.PopulationViewModel)">
             <summary>
             网格登记表修改
             </summary>
             <param name="population">网格登记表模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -685,12 +685,12 @@
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.PatchEvent(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.PopulationViewModel})">
+        <member name="M:PartyManage.Controllers.BusinessController.PatchPopulation(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{PartyManage.ViewModels.Business.PopulationViewModel})">
             <summary>
             网格登记表部分修改
             </summary>
             <param name="patch">网格登记表模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -706,7 +706,7 @@
             <summary>
             按Id删除网格登记表
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -772,11 +772,11 @@
                 Get /Business/Population/Families/PopulationId=1/Page=1/PageSize=20          
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetFamilyAsync(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetFamilyById(System.Int32)">
             <summary>
             根据id获取家庭人员成员
             </summary>
-            <param name="Id">家庭人员Id</param>
+            <param name="id">家庭人员Id</param>
             <remarks>
             调用例子  
             
@@ -836,7 +836,7 @@
             家庭人员信息部分修改
             </summary>
             <param name="patch">家庭人员部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -878,11 +878,11 @@
                 Get /Business/Population/Armies/PopulationId=1/Page=1/PageSize=20          
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetArmyAsync(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetArmyById(System.Int32)">
             <summary>
             根据id获取兵役信息
             </summary>
-            <param name="Id">家庭人员Id</param>
+            <param name="id">家庭人员Id</param>
             <remarks>
             调用例子  
             
@@ -919,7 +919,7 @@
             兵役信息部分修改
             </summary>
             <param name="patch">兵役部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -935,7 +935,7 @@
             <summary>
             删除兵役信息
             </summary>
-            <param name="Ids">家庭人员id集合</param>
+            <param name="ids">家庭人员id集合</param>
             <remarks>
             调用例子  
             
@@ -961,11 +961,11 @@
                 Get /Business/Population/Disabilities/PopulationId=1/Page=1/PageSize=20          
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetDisabilityAsync(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetDisabilityById(System.Int32)">
             <summary>
             根据id获取残疾信息
             </summary>
-            <param name="Id">家庭人员Id</param>
+            <param name="id">家庭人员Id</param>
             <remarks>
             调用例子  
             
@@ -1000,7 +1000,7 @@
             残疾信息部分修改
             </summary>
             <param name="patch">残疾部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -1016,7 +1016,7 @@
             <summary>
             删除残疾信息
             </summary>
-            <param name="Ids">家庭人员id集合</param>
+            <param name="ids">家庭人员id集合</param>
             <remarks>
             调用例子  
             
@@ -1042,11 +1042,11 @@
                 Get /Business/Population/Parties/PopulationId=1/Page=1/PageSize=20          
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.BusinessController.GetPartyAsync(System.Int32)">
+        <member name="M:PartyManage.Controllers.BusinessController.GetPartyById(System.Int32)">
             <summary>
             根据id获取党派信息
             </summary>
-            <param name="Id">家庭人员Id</param>
+            <param name="id">家庭人员Id</param>
             <remarks>
             调用例子  
             
@@ -1087,7 +1087,7 @@
             党派信息部分修改
             </summary>
             <param name="patch">党派部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -1103,7 +1103,7 @@
             <summary>
             删除党派信息
             </summary>
-            <param name="Ids">家庭人员id集合</param>
+            <param name="ids">家庭人员id集合</param>
             <remarks>
             调用例子  
             
@@ -1116,7 +1116,7 @@
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.CommunityController.CreateMenu(PartyManage.ViewModels.System.CommunityViewModel)">
+        <member name="M:PartyManage.Controllers.CommunityController.CreateCommunity(PartyManage.ViewModels.System.CommunityViewModel)">
             <summary>
             创建社区
             </summary>
@@ -1132,7 +1132,7 @@
                    }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.CommunityController.GetLogs(System.Int32,System.Int32,DAL.QueryModels.CommunityQueryModel)">
+        <member name="M:PartyManage.Controllers.CommunityController.GetCommunityList(System.Int32,System.Int32,DAL.QueryModels.CommunityQueryModel)">
             <summary>
             按条件筛选社区列表（分页）
             </summary>
@@ -1155,7 +1155,7 @@
             <summary>
             按Id获取社区
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1177,7 +1177,7 @@
             <summary>
             通过社区Id获取社区下所有社区合集
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1189,7 +1189,7 @@
             社区修改
             </summary>
             <param name="community">社区模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1207,7 +1207,7 @@
             社区部分修改
             </summary>
             <param name="patch">社区模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -1219,11 +1219,11 @@
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.CommunityController.DeleteMenu(System.Int32)">
+        <member name="M:PartyManage.Controllers.CommunityController.DeleteCommunity(System.Int32)">
             <summary>
             按Id删除社区
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1269,7 +1269,7 @@
             <summary>
             获取基本系统设置
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1281,7 +1281,7 @@
             系统基本设置修改
             </summary>
             <param name="basicSetting">系统设置模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1301,7 +1301,7 @@
             系统基本设置外接程序修改
             </summary>
             <param name="patch">系统设置部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子,可修改｛OutSoftwarePath:"外接程序路径",FileMaxSize:"允许上传的附件最大值",FilePath:"附件上传路径",LogPath:"日志导出路径"}
                
@@ -1318,7 +1318,7 @@
             <summary>
             附件下载
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <param name="isStream">是否数据流</param>
             <remarks>
             调用例子（isStream数据流方式）  
@@ -1340,7 +1340,7 @@
             <summary>
             根据id获取菜单
             </summary>
-            <param name="Id">菜单Id</param>
+            <param name="id">菜单Id</param>
             <remarks>
             调用例子  
             
@@ -1370,7 +1370,7 @@
             菜单修改
             </summary>
             <param name="menu">菜单模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1390,7 +1390,7 @@
             菜单部分内容修改
             </summary>
             <param name="patch">菜单部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -1406,7 +1406,7 @@
             <summary>
             按菜单Id删除菜单
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1511,7 +1511,7 @@
             <summary>
             根据id获取新闻信息
             </summary>
-            <param name="Id">新闻Id</param>
+            <param name="id">新闻Id</param>
             <remarks>
             调用例子  
             
@@ -1537,7 +1537,7 @@
             新闻修改
             </summary>
             <param name="news">新闻模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1552,7 +1552,7 @@
             <summary>
             按新闻Id删除新闻
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1563,7 +1563,7 @@
             <summary>
             创建新闻对应附件
             </summary>
-            <param name="Id">新闻Id</param>
+            <param name="id">新闻Id</param>
             <remarks>
             调用例子  
             
@@ -1574,7 +1574,7 @@
             <summary>
             按新闻Id删除新闻附件
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1598,7 +1598,7 @@
             <summary>
             根据id获取字典信息
             </summary>
-            <param name="Id">字典Id</param>
+            <param name="id">字典Id</param>
             <remarks>
             调用例子  
             
@@ -1625,7 +1625,7 @@
             字典修改
             </summary>
             <param name="dictionary">字典模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1642,7 +1642,7 @@
             字典部分内容修改
             </summary>
             <param name="patch">字典部分模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子
                
@@ -1658,14 +1658,14 @@
             <summary>
             按字典Id删除字典
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
                 Delete /System/Dictionary/Id=1
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.SystemController.DictionaryDetailList(System.Int32,System.Int32,System.Int32)">
+        <member name="M:PartyManage.Controllers.SystemController.GetDictionaryDetailList(System.Int32,System.Int32,System.Int32)">
             <summary>
             根据字典id获取字典实际值（分页）
             </summary>
@@ -1678,7 +1678,7 @@
                 Get /System/DictionaryDetailList/DictionaryId=1/Page=1/PageSize=20?code=XXX
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.SystemController.DictionaryDetailList(System.String,System.Int32,System.Int32)">
+        <member name="M:PartyManage.Controllers.SystemController.GetDictionaryDetailList(System.String,System.Int32,System.Int32)">
             <summary>
             根据字典code获取字典实际值（分页）
             </summary>
@@ -1695,7 +1695,7 @@
             <summary>
             根据id获取字典实际值信息
             </summary>
-            <param name="Id">字典实际值Id</param>
+            <param name="id">字典实际值Id</param>
             <remarks>
             调用例子  
             
@@ -1763,7 +1763,7 @@
                 }
             </remarks>
         </member>
-        <member name="M:PartyManage.Controllers.SystemController.GetUserMemberByNameListAsync(System.String,System.Int32,System.Int32)">
+        <member name="M:PartyManage.Controllers.SystemController.GetUserMemberByNameList(System.String,System.Int32,System.Int32)">
             <summary>
             获取用户组信息（分页）,可加name查询
             </summary>
@@ -1780,7 +1780,7 @@
             <summary>
             根据id获取用户组信息
             </summary>
-            <param name="Id">用户组Id</param>
+            <param name="id">用户组Id</param>
             <remarks>
             调用例子  
             
@@ -1806,7 +1806,7 @@
             用户组修改
             </summary>
             <param name="userMember">用户组模型</param>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1821,7 +1821,7 @@
             <summary>
             按用户组Id删除用户组
             </summary>
-            <param name="Id">Id</param>
+            <param name="id">Id</param>
             <remarks>
             调用例子  
             
@@ -1894,6 +1894,309 @@
                      ]
                 }
             </remarks>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXJavascript">
+            <summary>Used to denote the encoding necessary for files containing JavaScript source code. The alternative MIME type for this file type is text/javascript.</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioL24">
+            <summary>24bit Linear PCM audio at 8-48kHz, 1-N channels; Defined in RFC 3190</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXShockwaveFlash">
+            <summary>Adobe Flash files for example with the extension .swf</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationOctetStream">
+            <summary>Arbitrary binary data.[5] Generally speaking this type identifies files that are not associated with a specific application. Contrary to past assumptions by software packages such as Apache this is not a type that should be applied to unknown files. In such a case, a server or application should not indicate a content type, as it may be incorrect, but rather, should omit the type in order to allow the recipient to guess the type.[6]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationAtomXml">
+            <summary>Atom feeds</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCss">
+            <summary>Cascading Style Sheets; Defined in RFC 2318</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCmd">
+            <summary>commands; subtype resident in Gecko browsers like Firefox 3.5</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCsv">
+            <summary>Comma-separated values; Defined in RFC 4180</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXDeb">
+            <summary>deb (file format), a software package format used by the Debian project</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartEncrypted">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartSigned">
+            <summary>Defined in RFC 1847</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageHttp">
+            <summary>Defined in RFC 2616</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelExample">
+            <summary>Defined in RFC 4735</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXDvi">
+            <summary>device-independent document in DVI format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXmlDtd">
+            <summary>DTD files; Defined by RFC 3023</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJavascript">
+            <summary>
+            ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/ecmascript but with looser processing rules) It is not accepted in IE 8 or earlier - text/javascript is accepted but it is defined as obsolete in RFC 4329. The "type" attribute of the 
+            script tag in HTML5 is optional and in practice omitting the media type of JavaScript programs is the most interoperable solution since all browsers have always assumed the correct default even before HTML5.
+            </summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEcmascript">
+            <summary>ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/javascript but with stricter processing rules)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEdifact">
+            <summary>EDI EDIFACT data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEdiX12">
+            <summary>EDI X12 data; Defined in RFC 1767</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessagePartial">
+            <summary>Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageRfc822">
+            <summary>Email; EML files, MIME files, MHT files, MHTML files; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXml">
+            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXml">
+            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXFlv">
+            <summary>Flash video (FLV files)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageGif">
+            <summary>GIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXGwtRpc">
+            <summary>GoogleWebToolkit data</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXGzip">
+            <summary>Gzip</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextHtml">
+            <summary>HTML; Defined in RFC 2854</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageVndMicrosoftIcon">
+            <summary>ICO image; Registered[9]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelIges">
+            <summary>IGS files, IGES files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageImdnXml">
+            <summary>IMDN Instant Message Disposition Notification; Defined in RFC 5438</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJson">
+            <summary>JavaScript Object Notation JSON; Defined in RFC 4627</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJsonPatch">
+            <summary>JavaScript Object Notation (JSON) Patch; Defined in RFC 6902</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextJavascript">
+            <summary>JavaScript - Defined in and obsoleted by RFC 4329 in order to discourage its usage in favor of application/javascript. However,text/javascript is allowed in HTML 4 and 5 and, unlike application/javascript, has cross-browser support. The "type" attribute of the script tag in HTML5 is optional and there is no need to use it at all since all browsers have always assumed the correct default (even in HTML 4 where it was required by the specification).</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImagePjpeg">
+            <summary>JPEG JFIF image; Associated with Internet Explorer; Listed in ms775147(v=vs.85) - Progressive JPEG, initiated before global browser support for progressive JPEGs (Microsoft and Firefox).</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageJpeg">
+            <summary>JPEG JFIF image; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXJqueryTmpl">
+            <summary>jQuery template data</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndGoogleEarthKmlXml">
+            <summary>KML files (e.g. for Google Earth)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXLatex">
+            <summary>LaTeX files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXMatroska">
+            <summary>Matroska open media format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet">
+            <summary>Microsoft Excel 2007 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMsExcel">
+            <summary>Microsoft Excel files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation">
+            <summary>Microsoft Powerpoint 2007 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMsPowerpoint">
+            <summary>Microsoft Powerpoint files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument">
+            <summary>Microsoft Word 2007 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationMsword">
+            <summary>Microsoft Word files[15]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartAlternative">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartMixed">
+            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartRelated">
+            <summary>MIME Email; Defined in RFC 2387 and used by MHTML (HTML mail)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartFormData">
+            <summary>MIME Webform; Defined in RFC 2388</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMozillaXulXml">
+            <summary>Mozilla XUL files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioMpeg">
+            <summary>MP3 or other MPEG audio; Defined in RFC 3003</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioMp4">
+            <summary>MP4 audio</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoMp4">
+            <summary>MP4 video; Defined in RFC 4337</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoMpeg">
+            <summary>MPEG-1 video with multiplexed audio; Defined in RFC 2045 and RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelMesh">
+            <summary>MSH files, MESH files; Defined in RFC 2077, SILO files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioBasic">
+            <summary>mulaw audio at 8 kHz, 1 channel; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoOgg">
+            <summary>Ogg Theora or other video (with audio); Defined in RFC 5334</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioOgg">
+            <summary>Ogg Vorbis, Speex, Flac and other audio; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationOgg">
+            <summary>Ogg, a multimedia bitstream container format; Defined in RFC 5334</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXopXml">
+            <summary>OP</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentGraphics">
+            <summary>OpenDocument Graphics; Registered[14]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentPresentation">
+            <summary>OpenDocument Presentation; Registered[13]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentSpreadsheet">
+            <summary>OpenDocument Spreadsheet; Registered[12]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentText">
+            <summary>OpenDocument Text; Registered[11]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs12">
+            <summary>p12 files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Certificates">
+            <summary>p7b and spc files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Mime">
+            <summary>p7c files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Certreqresp">
+            <summary>p7r files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Signature">
+            <summary>p7s files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationPdf">
+            <summary>Portable Document Format, PDF has been in use for document exchange on the Internet since 1993; Defined in RFC 3778</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImagePng">
+            <summary>Portable Network Graphics; Registered,[8] Defined in RFC 2083</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationPostscript">
+            <summary>PostScript; Defined in RFC 2046</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoQuicktime">
+            <summary>QuickTime video; Registered[10]</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXRarCompressed">
+            <summary>RAR archive files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVndRnRealaudio">
+            <summary>RealAudio; Documented in RealPlayer Customer Support Answer 2559</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationRdfXml">
+            <summary>Resource Description Framework; Defined by RFC 3870</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationRssXml">
+            <summary>RSS feeds</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationSoapXml">
+            <summary>SOAP; Defined by RFC 3902</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXStuffit">
+            <summary>StuffIt archive files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageSvgXml">
+            <summary>SVG vector image; Defined in SVG Tiny 1.2 Specification Appendix M</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageTiff">
+            <summary>Tag Image File Format (only for Baseline TIFF); Defined in RFC 3302</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXTar">
+            <summary>Tarball files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextPlain">
+            <summary>Textual data; Defined in RFC 2046 and RFC 3676</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXFontTtf">
+            <summary>TrueType Font No registered MIME type, but this is the most commonly used</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.TextVcard">
+            <summary>vCard (contact information); Defined in RFC 6350</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVorbis">
+            <summary>Vorbis encoded audio; Defined in RFC 5215</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVndWave">
+            <summary>WAV audio; Defined in RFC 2361</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationFontWoff">
+            <summary>Web Open Font Format; (candidate recommendation; use application/x-font-woff until standard is official)</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoWebm">
+            <summary>WebM Matroska-based open media format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioWebm">
+            <summary>WebM open media format</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioXMsWax">
+            <summary>Windows Media Audio Redirector; Documented in Microsoft help page</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioXMsWma">
+            <summary>Windows Media Audio; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXMsWmv">
+            <summary>Windows Media Video; Documented in Microsoft KB 288102</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelVrml">
+            <summary>WRL files, VRML files; Defined in RFC 2077</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DXml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3D XML files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DBinary">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DB binary files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DVrml">
+            <summary>X3D ISO standard for representing 3D computer graphics, X3DV VRML files</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXhtmlXml">
+            <summary>XHTML; Defined by RFC 3236</summary>
+        </member>
+        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationZip">
+            <summary>ZIP archive files; Registered[7]</summary>
         </member>
         <member name="P:PartyManage.ViewModels.Account.LoginViewModel.UserName">
             <summary>
@@ -2340,22 +2643,22 @@
             社区名
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Type">
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.FamilyType">
             <summary>
             家庭类型
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Address">
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.FamilyAddress">
             <summary>
             家庭地址
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Phone">
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.FamilyPhone">
             <summary>
             家庭电话
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.Family_Content">
+        <member name="P:PartyManage.ViewModels.Business.PopulationViewModel.FamilyContent">
             <summary>
             家庭情况
             </summary>
@@ -2450,7 +2753,7 @@
             父社区Id
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.Is_Sign">
+        <member name="P:PartyManage.ViewModels.System.CommunityViewModel.IsSign">
             <summary>
             标记，用于控件筛选
             </summary>
@@ -2560,7 +2863,7 @@
             菜单图标
             </summary>
         </member>
-        <member name="P:PartyManage.ViewModels.System.MenuViewModel.order_no">
+        <member name="P:PartyManage.ViewModels.System.MenuViewModel.OrderNo">
             <summary>
             排序编号
             </summary>
@@ -2614,309 +2917,6 @@
             <summary>
             用户组名称
             </summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXJavascript">
-            <summary>Used to denote the encoding necessary for files containing JavaScript source code. The alternative MIME type for this file type is text/javascript.</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioL24">
-            <summary>24bit Linear PCM audio at 8-48kHz, 1-N channels; Defined in RFC 3190</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXShockwaveFlash">
-            <summary>Adobe Flash files for example with the extension .swf</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationOctetStream">
-            <summary>Arbitrary binary data.[5] Generally speaking this type identifies files that are not associated with a specific application. Contrary to past assumptions by software packages such as Apache this is not a type that should be applied to unknown files. In such a case, a server or application should not indicate a content type, as it may be incorrect, but rather, should omit the type in order to allow the recipient to guess the type.[6]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationAtomXml">
-            <summary>Atom feeds</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCss">
-            <summary>Cascading Style Sheets; Defined in RFC 2318</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCmd">
-            <summary>commands; subtype resident in Gecko browsers like Firefox 3.5</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextCsv">
-            <summary>Comma-separated values; Defined in RFC 4180</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXDeb">
-            <summary>deb (file format), a software package format used by the Debian project</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartEncrypted">
-            <summary>Defined in RFC 1847</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartSigned">
-            <summary>Defined in RFC 1847</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageHttp">
-            <summary>Defined in RFC 2616</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelExample">
-            <summary>Defined in RFC 4735</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXDvi">
-            <summary>device-independent document in DVI format</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXmlDtd">
-            <summary>DTD files; Defined by RFC 3023</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJavascript">
-            <summary>
-            ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/ecmascript but with looser processing rules) It is not accepted in IE 8 or earlier - text/javascript is accepted but it is defined as obsolete in RFC 4329. The "type" attribute of the 
-            script tag in HTML5 is optional and in practice omitting the media type of JavaScript programs is the most interoperable solution since all browsers have always assumed the correct default even before HTML5.
-            </summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEcmascript">
-            <summary>ECMAScript/JavaScript; Defined in RFC 4329 (equivalent to application/javascript but with stricter processing rules)</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEdifact">
-            <summary>EDI EDIFACT data; Defined in RFC 1767</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationEdiX12">
-            <summary>EDI X12 data; Defined in RFC 1767</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MessagePartial">
-            <summary>Email; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageRfc822">
-            <summary>Email; EML files, MIME files, MHT files, MHTML files; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXml">
-            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXml">
-            <summary>Extensible Markup Language; Defined in RFC 3023</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXFlv">
-            <summary>Flash video (FLV files)</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageGif">
-            <summary>GIF image; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXGwtRpc">
-            <summary>GoogleWebToolkit data</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXGzip">
-            <summary>Gzip</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextHtml">
-            <summary>HTML; Defined in RFC 2854</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageVndMicrosoftIcon">
-            <summary>ICO image; Registered[9]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelIges">
-            <summary>IGS files, IGES files; Defined in RFC 2077</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MessageImdnXml">
-            <summary>IMDN Instant Message Disposition Notification; Defined in RFC 5438</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJson">
-            <summary>JavaScript Object Notation JSON; Defined in RFC 4627</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationJsonPatch">
-            <summary>JavaScript Object Notation (JSON) Patch; Defined in RFC 6902</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextJavascript">
-            <summary>JavaScript - Defined in and obsoleted by RFC 4329 in order to discourage its usage in favor of application/javascript. However,text/javascript is allowed in HTML 4 and 5 and, unlike application/javascript, has cross-browser support. The "type" attribute of the script tag in HTML5 is optional and there is no need to use it at all since all browsers have always assumed the correct default (even in HTML 4 where it was required by the specification).</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImagePjpeg">
-            <summary>JPEG JFIF image; Associated with Internet Explorer; Listed in ms775147(v=vs.85) - Progressive JPEG, initiated before global browser support for progressive JPEGs (Microsoft and Firefox).</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageJpeg">
-            <summary>JPEG JFIF image; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextXJqueryTmpl">
-            <summary>jQuery template data</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndGoogleEarthKmlXml">
-            <summary>KML files (e.g. for Google Earth)</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXLatex">
-            <summary>LaTeX files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXMatroska">
-            <summary>Matroska open media format</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet">
-            <summary>Microsoft Excel 2007 files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMsExcel">
-            <summary>Microsoft Excel files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentPresentationmlPresentation">
-            <summary>Microsoft Powerpoint 2007 files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMsPowerpoint">
-            <summary>Microsoft Powerpoint files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument">
-            <summary>Microsoft Word 2007 files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationMsword">
-            <summary>Microsoft Word files[15]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartAlternative">
-            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartMixed">
-            <summary>MIME Email; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartRelated">
-            <summary>MIME Email; Defined in RFC 2387 and used by MHTML (HTML mail)</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.MultipartFormData">
-            <summary>MIME Webform; Defined in RFC 2388</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndMozillaXulXml">
-            <summary>Mozilla XUL files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioMpeg">
-            <summary>MP3 or other MPEG audio; Defined in RFC 3003</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioMp4">
-            <summary>MP4 audio</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoMp4">
-            <summary>MP4 video; Defined in RFC 4337</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoMpeg">
-            <summary>MPEG-1 video with multiplexed audio; Defined in RFC 2045 and RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelMesh">
-            <summary>MSH files, MESH files; Defined in RFC 2077, SILO files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioBasic">
-            <summary>mulaw audio at 8 kHz, 1 channel; Defined in RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoOgg">
-            <summary>Ogg Theora or other video (with audio); Defined in RFC 5334</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioOgg">
-            <summary>Ogg Vorbis, Speex, Flac and other audio; Defined in RFC 5334</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationOgg">
-            <summary>Ogg, a multimedia bitstream container format; Defined in RFC 5334</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXopXml">
-            <summary>OP</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentGraphics">
-            <summary>OpenDocument Graphics; Registered[14]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentPresentation">
-            <summary>OpenDocument Presentation; Registered[13]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentSpreadsheet">
-            <summary>OpenDocument Spreadsheet; Registered[12]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationVndOasisOpendocumentText">
-            <summary>OpenDocument Text; Registered[11]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs12">
-            <summary>p12 files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Certificates">
-            <summary>p7b and spc files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Mime">
-            <summary>p7c files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Certreqresp">
-            <summary>p7r files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXPkcs7Signature">
-            <summary>p7s files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationPdf">
-            <summary>Portable Document Format, PDF has been in use for document exchange on the Internet since 1993; Defined in RFC 3778</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImagePng">
-            <summary>Portable Network Graphics; Registered,[8] Defined in RFC 2083</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationPostscript">
-            <summary>PostScript; Defined in RFC 2046</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoQuicktime">
-            <summary>QuickTime video; Registered[10]</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXRarCompressed">
-            <summary>RAR archive files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVndRnRealaudio">
-            <summary>RealAudio; Documented in RealPlayer Customer Support Answer 2559</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationRdfXml">
-            <summary>Resource Description Framework; Defined by RFC 3870</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationRssXml">
-            <summary>RSS feeds</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationSoapXml">
-            <summary>SOAP; Defined by RFC 3902</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXStuffit">
-            <summary>StuffIt archive files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageSvgXml">
-            <summary>SVG vector image; Defined in SVG Tiny 1.2 Specification Appendix M</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ImageTiff">
-            <summary>Tag Image File Format (only for Baseline TIFF); Defined in RFC 3302</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXTar">
-            <summary>Tarball files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextPlain">
-            <summary>Textual data; Defined in RFC 2046 and RFC 3676</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXFontTtf">
-            <summary>TrueType Font No registered MIME type, but this is the most commonly used</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.TextVcard">
-            <summary>vCard (contact information); Defined in RFC 6350</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVorbis">
-            <summary>Vorbis encoded audio; Defined in RFC 5215</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioVndWave">
-            <summary>WAV audio; Defined in RFC 2361</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationFontWoff">
-            <summary>Web Open Font Format; (candidate recommendation; use application/x-font-woff until standard is official)</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoWebm">
-            <summary>WebM Matroska-based open media format</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioWebm">
-            <summary>WebM open media format</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioXMsWax">
-            <summary>Windows Media Audio Redirector; Documented in Microsoft help page</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.AudioXMsWma">
-            <summary>Windows Media Audio; Documented in Microsoft KB 288102</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.VideoXMsWmv">
-            <summary>Windows Media Video; Documented in Microsoft KB 288102</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelVrml">
-            <summary>WRL files, VRML files; Defined in RFC 2077</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DXml">
-            <summary>X3D ISO standard for representing 3D computer graphics, X3D XML files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DBinary">
-            <summary>X3D ISO standard for representing 3D computer graphics, X3DB binary files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ModelX3DVrml">
-            <summary>X3D ISO standard for representing 3D computer graphics, X3DV VRML files</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationXhtmlXml">
-            <summary>XHTML; Defined by RFC 3236</summary>
-        </member>
-        <member name="F:PartyManage.Helpers.MediaTypeNames.ApplicationZip">
-            <summary>ZIP archive files; Registered[7]</summary>
         </member>
     </members>
 </doc>

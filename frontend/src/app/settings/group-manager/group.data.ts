@@ -7,15 +7,15 @@ export interface GroupResponse {
   detail?: UserGroup[];
 }
 
-export class UserMember {
-  id?: 0;
-  name?: string;
-  events?: any[];
-  userMemberDetails?: any[];
-  createdBy?: string;
-  updatedBy?: string;
-  createdDate?: string;
-  updatedDate?: string
+export interface GroupMembersResponse {
+  detail?: UserGroupMember[];
+}
+
+export class UserGroupMember {
+  userMemberId?: string;
+  userMemberName?: string;
+  userId?: string;
+  userName?: string;
 }
 
 export class UserEvent {
@@ -25,9 +25,13 @@ export class UserEvent {
 export const GROUP_MANAGER_TABLE_COLUMES = [
   "用户组ID",
   "用户组名",
-  // "创建日期",
-  // "更新时间",
-  // "更新人员",
-  // "创建人员",
+  "操作"
+];
+
+export const GROUP_MEMBER_MANAGER_TABLE_COLUMES = [
+  "用户ID",
+  "用户名",
+  "用户组成员ID",
+  "用户组成员名",
   "操作"
 ];

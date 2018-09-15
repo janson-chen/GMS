@@ -12,6 +12,8 @@ import { LogsManagerComponent } from "./logs-manager/logs-manager.component";
 import { LogResolver } from "./logs-manager/log-resolver";
 import { GroupManagerComponent } from "./group-manager/group-manager.component";
 import { GroupResolver } from "./group-manager/group-resolver";
+import { GroupDetailComponent } from "./group-manager/detail/group-detail.component";
+import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolver";
 
 export const settingsRroutes: Routes = [
   {
@@ -42,6 +44,15 @@ export const settingsRroutes: Routes = [
         component: GroupManagerComponent,
         resolve: {
           groups: GroupResolver
+        }
+      },
+      {
+        path: "groups/:id",
+        component: GroupDetailComponent,
+        resolve: {
+          groupMembers: GroupDetailResolver,
+          groups: GroupResolver,
+          users: UserResolver
         }
       },
       {

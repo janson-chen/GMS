@@ -5,6 +5,7 @@ import { CoreComponent } from "../core/core.component";
 import { TableComponent } from "../../../shared/components/table/table.component";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { GroupManagerService } from "../group-manager.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'gm-group-table',
@@ -17,7 +18,10 @@ export class GroupListComponent extends TableComponent<UserGroup[]> implements O
   faEdit = faEdit;
   currentEditItem: UserGroup = null;
 
-  constructor(private groupManageService: GroupManagerService) {
+  constructor(
+    private groupManageService: GroupManagerService,
+              protected modalService: NgbModal
+    ) {
     super();
   }
 

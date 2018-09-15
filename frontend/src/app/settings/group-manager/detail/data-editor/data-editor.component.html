@@ -1,0 +1,28 @@
+<div class="form-panel" *ngIf="!isSubmitting">
+  <form [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+    <div class="form-group">
+      <div class="wrap">
+        <label>选择用户</label>
+        <ca-select formControlName="userId">
+          <ca-option *ngFor="let user of users" [value]="user?.id">{{ user?.name }}</ca-option>
+        </ca-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>选择用户组</label>
+        <ca-select formControlName="userMemberId">
+          <ca-option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</ca-option>
+        </ca-select>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">创建成功</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">{{successMessageTimeoutInSeconds}} 秒后关闭.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">创建失败.</ng-container>
+</ca-spinner>
