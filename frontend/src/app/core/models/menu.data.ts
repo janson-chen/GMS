@@ -2,11 +2,11 @@ export class Menu {
   id?: string;
   name?: string;
   menuType?: string;
-  parentID?: string;
+  parentId?: string;
   icon?: string;
-  order_no?: string | number;
+  orderNo?: string | number;
   url?: string;
-  fileID?: string | number;
+  fileId?: string | number;
   file?: FileData;
   childMenu?: Menu[];
   createdBy?: string;

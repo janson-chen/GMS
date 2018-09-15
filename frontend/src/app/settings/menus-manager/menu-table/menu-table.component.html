@@ -3,14 +3,14 @@
     <div class="body">
         <div class="data-item" *ngFor="let item of data">
             <span>{{ item?.name }}</span>
-            <span>{{ getMenuNameById(item?.parentID) }}</span>
-            <span>{{ item?.menuType }}</span>
+            <span>{{ getMenuNameById(item?.parentId) }}</span>
+            <!--<span>{{ item?.menuType }}</span>-->
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>
-            <span class="menus-panel">
-              <button type="button" class="btn icon-delete" (click)="removeMenu(item?.id)"></button>
-              <!--<button type="button" class="btn icon-edit" (click)="editMenu(item?.id)"></button>-->
-            </span>
+            <!--<span class="menus-panel">
+              &lt;!&ndash;<button type="button" class="btn icon-delete" (click)="removeMenu(item?.id)"></button>&ndash;&gt;
+              &lt;!&ndash;<button type="button" class="btn icon-edit" (click)="editMenu(item?.id)"></button>&ndash;&gt;
+            </span>-->
         </div>
     </div>
 </div>

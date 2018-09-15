@@ -7,7 +7,7 @@ a.active {
   background-color: gray;
 }
 
-main {
+::ng-deep main {
   height: 100%;
   display: block;
 

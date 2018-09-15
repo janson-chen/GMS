@@ -23,6 +23,10 @@ export const ROUTES: Routes = [
     path: "settings",
     loadChildren: "./settings/settings.module#SettingsModule"
   },
+  {
+    path: "news",
+    loadChildren: "./news/news.module#NewsModule"
+  },
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**", component: NoContentComponent}
 ];

@@ -30,6 +30,9 @@ import { PartyListComponent } from "./party-build/party-table/party-table.compon
 import { BsDatepickerModule } from "ngx-bootstrap";
 import { RiskListComponent } from "./risk-checklist/risk-table/risk-table.component";
 import { RiskResolver } from "./risk-checklist/risk-resolver";
+import { GroupResolver } from "../settings/group-manager/group-resolver";
+import { GroupManagerService } from "../settings/group-manager/group-manager.service";
+import { AttachmentEditorComponent } from "./risk-checklist/attachment-editor/data-editor.component";
 
 @NgModule({
   imports: [
@@ -54,7 +57,8 @@ import { RiskResolver } from "./risk-checklist/risk-resolver";
     PopulationDetailComponent,
     MemberEditorComponent,
     PartyListComponent,
-    RiskListComponent
+    RiskListComponent,
+    AttachmentEditorComponent
   ],
   exports: [RouterModule],
   providers: [
@@ -67,7 +71,9 @@ import { RiskResolver } from "./risk-checklist/risk-resolver";
     CommunityService,
     PartyService,
     RiskService,
-    RiskResolver
+    RiskResolver,
+    GroupResolver,
+    GroupManagerService
   ]
 })
 export class DataEntryModule {

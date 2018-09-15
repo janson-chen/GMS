@@ -15,7 +15,7 @@
     <div class="form-group">
       <div class="wrap">
         <label>家庭住址</label>
-        <input type="text" class="form-control" formControlName="family_Address" placeholder="家庭住址"  caValidityClass/>
+        <input type="text" class="form-control" formControlName="familyAddress" placeholder="家庭住址"  caValidityClass/>
       </div>
     </div>
     <div class="form-group family-type">
@@ -23,11 +23,11 @@
         <label>住户性质</label>
         <div class="inner-wrap">
           <div class="wrap">
-            <ca-input-radio [value]="'流动人口'" formControlName="family_Type"></ca-input-radio>
+            <ca-input-radio [value]="'流动人口'" formControlName="familyType"></ca-input-radio>
             <label>流动人口</label>
           </div>
           <div class="wrap">
-            <ca-input-radio [value]="'常住人口'" [checked]="true" formControlName="family_Type"></ca-input-radio>
+            <ca-input-radio [value]="'常住人口'" [checked]="true" formControlName="familyType"></ca-input-radio>
             <label>常住人口</label>
           </div>
         </div>
@@ -36,7 +36,7 @@
     <div class="form-group">
       <div class="wrap">
         <label>联系方式</label>
-        <input type="text" class="form-control" formControlName="family_Phone" placeholder="联系方式"  caValidityClass/>
+        <input type="text" class="form-control" formControlName="familyPhone" placeholder="联系方式"  caValidityClass/>
       </div>
     </div>
     <div class="form-group">
@@ -47,7 +47,7 @@
     <div class="form-group">
       <div class="wrap">
         <label>家庭情况</label>
-        <textarea type="text" class="form-control" formControlName="family_Content" placeholder="" caValidityClass></textarea>
+        <textarea type="text" class="form-control" formControlName="familyContent" placeholder="" caValidityClass></textarea>
       </div>
     </div>
     <div class="modal-buttons">

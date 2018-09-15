@@ -3,10 +3,10 @@
     <div class="body">
         <div class="data-item" *ngFor="let item of data">
           <span>{{ getCommunityNameById(item?.communityId) }}</span>
-          <span>{{ item?.family_Address }}</span>
-          <span>{{ item?.family_Content }}</span>
-            <span>{{ item?.family_Phone }}</span>
-            <span>{{ item?.family_Type }}</span>
+          <span>{{ item?.familyAddress }}</span>
+          <span>{{ item?.familyContent }}</span>
+            <span>{{ item?.familyPhone }}</span>
+            <span>{{ item?.familyType }}</span>
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>
             <span>

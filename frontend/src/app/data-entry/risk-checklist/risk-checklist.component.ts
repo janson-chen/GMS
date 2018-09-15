@@ -10,6 +10,7 @@ import { FormBuilder } from "@angular/forms";
 import { PartyService } from "../party-build/party.service";
 import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 import { RiskService } from "./risk.service";
+import { UserGroup } from "../../settings/group-manager/group.data";
 
 @Component({
   selector: 'gm-risk-checklist',
@@ -20,6 +21,7 @@ export class RiskChecklistComponent extends ModalContainerComponent implements O
   columns = RISK_MANAGER_TABLE_COLUMES;
   riskEvents: Risk[] = [];
   communities: Community[] = [];
+  groups: UserGroup[] = [];
 
   constructor(
     private communityService: CommunityService,
@@ -32,9 +34,10 @@ export class RiskChecklistComponent extends ModalContainerComponent implements O
     private riskService: RiskService
   ) {
     super();
-    route.data.subscribe((data: { riskEvents: { detail: Risk[] }, communities: Community[] }) => {
+    route.data.subscribe((data: { riskEvents: { detail: Risk[] }, communities: Community[], groups: {detail: UserGroup[]}}) => {
       this.riskEvents = data.riskEvents.detail;
       this.communities = data.communities;
+      this.groups = data.groups.detail;
       this.communityService.saveCommunities(this.communities);
     });
   }

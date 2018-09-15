@@ -1,0 +1,17 @@
+<div class="form-panel" *ngIf="!isSubmitting">
+  <form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submitUpload()" novalidate>
+    <div class="form-group">
+      <div class="wrap">
+        <input type="file" class="form-control" formControlName="uploadFile" (change)="catchFile($event)" caValidityClass/>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">附件创建中...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">附件创建成功! {{successMessageTimeoutInSeconds}} 秒后自动关闭窗口.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">附件创建失败!</ng-container>
+</ca-spinner>

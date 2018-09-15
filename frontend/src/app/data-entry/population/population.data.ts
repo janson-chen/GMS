@@ -3,10 +3,10 @@ export interface Population {
   code?: string;
   communityId?: string;
   communityName?: string;
-  family_Type?: string;
-  family_Address?: string;
-  family_Phone?: string;
-  family_Content?: string;
+  familyType?: string;
+  familyAddress?: string;
+  familyPhone?: string;
+  familyContent?: string;
   createdBy?: string;
   updatedBy?: string;
   createdDate?: string;

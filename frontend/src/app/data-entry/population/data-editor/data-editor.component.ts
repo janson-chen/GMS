@@ -41,11 +41,11 @@ export class PopulationDataEditorComponent extends FormComponent<Population> imp
     // console.log("data", this.data);
     this.formGroup = this.fb.group({
       communityId: this.data && this.data.communityId || "",
-      family_Address: this.data && this.data.family_Address || "",
-      family_Type: this.data && this.data.family_Type || "",
+      familyAddress: this.data && this.data.familyAddress || "",
+      familyType: this.data && this.data.familyType || "",
       insurances: this.data && this.selectedInsurances || "",
-      family_Content: this.data && this.data.family_Content || "",
-      family_Phone: this.data && this.data.family_Phone || ""
+      familyContent: this.data && this.data.familyContent || "",
+      familyPhone: this.data && this.data.familyPhone || ""
     });
 
     console.log("formgroupd", this.formGroup);
@@ -58,10 +58,10 @@ export class PopulationDataEditorComponent extends FormComponent<Population> imp
     let payload = {
       code: "Code" + timestamp(),
       communityId: this.formGroup.value.communityId,
-      family_Address: this.formGroup.value.family_Address,
-      family_Type: this.formGroup.value.family_Type,
-      family_Content: this.formGroup.value.family_Content,
-      family_Phone: this.formGroup.value.family_Phone
+      familyAddress: this.formGroup.value.familyAddress,
+      familyType: this.formGroup.value.familyType,
+      familyContent: this.formGroup.value.familyContent,
+      familyPhone: this.formGroup.value.familyPhone
     };
 
     if (this.data) {

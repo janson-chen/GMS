@@ -9,13 +9,16 @@
       <span>{{ item?.area }}</span>
       <span [caTextEllipsis]="item?.content" [title]="item?.content"></span>
       <span>{{ item?.isSendMessage }}</span>
-      <span>{{ item?.userMemberId }}</span>
-      <span>
+      <span>{{ getGroupNameById(item?.userMemberId) }}</span>
+      <span class="menus">
               <a href="javascript:void(0);" (click)="removeItem(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>
               <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(riskEditModal)">
                 <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
+              <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(attachmentEditModal)">
+                <fa-icon [icon]="faUpload"></fa-icon>
               </a>
       </span>
     </div>
@@ -23,6 +26,11 @@
 </div>
 <ng-template #riskEditModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'安全隐患排查表编辑'">
-    <gm-party-editor [communities]="communities" [data]="currentEditItem" [close]="close"></gm-party-editor>
+    <gm-risk-editor [communities]="communities" [data]="currentEditItem" [groups]="groups" [close]="close" (submitted)="updateRiskList()"></gm-risk-editor>
+  </gm-modal-container>
+</ng-template>
+<ng-template #attachmentEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'附件编辑'">
+    <gm-attachment-editor [close]="close" [data]="currentEditItem"></gm-attachment-editor>
   </gm-modal-container>
 </ng-template>

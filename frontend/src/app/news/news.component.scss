@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  height: 100%;
+}
+
+.left-panel {
+  display: flex;
+}
+
+.right-panel {
+  flex: 1;
+  flex-flow: wrap;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: left;
+  height: 100%;
+
+  gm-newest {
+    margin: 10px;
+  }
+}
+

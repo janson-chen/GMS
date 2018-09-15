@@ -5,11 +5,11 @@
 <div class="search-panel">
   <gm-search-bar></gm-search-bar>
 </div>
-<gm-risk-table [columns]="columns" [communities]="communities" [data]="riskEvents"></gm-risk-table>
+<gm-risk-table [columns]="columns" [groups]="groups" [communities]="communities" [data]="riskEvents"></gm-risk-table>
 
 <ng-template #riskCheckModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'安全隐患排查表'">
-    <gm-risk-editor [communities]="communities" [close]="close" (submitted)="updateRiskList()"></gm-risk-editor>
+    <gm-risk-editor [communities]="communities" [groups]="groups" [close]="close" (submitted)="updateRiskList()"></gm-risk-editor>
   </gm-modal-container>
 </ng-template>
 

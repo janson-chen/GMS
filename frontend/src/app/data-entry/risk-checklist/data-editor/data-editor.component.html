@@ -14,6 +14,18 @@
     </div>
     <div class="form-group">
       <div class="wrap">
+        <label>所属用户组</label>
+        <ca-select formControlName="userMemberId">
+          <ca-option [value]="''">请选择用户组</ca-option>
+          <ca-option *ngFor="let group of groups" [value]="group?.id">{{ group?.name }}</ca-option>
+        </ca-select>
+      </div>
+      <small *ngIf="formGroup.get('userMemberId').dirty && formGroup.get('userMemberId').hasError('required')" class="invalid-feedback">
+        Required field.
+      </small>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
         <label>事件名称</label>
         <input type="text" class="form-control" formControlName="name" placeholder=""  caValidityClass/>
       </div>
