@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { GROUP_MANAGER_TABLE_COLUMES, GroupResponse, UserGroup } from "../group.data";
 import { CoreComponent } from "../core/core.component";
 import { TableComponent } from "../../../shared/components/table/table.component";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { GroupManagerService } from "../group-manager.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 

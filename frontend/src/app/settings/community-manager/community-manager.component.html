@@ -9,6 +9,6 @@
 
 <ng-template #communityManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container title="创建社区" [dismiss]="dismiss">
-    <gm-community-create [communities]="communities" [close]="close"></gm-community-create>
+    <gm-community-create [communities]="communities" [close]="close" (submitted)="updateCommunities()"></gm-community-create>
   </gm-modal-container>
 </ng-template>

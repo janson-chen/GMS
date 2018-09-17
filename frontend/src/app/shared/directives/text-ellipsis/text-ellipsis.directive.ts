@@ -7,7 +7,7 @@ export class TextEllipsisDirective implements OnChanges, AfterViewInit {
     @Input() caTextEllipsis: string;
     @Input() ellipsisChar: string = "...";
     @Input() eraseLinebreak: boolean = true;
-    @Input() breakWord: boolean = true;
+    @Input() breakWord: boolean = false;
 
     private singleWordReg = /[\u2E80-\u9FFF]+/ig;
     private element: HTMLElement;

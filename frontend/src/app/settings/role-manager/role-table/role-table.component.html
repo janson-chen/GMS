@@ -6,8 +6,10 @@
             <span>{{ item?.description }}</span>
             <span>{{ item?.usersCount }}</span>
             <span>{{ item?.permissions }}</span>
-            <span>
-              <a>删除</a>
+            <span class="menus">
+              <a href="javascript:void(0);">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
             </span>
         </div>
     </div>

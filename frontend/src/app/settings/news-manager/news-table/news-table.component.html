@@ -1,0 +1,33 @@
+<div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+        <div class="data-item" *ngFor="let item of data">
+            <span>{{ item?.title }}</span>
+            <span>{{ item?.createdDate | date }}</span>
+            <span>{{ item?.createdBy }}</span>
+            <span>{{ item?.updatedDate | date }}</span>
+            <span>{{ item?.updatedBy }}</span>
+            <span class="menus">
+              <a href="javascript:void(0);" (click)="removeItem(item?.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
+              <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(newsEditModal)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
+              <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(attachmentEditModal)">
+                <fa-icon [icon]="faUpload"></fa-icon>
+              </a>
+            </span>
+        </div>
+    </div>
+</div>
+<ng-template #newsEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'新闻编辑'">
+    <gm-news-editor [data]="currentEditItem" [close]="close" (submitted)="updateNewsList()"></gm-news-editor>
+  </gm-modal-container>
+</ng-template>
+<ng-template #attachmentEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'附件编辑'">
+    <gm-news-attachment-editor [close]="close" [data]="currentEditItem"></gm-news-attachment-editor>
+  </gm-modal-container>
+</ng-template>

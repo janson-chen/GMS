@@ -21,10 +21,11 @@ import { UserService } from "./shared/services/user.service";
 import { ErrorsHandler } from "./shared/services/errors-handler";
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AuthGuard } from "./shared/services/auth-guard.service";
-import "../styles/styles.scss";
 import { CoreModule } from "./core/core.module";
 import { MenuManagerService } from "./settings/menus-manager/menu-manager.service";
 import { HttpModule } from "@angular/http";
+import "../styles/styles.scss";
+import { NewsService } from "./settings/news-manager/news.service";
 
 library.add(fas, far);
 
@@ -43,7 +44,8 @@ const APP_PROVIDERS = [
   UserService,
   ToastrService,
   AuthGuard,
-  MenuManagerService
+  MenuManagerService,
+  NewsService
 ];
 
 @NgModule({

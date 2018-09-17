@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Community, COMMUNITY_TABLE_COLUMES } from "./community.data";
 import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 import { CommunityService } from "./community.service";
@@ -13,7 +13,7 @@ import { FormBuilder } from "@angular/forms";
   templateUrl: './community-manager.component.html',
   styleUrls: ['./community-manager.component.scss']
 })
-export class CommunityManagerComponent extends ModalContainerComponent implements OnInit {
+export class CommunityManagerComponent extends ModalContainerComponent {
   columns = COMMUNITY_TABLE_COLUMES;
   communities: Community[] = [];
 
@@ -30,11 +30,12 @@ export class CommunityManagerComponent extends ModalContainerComponent implement
     route.data.subscribe((data: { communities: Community[] }) => {
       this.communities = data["0"];
       this.communityService.saveCommunities(this.communities);
-      console.log("communities", this.communityService.communitiesMap);
     });
   }
 
-  ngOnInit() {
+  async updateCommunities(): Promise<void> {
+    this.communities = await this.communityService.getList("/childlist/id=1");
   }
+
 
 }

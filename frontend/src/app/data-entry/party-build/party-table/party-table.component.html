@@ -9,7 +9,7 @@
       <span>{{ item?.activitiesDate | date }}</span>
       <span>{{ item?.activitiesPlace }}</span>
       <span>{{ item?.content }}</span>
-      <span>
+      <span class="menus">
               <a href="javascript:void(0);" (click)="removeItem(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>

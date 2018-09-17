@@ -1,0 +1,14 @@
+<header>
+  <span>新闻列表</span>
+  <button (click)="openModal(communityManagerModal)">添加新闻</button>
+</header>
+<div class="search-panel">
+  <gm-search-bar></gm-search-bar>
+</div>
+<gm-news-table [columns]="columns" [data]="news"></gm-news-table>
+
+<ng-template #communityManagerModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container title="创建新闻" [dismiss]="dismiss">
+    <gm-news-create [news]="news" [close]="close" (submitted)="updateNewsList()"></gm-news-create>
+  </gm-modal-container>
+</ng-template>

@@ -4,8 +4,8 @@
         <div class="data-item" *ngFor="let item of data">
             <span>{{ item?.logType }}</span>
             <span>{{ item?.userName }}</span>
-            <span>{{ item?.content }}</span>
-            <span>{{ item?.date }}</span>
+            <span [caTextEllipsis]="item?.content" [title]="item?.content"></span>
+            <span>{{ item?.date | date}}</span>
         </div>
     </div>
 </div>

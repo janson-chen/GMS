@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoreComponent } from "../core/core.component";
 import { TableComponent } from "../../../shared/components/table/table.component";
 import { CommunityService } from "../../community-manager/community.service";
+import { faEdit, faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'gm-user-table',
@@ -9,6 +10,8 @@ import { CommunityService } from "../../community-manager/community.service";
   styleUrls: ['./user-table.component.scss']
 })
 export class UserListComponent<T> extends TableComponent<T> implements OnInit {
+  faTrash = faTrash;
+
   constructor(private communityService: CommunityService) {
     super();
   }

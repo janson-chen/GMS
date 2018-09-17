@@ -1,0 +1,22 @@
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <div class="wrapper">
+      <label>新闻名称</label>
+      <input type="text" class="form-control" placeholder="" formControlName="title" caValidityClass required/>
+    </div>
+    <small *ngIf="formGroup.get('title').hasError('pattern')" class="invalid-feedback">
+      Invalid title.
+    </small>
+    <small *ngIf="formGroup.get('title').dirty && formGroup.get('title').hasError('required')" class="invalid-feedback">
+      Required field.
+    </small>
+  </div>
+  <div class="modal-buttons">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">新闻创建中...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">新闻创建成功! {{successMessageTimeoutInSeconds}} 秒后自动关闭窗口.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">新闻创建失败！</ng-container>
+</ca-spinner>

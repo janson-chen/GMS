@@ -1,0 +1,42 @@
+<div class="form-panel" *ngIf="!isSubmitting">
+  <form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+    <div class="form-group">
+      <div class="wrap">
+        <label>系统名称</label>
+        <input type="text" class="form-control" formControlName="name" caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>外接程序路径</label>
+        <input type="text" class="form-control" formControlName="outSoftwarePath" caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>文件路径</label>
+        <input type="text" class="form-control" formControlName="filePath" caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>日志路径</label>
+        <input type="text" class="form-control" formControlName="logPath" caValidityClass/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="wrap">
+        <label>文件上限</label>
+        <input type="number" class="form-control" formControlName="fileMaxSize" caValidityClass/>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button type="submit" class="btn btn-primary">保存</button>
+    </div>
+  </form>
+</div>
+<ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
+  <ng-container *ngIf="spinnerState === 'waiting'">保存中...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">编辑成功，{{successMessageTimeoutInSeconds}} 秒后返回.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">保存失败.</ng-container>
+</ca-spinner>

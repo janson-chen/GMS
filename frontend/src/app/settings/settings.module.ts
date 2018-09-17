@@ -39,6 +39,19 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { GroupDetailComponent } from "./group-manager/detail/group-detail.component";
 import { GroupMemberEditorComponent } from "./group-manager/detail/data-editor/data-editor.component";
 import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolver";
+import { NewsManagerComponent } from "./news-manager/news-manager.component";
+import { NewsListComponent } from "./news-manager/news-table/news-table.component";
+import { CreateNewsComponent } from "./news-manager/create/create.component";
+import { NewsService } from "./news-manager/news.service";
+import { NewsResolver } from "./news-manager/news-resolver";
+import { NewsDataEditorComponent } from "./news-manager/data-editor/data-editor.component";
+import { NewsAttachmentEditorComponent } from "./news-manager/attachment-editor/data-editor.component";
+import { LogListComponent } from "./logs-manager/log-table/log-table.component";
+import { BasicSettingsListComponent } from "./external-manager/external-table/external-table.component";
+import { ExternalManagerService } from "./external-manager/external-manager.service";
+import { ExternalResolver } from "./external-manager/external-resolver";
+import { ExternalEditorComponent } from "./external-manager/external-data-editor/data-editor.component";
+import { BasicSettingsEditorComponent } from "./external-manager/data-editor/data-editor.component";
 
 @NgModule({
   imports: [
@@ -70,7 +83,16 @@ import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolve
     CreateGroupComponent,
     GroupListComponent,
     GroupDetailComponent,
-    GroupMemberEditorComponent
+    GroupMemberEditorComponent,
+    NewsManagerComponent,
+    NewsListComponent,
+    CreateNewsComponent,
+    NewsDataEditorComponent,
+    NewsAttachmentEditorComponent,
+    LogListComponent,
+    ExternalEditorComponent,
+    BasicSettingsListComponent,
+    BasicSettingsEditorComponent
   ],
   providers: [
     CommunityService,
@@ -84,7 +106,11 @@ import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolve
     LogManagerService,
     LogResolver,
     GroupManagerService,
-    GroupDetailResolver
+    GroupDetailResolver,
+    NewsService,
+    NewsResolver,
+    ExternalManagerService,
+    ExternalResolver
   ]
 })
 export class SettingsModule {

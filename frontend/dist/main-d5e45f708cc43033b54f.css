@@ -157,6 +157,9 @@ a {
   text-decoration: none;
   color: #007DCC; }
 
+.menus a {
+  margin: 0 5px; }
+
 app-login {
   margin: 0 auto; }
 
@@ -209,4 +212,4 @@ a {
   text-align: right; }
 
 
-/*# sourceMappingURL=main-c3ed2e0b6f3473505bf3.css.map*/
+/*# sourceMappingURL=main-d5e45f708cc43033b54f.css.map*/

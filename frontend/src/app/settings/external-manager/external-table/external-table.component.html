@@ -1,0 +1,34 @@
+<div class="data-panel">
+  <gm-table-header [columns]="columns"></gm-table-header>
+  <div class="body">
+    <div class="data-item" *ngFor="let item of data">
+      <span>{{ item?.name }}</span>
+      <span [caTextEllipsis]="item?.outSoftwarePath" [title]="item?.outSoftwarePath"></span>
+      <span [caTextEllipsis]="item?.filePath" [title]="item?.filePath"></span>
+      <span [caTextEllipsis]="item?.logPath" [title]="item?.logPath"></span>
+      <span>{{ item?.fileMaxSize }}</span>
+      <span>{{ item?.createdBy }}</span>
+      <span>{{ item?.updatedBy }}</span>
+      <span>{{ item?.createdDate | date }}</span>
+      <span>{{ item?.updatedDate | date }}</span>
+      <span class="menus">
+              <a href="javascript:void(0);" (click)="currentEditItem = item; openModal(basicSettingsEditModal)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </a>
+              <!--<a href="javascript:void(0);" (click)="currentEditItem = item; openModal(externalEditModal)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </a>-->
+      </span>
+    </div>
+  </div>
+</div>
+<ng-template #basicSettingsEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'系统基本设置修改'">
+    <gm-basic-settings-editor [data]="currentEditItem" [close]="close" (submitted)="updateBasicSettings()"></gm-basic-settings-editor>
+  </gm-modal-container>
+</ng-template>
+<ng-template #externalEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'外接程序修改'">
+    <gm-external-editor [data]="currentEditItem" [close]="close" (submitted)="updateBasicSettings()"></gm-external-editor>
+  </gm-modal-container>
+</ng-template>

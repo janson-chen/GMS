@@ -61,8 +61,8 @@
         <span>{{ item?.culture }}</span>
         <span>{{ item?.marriage }}</span>
         <span [caTextEllipsis]="item?.rmks" [title]="item?.rmks"></span>
-        <span>
-              <a (click)="removeMember(item?.id)">
+        <span class="menus">
+              <a href="javascript:void(0);" (click)="removeMember(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>
              <a href="javascript:void(0);" (click)="currentEditMember = item;openModal(memberManagerModal)">

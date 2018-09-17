@@ -14,6 +14,10 @@ import { GroupManagerComponent } from "./group-manager/group-manager.component";
 import { GroupResolver } from "./group-manager/group-resolver";
 import { GroupDetailComponent } from "./group-manager/detail/group-detail.component";
 import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolver";
+import { NewsManagerComponent } from "./news-manager/news-manager.component";
+import { NewsResolver } from "./news-manager/news-resolver";
+import { ExternalManagerComponent } from "./external-manager/external-manager.component";
+import { ExternalResolver } from "./external-manager/external-resolver";
 
 export const settingsRroutes: Routes = [
   {
@@ -60,10 +64,24 @@ export const settingsRroutes: Routes = [
         component: MenusManagerComponent
       },
       {
+        path: "manageNews",
+        component: NewsManagerComponent,
+        resolve: {
+          news: NewsResolver
+        }
+      },
+      {
         path: "logs",
         component: LogsManagerComponent,
         resolve: {
           logs: LogResolver
+        }
+      },
+      {
+        path: "external",
+        component: ExternalManagerComponent,
+        resolve: {
+          basicsettings: ExternalResolver
         }
       }
     ]

@@ -9,11 +9,11 @@
             <span>{{ item?.familyType }}</span>
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>
-            <span>
-              <a (click)="removeItem(item?.id)">
+            <span class="menus">
+              <a href="javascript:void(0);" (click)="removeItem(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>
-              <a [routerLink]="['.', item?.id]">
+              <a href="javascript:void(0);" [routerLink]="['.', item?.id]">
                   <fa-icon [icon]="faEdit"></fa-icon>
               </a>
             </span>

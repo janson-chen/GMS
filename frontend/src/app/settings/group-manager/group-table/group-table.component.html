@@ -4,7 +4,7 @@
     <div class="data-item" *ngFor="let item of data">
       <span>{{ item?.id }}</span>
       <span>{{ item?.name }}</span>
-      <span>
+      <span class="menus">
               <a href="javascript:void(0);" (click)="removeItem(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>

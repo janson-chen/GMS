@@ -8,8 +8,10 @@
             <span>{{ item?.isEnabled }}</span>
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>
-            <span>
-              <a>删除</a>
+            <span class="menus">
+              <a href="javascript:void(0);">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
             </span>
         </div>
     </div>

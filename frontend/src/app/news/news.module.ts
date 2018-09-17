@@ -7,6 +7,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SharedModule } from "../shared/shared.module";
 import { newsRroutes } from "./news.routes";
 import { NewsComponent } from "./news.component";
+import { NewsResolver } from "../settings/news-manager/news-resolver";
+import { NewsService } from "../settings/news-manager/news.service";
 
 @NgModule({
   imports: [
@@ -21,7 +23,10 @@ import { NewsComponent } from "./news.component";
   declarations: [
     NewsComponent
   ],
-  providers: []
+  providers: [
+    NewsResolver,
+    NewsService
+  ]
 })
 export class NewsModule {
 }
