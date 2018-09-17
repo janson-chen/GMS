@@ -3,11 +3,6 @@
         <gm-menu [data]="menus"></gm-menu>
     </div>
     <div class="right-panel">
-        <gm-newest></gm-newest>
-        <gm-newest></gm-newest>
-        <gm-newest></gm-newest>
-        <gm-newest></gm-newest>
-        <gm-newest></gm-newest>
-        <gm-newest></gm-newest>
+      <gm-newest *ngFor="let item of news" [fileId]="item.fileId"></gm-newest>
     </div>
 </div>

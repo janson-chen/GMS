@@ -26,6 +26,7 @@ import { MenuManagerService } from "./settings/menus-manager/menu-manager.servic
 import { HttpModule } from "@angular/http";
 import "../styles/styles.scss";
 import { NewsService } from "./settings/news-manager/news.service";
+import { NewsResolver } from "./settings/news-manager/news-resolver";
 
 library.add(fas, far);
 
@@ -45,7 +46,8 @@ const APP_PROVIDERS = [
   ToastrService,
   AuthGuard,
   MenuManagerService,
-  NewsService
+  NewsService,
+  NewsResolver
 ];
 
 @NgModule({
@@ -55,6 +57,7 @@ const APP_PROVIDERS = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    RouterModule,
     HttpModule,
     HttpClientModule,
     FontAwesomeModule,

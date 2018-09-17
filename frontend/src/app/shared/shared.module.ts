@@ -11,12 +11,14 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { HttpModule } from "@angular/http";
 import { BsDatepickerModule } from "ngx-bootstrap";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     imports: [
         FontAwesomeModule,
         CommonModule,
         FormsModule,
+        RouterModule,
         HttpModule,
         ReactiveFormsModule,
         NgbModule,
