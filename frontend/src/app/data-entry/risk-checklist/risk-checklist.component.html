@@ -1,9 +1,9 @@
 <header>
-  <h3>安全隐患排查列表</h3>
+  <span></span>
   <button (click)="openModal(riskCheckModal)">创建安全隐患排查表</button>
 </header>
 <div class="search-panel">
-  <gm-search-bar></gm-search-bar>
+  <!--<gm-search-bar></gm-search-bar>-->
 </div>
 <gm-risk-table [columns]="columns" [groups]="groups" [communities]="communities" [data]="riskEvents"></gm-risk-table>
 <div class="paginator">
