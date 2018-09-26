@@ -6,7 +6,9 @@
   <gm-search-bar></gm-search-bar>
 </div>
 <gm-risk-table [columns]="columns" [groups]="groups" [communities]="communities" [data]="riskEvents"></gm-risk-table>
-
+<div class="paginator">
+  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+</div>
 <ng-template #riskCheckModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'安全隐患排查表'">
     <gm-risk-editor [communities]="communities" [groups]="groups" [close]="close" (submitted)="updateRiskList()"></gm-risk-editor>

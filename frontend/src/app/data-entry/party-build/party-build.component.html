@@ -6,7 +6,9 @@
   <gm-search-bar></gm-search-bar>
 </div>
 <gm-party-table [columns]="columns" [communities]="communities" [data]="partyActivitiesList"></gm-party-table>
-
+<div class="paginator">
+  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+</div>
 <ng-template #partyBuildModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'党建活动信息表'">
     <gm-party-editor [communities]="communities" [close]="close" (submitted)="updateParties()"></gm-party-editor>

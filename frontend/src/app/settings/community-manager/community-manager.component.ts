@@ -7,6 +7,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-community-manager',
@@ -27,15 +28,20 @@ export class CommunityManagerComponent extends ModalContainerComponent {
   ) {
     super();
 
-    route.data.subscribe((data: { communities: Community[] }) => {
-      this.communities = data["0"];
+    route.data.subscribe((data: {communities: ResponseData<Community>}) => {
+      this.communities = data.communities.detail;
       this.communityService.saveCommunities(this.communities);
+      this.queryOptions.totalCount = data.communities.totalCount;
     });
   }
 
   async updateCommunities(): Promise<void> {
-    this.communities = await this.communityService.getList("/childlist/id=1");
+    this.communities = await this.communityService.query(`query/${this.queryUrl}`, {});
   }
 
-
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.communityService.query(`query/${this.queryUrl}`, {});
+    this.communities = result.detail;
+  }
 }

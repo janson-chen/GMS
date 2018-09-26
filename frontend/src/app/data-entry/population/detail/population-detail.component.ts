@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CoreComponent } from "../core/core.component";
 import { Member, Population, POPULATION_FAMILY_MANAGER_TABLE_COLUMES } from "../population.data";
 import { PopulationService } from "../population.service";
@@ -11,6 +11,8 @@ import { Community } from "../../../settings/community-manager/community.data";
 import { UserService } from "../../../shared/services/user.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
+import { DictionaryManagerService } from "../../../settings/dictionary-manager/dictionary-manager.service";
+import { Dictionary } from "../../../settings/dictionary-manager/dicitonary-manager.data";
 
 @Component({
   selector: 'gm-detail-table',
@@ -24,6 +26,11 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
   families: Member[] = [];
   communities: Community[] = [];
   columns = POPULATION_FAMILY_MANAGER_TABLE_COLUMES;
+  currentEditMember: any;
+  relations: Dictionary[] = [];
+  peopleTypes: Dictionary[] = [];
+  cultures: Dictionary[] = [];
+  maritalStates: Dictionary[] = [];
 
   constructor(
     private populationService: PopulationService,
@@ -32,7 +39,8 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
     protected modalService: NgbModal,
     protected userService: UserService,
     protected fb: FormBuilder,
-    protected toastrService: ToastrService
+    protected toastrService: ToastrService,
+    protected dictionaryManagerService: DictionaryManagerService
   ) {
     super();
     route.data.subscribe((data: { detail: Population, families: {detail: Member[]}, communities: Community[] }) => {
@@ -43,8 +51,16 @@ export class PopulationDetailComponent extends ModalContainerComponent implement
     });
   }
 
-  ngOnInit() {
-    console.log("data", this.data);
+  async ngOnInit(): Promise<void> {
+    // get relation from dictionary  dictionaryId = 13
+    const result1 = await this.dictionaryManagerService.getList(`/dictionarydetaillist/dictionaryId=13/page=-1/pagesize=-1`);
+    this.relations = result1.detail;
+    const result2 = await this.dictionaryManagerService.getList(`/dictionarydetaillist/dictionaryId=4/page=-1/pagesize=-1`);
+    this.peopleTypes = result2.detail;
+    const result3 = await this.dictionaryManagerService.getList(`/dictionarydetaillist/dictionaryId=5/page=-1/pagesize=-1`);
+    this.cultures = result3.detail;
+    const result4 = await this.dictionaryManagerService.getList(`/dictionarydetaillist/dictionaryId=6/page=-1/pagesize=-1`);
+    this.maritalStates = result4.detail;
   }
 
   getCommunityNameById(id: string): string {

@@ -14,7 +14,7 @@ export class PartyResolver extends DataService<Party> implements Resolve<PartyRe
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PartyResponse> | Promise<PartyResponse> | PartyResponse {
-    return this.partyService.query("query/page=-1/pageSize=-1", {});
+    return this.partyService.query(`query/${this.queryUrl}`, {});
   }
 
 }

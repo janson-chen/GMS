@@ -7,6 +7,7 @@ import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
 import { News, NEWS_TABLE_COLUMES } from "./news.data";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-news-manager',
@@ -27,14 +28,21 @@ export class NewsManagerComponent extends ModalContainerComponent {
   ) {
     super();
 
-    route.data.subscribe((data: { news: { detail: News[] } }) => {
+    route.data.subscribe((data: { news: ResponseData<News> }) => {
       this.news = data.news.detail;
+      this.queryOptions.totalCount = data.news.totalCount;
     });
   }
 
   async updateNewsList(): Promise<void> {
-      const result = await this.newsService.getList("/newslist/page=-1/pagesize=-1");
+      const result = await this.newsService.getList(`/newslist/${this.queryUrl}`);
       this.news = result.detail;
+  }
+
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.newsService.getList(`/newslist/${this.queryUrl}`);
+    this.news = result.detail;
   }
 
 }

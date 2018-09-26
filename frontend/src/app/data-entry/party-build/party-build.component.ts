@@ -9,6 +9,7 @@ import { PartyService } from "./party.service";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-party-build',
@@ -30,9 +31,10 @@ export class PartyBuildComponent extends ModalContainerComponent implements OnIn
     protected modalService: NgbModal
   ) {
     super();
-    route.data.subscribe((data: { partyActivities: { detail: Party[] }, communities: Community[] }) => {
+    route.data.subscribe((data: { partyActivities: ResponseData<Party>, communities: ResponseData<Community> }) => {
       this.partyActivitiesList = data.partyActivities.detail;
-      this.communities = data.communities;
+      this.queryOptions.totalCount = data.partyActivities.totalCount;
+      this.communities = data.communities.detail;
       this.communityService.saveCommunities(this.communities);
     });
   }
@@ -46,8 +48,14 @@ export class PartyBuildComponent extends ModalContainerComponent implements OnIn
   }
 
   async updateParties(): Promise<void> {
-    const result = await this.partyService.query("query/page=-1/pageSize=-1", {});
+    const result = await this.partyService.query(`query/${this.queryUrl}`, {});
     this.partyActivitiesList = result && result.detail;
+  }
+
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.partyService.query(`query/${this.queryUrl}`, {});
+    this.partyActivitiesList = result.detail;
   }
 
 }

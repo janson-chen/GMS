@@ -35,5 +35,5 @@ export const COMPONENTS = [
     TableHeaderComponent,
     InputCheckboxComponent,
     InputRadioComponent,
-    FolderTreeComponent
+    FolderTreeComponent,
 ];

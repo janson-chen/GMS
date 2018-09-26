@@ -4,8 +4,6 @@ import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { Community } from "../community-manager/community.data";
-import { Party } from "../../data-entry/party-build/party.data";
 import { BASIC_SETTING_MANAGER_TABLE_COLUMES, BasicSetting } from "./external-manager.data";
 import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 import { UserService } from "../../shared/services/user.service";
@@ -33,5 +31,4 @@ export class ExternalManagerComponent extends ModalContainerComponent {
       this.basicsettings = Array.of(data.basicsettings);
     });
   }
-
 }

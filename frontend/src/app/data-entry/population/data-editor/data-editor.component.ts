@@ -10,6 +10,7 @@ import { Insurance, Population } from "../population.data";
 import { Community } from "../../../settings/community-manager/community.data";
 import { PopulationService } from "../population.service";
 import { timestamp } from "../../../shared/utils/timestamp";
+import { Dictionary } from "../../../settings/dictionary-manager/dicitonary-manager.data";
 
 @Component({
   selector: "gm-population-editor",
@@ -20,6 +21,8 @@ import { timestamp } from "../../../shared/utils/timestamp";
 export class PopulationDataEditorComponent extends FormComponent<Population> implements OnInit {
   @Input() insurances: Insurance[] = [];
   @Input() communities: Community[] = [];
+  @Input() relations: Dictionary[] = [];
+  @Input() peopleTypes: Dictionary[] = [];
 
   selectedInsurances: Insurance[] = [];
 

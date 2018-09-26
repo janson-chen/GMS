@@ -52,6 +52,18 @@ import { ExternalManagerService } from "./external-manager/external-manager.serv
 import { ExternalResolver } from "./external-manager/external-resolver";
 import { ExternalEditorComponent } from "./external-manager/external-data-editor/data-editor.component";
 import { BasicSettingsEditorComponent } from "./external-manager/data-editor/data-editor.component";
+import { DictionaryManagerComponent } from "./dictionary-manager/dictionary-manager.component";
+import { DictionaryResolver } from "./dictionary-manager/dictionary-resolver";
+import { DictionaryManagerService } from "./dictionary-manager/dictionary-manager.service";
+import { DictionaryListComponent } from "./dictionary-manager/dictionary-table/dictionary-table.component";
+import { DictionaryEditorComponent } from "./dictionary-manager/data-editor/data-editor.component";
+import { DictionaryCreateComponent } from "./dictionary-manager/create/create.component";
+import { DictionaryDetailComponent } from "./dictionary-manager/detail/dictionary-detail.component";
+import { DictionaryDetailEditorComponent } from "./dictionary-manager/detail/data-editor/data-editor.component";
+import { DictionaryDetailResolver } from "./dictionary-manager/dictionary-detail-resolver";
+import { DictionaryDetailCreateComponent } from "./dictionary-manager/detail/create/create.component";
+import { PaginationModule } from "ngx-bootstrap";
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   imports: [
@@ -61,7 +73,9 @@ import { BasicSettingsEditorComponent } from "./external-manager/data-editor/dat
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    RouterModule.forChild(settingsRroutes)
+    RouterModule.forChild(settingsRroutes),
+    PaginationModule.forRoot(),
+    NgxPaginationModule
   ],
   declarations: [
     GroupManagerComponent,
@@ -92,7 +106,14 @@ import { BasicSettingsEditorComponent } from "./external-manager/data-editor/dat
     LogListComponent,
     ExternalEditorComponent,
     BasicSettingsListComponent,
-    BasicSettingsEditorComponent
+    BasicSettingsEditorComponent,
+    DictionaryManagerComponent,
+    DictionaryListComponent,
+    DictionaryEditorComponent,
+    DictionaryCreateComponent,
+    DictionaryDetailComponent,
+    DictionaryDetailCreateComponent,
+    DictionaryDetailEditorComponent
   ],
   providers: [
     CommunityService,
@@ -110,7 +131,10 @@ import { BasicSettingsEditorComponent } from "./external-manager/data-editor/dat
     NewsService,
     NewsResolver,
     ExternalManagerService,
-    ExternalResolver
+    ExternalResolver,
+    DictionaryResolver,
+    DictionaryDetailResolver,
+    DictionaryManagerService
   ]
 })
 export class SettingsModule {

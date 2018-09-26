@@ -228,6 +228,18 @@
     tree-kill "^1.0.0"
     webpack-sources "^1.1.0"
 
+"@ngx-progressbar/core@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-5.1.2.tgz#cf9e462d608ebbbed10cc40238bd1c02e18ab510"
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-progressbar/http@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/http/-/http-5.1.2.tgz#6b104bc4885b83b63a3adf9efd275c3728438239"
+  dependencies:
+    tslib "^1.9.0"
+
 "@nodelib/fs.stat@^1.0.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
@@ -5177,6 +5189,14 @@ ngx-bootstrap@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-3.0.1.tgz#e98d2fc6340f32a9d358cd08e8fda7dcb23bdab3"
 
+ngx-pagination@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.2.0.tgz#67271e5395854464657a151276faa8154dce4806"
+
+ngx-progressbar@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-2.1.1.tgz#cecd88435ac660be445caeaded19b85f4a1e47be"
+
 ngx-toastr@^8.10.0:
   version "8.10.2"
   resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-8.10.2.tgz#08f7d392a76d3d5c87cde92f55c81d51ced64e74"
@@ -6817,11 +6837,11 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs-compat@6:
+rxjs-compat@^6.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.3.2.tgz#2386ade05e693480fdf96f56042a629aef6c5ea5"
 
-rxjs@6, rxjs@^6.1.0:
+rxjs@^6.0, rxjs@^6.1.0:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.2.tgz#6a688b16c4e6e980e62ea805ec30648e1c60907f"
   dependencies:

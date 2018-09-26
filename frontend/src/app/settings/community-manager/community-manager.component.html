@@ -6,7 +6,9 @@
   <gm-search-bar></gm-search-bar>
 </div>
 <gm-community-table [columns]="columns" [data]="communities"></gm-community-table>
-
+<div class="paginator">
+  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+</div>
 <ng-template #communityManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container title="创建社区" [dismiss]="dismiss">
     <gm-community-create [communities]="communities" [close]="close" (submitted)="updateCommunities()"></gm-community-create>

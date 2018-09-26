@@ -1,0 +1,12 @@
+@import "../../../../styles/lib";
+
+.data-panel {
+  @extend %table-base;
+}
+
+.data-item {
+  span {
+    display: inline-block;
+    height: 30px;
+  }
+}

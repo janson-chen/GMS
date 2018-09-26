@@ -15,8 +15,8 @@
     <div class="form-group">
       <div class="wrap">
         <label>性别</label>
-        <ca-input-radio formControlName="sex" [value]="'男'" [checked]="sex === '男'">男</ca-input-radio>
-        <ca-input-radio formControlName="sex" [value]="'女'" [checked]="sex === '女'">女</ca-input-radio>
+        <ca-input-radio formControlName="sex" [value]="'男'" [checked]="formGroup.value.sex === '男'">男</ca-input-radio>
+        <ca-input-radio formControlName="sex" [value]="'女'" [checked]="formGroup.value.sex === '女'">女</ca-input-radio>
       </div>
     </div>
     <div class="form-group">
@@ -49,13 +49,19 @@
     <div class="form-group">
       <div class="wrap">
         <label>民生类型</label>
-        <input type="text" formControlName="peopleType"/>
+        <ca-select formControlName="peopleType">
+          <ca-option [value]="''">请选择--</ca-option>
+          <ca-option *ngFor="let item of peopleTypes" [value]="item?.value">{{ item?.value }}</ca-option>
+        </ca-select>
       </div>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>与户主关系</label>
-        <input type="text" formControlName="relation">
+        <ca-select formControlName="relation">
+          <ca-option [value]="''">请选择--</ca-option>
+          <ca-option *ngFor="let item of relations" [value]="item?.value">{{ item?.value }}</ca-option>
+        </ca-select>
       </div>
     </div>
     <div class="form-group">
@@ -73,14 +79,16 @@
     <div class="form-group">
       <div class="wrap">
         <label>文化程度</label>
-        <input type="text" formControlName="culture"/>
+        <ca-select formControlName="culture">
+          <ca-option [value]="''">请选择--</ca-option>
+          <ca-option *ngFor="let item of cultures" [value]="item?.value">{{ item?.value }}</ca-option>
+        </ca-select>
       </div>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>婚姻状况</label>
-        <ca-input-radio formControlName="marriage" [value]="'已婚'" [checked]="marriage === '已婚'">已婚</ca-input-radio>
-        <ca-input-radio formControlName="marriage" [value]="'未婚'" [checked]="marriage === '未婚'">未婚</ca-input-radio>
+        <ca-input-radio formControlName="marriage" *ngFor="let item of maritalStates" [value]="item?.value" [checked]="formGroup.value.marriage === item?.value">{{ item?.value }}</ca-input-radio>
       </div>
     </div>
     <div class="form-group">

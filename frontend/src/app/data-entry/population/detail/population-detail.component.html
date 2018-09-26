@@ -65,9 +65,9 @@
               <a href="javascript:void(0);" (click)="removeMember(item?.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </a>
-             <a href="javascript:void(0);" (click)="currentEditMember = item;openModal(memberManagerModal)">
+              <a href="javascript:void(0);" (click)="currentEditMember = item;openModal(memberManagerModal)">
                 <fa-icon [icon]="faEdit"></fa-icon>
-            </a>
+              </a>
         </span>
       </div>
     </div>
@@ -76,7 +76,7 @@
 
 <ng-template #memberManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container title="编辑家庭成员" [dismiss]="dismiss">
-    <gm-member-editor [data]="currentEditMember" [code]="data?.code" [populationId]="data?.id" [close]="close" (submitted)="updateMembers()"></gm-member-editor>
+    <gm-member-editor [data]="currentEditMember" [code]="data?.code" [relations]="relations" [cultures]="cultures" [maritalStates]="maritalStates" [peopleTypes]="peopleTypes" [populationId]="data?.id" [close]="close" (submitted)="updateMembers()"></gm-member-editor>
   </gm-modal-container>
 </ng-template>
 <ng-template #populationManagerModal let-close="close" let-dismiss="dismiss">

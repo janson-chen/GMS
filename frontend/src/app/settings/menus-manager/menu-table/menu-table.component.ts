@@ -11,6 +11,8 @@ import { Menu } from "../../../core/models/menu.data";
   styleUrls: ['./menu-table.component.scss']
 })
 export class MenuListComponent extends TableComponent<Menu[]> implements OnInit {
+  page: number = 1;
+
   constructor(
     private menuManagerService: MenuManagerService,
     private menusService: MenusService

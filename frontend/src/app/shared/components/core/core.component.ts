@@ -1,5 +1,6 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { NgbModal, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
+import { QueryOption } from "./core.data";
 
 @Component({
   selector: "gm-core",
@@ -7,8 +8,18 @@ import { NgbModal, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 })
 export abstract class CoreComponent<T> {
   @Input() data: T;
-  protected modalService?: NgbModal;
 
+  queryOptions: QueryOption = {
+    page: 1,
+    pageSize: 10,
+    totalCount: 0
+  };
+
+  get queryUrl() {
+    return `page=${this.queryOptions.page}/pageSize=${this.queryOptions.pageSize}`
+  }
+
+  protected modalService?: NgbModal;
   protected modalContainerOptions: NgbModalOptions = {
     centered: true,
     size: "lg",

@@ -9,6 +9,7 @@ import { UserService } from "../../../../shared/services/user.service";
 import { PopulationService } from "../../population.service";
 import { faEdit, faTrash, faCalendar, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Dictionary } from "../../../../settings/dictionary-manager/dicitonary-manager.data";
 
 @Component({
   selector: "gm-member-editor",
@@ -19,6 +20,10 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 export class MemberEditorComponent extends FormComponent<Member> implements OnInit {
   @Input() code: string = "";
   @Input() populationId: string = "";
+  @Input() relations: Dictionary[] = [];
+  @Input() peopleTypes: Dictionary[] = [];
+  @Input() cultures: Dictionary[] = [];
+  @Input() maritalStates: Dictionary[] = [];
 
   private editMember_: Member;
 
@@ -39,7 +44,7 @@ export class MemberEditorComponent extends FormComponent<Member> implements OnIn
   }
 
   async ngOnInit(): Promise<void> {
-    console.log("data", this.data);
+    console.log(this.relations);
     this.formGroup = this.fb.group({
       populationId: this.populationId,
       populationCode: this.code,
@@ -56,8 +61,7 @@ export class MemberEditorComponent extends FormComponent<Member> implements OnIn
       culture: this.data && this.data.culture || "",
       marriage: this.data && this.data.marriage || "",
       rmks: this.data && this.data.rmks || "",
-    })
-    ;
+    });
   }
 
   async submit() {
@@ -76,11 +80,15 @@ export class MemberEditorComponent extends FormComponent<Member> implements OnIn
       peopleType: this.formGroup.value.peopleType,
       culture: this.formGroup.value.culture,
       marriage: this.formGroup.value.marriage,
-      rmks: this.formGroup.value.rmks,
+      rmks: this.formGroup.value.rmks
     };
 
     try {
-      await this.populationService.addMembers(this.code, [payload]);
+      if (this.data) {
+        await this.populationService.updateMembers(this.code, [payload]);
+      } else {
+        await this.populationService.addMembers(this.code, [payload]);
+      }
       this.isSubmitted = true;
       setTimeout(() => this.close("家庭成员信息修改成功."), this.successMessageTimeoutInSeconds * 1000);
     } catch (e) {

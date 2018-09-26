@@ -13,7 +13,7 @@ export class CommunityResolver extends DataService<Community[]> implements Resol
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Community[]> {
-    return this.communityService.getList("/childlist/id=1");
+    return this.communityService.query( `query/${this.queryUrl}`, {});
   }
 
 }

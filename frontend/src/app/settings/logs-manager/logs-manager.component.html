@@ -1,7 +1,7 @@
-<header>
-  <span>日志列表</span>
-</header>
 <div class="search-panel">
   <gm-search-bar></gm-search-bar>
 </div>
 <gm-log-table [columns]="columns" [data]="logs"></gm-log-table>
+<div class="paginator">
+  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+</div>

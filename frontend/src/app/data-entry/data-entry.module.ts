@@ -27,12 +27,14 @@ import { MemberEditorComponent } from "./population/detail/data-editor/data-edit
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CommunityResolver } from "../settings/community-manager/community-resolver";
 import { PartyListComponent } from "./party-build/party-table/party-table.component";
-import { BsDatepickerModule } from "ngx-bootstrap";
+import { BsDatepickerModule, PaginationModule } from "ngx-bootstrap";
 import { RiskListComponent } from "./risk-checklist/risk-table/risk-table.component";
 import { RiskResolver } from "./risk-checklist/risk-resolver";
 import { GroupResolver } from "../settings/group-manager/group-resolver";
 import { GroupManagerService } from "../settings/group-manager/group-manager.service";
 import { AttachmentEditorComponent } from "./risk-checklist/attachment-editor/data-editor.component";
+import { DictionaryManagerService } from "../settings/dictionary-manager/dictionary-manager.service";
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   imports: [
@@ -40,6 +42,8 @@ import { AttachmentEditorComponent } from "./risk-checklist/attachment-editor/da
     CommonModule,
     SharedModule,
     FormsModule,
+    PaginationModule.forRoot(),
+    NgxPaginationModule,
     NgbModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
@@ -73,7 +77,8 @@ import { AttachmentEditorComponent } from "./risk-checklist/attachment-editor/da
     RiskService,
     RiskResolver,
     GroupResolver,
-    GroupManagerService
+    GroupManagerService,
+    DictionaryManagerService
   ]
 })
 export class DataEntryModule {

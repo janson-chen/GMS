@@ -1,0 +1,35 @@
+<div class="dictionary-group">
+  <h3 class="title">
+    <span>字典详情</span>
+    <a href="javascript:void(0);" (click)="openModal(dictionaryDetailManagerModal)">
+      <fa-icon [icon]="faEdit"></fa-icon>
+    </a>
+  </h3>
+  <div class="data-panel">
+    <gm-table-header [columns]="columns"></gm-table-header>
+    <div class="body">
+      <div class="data-item" *ngFor="let item of data">
+        <span>{{ item?.id }}</span>
+        <span>{{ item?.dictionaryId }}</span>
+        <span>{{ item?.dictionaryCode }}</span>
+        <span>{{ item?.dictionaryText }}</span>
+        <span>{{ item?.value }}</span>
+        <span [caTextEllipsis]="item?.createdDate | date" [title]="item?.createdDate | date"></span>
+        <span [caTextEllipsis]="item?.createdBy" [title]="item?.createdBy"></span>
+        <span [caTextEllipsis]="item?.updatedDate" [title]="item?.updatedDate | date"></span>
+        <span [caTextEllipsis]="item?.updatedBy" [title]="item?.updatedBy"></span>
+        <span class="menus">
+              <a href="javascript:void(0);" (click)="removeDictionaryDetail(item?.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #dictionaryDetailManagerModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container title="编辑字典" [dismiss]="dismiss">
+    <gm-dictionary-detail-create [data]="data" [close]="close" (submitted)="updateDictionaryDetail()"></gm-dictionary-detail-create>
+  </gm-modal-container>
+</ng-template>

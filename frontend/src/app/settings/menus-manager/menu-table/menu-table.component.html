@@ -1,16 +1,14 @@
 <div class="data-panel">
     <gm-table-header [columns]="columns"></gm-table-header>
     <div class="body">
-        <div class="data-item" *ngFor="let item of data">
+        <div class="data-item" *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: page }">
             <span>{{ item?.name }}</span>
             <span>{{ getMenuNameById(item?.parentId) }}</span>
-            <!--<span>{{ item?.menuType }}</span>-->
             <span>{{ item?.createdBy }}</span>
             <span>{{ item?.createdDate | date }}</span>
-            <!--<span class="menus-panel">
-              &lt;!&ndash;<button type="button" class="btn icon-delete" (click)="removeMenu(item?.id)"></button>&ndash;&gt;
-              &lt;!&ndash;<button type="button" class="btn icon-edit" (click)="editMenu(item?.id)"></button>&ndash;&gt;
-            </span>-->
         </div>
     </div>
+</div>
+<div class="paginator">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>

@@ -1,11 +1,12 @@
 export class QueryOption {
-  pageNo: number = 1;
+  page: number = 1;
+  pageSize: number = 10;
+  totalCount: number = 10;
 
-  constructor(options: any) {
+  constructor(options?: any) {
     Object.assign(this, options);
   }
 }
-
 
 export interface LoginData {
   userName: string;
@@ -13,7 +14,15 @@ export interface LoginData {
   rememberMe: boolean;
 }
 
+export interface PageData {
+  page: number;
+  itemsPerPage: number;
+}
 
+export class ResponseData<T> {
+  detail: T[];
+  totalCount: number;
+}
 
 export const POPULATION_TABLE_COLUMES = [
   "姓名",

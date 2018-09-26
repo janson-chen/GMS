@@ -18,6 +18,10 @@ import { NewsManagerComponent } from "./news-manager/news-manager.component";
 import { NewsResolver } from "./news-manager/news-resolver";
 import { ExternalManagerComponent } from "./external-manager/external-manager.component";
 import { ExternalResolver } from "./external-manager/external-resolver";
+import { DictionaryManagerComponent } from "./dictionary-manager/dictionary-manager.component";
+import { DictionaryResolver } from "./dictionary-manager/dictionary-resolver";
+import { DictionaryDetailComponent } from "./dictionary-manager/detail/dictionary-detail.component";
+import { DictionaryDetailResolver } from "./dictionary-manager/dictionary-detail-resolver";
 
 export const settingsRroutes: Routes = [
   {
@@ -25,9 +29,10 @@ export const settingsRroutes: Routes = [
     children: [
       {
         path: "communites",
-        component:
-        CommunityManagerComponent,
-        resolve: [CommunityResolver]
+        component: CommunityManagerComponent,
+        resolve: {
+          communities: CommunityResolver
+        }
       },
       {
         path: "roles",
@@ -82,6 +87,20 @@ export const settingsRroutes: Routes = [
         component: ExternalManagerComponent,
         resolve: {
           basicsettings: ExternalResolver
+        }
+      },
+      {
+        path: "dictionaries",
+        component: DictionaryManagerComponent,
+        resolve: {
+          dictionaries: DictionaryResolver
+        }
+      },
+      {
+        path: "dictionaries/:dictionaryId",
+        component: DictionaryDetailComponent,
+        resolve: {
+          dictionaries: DictionaryDetailResolver
         }
       }
     ]

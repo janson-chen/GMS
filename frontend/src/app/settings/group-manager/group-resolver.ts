@@ -16,7 +16,7 @@ export class GroupResolver extends DataService<UserGroup[]> implements Resolve<U
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UserGroup[]> | Promise<UserGroup[]> | UserGroup[] {
-    return this.groupManagerService.getList("/usermemberlist/page=-1/pageSize=-1");
+    return this.groupManagerService.getList(`/usermemberlist/${this.queryUrl}`);
   }
 
 }

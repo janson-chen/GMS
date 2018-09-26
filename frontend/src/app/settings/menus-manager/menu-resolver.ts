@@ -16,7 +16,7 @@ export class MenuResolver extends DataService<Menu[]> implements Resolve<Menu[]>
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Menu[]> | Promise<Menu[]> | Menu[] {
-    return this.menuManagerService.getList("/menus");
+    return this.menuManagerService.getList(`/menus/${this.queryUrl}`);
   }
 
 }

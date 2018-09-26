@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import { QueryOptions } from "../interface/data.interface";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Http } from "@angular/http";
-
-export interface QueryOptions {
-
-}
+import { QueryOption } from "../components/core/core.data";
 
 @Injectable()
 export class DataService<T> {
@@ -14,6 +10,12 @@ export class DataService<T> {
 
     get endpoint() {
       return `${environment.baseUrl}${this.modelType}`
+    }
+
+    get queryUrl() {
+      const query = new QueryOption();
+      return `page=${query.page}/pageSize=${query.pageSize}`;
+
     }
 
     constructor(protected http: HttpClient, protected nHttp?: Http) {
@@ -24,7 +26,7 @@ export class DataService<T> {
         return <Promise<T>>this.http.get(`${this.endpoint}${urlSegment}${id}`).toPromise();
     };
 
-    getList (url?: string, queryOptions?: QueryOptions): Promise<T[]> | any {
+    getList (url?: string, queryOptions?: any): Promise<T[]> | any {
         url = url ? url : "";
         return <Promise<T[]>>this.http.get(`${environment.baseUrl}${this.modelType}${url}`, {}).toPromise();
     };

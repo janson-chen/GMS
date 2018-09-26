@@ -9,6 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-role-manager',
@@ -32,9 +33,9 @@ export class RoleManagerComponent extends ModalContainerComponent implements OnI
   ) {
     super();
 
-    route.data.subscribe((data: { roles: {detail: Role[]}}) => {
+    route.data.subscribe((data: { roles: ResponseData<Role>}) => {
       this.roles = data.roles.detail;
-      console.log("roles", this.roles);
+      this.queryOptions.totalCount = data.roles.totalCount;
     });
   }
 
@@ -46,5 +47,10 @@ export class RoleManagerComponent extends ModalContainerComponent implements OnI
     return this.roleManagerService.getPermissions();
   }
 
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.roleManagerService.query(this.queryUrl, {});
+    this.permissions = result.detail;
+  }
 
 }

@@ -14,7 +14,7 @@ export class RiskResolver extends DataService<Risk> implements Resolve<Risk[]> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Risk[]> | Promise<Risk[]> | Risk[] {
-    return this.riskService.query("query/page=-1/pageSize=-1", {});
+    return this.riskService.query(`query/${this.queryUrl}`, {});
   }
 
 }

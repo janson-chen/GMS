@@ -11,6 +11,7 @@ import { PartyService } from "../party-build/party.service";
 import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 import { RiskService } from "./risk.service";
 import { UserGroup } from "../../settings/group-manager/group.data";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-risk-checklist',
@@ -34,9 +35,10 @@ export class RiskChecklistComponent extends ModalContainerComponent implements O
     private riskService: RiskService
   ) {
     super();
-    route.data.subscribe((data: { riskEvents: { detail: Risk[] }, communities: Community[], groups: {detail: UserGroup[]}}) => {
+    route.data.subscribe((data: { riskEvents: ResponseData<Risk> , communities: ResponseData<Community>, groups: ResponseData<UserGroup>}) => {
       this.riskEvents = data.riskEvents.detail;
-      this.communities = data.communities;
+      this.communities = data.communities.detail;
+      this.queryOptions.totalCount = data.riskEvents.totalCount;
       this.groups = data.groups.detail;
       this.communityService.saveCommunities(this.communities);
     });
@@ -47,7 +49,13 @@ export class RiskChecklistComponent extends ModalContainerComponent implements O
   }
 
   async updateRiskList(): Promise<void> {
-    const result = await this.riskService.query("query/page=-1/pageSize=-1", {});
+    const result = await this.riskService.query(`query/${this.queryUrl}`, {});
+    this.riskEvents = result.detail;
+  }
+
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.riskService.query(`query/${this.queryUrl}`, {});
     this.riskEvents = result.detail;
   }
 

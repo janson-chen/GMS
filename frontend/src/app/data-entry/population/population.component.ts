@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 import { Insurance, Population, POPULATION_MANAGER_TABLE_COLUMES } from "./population.data";
 import { PopulationService } from "./population.service";
 import { Community } from "../../settings/community-manager/community.data";
@@ -11,6 +10,7 @@ import { FormComponent } from "../../shared/components/core/form-component";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-population',
@@ -33,9 +33,10 @@ export class PopulationComponent extends FormComponent<Population> implements On
     protected toastService: ToastrService
   ) {
     super();
-    route.data.subscribe((data: { populations: { detail: Population[] }, communities: Community[] }) => {
+    route.data.subscribe((data: { populations: ResponseData<Population>, communities: ResponseData<Community> }) => {
       this.populationList = data.populations.detail;
-      this.communities = data.communities;
+      this.queryOptions.totalCount = data.populations.totalCount;
+      this.communities = data.communities.detail;
     });
   }
 
@@ -67,7 +68,13 @@ export class PopulationComponent extends FormComponent<Population> implements On
   }
 
   async updatePopulation(): Promise<void> {
-    const result = await  this.populationService.query("query/page=-1/pageSize=-1", {});
+    const result = await  this.populationService.query(`query/${this.queryUrl}`, {});
+    this.populationList = result.detail;
+  }
+
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.populationService.query(`query/${this.queryUrl}`, {});
     this.populationList = result.detail;
   }
 }

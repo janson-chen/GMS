@@ -6,7 +6,9 @@
   <gm-search-bar></gm-search-bar>
 </div>
 <gm-group-table [columns]="columns" [data]="groups"></gm-group-table>
-
+<div class="paginator">
+  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+</div>
 <ng-template #groupManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'用户组'">
     <gm-group-create [close]="close" (submitted)="updateGroupList()"></gm-group-create>

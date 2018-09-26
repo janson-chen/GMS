@@ -14,7 +14,7 @@ export class LogResolver extends DataService<Log[]> implements Resolve<Log[]> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Log[]> | Promise<Log[]> | Log[] {
-    return this.logManagerService.query("page=-1/pageSize=-1", {});
+    return this.logManagerService.query(this.queryUrl, {});
   }
 
 }

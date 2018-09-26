@@ -12,8 +12,8 @@
     "importHelpers": true,
     "strictNullChecks": false,
     "lib": [
-      "dom",
-      "es6"
+      "es2017",
+      "dom"
     ],
     "baseUrl": "./src",
     "paths": {

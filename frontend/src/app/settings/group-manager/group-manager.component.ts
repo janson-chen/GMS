@@ -7,6 +7,7 @@ import { GROUP_MANAGER_TABLE_COLUMES, GroupResponse, UserGroup } from "./group.d
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-group-manager',
@@ -27,8 +28,9 @@ export class GroupManagerComponent extends ModalContainerComponent implements On
   ) {
     super();
 
-    route.data.subscribe((data: { groups: { detail: UserGroup[]} }) => {
+    route.data.subscribe((data: { groups: ResponseData<UserGroup>}) => {
       this.groups = data.groups.detail;
+      this.queryOptions.totalCount = data.groups.totalCount;
     });
   }
 
@@ -36,8 +38,14 @@ export class GroupManagerComponent extends ModalContainerComponent implements On
 
   }
 
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.groupManageService.query(this.queryUrl, `/usermemberlist/${this.queryUrl}`);
+    this.groups = result.detail;
+  }
+
   async updateGroupList(): Promise<void> {
-    const result = await <GroupResponse>this.groupManageService.getList("/usermemberlist/page=-1/pageSize=-1");
+    const result = await <GroupResponse>this.groupManageService.getList(`/usermemberlist/${this.queryUrl}`);
     this.groups = result.detail;
   }
 }

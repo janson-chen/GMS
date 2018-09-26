@@ -1,4 +1,6 @@
-export interface Log {
+import { ResponseData } from "../../shared/components/core/core.data";
+
+export interface Log extends ResponseData<Log> {
   id?: string;
   content?: string;
   userName?: string;

@@ -6,7 +6,9 @@
   <gm-search-bar></gm-search-bar>
 </div>
 <gm-role-table [columns]="columns" [data]="roles"></gm-role-table>
-
+<div class="paginator">
+  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+</div>
 <ng-template #roleManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container title="创建角色" [dismiss]="dismiss">
     <gm-role-create [permissions]="permissions" [close]="close"></gm-role-create>

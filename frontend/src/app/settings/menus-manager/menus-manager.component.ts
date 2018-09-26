@@ -41,6 +41,11 @@ export class MenusManagerComponent extends ModalContainerComponent implements On
     });
   }
 
+  async search(page: number): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.menuManagerService.getList("/menus", this.queryUrl);
+  }
+
   async updateMenuList(): Promise<void> {
     this.menusService.menus = await this.menuManagerService.getList("/menus");
   }

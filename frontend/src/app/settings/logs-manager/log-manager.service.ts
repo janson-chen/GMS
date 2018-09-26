@@ -13,4 +13,8 @@ export class LogManagerService extends DataService<any> {
       endDate: endDate
     }).toPromise();
   }
+
+  async search(): Promise<void> {
+
+  }
 }

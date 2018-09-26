@@ -1,0 +1,29 @@
+<div class="data-panel">
+  <gm-table-header [columns]="columns"></gm-table-header>
+  <div class="body">
+    <div class="data-item" *ngFor="let item of data">
+      <span>{{ item?.id }}</span>
+      <span>{{ item?.code }}</span>
+      <span>{{ item?.text }}</span>
+      <span>{{ item?.value }}</span>
+      <span>{{ item?.createdBy }}</span>
+      <span>{{ item?.updatedBy }}</span>
+      <span>{{ item?.createdDate | date }}</span>
+      <span>{{ item?.updatedDate | date }}</span>
+      <span class="menus">
+          <a href="javascript:void(0);" (click)="currentEditItem = item; removeItem(item?.id)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </a>
+         <a href="javascript:void(0);" [routerLink]="['.', item?.id]">
+                  <fa-icon [icon]="faEdit"></fa-icon>
+         </a>
+      </span>
+    </div>
+  </div>
+</div>
+<ng-template #dictionaryEditModal let-close="close" let-dismiss="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'字典修改'">
+    <gm-dictionary-editor [data]="currentEditItem" [close]="close"
+                          (submitted)="updateDictionaries()"></gm-dictionary-editor>
+  </gm-modal-container>
+</ng-template>
