@@ -14,7 +14,7 @@ export class NewsResolver extends DataService<News[]> implements Resolve<News[]>
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<News[]> {
-    return this.newsService.getList("/newslist/page=-1/pagesize=-1");
+    return this.newsService.getList("/newslist/page=1/pagesize=10");
   }
 
 }

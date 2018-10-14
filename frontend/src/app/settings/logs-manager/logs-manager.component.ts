@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-
 import { FormBuilder } from "@angular/forms";
-import { Log, LOG_MANAGER_TABLE_COLUMES } from "./log.data";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+import { Log, LOG_MANAGER_TABLE_COLUMES, SEARCH_DATA } from "./log.data";
 import { UserService } from "../../shared/services/user.service";
 import { LogManagerService } from "./log-manager.service";
 import { CoreComponent } from "../../shared/components/core/core.component";
-import { PageData, ResponseData } from "../../shared/components/core/core.data";
+import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
   selector: 'gm-logs-manager',
@@ -18,6 +19,8 @@ import { PageData, ResponseData } from "../../shared/components/core/core.data";
 export class LogsManagerComponent extends CoreComponent<Log> implements OnInit {
   columns = LOG_MANAGER_TABLE_COLUMES;
   logs: Log[] = [];
+  faSearch = faSearch;
+  searchData = SEARCH_DATA;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,10 +39,17 @@ export class LogsManagerComponent extends CoreComponent<Log> implements OnInit {
 
   ngOnInit() {}
 
-  async search(page: number): Promise<void> {
+  async search(page: number, searchValue: Object): Promise<void> {
     this.queryOptions.page = page;
-    const result = await this.logManagerService.query(this.queryUrl, {});
+    const result = await this.logManagerService.query(this.queryUrl, searchValue);
     this.logs = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
+
+  async query(searchValue: Object): Promise<void> {
+    const result = await this.logManagerService.query(this.queryUrl, searchValue);
+    this.logs = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 
 }

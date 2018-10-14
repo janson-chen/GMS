@@ -6,17 +6,20 @@
 
 .menu {
   min-width: $menu-width;
-  background: rgba(44, 62, 80, 0.9);
-  color: #fff;
+  background: rgba(0, 0, 0, .08);
   font-size: $app-font-small;
   text-align: center;
   padding: 20px 0;
+  color: #151515;
+  border-right: 1px solid #b3b3b3;
 
   ::ng-deep .cell-bar {
     cursor: pointer;
+  }
 
+  gm-menu-option {
     &:hover {
-      background: #17232f;
+      background: rgba(0, 0, 0, .09);
     }
   }
 }

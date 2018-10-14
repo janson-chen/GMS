@@ -3,6 +3,14 @@
         <gm-menu [data]="menus"></gm-menu>
     </div>
     <div class="right-panel">
+      <div class="search-panel">
+        <gm-search-bar #searchBar [searchData]="searchData" (searchValueChange)="query($event)"></gm-search-bar>
+      </div>
+      <div class="news-panel">
         <gm-newest *ngFor="let item of news" [fileId]="item.fileId"></gm-newest>
+      </div>
+      <div class="paginator" *ngIf="queryOptions?.totalCount > 10">
+        <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event, searchBar.searchValue)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+      </div>
     </div>
 </div>

@@ -1,3 +1,5 @@
+import { SearchData, SearchType } from "../../shared/components/search-bar/search-bar.interface";
+
 export interface News {
   id?: string;
   createdBy?: string;
@@ -16,4 +18,12 @@ export const NEWS_TABLE_COLUMES = [
   "更新时间",
   "更新人员",
   "操作"
+];
+
+export const SEARCH_DATA: SearchData[] = [
+  {
+    key: "title",
+    label: "新闻名称",
+    type: SearchType.Ttext
+  }
 ];

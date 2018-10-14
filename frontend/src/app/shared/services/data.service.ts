@@ -28,7 +28,7 @@ export class DataService<T> {
 
     getList (url?: string, queryOptions?: any): Promise<T[]> | any {
         url = url ? url : "";
-        return <Promise<T[]>>this.http.get(`${environment.baseUrl}${this.modelType}${url}`, {}).toPromise();
+        return <Promise<T[]>>this.http.get(`${environment.baseUrl}${this.modelType}${url}`, {params: queryOptions}).toPromise();
     };
 
     update (model: T): void {

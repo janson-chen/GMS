@@ -7,7 +7,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { BASIC_SETTING_MANAGER_TABLE_COLUMES, BasicSetting } from "./external-manager.data";
 import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 import { UserService } from "../../shared/services/user.service";
-import { Dictionary, DICTIONARY_MANAGER_TABLE_COLUMES } from "./dicitonary-manager.data";
+import { Dictionary, DICTIONARY_MANAGER_TABLE_COLUMES, SEARCH_DATA } from "./dicitonary-manager.data";
 import { DictionaryManagerService } from "./dictionary-manager.service";
 import { ResponseData } from "../../shared/components/core/core.data";
 
@@ -19,7 +19,7 @@ import { ResponseData } from "../../shared/components/core/core.data";
 export class DictionaryManagerComponent extends ModalContainerComponent {
   dictionaries: Dictionary[];
   columns = DICTIONARY_MANAGER_TABLE_COLUMES;
-
+  searchData = SEARCH_DATA;
   constructor(
     private route: ActivatedRoute,
     protected userService: UserService,
@@ -46,10 +46,16 @@ export class DictionaryManagerComponent extends ModalContainerComponent {
     }, 1000);
   }
 
-  async search(page: number): Promise<void> {
+  async search(page: number, searchValue: Object): Promise<void> {
     this.queryOptions.page = page;
-    const result = await this.dictionaryManagerService.getList(`/dictionarylist/${this.queryUrl}`);
+    const result = await this.dictionaryManagerService.getList(`/dictionarylist/${this.queryUrl}`, searchValue);
     this.dictionaries = result.detail;
+  }
+
+  async query(searchValue: Object): Promise<void> {
+    const result = await this.dictionaryManagerService.getList(`/dictionarylist/${this.queryUrl}`, searchValue);
+    this.dictionaries = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 
 }

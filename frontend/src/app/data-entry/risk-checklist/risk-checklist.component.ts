@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Risk, RISK_MANAGER_TABLE_COLUMES } from "./risk.data";
+import { Risk, RISK_MANAGER_TABLE_COLUMES, SEARCH_DATA } from "./risk.data";
 import { Community } from "../../settings/community-manager/community.data";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
@@ -23,6 +23,7 @@ export class RiskChecklistComponent extends ModalContainerComponent implements O
   riskEvents: Risk[] = [];
   communities: Community[] = [];
   groups: UserGroup[] = [];
+  searchData = SEARCH_DATA;
 
   constructor(
     private communityService: CommunityService,
@@ -53,10 +54,17 @@ export class RiskChecklistComponent extends ModalContainerComponent implements O
     this.riskEvents = result.detail;
   }
 
-  async search(page: number): Promise<void> {
+  async search(page: number, searchValue: Object): Promise<void> {
     this.queryOptions.page = page;
-    const result = await this.riskService.query(`query/${this.queryUrl}`, {});
+    const result = await this.riskService.query(`query/${this.queryUrl}`, searchValue);
     this.riskEvents = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
+
+  async query(searchValue: Object): Promise<void> {
+    const result = await this.riskService.query(`query/${this.queryUrl}`, searchValue);
+    this.riskEvents = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 
 }

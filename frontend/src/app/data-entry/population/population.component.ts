@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { Insurance, Population, POPULATION_MANAGER_TABLE_COLUMES } from "./population.data";
+import { Insurance, Population, POPULATION_MANAGER_TABLE_COLUMES, SEARCH_DATA } from "./population.data";
 import { PopulationService } from "./population.service";
 import { Community } from "../../settings/community-manager/community.data";
 import { CommunityService } from "../../settings/community-manager/community.service";
@@ -22,6 +22,7 @@ export class PopulationComponent extends FormComponent<Population> implements On
   columns = POPULATION_MANAGER_TABLE_COLUMES;
   populationList: Population[];
   insurances: Insurance[];
+  searchData = SEARCH_DATA;
 
   constructor(
     private populationService: PopulationService,
@@ -72,9 +73,16 @@ export class PopulationComponent extends FormComponent<Population> implements On
     this.populationList = result.detail;
   }
 
-  async search(page: number): Promise<void> {
+  async search(page: number, searchValue: Object): Promise<void> {
     this.queryOptions.page = page;
-    const result = await this.populationService.query(`query/${this.queryUrl}`, {});
+    const result = await this.populationService.query(`query/${this.queryUrl}`, searchValue);
     this.populationList = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
+
+  async query(searchValue: Object): Promise<void> {
+    const result = await this.populationService.query(`query/${this.queryUrl}`, searchValue);
+    this.populationList = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 }

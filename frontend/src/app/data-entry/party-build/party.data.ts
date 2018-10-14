@@ -1,3 +1,5 @@
+import { SearchData, SearchType } from "../../shared/components/search-bar/search-bar.interface";
+
 export interface Party {
   communityId: string;
   subject: string;
@@ -26,3 +28,17 @@ export interface PartyResponse {
   detail: Party[];
   totalCount: number;
 }
+
+export const SEARCH_DATA: SearchData[] = [
+  {
+    key: "subject",
+    label: "活动名称",
+    type: SearchType.Ttext
+  },
+  {
+    key: "orderBy",
+    label: "排序",
+    options: ["createdDate", "updatedDate", "activitiesDate", "subject"],
+    type: SearchType.Tselect
+  }
+];

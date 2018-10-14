@@ -3,7 +3,7 @@ import { ModalContainerComponent } from "../../shared/components/modal-container
 import { CommunityService } from "../community-manager/community.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Community } from "../community-manager/community.data";
-import { USER_MANAGER_TABLE_COLUMES, UserInfo } from "./user.data";
+import { SEARCH_DATA, USER_MANAGER_TABLE_COLUMES, UserInfo } from "./user.data";
 import { ActivatedRoute } from "@angular/router";
 import { Role } from "../role-manager/role.data";
 import { RoleManagerService } from "../role-manager/role-manager.service";
@@ -22,6 +22,7 @@ export class UserManagerComponent extends ModalContainerComponent implements OnI
   communities: Community[] = [];
   roles: Role[] = [];
   userList: UserInfo[];
+  searchData = SEARCH_DATA;
 
   constructor(
     private communityService: CommunityService,
@@ -54,5 +55,16 @@ export class UserManagerComponent extends ModalContainerComponent implements OnI
     return this.roleManageService.getList("/roles/page=-1/pageSize=-1");
   }
 
+  async search(page: number, searchValue: Object): Promise<void> {
+    this.queryOptions.page = page;
+    const result = await this.userManageService.getList(this.queryUrl, searchValue);
+    this.userList = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
 
+  async query(searchValue: Object): Promise<void> {
+    const result = await this.userManageService.getList(this.queryUrl, searchValue);
+    this.userList = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
 }

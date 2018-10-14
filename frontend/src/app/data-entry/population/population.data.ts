@@ -1,5 +1,7 @@
+import { SearchData, SearchType } from "../../shared/components/search-bar/search-bar.interface";
+
 export interface Population {
-  id?: string,
+  id?: string;
   code?: string;
   communityId?: string;
   communityName?: string;
@@ -66,4 +68,35 @@ export const POPULATION_FAMILY_MANAGER_TABLE_COLUMES = [
   "婚姻状况",
   "备注",
   "操作"
+];
+
+
+export const SEARCH_DATA: SearchData[] = [
+  {
+    key: "communityName",
+    label: "社区名称",
+    type: SearchType.Ttext
+  },
+  {
+    key: "code",
+    label: "主表编码",
+    type: SearchType.Ttext
+  },
+  {
+    key: "familyType",
+    label: "家庭类型",
+    options: ["流动人口", "常住人口"],
+    type: SearchType.Tselect
+  },
+  {
+    key: "familyAddress",
+    label: "家庭地址",
+    type: SearchType.Ttext
+  },
+  {
+    key: "orderBy",
+    label: "排序",
+    options: ["createdDate", "updatedDate", "id", "code", "communityId", "familyType"],
+    type: SearchType.Tselect
+  }
 ];

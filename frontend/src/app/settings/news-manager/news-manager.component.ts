@@ -6,8 +6,9 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
-import { News, NEWS_TABLE_COLUMES } from "./news.data";
+import { News, NEWS_TABLE_COLUMES, SEARCH_DATA } from "./news.data";
 import { ResponseData } from "../../shared/components/core/core.data";
+import { SearchData } from "../../shared/components/search-bar/search-bar.interface";
 
 @Component({
   selector: 'gm-news-manager',
@@ -17,6 +18,7 @@ import { ResponseData } from "../../shared/components/core/core.data";
 export class NewsManagerComponent extends ModalContainerComponent {
   columns = NEWS_TABLE_COLUMES;
   news: News[] = [];
+  searchData = SEARCH_DATA;
 
   constructor(
               private newsService: NewsService,
@@ -39,10 +41,17 @@ export class NewsManagerComponent extends ModalContainerComponent {
       this.news = result.detail;
   }
 
-  async search(page: number): Promise<void> {
+  async search(page: number, searchValue: Object): Promise<void> {
     this.queryOptions.page = page;
-    const result = await this.newsService.getList(`/newslist/${this.queryUrl}`);
+    const result = await this.newsService.getList(`/newslist/${this.queryUrl}`, searchValue);
     this.news = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
+
+  async query(searchValue: SearchData): Promise<void> {
+    const result = await this.newsService.getList(`/newslist/${this.queryUrl}`, searchValue);
+    this.news = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 
 }

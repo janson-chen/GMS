@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from "@angular/router";
+import { NgxPaginationModule } from "ngx-pagination";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BsDatepickerModule, PaginationModule } from "ngx-bootstrap";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { UserManagerComponent } from "./user-manager/user-manager.component";
 import { MenusManagerComponent } from "./menus-manager/menus-manager.component";
@@ -7,9 +13,6 @@ import { LogsManagerComponent } from "./logs-manager/logs-manager.component";
 import { CommunityManagerComponent } from "./community-manager/community-manager.component";
 import { ExternalManagerComponent } from "./external-manager/external-manager.component";
 import { SharedModule } from "../shared/shared.module";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { RouterModule } from "@angular/router";
 import { settingsRroutes } from "./settings.routes";
 import { SettingsComponent } from "./settings.component";
 import { CreateUserComponent } from './user-manager/create/create.component';
@@ -35,7 +38,6 @@ import { GroupResolver } from "./group-manager/group-resolver";
 import { GroupManagerService } from "./group-manager/group-manager.service";
 import { CreateGroupComponent } from "./group-manager/create/create.component";
 import { GroupListComponent } from "./group-manager/group-table/group-table.component";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { GroupDetailComponent } from "./group-manager/detail/group-detail.component";
 import { GroupMemberEditorComponent } from "./group-manager/detail/data-editor/data-editor.component";
 import { GroupDetailResolver } from "./group-manager/detail/group-detail-resolver";
@@ -62,8 +64,6 @@ import { DictionaryDetailComponent } from "./dictionary-manager/detail/dictionar
 import { DictionaryDetailEditorComponent } from "./dictionary-manager/detail/data-editor/data-editor.component";
 import { DictionaryDetailResolver } from "./dictionary-manager/dictionary-detail-resolver";
 import { DictionaryDetailCreateComponent } from "./dictionary-manager/detail/create/create.component";
-import { PaginationModule } from "ngx-bootstrap";
-import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   imports: [
@@ -75,7 +75,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     NgbModule,
     RouterModule.forChild(settingsRroutes),
     PaginationModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     GroupManagerComponent,

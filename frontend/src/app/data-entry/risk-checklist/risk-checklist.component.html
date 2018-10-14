@@ -2,12 +2,16 @@
   <span></span>
   <button (click)="openModal(riskCheckModal)">创建安全隐患排查表</button>
 </header>
-<div class="search-panel">
-  <!--<gm-search-bar></gm-search-bar>-->
-</div>
-<gm-risk-table [columns]="columns" [groups]="groups" [communities]="communities" [data]="riskEvents"></gm-risk-table>
-<div class="paginator">
-  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+<div class="flex-box">
+  <div class="search-panel">
+    <gm-search-bar #searchBar [searchData]="searchData" (searchValueChange)="query($event)"></gm-search-bar>
+  </div>
+  <div class="data-box">
+    <gm-risk-table [columns]="columns" [groups]="groups" [communities]="communities" [data]="riskEvents"></gm-risk-table>
+    <div class="paginator" *ngIf="queryOptions?.totalCount > 10">
+      <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>
 </div>
 <ng-template #riskCheckModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'安全隐患排查表'">

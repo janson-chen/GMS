@@ -1,4 +1,25 @@
 <div class="search-box">
-    <input type="text">
-    <button type="button">搜索</button>
+  <ng-container *ngFor="let item of searchData">
+    <ng-container [ngSwitch]="item.type">
+      <div *ngSwitchCase="SearchType.Ttext" class="search-widget">
+        <label>{{ item.label }}</label>
+        <input type="text" [(ngModel)]="item.value"/>
+        <fa-icon class="search" [icon]="faSearch" (click)="goSearch()"></fa-icon>
+      </div>
+      <div *ngSwitchCase="SearchType.Tselect" class="search-widget">
+        <label>{{ item.label }}</label>
+        <ca-select [(ngModel)]="item.value" (selectChange)="goSearch()">
+          <ca-option value="">All</ca-option>
+          <ca-option *ngFor="let option of item.options" [value]="option"> {{ option }} </ca-option>
+        </ca-select>
+      </div>
+      <div *ngSwitchCase="SearchType.Tdate" class="search-widget calendar">
+        <label>{{ item.label }}</label>
+        <input placeholder="yyyy-mm-dd" bsDatepicker #d2="bsDatepicker" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="item.value" (ngModelChange)="goSearch()">
+          <div class="input-group-append">
+            <fa-icon [icon]="faCalendar" (click)="d2.toggle()"></fa-icon>
+          </div>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>

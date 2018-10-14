@@ -2,9 +2,16 @@
   <span></span>
   <button (click)="openModal(dictionaryEditModal)">创建字典</button>
 </header>
-<gm-dictionary-table [columns]="columns" [data]="dictionaries"></gm-dictionary-table>
-<div class="paginator">
-  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+<div class="flex-box">
+  <div class="search-panel">
+    <gm-search-bar #searchBar [searchData]="searchData" (searchValueChange)="query($event)"></gm-search-bar>
+  </div>
+  <div class="data-box">
+    <gm-dictionary-table [columns]="columns" [data]="dictionaries"></gm-dictionary-table>
+    <div class="paginator">
+      <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>
 </div>
 <ng-template #dictionaryEditModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'字典修改'">

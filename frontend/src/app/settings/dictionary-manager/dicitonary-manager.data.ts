@@ -1,3 +1,5 @@
+import { SearchData, SearchType } from "../../shared/components/search-bar/search-bar.interface";
+
 export interface Dictionary {
   id?: string;
   code?: string;
@@ -35,4 +37,12 @@ export const DICTIONARY_DETAIL_MANAGER_TABLE_COLUMES = [
   "创建日期",
   "更新日期",
   "操作"
+];
+
+export const SEARCH_DATA: SearchData[] = [
+  {
+    key: "text",
+    label: "字典名称",
+    type: SearchType.Ttext
+  }
 ];

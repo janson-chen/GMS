@@ -1,34 +1,62 @@
 :host {
-
+  display: flex;
+  width: 100%;
 }
 
-input {
+.search-box {
+    width: 100%;
+    padding: 5px;
+    align-items: center;
+    outline: none;
+
+    fa-icon.search {
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+    }
+}
+
+.search-widget {
+  width: 20vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  flex: 1;
+
+  input {
+    height: 34px;
+    width: 100%;
+    padding: 0 10px;
     flex: 1;
     border: 1px solid #ccc;
     &:focus {
-        outline: none;
+      outline: none;
     }
 
     color: #888;
     font-size: 14px;
+  }
+
+  ca-select {
+    flex: 1;
+  }
+
+  label {
+    width: 100px;
+    margin: 0;
+  }
 }
 
-button {
-    background: #2e68aa;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    font-size: 14px;
-    border: 1px;
-    padding: 0 20px;
-}
-
-input, button {
-    height: 30px;
-}
-
-.search-box {
-    width: 270px;
-    display: flex;
-    padding: 5px;
-    align-items: center;
+.input-group-append {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -10,14 +10,13 @@ html, body {
   margin: 0;
   padding: 0;
   color: $app-default-black;
-  background: #FEFEFE;
+  background-color: #ebeff2;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif
 }
 
 body {
     display: flex;
-    background-color: #ebeff2;
 }
 
 .router-panel {

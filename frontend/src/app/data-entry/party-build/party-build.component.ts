@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Party, PARTY_MANAGER_TABLE_COLUMES } from "./party.data";
-import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Community } from "../../settings/community-manager/community.data";
-import { CommunityService } from "../../settings/community-manager/community.service";
-import { ActivatedRoute } from "@angular/router";
-import { PartyService } from "./party.service";
-import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
+import { Party, PARTY_MANAGER_TABLE_COLUMES, SEARCH_DATA } from "./party.data";
+import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
+import { Community } from "../../settings/community-manager/community.data";
+import { CommunityService } from "../../settings/community-manager/community.service";
+import { PartyService } from "./party.service";
+import { UserService } from "../../shared/services/user.service";
 import { ResponseData } from "../../shared/components/core/core.data";
 
 @Component({
@@ -20,6 +21,7 @@ export class PartyBuildComponent extends ModalContainerComponent implements OnIn
   columns = PARTY_MANAGER_TABLE_COLUMES;
   communities: Community[] = [];
   partyActivitiesList: Party[];
+  searchData = SEARCH_DATA;
 
   constructor(
     private communityService: CommunityService,
@@ -52,10 +54,17 @@ export class PartyBuildComponent extends ModalContainerComponent implements OnIn
     this.partyActivitiesList = result && result.detail;
   }
 
-  async search(page: number): Promise<void> {
+  async search(page: number, searchValue: Object): Promise<void> {
     this.queryOptions.page = page;
-    const result = await this.partyService.query(`query/${this.queryUrl}`, {});
+    const result = await this.partyService.query(`query/${this.queryUrl}`, searchValue);
     this.partyActivitiesList = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
+  }
+
+  async query(searchValue: Object): Promise<void> {
+    const result = await this.partyService.query(`query/${this.queryUrl}`, searchValue);
+    this.partyActivitiesList = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 
 }

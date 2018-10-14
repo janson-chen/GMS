@@ -2,12 +2,16 @@
   <span></span>
   <button (click)="openModal(groupManagerModal)">创建用户组</button>
 </header>
-<div class="search-panel">
-  <!--<gm-search-bar></gm-search-bar>-->
-</div>
-<gm-group-table [columns]="columns" [data]="groups"></gm-group-table>
-<div class="paginator">
-  <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+<div class="flex-box">
+  <div class="search-panel">
+    <gm-search-bar #searchBar [searchData]="searchData" (searchValueChange)="query($event)"></gm-search-bar>
+  </div>
+  <div class="data-box">
+    <gm-group-table [columns]="columns" [data]="groups"></gm-group-table>
+    <div class="paginator" *ngIf="queryOptions?.totalCount > 10">
+      <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>
 </div>
 <ng-template #groupManagerModal let-close="close" let-dismiss="dismiss">
   <gm-modal-container [dismiss]="dismiss" [title]="'用户组'">
