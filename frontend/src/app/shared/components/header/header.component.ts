@@ -13,6 +13,7 @@ import { Router } from "@angular/router";
 export class HeaderComponent extends CoreComponent<UserInfo> implements OnInit {
   faUserCircle = faUserCircle;
   faBell = faBell;
+  showAvatar: boolean = false;
 
   constructor(
               private userService: UserService,

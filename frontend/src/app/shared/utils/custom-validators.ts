@@ -43,4 +43,8 @@ export class CustomValidators {
     static Tags(): ValidatorFn {
         return Validators.pattern(/^(([a-zA-Z0-9]+\s*){0,5})$/);
     }
+
+    static password(): ValidatorFn {
+      return Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(/[A-Z]+/)]);
+    }
 }

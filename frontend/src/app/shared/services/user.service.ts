@@ -63,4 +63,12 @@ export class UserService {
     return this.http.get(`${environment.baseUrl}/account/users/me`).toPromise();
   }
 
+  async resetPassword(payload: any): Promise<any> {
+    try {
+      await this.http.post(`${environment.baseUrl}/account/users/updatepassword`, payload).toPromise();
+      this.logout();
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }

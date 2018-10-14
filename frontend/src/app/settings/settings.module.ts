@@ -64,6 +64,7 @@ import { DictionaryDetailComponent } from "./dictionary-manager/detail/dictionar
 import { DictionaryDetailEditorComponent } from "./dictionary-manager/detail/data-editor/data-editor.component";
 import { DictionaryDetailResolver } from "./dictionary-manager/dictionary-detail-resolver";
 import { DictionaryDetailCreateComponent } from "./dictionary-manager/detail/create/create.component";
+import { ResetPasswordComponent } from './account/reset-password/reset-password.component';
 
 @NgModule({
   imports: [
@@ -114,7 +115,8 @@ import { DictionaryDetailCreateComponent } from "./dictionary-manager/detail/cre
     DictionaryCreateComponent,
     DictionaryDetailComponent,
     DictionaryDetailCreateComponent,
-    DictionaryDetailEditorComponent
+    DictionaryDetailEditorComponent,
+    ResetPasswordComponent
   ],
   providers: [
     CommunityService,

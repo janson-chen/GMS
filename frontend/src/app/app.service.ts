@@ -29,6 +29,7 @@ export class AppService implements HttpInterceptor {
 
         }
       }, error => {
+        this.toastService.error(Object.values(error.error)[0].toString());
         if (error.status == "401") {
           localStorage.clear();
           this.router.navigate(["/login"]);

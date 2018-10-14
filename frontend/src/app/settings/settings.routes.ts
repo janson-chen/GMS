@@ -22,6 +22,7 @@ import { DictionaryManagerComponent } from "./dictionary-manager/dictionary-mana
 import { DictionaryResolver } from "./dictionary-manager/dictionary-resolver";
 import { DictionaryDetailComponent } from "./dictionary-manager/detail/dictionary-detail.component";
 import { DictionaryDetailResolver } from "./dictionary-manager/dictionary-detail-resolver";
+import { ResetPasswordComponent } from "./account/reset-password/reset-password.component";
 
 export const settingsRroutes: Routes = [
   {
@@ -102,6 +103,10 @@ export const settingsRroutes: Routes = [
         resolve: {
           dictionaries: DictionaryDetailResolver
         }
+      },
+      {
+        path: "reset",
+        component: ResetPasswordComponent
       }
     ]
   }
