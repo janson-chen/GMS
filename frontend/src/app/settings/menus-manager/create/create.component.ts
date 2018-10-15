@@ -7,11 +7,14 @@ import { Community } from "../../community-manager/community.data";
 import { MenuManagerService } from "../menu-manager.service";
 import { UserService } from "../../../shared/services/user.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { CustomValidators } from "../../../shared/utils/custom-validators";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: 'gm-menu-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
+  providers: [FormComponent.provide(CreateMenuComponent)]
 })
 export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements OnInit {
   @Input() communities: Community[] = [];
@@ -30,31 +33,33 @@ export class CreateMenuComponent<Menu> extends FormComponent<Menu> implements On
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      name: "",
-      menuType: "",
+      name: ["", CustomValidators.ModelTitle()],
+      menuType: "系统菜单",
       parentID: -1,
       icon: "class",
       url: ""
     });
   }
 
-  async submit() {
-    this.isSubmitting = true;
-    const payload = {
-      name: this.formGroup.value.name,
-      menuType: this.formGroup.value.menuType,
-      parentID: this.formGroup.value.parentID,
-      icon: "class",
-      url: this.formGroup.value.url
-    };
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload = {
+        name: this.formGroup.value.name,
+        menuType: this.formGroup.value.menuType,
+        parentID: this.formGroup.value.parentID,
+        icon: "class",
+        url: this.formGroup.value.url
+      };
 
-    try {
-      await this.menuService.addMenu(payload);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("菜单创建成功."), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.menuService.addMenu(payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("菜单创建成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
   }
 

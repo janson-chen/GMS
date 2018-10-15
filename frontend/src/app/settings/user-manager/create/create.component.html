@@ -1,33 +1,33 @@
-<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+<form *ngIf="!isSubmitting" [formGroup]="formGroup" (ngSubmit)="submitData()" novalidate>
   <div class="form-group">
     <div class="wrapper">
       <label>登录账号</label>
-      <input type="text" class="form-control" id="userName" placeholder="user name" formControlName="userName" caValidityClass required/>
+      <input type="text" class="form-control" id="userName" placeholder="user name" formControlName="userName" caValidityClass/>
+      <small *ngIf="getControl('userName').hasError('pattern')" class="invalid-feedback">
+        账号格式错误.
+      </small>
+      <small *ngIf="getControl('userName').hasError('maxLength')" class="invalid-feedback">
+        最大长度不能超过{{ titleLengthLimit }}.
+      </small>
+      <small *ngIf="getControl('userName').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('userName').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('userName').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('userName').dirty && formGroup.get('userName').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
       <label>用户名称</label>
-      <input type="text" class="form-control" id="name" placeholder="name" formControlName="name" caValidityClass required/>
+      <input type="text" class="form-control" id="name" placeholder="name" formControlName="name" caValidityClass/>
+      <small *ngIf="getControl('name').hasError('pattern')" class="invalid-feedback">
+        格式错误.
+      </small>
+      <small *ngIf="getControl('name').hasError('maxlength')" class="invalid-feedback">
+        最大长度不能超过{{ titleLengthLimit }}.
+      </small>
+      <small *ngIf="getControl('name').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('name').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('name').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
@@ -35,22 +35,21 @@
       <ca-select formControlName="communityId">
           <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
       </ca-select>
+      <small *ngIf="getControl('communityId').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('communityId').dirty && formGroup.get('communityId').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
-
   <div class="form-group">
     <div class="wrapper permission-panel">
       <label>选择角色</label>
       <div class="check-box-panel">
         <ca-input-checkbox *ngFor="let item of roleArray" [formControl]="item.control" [value]="item.role.name">{{ item.role.name }}</ca-input-checkbox>
       </div>
+      <small *ngIf="getControl('roles').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('roles').dirty && formGroup.get('roles').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
@@ -59,17 +58,17 @@
         <ca-input-radio [value]="true" formControlName="isEnabled"><span>是</span></ca-input-radio>
         <ca-input-radio [value]="false" formControlName="isEnabled"><span>否</span></ca-input-radio>
       </div>
+      <small *ngIf="getControl('isEnabled').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('isEnabled').dirty && formGroup.get('isEnabled').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="modal-buttons">
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">保存</button>
   </div>
 </form>
 <ca-spinner *ngIf="isSubmitting" [state]="spinnerState" dotColor="grey">
-  <ng-container *ngIf="spinnerState === 'waiting'">Saving changes...</ng-container>
-  <ng-container *ngIf="spinnerState === 'success'">Changes have been saved successfully! Returning automatically in {{successMessageTimeoutInSeconds}} seconds.</ng-container>
-  <ng-container *ngIf="spinnerState === 'failed'">Failed to save your changes.</ng-container>
+  <ng-container *ngIf="spinnerState === 'waiting'">创建中...</ng-container>
+  <ng-container *ngIf="spinnerState === 'success'">创建成功! {{successMessageTimeoutInSeconds}} 秒后关闭.</ng-container>
+  <ng-container *ngIf="spinnerState === 'failed'">创建失败.</ng-container>
 </ca-spinner>

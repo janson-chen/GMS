@@ -1,13 +1,14 @@
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { UserInfo } from "../../user-manager/user.data";
 import { UserService } from "../../../shared/services/user.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { MenuManagerService } from "../../menus-manager/menu-manager.service";
 import { MenusService } from "../../../core/service/menus.service";
-import { Router } from "@angular/router";
-import { FormBuilder } from "@angular/forms";
-import { ToastrService } from "ngx-toastr";
 import { CustomValidators } from "../../../shared/utils/custom-validators";
 import { isValidForm } from "../../../shared/utils/form-validator";
 
@@ -17,8 +18,6 @@ import { isValidForm } from "../../../shared/utils/form-validator";
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent extends FormComponent<UserInfo> implements OnInit {
-
-
   constructor(
     private router: Router,
     protected userService: UserService,
@@ -40,6 +39,7 @@ export class ResetPasswordComponent extends FormComponent<UserInfo> implements O
   }
 
   async submitData(): Promise<void> {
+    console.log(this.formGroup);
     if (isValidForm(this.formGroup)) {
       const payload = {
         userName: this.formGroup.value.userName,
@@ -47,7 +47,7 @@ export class ResetPasswordComponent extends FormComponent<UserInfo> implements O
         newPassword: this.formGroup.value.newPassword
       };
 
-        await this.userService.resetPassword(payload);
+      await this.userService.resetPassword(payload);
     }
   }
 }

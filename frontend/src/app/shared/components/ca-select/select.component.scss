@@ -4,7 +4,7 @@
   display: block;
   height: 36px;
   border: solid 1px $filter-border;
-  width: 100%;
+  flex: 1;
 }
 
 .wrapper {
@@ -50,7 +50,7 @@
   overflow-y: auto;
   position: relative;
   z-index: 1;
-  max-height: 216px;
+  max-height: 140px;
 }
 
 ::ng-deep {

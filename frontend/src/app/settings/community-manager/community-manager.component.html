@@ -6,7 +6,7 @@
   <!--<gm-search-bar></gm-search-bar>-->
 </div>
 <gm-community-table [columns]="columns" [data]="communities"></gm-community-table>
-<div class="paginator">
+<div class="paginator" *ngIf="queryOptions?.totalCount > 10">
   <ngb-pagination [collectionSize]="queryOptions?.totalCount" (pageChange)="search($event)" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
 </div>
 <ng-template #communityManagerModal let-close="close" let-dismiss="dismiss">

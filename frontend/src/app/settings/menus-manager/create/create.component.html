@@ -3,16 +3,16 @@
     <div class="wrapper">
       <label>菜单名称</label>
       <input type="text" class="form-control" id="name" placeholder="user name" formControlName="name" caValidityClass required/>
+      <small *ngIf="getControl('name').hasError('pattern')" class="invalid-feedback">
+        账号格式错误.
+      </small>
+      <small *ngIf="getControl('name').hasError('maxLength')" class="invalid-feedback">
+        最大长度不能超过{{ titleLengthLimit }}.
+      </small>
+      <small *ngIf="getControl('name').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('name').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('name').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
@@ -21,37 +21,31 @@
         <ca-folder-tree *ngFor="let menu of rootMenus" [folder]="menu" (folderChange)="getSelectedMenu($event)"></ca-folder-tree>
       </div>
       <input type="text" name="parentID" formControlName="parentID" hidden>
+      <small *ngIf="formGroup.get('parentID').dirty && formGroup.get('parentID').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('parentID').dirty && formGroup.get('parentID').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
       <label>菜单类型</label>
       <div class="radio-box-panel">
-        <ca-input-radio [value]="'系统菜单'" formControlName="menuType"><span>系统菜单</span></ca-input-radio>
+        <ca-input-radio [value]="'系统菜单'" formControlName="menuType" [checked]="true"><span>系统菜单</span></ca-input-radio>
         <ca-input-radio [value]="'自定义菜单'" formControlName="menuType"><span>自定义菜单</span></ca-input-radio>
       </div>
+      <small *ngIf="formGroup.get('menuType').dirty && formGroup.get('menuType').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('menuType').dirty && formGroup.get('menuType').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
       <label>菜单跳转</label>
       <input type="text" class="form-control" id="url" placeholder="url" formControlName="url" caValidityClass required/>
+      <small *ngIf="formGroup.get('url').dirty && formGroup.get('url').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('url').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('url').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('url').dirty && formGroup.get('url').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="modal-buttons">
     <button type="submit" class="btn btn-primary">Save</button>

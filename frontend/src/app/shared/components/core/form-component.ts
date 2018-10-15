@@ -19,6 +19,7 @@ export class FormComponent<T> extends CoreComponent<T> {
   successMessageTimeoutInSeconds: number = 3;
   formGroup: FormGroup;
   spinnerState: SpinnerState = "waiting";
+  titleLengthLimit: number = 100;
 
   private isSubmitted_: boolean = false;
   private isSubmitting_: boolean = false;

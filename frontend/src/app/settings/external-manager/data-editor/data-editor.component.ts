@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
 import { FormComponent } from "../../../shared/components/core/form-component";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { UserService } from "../../../shared/services/user.service";
 import { Party } from "../party.data";
 import { PartyService } from "../party.service";
@@ -10,6 +10,7 @@ import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { BasicSetting } from "../external-manager.data";
 import { ExternalManagerService } from "../external-manager.service";
+import { CustomValidators } from "../../../shared/utils/custom-validators";
 
 @Component({
   selector: "gm-basic-settings-editor",
@@ -32,11 +33,11 @@ export class BasicSettingsEditorComponent extends FormComponent<BasicSetting> im
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
       id: this.data.id,
-      name: this.data.name,
-      outSoftwarePath: this.data.outSoftwarePath,
-      filePath: this.data.filePath,
-      logPath: this.data.logPath,
-      fileMaxSize: this.data.fileMaxSize
+      name: [this.data.name, CustomValidators.ModelTitle()],
+      outSoftwarePath: [this.data.outSoftwarePath, Validators.required],
+      filePath: [this.data.filePath, Validators.required],
+      logPath: [this.data.logPath, Validators.required],
+      fileMaxSize: [this.data.fileMaxSize, Validators.required]
     });
   }
 

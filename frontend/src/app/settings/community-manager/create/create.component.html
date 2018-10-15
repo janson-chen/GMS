@@ -3,33 +3,27 @@
     <div class="wrapper">
       <label>社区名称</label>
       <input type="text" class="form-control" id="name" placeholder="user name" formControlName="name" caValidityClass required/>
+      <small *ngIf="getControl('name').hasError('pattern')" class="invalid-feedback">
+        账号格式错误.
+      </small>
+      <small *ngIf="getControl('name').hasError('maxLength')" class="invalid-feedback">
+        最大长度不能超过{{ titleLengthLimit }}.
+      </small>
+      <small *ngIf="getControl('name').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('name').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('name').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
       <label>父社区ID</label>
       <ca-select formControlName="parentId">
-          <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
+          <ca-option *ngFor="let community of communities" [value]="community?.id">{{ community?.name }}</ca-option>
       </ca-select>
+      <small *ngIf="getControl('parentId').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
-    <small *ngIf="formGroup.get('parentId').hasError('pattern')" class="invalid-feedback">
-      Invalid title.
-    </small>
-    <small *ngIf="formGroup.get('parentId').hasError('maxlength')" class="invalid-feedback">
-      Title cannot exceed {{ titleLengthLimit }} characters.
-    </small>
-    <small *ngIf="formGroup.get('parentId').dirty && formGroup.get('parentId').hasError('required')" class="invalid-feedback">
-      Required field.
-    </small>
   </div>
   <div class="modal-buttons">
     <button type="submit" class="btn btn-primary">Save</button>

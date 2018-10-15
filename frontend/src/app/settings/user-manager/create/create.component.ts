@@ -1,21 +1,26 @@
+import { ToastrService } from "ngx-toastr";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { ToastrService } from "ngx-toastr";
-import { UserService } from "../../../shared/services/user.service";
-import { FormComponent } from "../../../shared/components/core/form-component";
+
 import { UserManagerService } from "../user-manager.service";
 import { Permission, Role } from "../../role-manager/role.data";
 import { Community } from "../../community-manager/community.data";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { isValidForm } from "../../../shared/utils/form-validator";
+import { UserService } from "../../../shared/services/user.service";
+import { CustomValidators } from "../../../shared/utils/custom-validators";
+import { FormComponent } from "../../../shared/components/core/form-component";
 
 @Component({
   selector: 'gm-user-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
+  providers: [FormComponent.provide(CreateUserComponent)]
 })
 export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> implements OnInit {
   @Input() communities: Community[] = [];
   @Input() roles: Role[] = [];
+
   roleArray: Array<{ role: Role; control: FormControl }> = [];
   selectedRoles: Permission[] = [];
   roleForm: FormGroup = this.fb.group({});
@@ -31,8 +36,8 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      userName: "",
-      name: "",
+      userName: ["", CustomValidators.ModelTitle()],
+      name: ["", CustomValidators.ModelTitle()],
       communityId: "",
       isEnabled: false,
       roles: []
@@ -41,26 +46,26 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
     this.catchSelectedRoles();
   }
 
-  async submit() {
-    console.log(this.formGroup.value);
-    this.isSubmitting = true;
-    const payload = {
-      userName: this.formGroup.value.userName,
-      name: this.formGroup.value.name,
-      communityId: this.formGroup.value.communityId,
-      isEnabled: false,
-      roles: this.selectedRoles.map(role => role.name)
-    };
+  async submitData(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload = {
+        userName: this.formGroup.value.userName,
+        name: this.formGroup.value.name,
+        communityId: this.formGroup.value.communityId,
+        isEnabled: this.formGroup.value.isEnabled,
+        roles: this.selectedRoles.map(role => role.name)
+      };
 
-    try {
-      await this.userManagerService.addUser(payload);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("角色创建成功."), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.userManagerService.addUser(payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("创建成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
-
   }
 
   private catchSelectedRoles() {

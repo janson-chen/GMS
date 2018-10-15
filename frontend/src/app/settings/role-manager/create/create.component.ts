@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "../../../shared/services/user.service";
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { RoleManagerService } from "../role-manager.service";
 import { Permission } from "../role.data";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { CustomValidators } from "../../../shared/utils/custom-validators";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: 'gm-role-create',
@@ -31,10 +33,10 @@ export class CreateRoleComponent<Role> extends FormComponent<Role> implements On
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      name: "",
+      name: ["", CustomValidators.ModelTitle()],
       description: "",
-      usersCount: "",
-      permissions: this.selectedPermissions
+      usersCount: ["", [Validators.required, Validators.pattern(/^[0-9]+$/)]],
+      permissions: [this.selectedPermissions, /*Validators.required*/]
     });
 
     this.catchSelectedPermissions();
@@ -53,18 +55,18 @@ export class CreateRoleComponent<Role> extends FormComponent<Role> implements On
   }
 
   async submit() {
-    console.log(this.formGroup.value);
-    this.isSubmitting = true;
-    const payload = {
-      name: this.formGroup.value.name,
-      description: this.formGroup.value.description,
-      usersCount: this.formGroup.value.usersCount,
-      permissions: this.selectedPermissions
-    };
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload = {
+        name: this.formGroup.value.name,
+        description: this.formGroup.value.description,
+        usersCount: this.formGroup.value.usersCount,
+        permissions: this.selectedPermissions
+      };
 
-    await this.roleManagerService.addRole(payload);
-    this.isSubmitted = true;
-    setTimeout(() => this.close("角色创建成功."), this.successMessageTimeoutInSeconds * 1000);
+      await this.roleManagerService.addRole(payload);
+      this.isSubmitted = true;
+      setTimeout(() => this.close("角色创建成功."), this.successMessageTimeoutInSeconds * 1000);
+    }
   }
-
 }

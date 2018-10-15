@@ -6,6 +6,8 @@ import { UserService } from "../../../shared/services/user.service";
 import { FormComponent } from "../../../shared/components/core/form-component";
 import { NewsService } from "../news.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { CustomValidators } from "../../../shared/utils/custom-validators";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: 'gm-news-create',
@@ -27,20 +29,25 @@ export class CreateNewsComponent<News> extends FormComponent<News> implements On
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      title: "",
+      title: ["", CustomValidators.ModelTitle()],
     });
   }
 
-  async submit() {
-    this.isSubmitting = true;
-    const payload = {
-      title: this.formGroup.value.title
-    };
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
 
-    await this.newsService.addNews(payload);
+      try {
+        const payload = {
+          title: this.formGroup.value.title
+        };
 
-    this.isSubmitted = true;
-    setTimeout(() => this.close("新闻创建成功."), this.successMessageTimeoutInSeconds * 1000);
+        await this.newsService.addNews(payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("新闻创建成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitted = true;
+      }
+    }
   }
-
 }

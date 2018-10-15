@@ -3,6 +3,15 @@
     <div class="wrap">
       <label>用户组名</label>
       <input type="text" class="form-control" formControlName="name" placeholder=""  caValidityClass/>
+      <small *ngIf="getControl('name').hasError('pattern')" class="invalid-feedback">
+        名称格式错误.
+      </small>
+      <small *ngIf="getControl('name').hasError('maxLength')" class="invalid-feedback">
+        最大长度不能超过{{ titleLengthLimit }}.
+      </small>
+      <small *ngIf="getControl('name').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
   </div>
   <div class="modal-buttons">

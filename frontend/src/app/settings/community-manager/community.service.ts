@@ -11,7 +11,7 @@ export class CommunityService extends DataService<Community> {
     [key: string]: string;
   } = {};
 
-  addCommunity(payload) {
+  addCommunity(payload): Promise<Community> {
     return this.http.post(`${this.endpoint}`, payload).toPromise();
   }
 

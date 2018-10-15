@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { Community, COMMUNITY_TABLE_COLUMES } from "./community.data";
-import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
-import { CommunityService } from "./community.service";
-import { ActivatedRoute } from "@angular/router";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormBuilder } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
+import { CommunityService } from "./community.service";
+import { UserService } from "../../shared/services/user.service";
 import { ResponseData } from "../../shared/components/core/core.data";
+import { Community, COMMUNITY_TABLE_COLUMES } from "./community.data";
+import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 
 @Component({
   selector: 'gm-community-manager',
@@ -36,12 +37,16 @@ export class CommunityManagerComponent extends ModalContainerComponent {
   }
 
   async updateCommunities(): Promise<void> {
-    this.communities = await this.communityService.query(`query/${this.queryUrl}`, {});
+    const result = await this.communityService.query(`query/${this.queryUrl}`, {});
+    this.communities = result.detail;
+    this.communityService.saveCommunities(this.communities);
+    this.queryOptions.totalCount = result.totalCount;
   }
 
   async search(page: number): Promise<void> {
     this.queryOptions.page = page;
     const result = await this.communityService.query(`query/${this.queryUrl}`, {});
     this.communities = result.detail;
+    this.queryOptions.totalCount = result.totalCount;
   }
 }

@@ -1,19 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-
-import { UserService } from "../../../shared/services/user.service";
-import { FormComponent } from "../../../shared/components/core/form-component";
-import { RoleManagerService } from "../role-manager.service";
-import { CommunityService } from "../community.service";
+import { FormBuilder, Validators } from "@angular/forms";
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
+import { CommunityService } from "../community.service";
+import { RoleManagerService } from "../role-manager.service";
+import { isValidForm } from "../../../shared/utils/form-validator";
+import { UserService } from "../../../shared/services/user.service";
+import { CustomValidators } from "../../../shared/utils/custom-validators";
+import { FormComponent } from "../../../shared/components/core/form-component";
+import { Community } from "../community.data";
 
 @Component({
   selector: 'gm-community-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateCommunityComponent<Community> extends FormComponent<Community> implements OnInit {
+export class CreateCommunityComponent extends FormComponent<Community> implements OnInit {
   @Input() communities: Community[] = [];
 
   constructor(protected userService: UserService,
@@ -27,24 +30,27 @@ export class CreateCommunityComponent<Community> extends FormComponent<Community
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      name: "",
-      parentId: ""
+      name: ["", CustomValidators.ModelTitle()],
+      parentId: [this.communities[0].id, Validators.required]
     });
-
   }
 
-  async submit() {
-    console.log(this.formGroup.value);
-    this.isSubmitting = true;
-    const payload = {
-      name: this.formGroup.value.name,
-      parentId: this.formGroup.value.parentId
-    };
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      try {
+        const payload = {
+          name: this.formGroup.value.name,
+          parentId: this.formGroup.value.parentId
+        };
+        await this.communityService.addCommunity(payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("社区创建成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        console.error(e);
+        this.isSubmitted = true;
+      }
 
-    const result = await this.communityService.addCommunity(payload);
-
-    this.isSubmitted = true;
-    setTimeout(() => this.close("角色创建成功."), this.successMessageTimeoutInSeconds * 1000);
+    }
   }
-
 }

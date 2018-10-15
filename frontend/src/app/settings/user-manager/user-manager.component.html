@@ -8,7 +8,7 @@
 <gm-user-table [columns]="columns" [data]="userList"></gm-user-table>
 
 <ng-template #userManagerModal let-close="close" let-dismiss="dismiss">
-  <gm-modal-container [dismiss]="dismiss">
+  <gm-modal-container [dismiss]="dismiss" [title]="'创建用户'">
     <gm-user-create [communities]="communities" [roles]="roles" [close]="close"></gm-user-create>
   </gm-modal-container>
 </ng-template>

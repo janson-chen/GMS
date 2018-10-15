@@ -23,8 +23,8 @@ export class CustomValidators {
     static ModelTitle(maxLength: number = 100): ValidatorFn {
         return Validators.compose([
             Validators.required,
-            Validators.pattern(/^.{0,26}[a-zA-Z0-9]{1}.*$/), // Was /^(\w|\d|,|!|\?|\.|\&|\*|_|-|:|;|'|"|\[|\]|\{|\}|\(|\)|%|=|\s)+$/.
-            Validators.maxLength(maxLength)
+            Validators.maxLength(maxLength),
+            Validators.pattern(/^\S+$/)
         ]);
     }
 

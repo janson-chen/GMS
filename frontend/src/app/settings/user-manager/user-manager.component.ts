@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
-import { CommunityService } from "../community-manager/community.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Community } from "../community-manager/community.data";
-import { SEARCH_DATA, USER_MANAGER_TABLE_COLUMES, UserInfo } from "./user.data";
-import { ActivatedRoute } from "@angular/router";
-import { Role } from "../role-manager/role.data";
-import { RoleManagerService } from "../role-manager/role-manager.service";
-import { UserManagerService } from "./user-manager.service";
-import { FormBuilder } from "@angular/forms";
-import { UserService } from "../../shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
+import { FormBuilder } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
+import { Role } from "../role-manager/role.data";
+import { UserManagerService } from "./user-manager.service";
+import { Community } from "../community-manager/community.data";
+import { UserService } from "../../shared/services/user.service";
+import { RoleManagerService } from "../role-manager/role-manager.service";
+import { CommunityService } from "../community-manager/community.service";
+import { SEARCH_DATA, USER_MANAGER_TABLE_COLUMES, UserInfo } from "./user.data";
+import { ModalContainerComponent } from "../../shared/components/modal-container/modal-container.component";
 
 @Component({
   selector: 'gm-user-manager',

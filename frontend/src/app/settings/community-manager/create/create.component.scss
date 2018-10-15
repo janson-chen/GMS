@@ -1,10 +1,7 @@
-:host {
-
-}
-
 .wrapper {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   label {
     margin-right: 10px;
