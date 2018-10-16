@@ -8,15 +8,18 @@
           <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
         </ca-select>
       </div>
-      <small *ngIf="formGroup.get('communityId').dirty && formGroup.get('communityId').hasError('required')" class="invalid-feedback">
-        Required field.
+      <small *ngIf="getControl('communityId').dirty && getControl('communityId').hasError('required')" class="invalid-feedback">
+        必填项.
       </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>家庭住址</label>
-        <input type="text" class="form-control" formControlName="familyAddress" placeholder="家庭住址"  caValidityClass/>
+        <input type="text" class="form-control" formControlName="familyAddress" placeholder="家庭住址" caValidityClass/>
       </div>
+      <small *ngIf="getControl('familyAddress').dirty && getControl('familyAddress').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group family-type">
       <div class="wrap">
@@ -32,12 +35,18 @@
           </div>
         </div>
       </div>
+      <small *ngIf="getControl('familyType').dirty && getControl('familyType').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>联系方式</label>
-        <input type="text" class="form-control" formControlName="familyPhone" placeholder="联系方式"  caValidityClass/>
+        <input type="text" class="form-control" formControlName="familyPhone" placeholder="联系方式" caValidityClass/>
       </div>
+      <small *ngIf="getControl('familyPhone').dirty && getControl('familyPhone').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -49,6 +58,9 @@
         <label>家庭情况</label>
         <textarea type="text" class="form-control" formControlName="familyContent" placeholder="" caValidityClass></textarea>
       </div>
+      <small *ngIf="getControl('familyContent').dirty && getControl('familyContent').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="modal-buttons">
       <button type="submit" class="btn btn-primary">Save</button>

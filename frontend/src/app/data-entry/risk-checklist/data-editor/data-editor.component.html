@@ -9,7 +9,7 @@
         </ca-select>
       </div>
       <small *ngIf="formGroup.get('communityId').dirty && formGroup.get('communityId').hasError('required')" class="invalid-feedback">
-        Required field.
+        必填项.
       </small>
     </div>
     <div class="form-group">
@@ -21,7 +21,7 @@
         </ca-select>
       </div>
       <small *ngIf="formGroup.get('userMemberId').dirty && formGroup.get('userMemberId').hasError('required')" class="invalid-feedback">
-        Required field.
+        必填项.
       </small>
     </div>
     <div class="form-group">
@@ -29,6 +29,9 @@
         <label>事件名称</label>
         <input type="text" class="form-control" formControlName="name" placeholder=""  caValidityClass/>
       </div>
+      <small *ngIf="formGroup.get('name').dirty && formGroup.get('name').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -40,6 +43,9 @@
           </div>
         </div>
       </div>
+      <small *ngIf="formGroup.get('happenDate').dirty && formGroup.get('happenDate').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -52,20 +58,28 @@
             <ca-input-radio [value]="'紧急'" formControlName="eventType">紧急</ca-input-radio>
           </div>
         </div>
-
       </div>
+      <small *ngIf="formGroup.get('eventType').dirty && formGroup.get('eventType').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>事件区域</label>
         <input type="text" class="form-control" formControlName="area" placeholder=""  caValidityClass/>
       </div>
+      <small *ngIf="formGroup.get('area').dirty && formGroup.get('area').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>事件内容</label>
         <textarea type="number" class="form-control" formControlName="content" placeholder=""  caValidityClass></textarea>
       </div>
+      <small *ngIf="formGroup.get('content').dirty && formGroup.get('content').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -78,6 +92,9 @@
             <ca-input-radio [value]="false" [checked]="true" formControlName="isSendMessage">不发送</ca-input-radio>
           </div>
         </div>
+        <small *ngIf="formGroup.get('isSendMessage').dirty && formGroup.get('isSendMessage').hasError('required')" class="invalid-feedback">
+          必填项.
+        </small>
       </div>
     </div>
     <div class="modal-buttons">

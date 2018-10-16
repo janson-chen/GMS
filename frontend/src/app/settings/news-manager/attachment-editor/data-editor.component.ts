@@ -1,5 +1,5 @@
 import { ToastrService } from "ngx-toastr";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { faCalendarPlus, faUpload } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ import { Risk } from "../risk.data";
 import { News } from "../news.data";
 import { NewsService } from "../news.service";
 import { FormComponent } from "../../../shared/components/core/form-component";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-news-attachment-editor",
@@ -31,22 +32,24 @@ export class NewsAttachmentEditorComponent extends FormComponent<News> implement
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      uploadFile: null
+      uploadFile: [null, Validators.required]
     });
   }
 
   async submitUpload(): Promise<void> {
-    this.isSubmitting = true;
-    const formData = new FormData();
-    formData.append("file", this.uploadFile);
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const formData = new FormData();
+      formData.append("file", this.uploadFile);
 
-    try {
-      await this.newsService.uploadAttachment(this.data.id, formData);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("附件上传成功"), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.newsService.uploadAttachment(this.data.id, formData);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("附件上传成功"), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
   }
 

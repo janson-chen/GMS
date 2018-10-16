@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.data";
 import { FormComponent } from "../../../../shared/components/core/form-component";
 import { PopulationService } from "../../population.service";
@@ -11,6 +11,7 @@ import { GroupMembersResponse, UserGroup, UserGroupMember } from "../../group.da
 import { GroupManagerService } from "../../group-manager.service";
 import { UserInfo } from "../../../user-manager/user.data";
 import { ActivatedRoute } from "@angular/router";
+import { isValidForm } from "../../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-group-member-editor",
@@ -45,27 +46,29 @@ export class GroupMemberEditorComponent extends FormComponent<UserGroupMember> i
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      userId: "",
-      userMemberId: ""
+      userId: ["", Validators.required],
+      userMemberId: ["", Validators.required]
     });
   }
 
   async submit(): Promise<void> {
-    this.isSubmitting = true;
-    const payload = [
-      {
-        userId: this.formGroup.value.userId,
-        userMemberId: this.formGroup.value.userMemberId
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload = [
+        {
+          userId: this.formGroup.value.userId,
+          userMemberId: this.formGroup.value.userMemberId
+        }
+      ];
+
+      await this.groupManageService.addGroupMembers(payload);
+
+      try {
+        this.isSubmitted = true;
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
       }
-    ];
-
-    await this.groupManageService.addGroupMembers(payload);
-
-    try {
-      this.isSubmitted = true;
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
     }
   }
 }

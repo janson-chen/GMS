@@ -7,6 +7,9 @@
           <ca-option *ngFor="let user of users" [value]="user?.id">{{ user?.name }}</ca-option>
         </ca-select>
       </div>
+      <small *ngIf="getControl('userId').dirty && getControl('userId').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -15,6 +18,9 @@
           <ca-option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</ca-option>
         </ca-select>
       </div>
+      <small *ngIf="getControl('userMemberId').dirty && getControl('userMemberId').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="modal-buttons">
       <button type="submit" class="btn btn-primary">Save</button>

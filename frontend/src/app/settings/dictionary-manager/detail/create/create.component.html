@@ -11,6 +11,9 @@
         <label>字典实际值</label>
         <input type="text" class="form-control" formControlName="value" caValidityClass/>
       </div>
+      <small *ngIf="getControl('value').dirty && getControl('value').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="modal-buttons">
       <button type="submit" class="btn btn-primary">保存</button>

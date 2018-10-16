@@ -4,6 +4,9 @@
       <div class="wrap">
         <input type="file" class="form-control" formControlName="uploadFile" (change)="catchFile($event)" caValidityClass/>
       </div>
+      <small *ngIf="formGroup.get('uploadFile').dirty && formGroup.get('uploadFile').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="modal-buttons">
       <button type="submit" class="btn btn-primary">Save</button>

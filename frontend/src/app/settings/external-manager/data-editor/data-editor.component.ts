@@ -11,6 +11,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { BasicSetting } from "../external-manager.data";
 import { ExternalManagerService } from "../external-manager.service";
 import { CustomValidators } from "../../../shared/utils/custom-validators";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-basic-settings-editor",
@@ -41,27 +42,27 @@ export class BasicSettingsEditorComponent extends FormComponent<BasicSetting> im
     });
   }
 
-  async submit() {
-    this.isSubmitting = true;
-    const payload = {
-      id: this.data.id,
-      name: this.formGroup.value.name,
-      outSoftwarePath: this.formGroup.value.outSoftwarePath,
-      filePath: this.formGroup.value.filePath,
-      logPath: this.formGroup.value.logPath,
-      fileMaxSize: this.formGroup.value.fileMaxSize
-    };
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload = {
+        id: this.data.id,
+        name: this.formGroup.value.name,
+        outSoftwarePath: this.formGroup.value.outSoftwarePath,
+        filePath: this.formGroup.value.filePath,
+        logPath: this.formGroup.value.logPath,
+        fileMaxSize: this.formGroup.value.fileMaxSize
+      };
 
-    try {
-      await this.externalService.updateBasicSetting(this.data.id, payload);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("修改成功."), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.externalService.updateBasicSetting(this.data.id, payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("修改成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
   }
-
-
 }
 

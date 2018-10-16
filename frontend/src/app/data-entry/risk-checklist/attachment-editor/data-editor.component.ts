@@ -2,11 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
 import { FormComponent } from "../../../shared/components/core/form-component";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { faCalendarPlus, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { RiskService } from "../risk.service";
 import { Risk } from "../risk.data";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-attachment-editor",
@@ -30,22 +31,24 @@ export class AttachmentEditorComponent extends FormComponent<Risk> implements On
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      uploadFile: null
+      uploadFile: [null, Validators.required]
     });
   }
 
   async submitUpload(): Promise<void> {
-    this.isSubmitting = true;
-    const formData = new FormData();
-    formData.append("file", this.uploadFile);
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const formData = new FormData();
+      formData.append("file", this.uploadFile);
 
-    try {
-      await this.riskService.uploadAttachment(this.data.id, formData);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("附件上传成功"), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.riskService.uploadAttachment(this.data.id, formData);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("附件上传成功"), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
   }
 

@@ -8,8 +8,8 @@
           <ca-option *ngFor="let community of communities" [value]="community.id">{{ community.name }}</ca-option>
         </ca-select>
       </div>
-      <small *ngIf="formGroup.get('communityId').dirty && formGroup.get('communityId').hasError('required')" class="invalid-feedback">
-        Required field.
+      <small *ngIf="getControl('communityId').dirty && getControl('communityId').hasError('required')" class="invalid-feedback">
+        必填项.
       </small>
     </div>
     <div class="form-group">
@@ -17,6 +17,9 @@
         <label>活动名称</label>
         <input type="text" class="form-control" formControlName="subject" placeholder=""  caValidityClass/>
       </div>
+      <small *ngIf="getControl('subject').dirty && getControl('subject').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -29,6 +32,9 @@
         <label>参与人数</label>
         <input type="number" class="form-control" formControlName="joinAmount" placeholder=""  caValidityClass/>
       </div>
+      <small *ngIf="getControl('joinAmount').dirty && getControl('joinAmount').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
@@ -52,18 +58,27 @@
           </div>
         </div>
       </div>
+      <small *ngIf="getControl('activitiesDate').dirty && getControl('activitiesDate').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>活动地点</label>
         <input type="text" class="form-control" formControlName="activitiesPlace" placeholder=""  caValidityClass/>
       </div>
+      <small *ngIf="getControl('activitiesPlace').dirty && getControl('activitiesPlace').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>活动内容</label>
         <textarea type="text" class="form-control" formControlName="content" placeholder="" caValidityClass></textarea>
       </div>
+      <small *ngIf="getControl('content').dirty && getControl('content').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="modal-buttons">
       <button type="submit" class="btn btn-primary">Save</button>

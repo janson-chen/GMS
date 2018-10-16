@@ -54,7 +54,7 @@ export class CreateRoleComponent<Role> extends FormComponent<Role> implements On
 
   }
 
-  async submit() {
+  async submit(): Promise<void> {
     if (isValidForm(this.formGroup)) {
       this.isSubmitting = true;
       const payload = {

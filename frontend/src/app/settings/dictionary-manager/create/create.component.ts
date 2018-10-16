@@ -38,7 +38,7 @@ export class DictionaryCreateComponent extends FormComponent<Dictionary> impleme
     });
   }
 
-  async submit() {
+  async submit(): Promise<void> {
     if (isValidForm(this.formGroup)) {
       this.isSubmitting = true;
       const payload =

@@ -1,7 +1,7 @@
 import { ToastrService } from "ngx-toastr";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { UserManagerService } from "../user-manager.service";
 import { Permission, Role } from "../../role-manager/role.data";
@@ -38,7 +38,7 @@ export class CreateUserComponent<UserInfo> extends FormComponent<UserInfo> imple
     this.formGroup = this.fb.group({
       userName: ["", CustomValidators.ModelTitle()],
       name: ["", CustomValidators.ModelTitle()],
-      communityId: "",
+      communityId: ["", Validators.required],
       isEnabled: false,
       roles: []
     });

@@ -2,12 +2,13 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
 import { FormComponent } from "../../../shared/components/core/form-component";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { UserService } from "../../../shared/services/user.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import { News } from "../news.data";
 import { NewsService } from "../news.service";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-news-editor",
@@ -33,26 +34,28 @@ export class NewsDataEditorComponent extends FormComponent<News> implements OnIn
 
   async ngOnInit(): Promise<void> {
     this.formGroup = this.fb.group({
-      title: this.data && this.data.title || ""
+      title: [this.data && this.data.title || "", Validators.required]
     });
   }
 
-  async submit() {
-    this.isSubmitting = true;
-    let payload = {
-      id: this.data.id,
-      title: this.formGroup.value.title
-    };
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      let payload = {
+        id: this.data.id,
+        title: this.formGroup.value.title
+      };
 
-    try {
-      payload['id'] = this.data.id;
-      await this.newsService.updateNews(this.data.id, payload);
-      this.successMessage = "保存成功";
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
-    } finally {
+      try {
+        payload['id'] = this.data.id;
+        await this.newsService.updateNews(this.data.id, payload);
+        this.successMessage = "保存成功";
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      } finally {
 
+      }
     }
 
     this.isSubmitted = true;

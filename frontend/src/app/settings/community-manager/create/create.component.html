@@ -3,16 +3,16 @@
     <div class="wrapper">
       <label>社区名称</label>
       <input type="text" class="form-control" id="name" placeholder="user name" formControlName="name" caValidityClass required/>
-      <small *ngIf="getControl('name').hasError('pattern')" class="invalid-feedback">
-        账号格式错误.
-      </small>
-      <small *ngIf="getControl('name').hasError('maxLength')" class="invalid-feedback">
-        最大长度不能超过{{ titleLengthLimit }}.
-      </small>
-      <small *ngIf="getControl('name').hasError('required')" class="invalid-feedback">
-        必填项.
-      </small>
     </div>
+    <small *ngIf="getControl('name').dirty && getControl('name').hasError('pattern')" class="invalid-feedback">
+      账号格式错误.
+    </small>
+    <small *ngIf="getControl('name').dirty && getControl('name').hasError('maxLength')" class="invalid-feedback">
+      最大长度不能超过{{ titleLengthLimit }}.
+    </small>
+    <small *ngIf="getControl('name').dirty && getControl('name').hasError('required')" class="invalid-feedback">
+      必填项.
+    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
@@ -20,7 +20,7 @@
       <ca-select formControlName="parentId">
           <ca-option *ngFor="let community of communities" [value]="community?.id">{{ community?.name }}</ca-option>
       </ca-select>
-      <small *ngIf="getControl('parentId').hasError('required')" class="invalid-feedback">
+      <small *ngIf="getControl('parentId').dirty && getControl('parentId').hasError('required')" class="invalid-feedback">
         必填项.
       </small>
     </div>

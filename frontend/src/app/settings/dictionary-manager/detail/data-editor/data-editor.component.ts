@@ -11,6 +11,7 @@ import { UserService } from "../../../../shared/services/user.service";
 import { FormComponent } from "../../../../shared/components/core/form-component";
 import { POPULATION_TABLE_COLUMES } from "../../../shared/components/core/core.data";
 import { DictionaryManagerService } from "../../dictionary-manager.service";
+import { isValidForm } from "../../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-dictionary-detail-editor",
@@ -39,20 +40,22 @@ export class DictionaryDetailEditorComponent extends FormComponent<Dictionary> i
     ;
   }
 
-  async submit() {
-    this.isSubmitting = true;
-    const payload: Dictionary[] = [{
-      dictionaryId: this.formGroup.value.dictionaryId,
-      value: this.formGroup.value.value
-    }];
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload: Dictionary[] = [{
+        dictionaryId: this.formGroup.value.dictionaryId,
+        value: this.formGroup.value.value
+      }];
 
-    try {
-      await this.dictionaryManagerService.createDictionaryDetail(payload);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("字典信息修改成功."), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.dictionaryManagerService.createDictionaryDetail(payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("字典信息修改成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
   }
 }

@@ -3,16 +3,16 @@
     <div class="wrapper">
       <label>角色名称</label>
       <input type="text" class="form-control" id="name" placeholder="user name" formControlName="name" caValidityClass required/>
-      <small *ngIf="getControl('name').hasError('pattern')" class="invalid-feedback">
-        名称格式错误。
-      </small>
-      <small *ngIf="getControl('name').hasError('maxLength')" class="invalid-feedback">
-        最大长度不能超过{{ titleLengthLimit }}.
-      </small>
-      <small *ngIf="getControl('name').dirty && getControl('name').hasError('required')" class="invalid-feedback">
-        必填项.
-      </small>
     </div>
+    <small *ngIf="getControl('name').dirty && getControl('name').hasError('pattern')" class="invalid-feedback">
+      名称格式错误。
+    </small>
+    <small *ngIf="getControl('name').dirty && getControl('name').hasError('maxLength')" class="invalid-feedback">
+      最大长度不能超过{{ titleLengthLimit }}.
+    </small>
+    <small *ngIf="getControl('name').dirty && getControl('name').dirty && getControl('name').hasError('required')" class="invalid-feedback">
+      必填项.
+    </small>
   </div>
   <div class="form-group">
     <div class="wrapper">
@@ -24,13 +24,13 @@
     <div class="wrapper">
       <label>用户数量</label>
       <input type="text" class="form-control" id="usersCount" placeholder="usersCount" formControlName="usersCount" caValidityClass/>
-      <small *ngIf="getControl('usersCount').hasError('pattern')" class="invalid-feedback">
-        只能包含数字。
-      </small>
-      <small *ngIf="getControl('usersCount').hasError('required')" class="invalid-feedback">
-        必填项.
-      </small>
     </div>
+    <small *ngIf="getControl('usersCount').dirty && getControl('usersCount').hasError('pattern')" class="invalid-feedback">
+      只能包含数字。
+    </small>
+    <small *ngIf="getControl('usersCount').dirty && getControl('usersCount').hasError('required')" class="invalid-feedback">
+      必填项.
+    </small>
   </div>
   <div class="form-group">
     <div class="wrapper permission-panel">
@@ -38,10 +38,10 @@
       <div class="check-box-panel">
         <ca-input-checkbox *ngFor="let item of permissionArray" [formControl]="item.control" [value]="item.permission.value">{{ item.permission.name }}</ca-input-checkbox>
       </div>
-      <small *ngIf="getControl('permissions').hasError('required')" class="invalid-feedback">
-        必填项.
-      </small>
     </div>
+    <small *ngIf="getControl('permissions').dirty && getControl('permissions').hasError('required')" class="invalid-feedback">
+      必填项.
+    </small>
   </div>
   <div class="modal-buttons">
     <button type="submit" class="btn btn-primary">Save</button>

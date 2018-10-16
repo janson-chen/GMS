@@ -2,13 +2,14 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
 import { FormComponent } from "../../../shared/components/core/form-component";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { UserService } from "../../../shared/services/user.service";
 import { Party } from "../party.data";
 import { PartyService } from "../party.service";
 import { Community } from "../../../settings/community-manager/community.data";
 import { faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { isValidForm } from "../../../shared/utils/form-validator";
 
 @Component({
   selector: "gm-party-editor",
@@ -33,43 +34,42 @@ export class PartyDataEditorComponent extends FormComponent<Party> implements On
   async ngOnInit(): Promise<void> {
     console.log(this.data);
     this.formGroup = this.fb.group({
-      communityId: this.data && this.data.communityId,
-      subject: this.data && this.data.subject,
-      activitiesDate: this.data && this.data.activitiesDate,
-      activitiesPlace: this.data && this.data.activitiesPlace,
-      joinAmount: this.data && this.data.joinAmount,
+      communityId: [this.data && this.data.communityId, Validators.required],
+      subject: [this.data && this.data.subject, Validators.required],
+      activitiesDate: [this.data && this.data.activitiesDate, Validators.required],
+      activitiesPlace: [this.data && this.data.activitiesPlace, Validators.required],
+      joinAmount: [this.data && this.data.joinAmount, Validators.required],
       realAmount: this.data && this.data.realAmount,
       leaveAmount: this.data && this.data.leaveAmount,
-      form: this.data && this.data.form,
-      content: this.data && this.data.content
+      form: [this.data && this.data.form, Validators.required],
+      content: [this.data && this.data.content, Validators.required]
     });
   }
 
-  async submit() {
-    this.isSubmitting = true;
-    console.log("data", this.formGroup.value.activitiesDate);
-    const payload = {
-      communityId: this.formGroup.value.communityId,
-      subject: this.formGroup.value.subject,
-      activitiesDate: this.formGroup.value.activitiesDate,
-      activitiesPlace: this.formGroup.value.activitiesPlace,
-      joinAmount: this.formGroup.value.joinAmount,
-      realAmount: this.formGroup.value.realAmount,
-      leaveAmount: this.formGroup.value.leaveAmount,
-      form: this.formGroup.value.form,
-      content: this.formGroup.value.content
-    };
+  async submit(): Promise<void> {
+    if (isValidForm(this.formGroup)) {
+      this.isSubmitting = true;
+      const payload = {
+        communityId: this.formGroup.value.communityId,
+        subject: this.formGroup.value.subject,
+        activitiesDate: this.formGroup.value.activitiesDate,
+        activitiesPlace: this.formGroup.value.activitiesPlace,
+        joinAmount: this.formGroup.value.joinAmount,
+        realAmount: this.formGroup.value.realAmount,
+        leaveAmount: this.formGroup.value.leaveAmount,
+        form: this.formGroup.value.form,
+        content: this.formGroup.value.content
+      };
 
-    try {
-      await this.partyService.addParty(payload);
-      this.isSubmitted = true;
-      setTimeout(() => this.close("创建党建活动表成功."), this.successMessageTimeoutInSeconds * 1000);
-    } catch (e) {
-      this.isSubmitting = false;
-      this.spinnerState = "failed";
+      try {
+        await this.partyService.addParty(payload);
+        this.isSubmitted = true;
+        setTimeout(() => this.close("创建党建活动表成功."), this.successMessageTimeoutInSeconds * 1000);
+      } catch (e) {
+        this.isSubmitting = false;
+        this.spinnerState = "failed";
+      }
     }
   }
-
-
 }
 

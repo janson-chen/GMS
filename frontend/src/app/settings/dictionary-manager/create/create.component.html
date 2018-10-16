@@ -4,19 +4,19 @@
       <div class="wrap">
         <label>字典编码</label>
         <input type="text" class="form-control" formControlName="code" caValidityClass/>
-        <small *ngIf="getControl('code').hasError('required')" class="invalid-feedback">
-          必填项.
-        </small>
       </div>
+      <small *ngIf="getControl('code').dirty && getControl('code').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="form-group">
       <div class="wrap">
         <label>字典名称</label>
         <input type="text" class="form-control" formControlName="text" caValidityClass/>
-        <small *ngIf="getControl('text').hasError('required')" class="invalid-feedback">
-          必填项.
-        </small>
       </div>
+      <small *ngIf="getControl('text').dirty && getControl('text').hasError('required')" class="invalid-feedback">
+        必填项.
+      </small>
     </div>
     <div class="modal-buttons">
       <button type="submit" class="btn btn-primary">保存</button>
